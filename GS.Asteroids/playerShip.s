@@ -149,10 +149,14 @@ checkKeys entry
         beq onKeydownRight
 
         cmp keydownThrust
-        beq onKeydownThrust
+        beq thrustShortJump
 
         cmp keydownFire
         beq onKeydownFire
+        rtl
+
+thrustShortJump anop
+        jmp onKeydownThrust
 
         rtl
 

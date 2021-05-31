@@ -54,7 +54,6 @@ checkMissile4 anop
 
 noPlayerMissiles anop
         lda #-1
-        tax
         rts
 
         end
