@@ -90,14 +90,16 @@ DIVSOR          dc i2'-$ff'
 DIVDND          dc i2'0'
 QUOTNT gequ $80
 
+
 ; screen bounds
+; these are in shifted << 6 format to match object speed/position logic
 
-; SCREEN_XMAX is only 255 because of the size of the CPU registers (even though horizontal resolution is 320px)
-SCREEN_XMAX                     gequ $ff01
-SCREEN_YMAX                     gequ $C700
+SCREEN_XMAX                     gequ $4fc0
+SCREEN_YMAX                     gequ $31c0
 
-MIDSCREEN_X                     gequ $a000
-MIDSCREEN_Y                     gequ $6400
+MIDSCREEN_X                     gequ SCREEN_XMAX/2
+MIDSCREEN_Y                     gequ SCREEN_YMAX/2
+
 
 ; table of precomputed screen row offsets
 

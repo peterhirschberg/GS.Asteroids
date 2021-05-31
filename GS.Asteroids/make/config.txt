@@ -10,7 +10,7 @@ s7d1 = /Users/peter/Library/Developer/Xcode/DerivedData/GS.Asteroids-cfgyddpdfyh
 
 g_joystick_type = 0
 g_cfg_rom_path = ../../../../../../../../Library/GSport/ROM
-g_limit_speed = 0
+g_limit_speed = 3
 
 
 bram1[00] = 00 00 00 01 00 00 0d 06 02 01 01 00 01 00 00 00

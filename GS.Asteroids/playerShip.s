@@ -26,7 +26,6 @@ slowDownPos anop
         dec a
         dec a
         dec a
-        dec a
         bmi resetToZero
         rtl
 
@@ -34,7 +33,6 @@ slowDownNeg anop
         eor #$ffff
         inc a
 
-        dec a
         dec a
         dec a
         dec a
@@ -170,7 +168,7 @@ onKeydownThrust anop
 
         lda #0
         sta param1
-        lda #5
+        lda #4
         sta param2
 
         lda angleList,x
@@ -188,7 +186,6 @@ onKeydownThrust anop
 xPosSpeed anop
         asl a
         asl a
-        asl a
 
         sta fixedSpeedX
         lda xSpeedList,x
@@ -202,7 +199,6 @@ xNegSpeed anop
         eor #$ffff
         inc a
 
-        asl a
         asl a
         asl a
 
@@ -222,7 +218,6 @@ doYSpeed anop
 yPosSpeed anop
         asl a
         asl a
-        asl a
 
         sta fixedSpeedY
         lda ySpeedList,x
@@ -239,8 +234,7 @@ yNegSpeed anop
 
         asl a
         asl a
-        asl a
- 
+
         eor #$ffff
         inc a
 

@@ -78,8 +78,7 @@ negWrapAngle anop
         sta angle
 
 wrap anop
-; TODO: wrapping isn't working right because the sign bit is getting set when shifting << 8 for fixed point math
-  jmp foo
+
 ; wrap x & y
 
         lda xspeed
@@ -129,7 +128,7 @@ resetYNeg anop
         lda #SCREEN_YMAX
         sta ypos
 
-foo anop
+
 dontResetYPos anop
 ; save stuff back to object
         lda xpos
@@ -173,13 +172,9 @@ loop1 anop
         lsr a
         lsr a
         lsr a
-        lsr a
-        lsr a
         sta drawX
 
         lda yPosList,x
-        lsr a
-        lsr a
         lsr a
         lsr a
         lsr a
@@ -1036,36 +1031,36 @@ shapeList anop
         dc i2'SHAPE_OFFSET_LARGE_ROCK1'
 
 xPosList anop
-        dc i2'$a000'
-        dc i2'$a000'
-        dc i2'100'
-        dc i2'200'
-        dc i2'100'
-        dc i2'100'
+        dc i2'MIDSCREEN_X'
+        dc i2'MIDSCREEN_X'
+        dc i2'MIDSCREEN_X'
+        dc i2'MIDSCREEN_X'
+        dc i2'MIDSCREEN_X'
+        dc i2'MIDSCREEN_X'
 
 yPosList anop
-        dc i2'$6400'
-        dc i2'$6400'
-        dc i2'100'
-        dc i2'100'
-        dc i2'100'
-        dc i2'100'
+        dc i2'MIDSCREEN_Y'
+        dc i2'MIDSCREEN_Y'
+        dc i2'MIDSCREEN_Y'
+        dc i2'MIDSCREEN_Y'
+        dc i2'MIDSCREEN_Y'
+        dc i2'MIDSCREEN_Y'
 
 xSpeedList anop
         dc i2'0'
         dc i2'0'
-        dc i2'$0200'
-        dc i2'$fe00'
-        dc i2'$ff00'
-        dc i2'$fc00'
+        dc i2'$0020'
+        dc i2'$-050'
+        dc i2'$0060'
+        dc i2'$0030'
 
 ySpeedList anop
         dc i2'0'
         dc i2'0'
-        dc i2'$0300'
-        dc i2'$0300'
-        dc i2'$0400'
-        dc i2'$ff00'
+        dc i2'$0060'
+        dc i2'$0030'
+        dc i2'$-0020'
+        dc i2'$0040'
 
 angleList anop
         dc i2'180'
