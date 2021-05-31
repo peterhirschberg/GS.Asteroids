@@ -23,6 +23,8 @@ STATE_REGISTER          gequ $e1c068
 SCREEN_ADDR             gequ $012000
 COLOR_TABLE             gequ $e19e00
 
+gamePaused dc i2'0'
+
 borderColour    dc i2'0'
 backupStack     dc i2'0'
 

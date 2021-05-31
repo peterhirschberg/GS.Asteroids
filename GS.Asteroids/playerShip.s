@@ -165,8 +165,25 @@ doCheckKeys anop
         cmp #'V'
         beq onKeydownThrust
 
+        cmp #'p'
+        beq onKeydownPause
+        cmp #'P'
+        beq onKeydownPause
+
 checkKeysDone anop
 
+        rtl
+
+onKeydownPause anop
+        lda gamePaused
+        cmp #0
+        beq setPaused
+        lda #0
+        sta gamePaused
+        rtl
+setPaused anop
+        lda #1
+        sta gamePaused
         rtl
 
 onKeydownLeft anop

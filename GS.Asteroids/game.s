@@ -22,6 +22,14 @@ gameInit entry
 
 runGameTick entry
 
+; do nothing if paused
+        lda gamePaused
+        cmp #0
+        beq run
+        rtl
+
+run anop
+
 ; run the player ship
         jsl runPlayerShip
 
