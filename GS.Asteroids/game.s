@@ -22,6 +22,8 @@ gameInit entry
 
 runGameTick entry
 
+        jsl checkControls
+
 ; do nothing if paused
         lda gamePaused
         cmp #0

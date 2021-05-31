@@ -31,12 +31,6 @@ backupStack     dc i2'0'
 currentColorLeft     dc i2'$00f0'
 currentColorRight    dc i2'$000f'
 
-keyLeft             dc i2'0'
-keyRight            dc i2'0'
-keyThrust           dc i2'0'
-keyFire             dc i2'0'
-keyHyperspace       dc i2'0'
-
 ; abstract vars for passing values to subroutines
 
 param1          dc i2'0'

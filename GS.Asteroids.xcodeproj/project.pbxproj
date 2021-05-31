@@ -26,6 +26,7 @@
 		D06919D0264F414C006508C1 /* GS.Asteroids.xcscheme in CopyFiles */ = {isa = PBXBuildFile; fileRef = D06919CF264F414C006508C1 /* GS.Asteroids.xcscheme */; };
 		D06919E8264F70EC006508C1 /* game.s in Sources */ = {isa = PBXBuildFile; fileRef = D06919E6264F5CCB006508C1 /* game.s */; };
 		D06BB5DF2660D3E200EB1107 /* playerShip.s in Sources */ = {isa = PBXBuildFile; fileRef = D06BB5DE2660D3E200EB1107 /* playerShip.s */; };
+		D06BB5E326650BB800EB1107 /* controls.s in Sources */ = {isa = PBXBuildFile; fileRef = D06BB5E226650BB800EB1107 /* controls.s */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,6 +77,7 @@
 		D06919E6264F5CCB006508C1 /* game.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = game.s; sourceTree = "<group>"; };
 		D06919E7264F5D00006508C1 /* game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
 		D06BB5DE2660D3E200EB1107 /* playerShip.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = playerShip.s; sourceTree = "<group>"; };
+		D06BB5E226650BB800EB1107 /* controls.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = controls.s; sourceTree = "<group>"; };
 		D076F96B2659C6320097A122 /* objects.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = objects.s; sourceTree = "<group>"; };
 		D076F96C265B46FA0097A122 /* color.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = color.s; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +129,7 @@
 				D076F96B2659C6320097A122 /* objects.s */,
 				D076F96C265B46FA0097A122 /* color.s */,
 				D06BB5DE2660D3E200EB1107 /* playerShip.s */,
+				D06BB5E226650BB800EB1107 /* controls.s */,
 			);
 			path = GS.Asteroids;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D063C4112659302A00C5C7C6 /* displayList.s in Sources */,
+				D06BB5E326650BB800EB1107 /* controls.s in Sources */,
 				D06919BA264F414C006508C1 /* Makefile in Sources */,
 				D063C409265737E200C5C7C6 /* lines.s in Sources */,
 				D06919B5264F414C006508C1 /* main.c in Sources */,

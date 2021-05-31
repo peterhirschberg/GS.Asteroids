@@ -11,6 +11,7 @@
 playerShip start
         using globalData
         using objectData
+        using controlsData
 
 
 ; takes a value in A
@@ -52,7 +53,30 @@ resetToZero anop
 
 runPlayerShip entry
 
-; check keys
+        ldx #OBJECT_PLAYER
+
+; zero out rotation speed
+        lda #0
+        sta rotationSpeedList,x
+
+; apply "friction" to the ship
+        lda keydownThrust
+        cmp #1
+        beq dontSlowDown
+
+        lda xSpeedList,x
+        jsl slowDownA
+        sta xSpeedList,x
+
+        lda ySpeedList,x
+        jsl slowDownA
+        sta ySpeedList,x
+
+
+dontSlowDown anop
+
+
+; check the controls
         jsl checkKeys
 
 
@@ -117,74 +141,20 @@ setThrustColorOn anop
         rtl
 
 
-
 checkKeys entry
 
-        ldx #OBJECT_PLAYER
-
-; zero out rotation speed
-        lda #0
-        sta rotationSpeedList,x
-
-; apply "friction" to the ship
-        lda keydownThrust
-        cmp #1
-        beq doCheckKeys
-
-        lda xSpeedList,x
-        jsl slowDownA
-        sta xSpeedList,x
-
-        lda ySpeedList,x
-        jsl slowDownA
-        sta ySpeedList,x
-
-doCheckKeys anop
-
-        lda #0
-        sta keydownThrust
-
-; check keys
-        lda >KEYBOARD
-        bpl checkKeysDone
-        sta >KEYBOARD_STROBE
-        and #$007f
-
-        cmp #'z'
-        beq onKeydownLeft
-        cmp #'Z'
-        beq onKeydownLeft
-
-        cmp #'x'
-        beq onKeydownRight
-        cmp #'X'
-        beq onKeydownRight
-
-        cmp #'v'
-        beq onKeydownThrust
-        cmp #'V'
-        beq onKeydownThrust
-
-        cmp #'p'
-        beq onKeydownPause
-        cmp #'P'
-        beq onKeydownPause
-
-checkKeysDone anop
-
-        rtl
-
-onKeydownPause anop
-        lda gamePaused
-        cmp #0
-        beq setPaused
-        lda #0
-        sta gamePaused
-        rtl
-setPaused anop
         lda #1
-        sta gamePaused
+        cmp keydownLeft
+        beq onKeydownLeft
+
+        cmp keydownRight
+        beq onKeydownRight
+
+        cmp keydownThrust
+        beq onKeydownThrust
+
         rtl
+
 
 onKeydownLeft anop
         lda #-12
@@ -197,8 +167,6 @@ onKeydownRight anop
         rtl
 
 onKeydownThrust anop
-        lda #1
-        sta keydownThrust
 
         lda #0
         sta param1
@@ -347,12 +315,6 @@ speedDone anop
 
         rtl
 
-
-keydownLeft dc i2'0'
-keydownRight dc i2'0'
-keydownThrust dc i2'0'
-keydownFire dc i2'0'
-keydownHyperspace dc i2'0'
 
 fixedSpeedX dc i2'0'
 fixedSpeedY dc i2'0'
