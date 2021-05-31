@@ -16,7 +16,10 @@ globalData data
 KEYBOARD                gequ $e0c000
 KEYBOARD_STROBE         gequ $e0c010
 VERTICAL_COUNTER        gequ $e0c02e
+SHADOW_REGISTER         gequ $e0c035
+NEW_VIDEO_REGISTER      gequ $e0c029
 BORDER_COLOUR_REGISTER  gequ $e0c034
+STATE_REGISTER          gequ $e1c068
 SCREEN_ADDR             gequ $012000
 COLOR_TABLE             gequ $e19e00
 

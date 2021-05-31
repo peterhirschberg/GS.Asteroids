@@ -47,8 +47,6 @@ int main(void)
     int event;
     Ref toolStartupRef;
 
-    lastTick = clock();
-    
     userid = MMStartUp();
     TLStartUp();
     toolStartupRef = StartUpTools(userid, refIsResource, TOOL_STARTUP);
@@ -57,6 +55,8 @@ int main(void)
     SetMouse(transparent);
   
     gameInit();
+
+    lastTick = clock();
     waitForNextTick();
 
     // TODO - allow for quitting the game!! :-)
