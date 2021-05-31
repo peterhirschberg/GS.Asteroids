@@ -1,0 +1,68 @@
+#!/bin/bash
+
+ERROUTPUT=/tmp/orca-rez-err.$$
+
+FILENAME="$1"
+shift
+
+DESTBASENAME="$1"
+shift
+
+if echo $FILENAME | grep -v '\.rez$' > /dev/null
+then
+    echo Expected first argument to be a *.rez file but got $FILENAME
+    exit 1
+fi
+
+SRCBASENAME=`echo $FILENAME | sed 's/\.rez$//'`
+SRCOBJNAME="${SRCBASENAME}.r"
+
+DESTDEPSNAME="${DESTBASENAME}.rez.d"
+DESTOBJNAME="${DESTBASENAME}.r"
+
+$ORCA --trace-gsos compile "$@" keep="${SRCOBJNAME}" "$FILENAME" 2> $ERROUTPUT
+RESULT=$?
+
+awk '
+    /^[A-Za-z][A-Za-z]*\(.*\)$/ {
+        next
+    }
+
+    {
+        print
+    }
+
+    /^File [^ ]*; Line [0-9][0-9]*;/ {
+        sub(/;/,"",$4)
+        LINENO=$4
+        sub(/^File [^ ]*; Line [0-9][0-9]*/, "", $0)
+        printf("%s/%s:%d:0: error: %s\n", PWD, FILE, LINENO, $0)
+    }
+' "PWD=`pwd`" "FILE=$FILENAME" $ERROUTPUT >&2
+
+if [ "$RESULT" -ne 0 ]
+then
+    rm -f $ERROUTPUT
+    rm -f $SRCOBJNAME
+    exit $RESULT
+fi
+
+mkdir -p `dirname "$DESTOBJNAME"`
+mv -f "$SRCOBJNAME" "$DESTOBJNAME" 2> /dev/null
+
+DEPS=`awk '
+    /^FastFileLoad/ {
+        sub(/^FastFileLoad\(/, "");
+        sub(/\)$/, "");
+        print}' $ERROUTPUT | sort -u | while read FILE
+    do
+        if [ -f "$FILE" ]
+        then
+            echo $FILE
+        fi
+    done`
+
+echo $DESTOBJNAME: $DEPS > $DESTDEPSNAME
+rm -f $ERROUTPUT
+
+exit 0

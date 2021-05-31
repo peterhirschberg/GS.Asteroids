@@ -1,0 +1,74 @@
+/*
+ *  main.rez
+ *  GS.Asteroids
+ *
+ * Created by Peter Hirschberg on 5/14/21.
+ * Copyright © 2021 Peter Hirschberg. All rights reserved.
+ */
+
+
+#include "types.rez"
+#include "main.h"
+
+
+/* Version resource */
+resource rVersion (1) {
+    {
+        0,          /* Major version number in BCD */
+        1,          /* Minor version number in BCD */
+        0,          /* Bug version number in BCD */
+        development,/* Development phase */
+        0           /* Release number */
+    },
+    verUS,
+    "GS.Asteroids",
+    "Copyright \$A9 2021 Peter Hirschberg"
+};
+
+#if MESSAGE_CENTER == 1
+/* Bunde resource */
+resource rBundle (1, preload, nospecialmemory) {
+    nil,                           /* rIcon ID for application if you wish a custom icon */
+    1,
+    {
+        {
+            native + LaunchThis,
+            {0},                     /* rFinderPath ID for this document */
+            {nil},                   /* rIcon ID for large icon for document */
+            {nil},                   /* rIcon ID for small icon for document */
+            "",                      /* String to describe this type of document */
+        },
+        Filetype + AuxType,                  /* Match field bits */
+        MatchFileType {{$04}},      /* File type to match */
+        MatchAuxType {              /* Auxiliary file type to match */
+            {$00000000,$00000000}
+        },
+        empty {},
+        empty {},
+        empty {},
+        empty {},
+        empty {},
+        empty {},
+        empty {},
+        empty {},
+        empty {},
+        empty {}
+    }
+};
+#endif
+
+
+/* Tools */
+resource rToolStartup (TOOL_STARTUP) {
+#if DESKTOP_RES_MODE == 320
+    mode320,
+#else
+    mode640,
+#endif
+    {
+        3,  $0100,      /* Misc Tool */
+        8,  $0100,        /* Sound Tool */
+        30, $0100,      /* Resource Manager */
+        
+    }
+};

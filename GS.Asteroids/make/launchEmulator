@@ -1,0 +1,36 @@
+#!/bin/sh
+
+if [ ! -z "$GSPLUS" ] && [ -x "$GSPLUS" ]
+then
+    EMULATORPATH="$GSPLUS"
+elif [ ! -z "$GSPORT" ] && [ -x "$GSPORT" ]
+then
+    EMULATORPATH="$GSPORT"
+fi
+
+if [ -z "$EMULATORPATH" ]
+then
+    echo Unable to find GSplus or GSport at these locations.
+    echo "    GSPLUS=$GSPLUS"
+    echo "    GSPORT=$GSPORT"
+    exit 1
+fi
+
+DISKIMAGE="$1"
+if echo $DISKIMAGE | grep -v '^/' > /dev/null
+then
+    DISKIMAGE="$PWD/$DISKIMAGE"
+fi
+
+cd make
+sed -i "" "s:^s7d1 *=.*$:s7d1 = $DISKIMAGE:" config.txt
+
+# This magic ensure that clicking stop in Xcode results in the emulator terminating.
+
+$EMULATORPATH &
+PID=$!
+
+trap 'kill $PID' SIGTERM SIGINT SIGHUP EXIT
+wait
+
+exit 0

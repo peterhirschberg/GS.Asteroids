@@ -1,0 +1,95 @@
+#!/bin/bash
+
+STDOUTPUT=/tmp/orca-cc-std.$$
+ERROUTPUT=/tmp/orca-cc-errs.$$
+
+FILENAME="$1"
+shift
+
+DESTBASENAME="$1"
+shift
+
+if echo $FILENAME | grep -v '\.c$' > /dev/null
+then
+    echo Expected first argument to be a *.c file but got $FILENAME
+    exit 1
+fi
+
+CCARGS=""
+COMPILEARGS=""
+for ARG in $*
+do
+    if echo $ARG | grep '^-[id]' > /dev/null
+    then
+        CCARGS="$CCARGS cc=$ARG"
+    else
+        COMPILEARGS="$COMPILEARGS $ARG"
+    fi
+done
+
+SRCBASENAME=`echo "$FILENAME" | sed 's/\.c$//'`
+SRCOBJNAME="${SRCBASENAME}.a"
+SRCROOTNAME="${SRCBASENAME}.root"
+
+DESTDEPSNAME="${DESTBASENAME}.d"
+DESTOBJNAME="${DESTBASENAME}.a"
+DESTROOTNAME="${DESTBASENAME}.root"
+
+$ORCA --trace-gsos compile $COMPILEARGS "$FILENAME" keep="${SRCBASENAME}" $CCARGS > $STDOUTPUT 2> $ERROUTPUT
+RESULT=$?
+
+awk '
+    {
+        print $0
+    }
+
+    $1 ~ /^[0-9][0-9]*$/ {
+        LINENO=$1
+    }
+
+    /^ *\^/ {
+        sub(/^ *\^/, "", $0)
+        printf("%s/%s:%d:0: error: %s\n", PWD, FILE, LINENO, $0)
+    }
+' "PWD=`pwd`" "FILE=$FILENAME" $STDOUTPUT
+
+
+sed '/^[A-Za-z][A-Za-z]*(.*)$/d' $ERROUTPUT >&2
+
+if [ "$RESULT" -ne 0 ]
+then
+    rm -f $ERROUTPUT
+    rm -f $STDOUTPUT
+    rm -f $SRCOBJNAME
+    rm -f $SRCROOTNAME
+    exit $RESULT
+fi
+
+mkdir -p `dirname "$DESTOBJNAME"`
+mv -f "$SRCOBJNAME" "$DESTOBJNAME" 2> /dev/null
+mv -f "$SRCROOTNAME" "$DESTROOTNAME" 2> /dev/null
+
+DEPS=`awk '
+    /^FastFileLoad/ {
+        sub(/^FastFileLoad\(/, "");
+        sub(/\)$/, "");
+        print}' $ERROUTPUT | sort -u | while read FILE
+    do
+        if [ -f "$FILE" ]
+        then
+            echo $FILE
+        fi
+    done | tr '\012' ' '`
+
+rm -f $ERROUTPUT
+rm -f $STDOUTPUT
+
+# We add a dependency for both the .o and the .root file.  If this is the
+# main.c file being compiled, we need the dependency on the .root file.
+cat > $DESTDEPSNAME << EOF
+$DESTOBJNAME: $DEPS
+
+$DESTROOTNAME: $DEPS
+EOF
+
+exit 0
