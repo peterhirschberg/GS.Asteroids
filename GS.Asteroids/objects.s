@@ -39,6 +39,10 @@ loop anop
         lda ySpeedList,x
         sta yspeed
 
+; get lifetime
+        lda lifetimeList,x
+        sta lifetime
+
 moveObject anop
 ; move object
         lda xpos
@@ -130,6 +134,17 @@ resetYNeg anop
 
 
 dontResetYPos anop
+
+; update lifetime
+        lda lifetime
+        cmp #-1
+        beq saveBackToObject
+        cmp #0
+        beq saveBackToObject
+        dec lifetime
+
+saveBackToObject anop
+
 ; save stuff back to object
         lda xpos
         sta xPosList,x
@@ -139,6 +154,9 @@ dontResetYPos anop
 
         lda angle
         sta angleList,x
+
+        lda lifetime
+        sta lifetimeList,x
 
 ; increment to the next object and loop
         inc objectIndex
@@ -162,6 +180,15 @@ loop1 anop
         asl a
         tax
 
+; check lifetimes and only draw as appropriate
+        lda lifetimeList,x
+        cmp #-1
+        beq drawIt
+        cmp #0
+        bne drawIt
+        jmp nextObject
+
+drawIt anop
         lda colorList,x
         sta color
 
@@ -222,8 +249,6 @@ done1 anop
 
 drawObject entry
 
-    jmp drawLine
-
 ; ------------------
 ; check for dots
 
@@ -254,6 +279,13 @@ drawADot anop
         iny
         
         sty dotListLength
+
+        ldy displayListColorLength
+        lda color
+        sta displayListColors,y
+        iny
+        iny
+        sty displayListColorLength
 
         rts
 
@@ -562,6 +594,7 @@ xspeed              dc i2'0'
 yspeed              dc i2'0'
 angle               dc i2'0'
 rotationSpeed       dc i2'0'
+lifetime            dc i2'0'
 color               dc i2'0'
 
 savex               dc i2'0'
@@ -1019,8 +1052,9 @@ OBJECT_LROCK1                   gequ 4
 OBJECT_LROCK2                   gequ 6
 OBJECT_LROCK3                   gequ 8
 OBJECT_LROCK4                   gequ 10
+OBJECT_MISSILE                  gequ 12
 
-NUM_OBJECTS                     gequ 6
+NUM_OBJECTS                     gequ 7
 
 shapeList anop
         dc i2'SHAPE_OFFSET_PLAYER'
@@ -1029,8 +1063,10 @@ shapeList anop
         dc i2'SHAPE_OFFSET_LARGE_ROCK1'
         dc i2'SHAPE_OFFSET_LARGE_ROCK2'
         dc i2'SHAPE_OFFSET_LARGE_ROCK1'
+        dc i2'SHAPE_OFFSET_MISSILE'
 
 xPosList anop
+        dc i2'MIDSCREEN_X'
         dc i2'MIDSCREEN_X'
         dc i2'MIDSCREEN_X'
         dc i2'MIDSCREEN_X'
@@ -1045,6 +1081,7 @@ yPosList anop
         dc i2'MIDSCREEN_Y'
         dc i2'MIDSCREEN_Y'
         dc i2'MIDSCREEN_Y'
+        dc i2'MIDSCREEN_Y'
 
 xSpeedList anop
         dc i2'0'
@@ -1053,6 +1090,7 @@ xSpeedList anop
         dc i2'$-050'
         dc i2'$0060'
         dc i2'$0030'
+        dc i2'0'
 
 ySpeedList anop
         dc i2'0'
@@ -1061,6 +1099,7 @@ ySpeedList anop
         dc i2'$0030'
         dc i2'$-0020'
         dc i2'$0040'
+        dc i2'0'
 
 angleList anop
         dc i2'180'
@@ -1069,8 +1108,10 @@ angleList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+        dc i2'0'
 
 rotationSpeedList anop
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'
@@ -1085,6 +1126,15 @@ colorList anop
         dc i2'$aa'
         dc i2'$aa'
         dc i2'$aa'
+        dc i2'$ff'
 
+lifetimeList anop
+        dc i2'$-1'
+        dc i2'$-1'
+        dc i2'$-1'
+        dc i2'$-1'
+        dc i2'$-1'
+        dc i2'$-1'
+        dc i2'$0'
 
         end

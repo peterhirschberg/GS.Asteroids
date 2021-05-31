@@ -151,6 +151,9 @@ checkKeys entry
         cmp keydownThrust
         beq onKeydownThrust
 
+        cmp keydownFire
+        beq onKeydownFire
+
         rtl
 
 
@@ -164,8 +167,63 @@ onKeydownRight anop
         sta rotationSpeedList,x
         rtl
 
+onKeydownFire anop
+        ldx #OBJECT_PLAYER
+
+        lda xPosList,x
+        sta xpos
+
+        lda yPosList,x
+        sta ypos
+
+        lda angleList,x
+        sta angle
+
+        ldx #OBJECT_MISSILE
+
+        lda xpos
+        sta xPosList,x
+
+        lda ypos
+        sta yPosList,x
+
+; vector the missle x/y speed to the angle of the ship
+        lda #0
+        sta param1
+        lda #80
+        sta param2
+
+        lda angle
+        sta param3
+
+        stx savex
+        sty savey
+        jsl rotate
+        ldx savex
+        ldy savey
+
+        lda result1
+        asl a
+        asl a
+        sta xSpeedList,x
+
+        lda result2
+        asl a
+        asl a
+        sta ySpeedList,x
+
+        lda angle
+        sta angleList,x
+
+        lda #60
+        sta lifetimeList,x
+
+        rtl
+
+
 onKeydownThrust anop
 
+; vector the thrust
         lda #0
         sta param1
         lda #4
@@ -319,10 +377,11 @@ xpos dc i2'0'
 ypos dc i2'0'
 xspeed dc i2'0'
 yspeed dc i2'0'
+angle dc i2'0'
 rotationSpeed dc i2'0'
 
-savex               dc i2'0'
-savey               dc i2'0'
+savex dc i2'0'
+savey dc i2'0'
 
 speedLimit gequ $0600
 

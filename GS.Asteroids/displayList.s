@@ -128,6 +128,17 @@ loop4 anop
     beq done4
     
     ldx counter
+
+    ldy colorIndex
+    lda displayListColors,y
+    and #$00f0
+    sta currentColorLeft
+    lda displayListColors,y
+    and #$000f
+    sta currentColorRight
+    iny
+    iny
+    sty colorIndex
     
     lda dotListList,x
     sta x1

@@ -41,6 +41,11 @@ checkControls entry
         cmp #'V'
         beq onKeydownThrust
 
+        cmp #'b'
+        beq onKeydownFire
+        cmp #'B'
+        beq onKeydownFire
+
         cmp #'p'
         beq onKeydownPause
         cmp #'P'
@@ -78,6 +83,10 @@ onKeydownThrust anop
         sta keydownThrust
         rtl
 
+onKeydownFire anop
+        lda #1
+        sta keydownFire
+        rtl
 
         end
 
