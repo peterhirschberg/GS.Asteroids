@@ -100,6 +100,9 @@ SCREEN_YMAX                     gequ $31c0
 MIDSCREEN_X                     gequ SCREEN_XMAX/2
 MIDSCREEN_Y                     gequ SCREEN_YMAX/2
 
+; missiles (both player and UFO)
+MISSILE_SPEED                   gequ 80
+MISSILE_LIFETIME                gequ 80
 
 ; table of precomputed screen row offsets
 

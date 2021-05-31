@@ -179,7 +179,16 @@ onKeydownFire anop
         lda angleList,x
         sta angle
 
-        ldx #OBJECT_MISSILE
+; ask for a player missile - accumulator will be -1 if none available
+        stx savex
+        jsr getAvailablePlayerMissile
+        ldx savex
+        cmp #-1
+        bne fireMissile
+        rtl
+
+fireMissile anop
+        tax
 
         lda xpos
         sta xPosList,x
@@ -190,7 +199,7 @@ onKeydownFire anop
 ; vector the missle x/y speed to the angle of the ship
         lda #0
         sta param1
-        lda #80
+        lda #MISSILE_SPEED
         sta param2
 
         lda angle
@@ -215,7 +224,7 @@ onKeydownFire anop
         lda angle
         sta angleList,x
 
-        lda #60
+        lda #MISSILE_LIFETIME
         sta lifetimeList,x
 
         rtl
