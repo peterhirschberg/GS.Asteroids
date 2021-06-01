@@ -16,6 +16,7 @@ game    start
 gameInit entry
         jsl setupScreen
         jsl initColorTable
+        jsl spawnRocks
 
         rtl
 
@@ -35,11 +36,13 @@ run anop
 ; run the player ship
         jsl runPlayerShip
 
+; collision check
+        jsl collisionCheck
+
 ; update all objects
         jsr updateObjects
 
 ; wait for VBL
-;        jsl waitForNextTick
 ;        jsl waitForVbl
 
 ; erase all previous lines and dots

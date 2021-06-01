@@ -225,8 +225,8 @@ fireMissile anop
         asl a
         sta ySpeedList,x
 
-        lda angle
-        sta angleList,x
+;        lda angle
+;        sta angleList,x
 
         lda #MISSILE_LIFETIME
         sta lifetimeList,x

@@ -13,5 +13,4 @@
 /* Tools */
 #define TOOL_STARTUP 1
 
-
 #endif /* defined(_GUARD_PROJECTGS_Asteroids_FILEmain_) */

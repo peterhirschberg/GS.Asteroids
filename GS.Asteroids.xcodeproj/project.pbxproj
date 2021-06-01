@@ -28,6 +28,7 @@
 		D06BB5DF2660D3E200EB1107 /* playerShip.s in Sources */ = {isa = PBXBuildFile; fileRef = D06BB5DE2660D3E200EB1107 /* playerShip.s */; };
 		D06BB5E326650BB800EB1107 /* controls.s in Sources */ = {isa = PBXBuildFile; fileRef = D06BB5E226650BB800EB1107 /* controls.s */; };
 		D06BB5E526654CB200EB1107 /* missiles.s in Sources */ = {isa = PBXBuildFile; fileRef = D06BB5E426654CB200EB1107 /* missiles.s */; };
+		D06BB5E72665A75900EB1107 /* collision.s in Sources */ = {isa = PBXBuildFile; fileRef = D06BB5E62665A75900EB1107 /* collision.s */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,6 +81,8 @@
 		D06BB5DE2660D3E200EB1107 /* playerShip.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = playerShip.s; sourceTree = "<group>"; };
 		D06BB5E226650BB800EB1107 /* controls.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = controls.s; sourceTree = "<group>"; };
 		D06BB5E426654CB200EB1107 /* missiles.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = missiles.s; sourceTree = "<group>"; };
+		D06BB5E62665A75900EB1107 /* collision.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = collision.s; sourceTree = "<group>"; };
+		D06BB5E82665ADE400EB1107 /* rocks.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = rocks.s; sourceTree = "<group>"; };
 		D076F96B2659C6320097A122 /* objects.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = objects.s; sourceTree = "<group>"; };
 		D076F96C265B46FA0097A122 /* color.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = color.s; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +136,8 @@
 				D06BB5DE2660D3E200EB1107 /* playerShip.s */,
 				D06BB5E226650BB800EB1107 /* controls.s */,
 				D06BB5E426654CB200EB1107 /* missiles.s */,
+				D06BB5E62665A75900EB1107 /* collision.s */,
+				D06BB5E82665ADE400EB1107 /* rocks.s */,
 			);
 			path = GS.Asteroids;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D06BB5E526654CB200EB1107 /* missiles.s in Sources */,
+				D06BB5E72665A75900EB1107 /* collision.s in Sources */,
 				D063C4112659302A00C5C7C6 /* displayList.s in Sources */,
 				D06BB5E326650BB800EB1107 /* controls.s in Sources */,
 				D06919BA264F414C006508C1 /* Makefile in Sources */,

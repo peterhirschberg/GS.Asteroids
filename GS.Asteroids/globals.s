@@ -91,7 +91,7 @@ DIVDND          dc i2'0'
 QUOTNT gequ $80
 
 
-; screen bounds
+; screen bound constants
 ; these are in shifted << 6 format to match object speed/position logic
 
 SCREEN_XMAX                     gequ $4fc0
@@ -100,7 +100,7 @@ SCREEN_YMAX                     gequ $31c0
 MIDSCREEN_X                     gequ SCREEN_XMAX/2
 MIDSCREEN_Y                     gequ SCREEN_YMAX/2
 
-; missiles (both player and UFO)
+; missile constants (both player and UFO)
 MISSILE_SPEED                   gequ 80
 MISSILE_LIFETIME                gequ 80
 

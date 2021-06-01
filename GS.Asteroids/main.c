@@ -23,10 +23,12 @@
 
 unsigned int userid;
 clock_t lastTick;
+unsigned int randomSeed;
 
-word getRandom(range)
+
+word getRandom(word range)
 {
-    return rand() % range;
+    return (rand()*2) % range;
 }
 
 void waitForNextTick(void)
@@ -54,6 +56,11 @@ int main(void)
     InitMouse(0);
     SetMouse(transparent);
   
+    randomSeed = (int)time(NULL);
+    if (randomSeed == 0)
+        randomSeed = 1;
+    srand(randomSeed);
+    
     gameInit();
 
     lastTick = clock();

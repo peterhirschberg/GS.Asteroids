@@ -1048,10 +1048,10 @@ OBJECTOFFSET_COLOR              gequ 14
 
 OBJECT_PLAYER                   gequ 0
 OBJECT_THRUST                   gequ 2
-OBJECT_LROCK1                   gequ 4
-OBJECT_LROCK2                   gequ 6
-OBJECT_LROCK3                   gequ 8
-OBJECT_LROCK4                   gequ 10
+OBJECT_LARGE_ROCK1              gequ 4
+OBJECT_LARGE_ROCK2              gequ 6
+OBJECT_LARGE_ROCK3              gequ 8
+OBJECT_LARGE_ROCK4              gequ 10
 OBJECT_PLAYER_MISSILE1          gequ 12
 OBJECT_PLAYER_MISSILE2          gequ 14
 OBJECT_PLAYER_MISSILE3          gequ 16
@@ -1070,10 +1070,10 @@ shapeList anop
         dc i2'SHAPE_OFFSET_LARGE_ROCK2'
         dc i2'SHAPE_OFFSET_LARGE_ROCK1'
 ; player missiles
-        dc i2'SHAPE_OFFSET_MISSILE'
-        dc i2'SHAPE_OFFSET_MISSILE'
-        dc i2'SHAPE_OFFSET_MISSILE'
-        dc i2'SHAPE_OFFSET_MISSILE'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
 
 xPosList anop
         dc i2'MIDSCREEN_X'
@@ -1086,6 +1086,7 @@ xPosList anop
         dc i2'MIDSCREEN_X'
         dc i2'MIDSCREEN_X'
         dc i2'MIDSCREEN_X'
+
 yPosList anop
         dc i2'MIDSCREEN_Y'
         dc i2'MIDSCREEN_Y'
