@@ -1,0 +1,346 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww15080\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 let str = ''\
+let offset = 0\
+let playerShipOffset = 0\
+let thrustOffset = 0\
+let missileOffset = 0\
+let dotOffset = 0\
+let largeRock1Offset = 0\
+let largeRock2Offset = 0\
+let largeRock3Offset = 0\
+let mediumRock1Offset = 0\
+let mediumRock2Offset = 0\
+let mediumRock3Offset = 0\
+let smallRock1Offset = 0\
+let smallRock2Offset = 0\
+let smallRock3Offset = 0\
+\
+\
+str += '\\nobjectShapeData anop\\n'\
+\
+let ship = [\
+	-4,-5,\
+  0,7,\
+  4,-5,\
+  2,-3,\
+  -2,-3,\
+  -4,-5\
+]\
+\
+let thrust = [\
+  2,-4,\
+  0,-7,\
+  -2,-4\
+]\
+\
+let missile = [\
+	0,-2,\
+  0,2\
+]\
+\
+let dot = [\
+	0,0\
+]\
+\
+let rock1 = [\
+	18, 66,\
+  43, 66,\
+  67, 51,\
+  59, 35,\
+  67, 18,\
+  51, 0,\
+  34, 17,\
+  18, 0,\
+  0, 18,\
+  0, 51,\
+  18, 66\
+]\
+\
+let rock2 = [\
+	25, 15,\
+  17, 0,\
+  41, 0,\
+  67, 15,\
+  67, 25,\
+  42, 31,\
+  67, 48,\
+  49, 65,\
+  42, 57,\
+  17, 66,\
+  0, 42,\
+  0, 15,\
+  25, 15\
+]\
+\
+let rock3 = [\
+	49, 25,\
+ 	66, 42,\
+  49, 65,\
+  24, 58,\
+  15, 65,\
+  0, 50,\
+  6, 34,\
+  0, 17,\
+  16, 0,\
+  33, 7,\
+  49, 0,\
+  66, 16,\
+  49, 25\
+]\
+\
+// ship\
+\
+\{\
+  str += '; player ship\\n'\
+\
+  str += `		dc i2'$\{Math.floor(ship.length/2)\}'\\n\\n`\
+  for (let i=0; i<ship.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(ship[i])\}'\\n`\
+    str += `		dc i2'$\{Math.floor(ship[i+1])\}'\\n\\n`\
+  \}\
+  \
+	offset += ship.length + 1\
+  \
+\}\
+\
+// thrust\
+\
+\{\
+  str += '; thrust\\n'\
+\
+  str += `		dc i2'$\{Math.floor(thrust.length/2)\}'\\n\\n`\
+  for (let i=0; i<thrust.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(thrust[i])\}'\\n`\
+    str += `		dc i2'$\{Math.floor(thrust[i+1])\}'\\n\\n`\
+  \}\
+  \
+  thrustOffset = offset\
+	offset += thrust.length + 1  \
+\}\
+\
+\
+// missile\
+\
+\{\
+  str += '; missile\\n'\
+\
+  str += `		dc i2'$\{Math.floor(missile.length/2)\}'\\n\\n`\
+  for (let i=0; i<missile.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(missile[i])\}'\\n`\
+    str += `		dc i2'$\{Math.floor(missile[i+1])\}'\\n\\n`\
+  \}\
+  \
+  missileOffset = offset\
+	offset += missile.length + 1  \
+\}\
+\
+// dot\
+\
+\{\
+  str += '; dot\\n'\
+\
+  str += `		dc i2'$\{Math.floor(dot.length/2)\}'\\n\\n`\
+  for (let i=0; i<dot.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(dot[i])\}'\\n`\
+    str += `		dc i2'$\{Math.floor(dot[i+1])\}'\\n\\n`\
+  \}\
+  \
+  dotOffset = offset\
+	offset += dot.length + 1  \
+\}\
+\
+\
+\
+// large rocks\
+\{\
+	// center the objects\
+  \{\
+    let xmax = -9999\
+    let xmin = 9999\
+    let ymax = -9999\
+    let ymin = 9999\
+\
+    for (let i=0; i<rock1.length; i+=2) \{\
+      if (rock1[i] > xmax)\
+        xmax = rock1[i];\
+      if (rock1[i] < xmin)\
+        xmin = rock1[i];\
+\
+      if (rock1[i+1] > ymax)\
+        ymax = rock1[i+1];\
+      if (rock1[i+1] < ymin)\
+        ymin = rock1[i+1];\
+    \}\
+    for (let i=0; i<rock1.length; i+=2) \{\
+      rock1[i] -= xmax/2;\
+      rock1[i+1] -= ymax/2;\
+    \}  \
+  \}\
+  \{\
+    let xmax = -9999\
+    let xmin = 9999\
+    let ymax = -9999\
+    let ymin = 9999\
+\
+    for (let i=0; i<rock2.length; i+=2) \{\
+      if (rock2[i] > xmax)\
+        xmax = rock2[i];\
+      if (rock2[i] < xmin)\
+        xmin = rock2[i];\
+\
+      if (rock2[i+1] > ymax)\
+        ymax = rock2[i+1];\
+      if (rock2[i+1] < ymin)\
+        ymin = rock2[i+1];\
+    \}\
+    for (let i=0; i<rock2.length; i+=2) \{\
+      rock2[i] -= xmax/2;\
+      rock2[i+1] -= ymax/2;\
+    \}  \
+  \}\
+  \{\
+    let xmax = -9999\
+    let xmin = 9999\
+    let ymax = -9999\
+    let ymin = 9999\
+\
+    for (let i=0; i<rock3.length; i+=2) \{\
+      if (rock3[i] > xmax)\
+        xmax = rock3[i];\
+      if (rock3[i] < xmin)\
+        xmin = rock3[i];\
+\
+      if (rock3[i+1] > ymax)\
+        ymax = rock3[i+1];\
+      if (rock3[i+1] < ymin)\
+        ymin = rock3[i+1];\
+    \}\
+    for (let i=0; i<rock3.length; i+=2) \{\
+      rock3[i] -= xmax/2;\
+      rock3[i+1] -= ymax/2;\
+    \}  \
+  \}\
+\
+\
+\
+	str += '; large rock 1\\n'\
+  str += `		dc i2'$\{Math.floor(rock1.length/2)\}'\\n\\n`\
+  for (let i=0; i<rock1.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(rock1[i]*0.45)\}'\\n`\
+    str += `		dc i2'$\{Math.floor(rock1[i+1]*0.45)\}'\\n\\n`\
+  \}\
+  \
+  largeRock1Offset = offset\
+	offset += rock1.length + 1\
+\
+	str += '; large rock 2\\n'\
+  str += `		dc i2'$\{Math.floor(rock2.length/2)\}'\\n\\n`\
+  for (let i=0; i<rock2.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(rock2[i]*0.45)\}'\\n`\
+    str += `		dc i2'$\{Math.floor(rock2[i+1]*0.45)\}'\\n\\n`\
+  \}\
+\
+  largeRock2Offset = offset\
+	offset += rock2.length + 1\
+\
+	str += '; large rock 3\\n'\
+  str += `		dc i2'$\{Math.floor(rock3.length/2)\}'\\n\\n`\
+  for (let i=0; i<rock3.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(rock3[i]*0.45)\}'\\n`\
+    str += `		dc i2'$\{Math.floor(rock3[i+1]*0.45)\}'\\n\\n`\
+  \}\
+\
+  largeRock3Offset = offset\
+	offset += rock3.length + 1\
+\
+	str += '; medium rock 1\\n'\
+  str += `		dc i2'$\{Math.floor(rock1.length/2)\}'\\n\\n`\
+  for (let i=0; i<rock1.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(rock1[i]*0.225)\}'\\n`\
+    str += `		dc i2'$\{Math.floor(rock1[i+1]*0.225)\}'\\n\\n`\
+  \}\
+\
+  mediumRock1Offset = offset\
+	offset += rock1.length + 1\
+\
+	str += '; medium rock 2\\n'\
+  str += `		dc i2'$\{Math.floor(rock2.length/2)\}'\\n\\n`\
+  for (let i=0; i<rock2.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(rock2[i]*0.225)\}'\\n`\
+    str += `		dc i2'$\{Math.floor(rock2[i+1]*0.225)\}'\\n\\n`\
+  \}\
+\
+  mediumRock2Offset = offset\
+	offset += rock2.length + 1\
+\
+	str += '; medium rock 3\\n'\
+  str += `		dc i2'$\{Math.floor(rock3.length/2)\}'\\n\\n`\
+  for (let i=0; i<rock3.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(rock3[i]*0.225)\}'\\n`\
+    str += `		dc i2'$\{Math.floor(rock3[i+1]*0.225)\}'\\n\\n`\
+  \}\
+  \
+  mediumRock3Offset = offset\
+	offset += rock3.length + 1\
+  \
+\
+	str += '; small rock 1\\n'\
+  str += `		dc i2'$\{Math.floor(rock1.length/2)\}'\\n\\n`\
+  for (let i=0; i<rock1.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(rock1[i]*0.112)\}'\\n`\
+    str += `		dc i2'$\{Math.floor(rock1[i+1]*0.112)\}'\\n\\n`\
+  \}\
+  \
+  smallRock1Offset = offset\
+	offset += rock1.length + 1\
+\
+	str += '; small rock 2\\n'\
+  str += `		dc i2'$\{Math.floor(rock2.length/2)\}'\\n\\n`\
+  for (let i=0; i<rock2.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(rock2[i]*0.112)\}'\\n`\
+    str += `		dc i2'$\{Math.floor(rock2[i+1]*0.112)\}'\\n\\n`\
+  \}\
+\
+  smallRock2Offset = offset\
+	offset += rock2.length + 1\
+\
+	str += '; small rock 3\\n'\
+  str += `		dc i2'$\{Math.floor(rock3.length/2)\}'\\n\\n`\
+  for (let i=0; i<rock3.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(rock3[i]*0.112)\}'\\n`\
+    str += `		dc i2'$\{Math.floor(rock3[i+1]*0.112)\}'\\n\\n`\
+  \}  \
+  \
+  smallRock3Offset = offset\
+	offset += rock3.length + 1\
+  \
+\}\
+\
+\
+str += '\\n\\n'\
+\
+str += `SHAPE_OFFSET_PLAYER		gequ $$\{(playerShipOffset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_THRUST		gequ $$\{(thrustOffset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_MISSILE		gequ $$\{(missileOffset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_DOT		gequ $$\{(dotOffset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_LARGE_ROCK1		gequ $$\{Number(largeRock1Offset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_LARGE_ROCK2		gequ $$\{Number(largeRock2Offset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_LARGE_ROCK3		gequ $$\{Number(largeRock3Offset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_MEDIUM_ROCK1		gequ $$\{Number(mediumRock1Offset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_MEDIUM_ROCK2		gequ $$\{Number(mediumRock2Offset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_MEDIUM_ROCK3		gequ $$\{Number(mediumRock3Offset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_SMALL_ROCK1		gequ $$\{Number(smallRock1Offset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_SMALL_ROCK2		gequ $$\{Number(smallRock2Offset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_SMALL_ROCK3		gequ $$\{Number(smallRock3Offset*2).toString(16)\}\\n`\
+\
+\
+str += '\\n\\n'\
+\
+console.log(str)\
+}

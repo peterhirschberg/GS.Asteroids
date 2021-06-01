@@ -206,7 +206,7 @@ fireMissile anop
         lda ypos
         sta yPosList,x
 
-; vector the missle x/y speed to the angle of the ship
+; vector the missile x/y speed to the angle of the ship
 ; this also adds the player ship's speed to the missile speed
         lda #0
         sta param1
