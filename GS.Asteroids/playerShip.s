@@ -180,6 +180,12 @@ onKeydownFire anop
         lda yPosList,x
         sta ypos
 
+        lda xSpeedList,x
+        sta xspeed
+
+        lda ySpeedList,x
+        sta yspeed
+
         lda angleList,x
         sta angle
 
@@ -201,6 +207,7 @@ fireMissile anop
         sta yPosList,x
 
 ; vector the missle x/y speed to the angle of the ship
+; this also adds the player ship's speed to the missile speed
         lda #0
         sta param1
         lda #MISSILE_SPEED
@@ -218,13 +225,18 @@ fireMissile anop
         lda result1
         asl a
         asl a
+        clc
+        adc xspeed
         sta xSpeedList,x
 
         lda result2
         asl a
         asl a
+        clc
+        adc yspeed
         sta ySpeedList,x
 
+; only needed if I use the missile object instead of the 'dot' object
 ;        lda angle
 ;        sta angleList,x
 
