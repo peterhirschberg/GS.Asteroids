@@ -104,6 +104,9 @@ MIDSCREEN_Y                     gequ SCREEN_YMAX/2
 MISSILE_SPEED                   gequ 80
 MISSILE_LIFETIME                gequ 80
 
+; game state
+activeRockCount dc i2'0'
+
 ; table of precomputed screen row offsets
 
 screenRowOffsets anop

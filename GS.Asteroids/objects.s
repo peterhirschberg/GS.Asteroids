@@ -23,6 +23,15 @@ loop anop
         asl a
         tax
 
+; check lifetimes and only update as appropriate
+        lda lifetimeList,x
+        cmp #-1
+        beq getObjectProperties
+        cmp #0
+        bne getObjectProperties
+        jmp nextObject1
+
+getObjectProperties anop
 ; get x position
         lda xPosList,x
         sta xpos
@@ -158,6 +167,7 @@ saveBackToObject anop
         lda lifetime
         sta lifetimeList,x
 
+nextObject1 anop
 ; increment to the next object and loop
         inc objectIndex
         lda objectIndex
@@ -1059,12 +1069,13 @@ OBJECT_PLAYER_MISSILE4          gequ 18
 
 NUM_OBJECTS                     gequ 10
 NUM_PLAYER_MISSILES             gequ 4
+NUM_ROCKS                       gequ 4
 
 shapeList anop
 ; player ship and thrust
         dc i2'SHAPE_OFFSET_PLAYER'
         dc i2'SHAPE_OFFSET_THRUST'
-; asteroids
+; large asteroids
         dc i2'SHAPE_OFFSET_LARGE_ROCK3'
         dc i2'SHAPE_OFFSET_LARGE_ROCK1'
         dc i2'SHAPE_OFFSET_LARGE_ROCK2'
@@ -1074,6 +1085,22 @@ shapeList anop
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
+
+; used to do hit testing
+sizeList anop
+; player ship and thrust
+        dc i2'6'
+        dc i2'0'
+; large asteroids
+        dc i2'35'
+        dc i2'35'
+        dc i2'35'
+        dc i2'35'
+; player missiles (size not used for these)
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 
 xPosList anop
         dc i2'MIDSCREEN_X'
@@ -1102,10 +1129,10 @@ yPosList anop
 xSpeedList anop
         dc i2'0'
         dc i2'0'
-        dc i2'$0020'
-        dc i2'$-050'
-        dc i2'$0060'
-        dc i2'$0030'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'
@@ -1114,10 +1141,10 @@ xSpeedList anop
 ySpeedList anop
         dc i2'0'
         dc i2'0'
-        dc i2'$0060'
-        dc i2'$0030'
-        dc i2'$-0020'
-        dc i2'$0040'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'

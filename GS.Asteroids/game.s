@@ -39,6 +39,19 @@ run anop
 ; collision check
         jsl collisionCheck
 
+; check number of active rocks
+        jsl numActiveRocks
+        sta activeRockCount
+
+; if no rocks left respawn them
+; TODO: wait for a delay here
+; TODO: increment number of rocks
+        lda activeRockCount
+        cmp #0
+        bne continue
+        jsl spawnRocks
+
+continue anop
 ; update all objects
         jsr updateObjects
 
