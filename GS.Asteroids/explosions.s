@@ -13,63 +13,74 @@ explosions start
         using objectData
 
 
-; finds an available particle and returns it in A
-; if no particles are free the A contains -1
-getAvailableParticle entry
+fadeParticles entry
+
+        lda #0
+        sta particleCounter
 
         lda #OBJECT_PARTICLE1
         tax
+
+fadeLoop anop
+
         lda lifetimeList,x
         cmp #0
-        bne checkParticle2
-        txa
-        rts
+        beq nextFade
 
-; TODO: turn this into a loop
+        lda #15
+        cmp lifetimeList,x
+        bcs decrement
+        bra nextFade
 
-checkParticle2 anop
-
-        lda #OBJECT_PARTICLE2
-        tax
+decrement anop
         lda lifetimeList,x
-        cmp #0
-        bne checkParticle3
-        txa
+        asl a
+        asl a
+        asl a
+        asl a
+        sta color
+        ora lifetimeList,x
+        sta colorList,x
+
+nextFade anop
+
+        inx
+        inx
+        inc particleCounter
+        lda particleCounter
+        cmp #NUM_PARTICLES
+        bne fadeLoop
+
+        rtl
+
+getParticle entry
+
+        lda particleIndex
+        sta index
+
+        inc particleIndex
+        lda particleIndex
+        cmp #NUM_PARTICLES
+        bne skipReset
+
+        lda #0
+        sta particleIndex
+
+skipReset anop
+        lda index
+        asl a
+        sta index
+
+        lda #OBJECT_PARTICLE1
+        clc
+        adc index
+
         rts
-
-checkParticle3 anop
-
-        lda #OBJECT_PARTICLE3
-        tax
-        lda lifetimeList,x
-        cmp #0
-        bne checkParticle4
-        txa
-        rts
-
-checkParticle4 anop
-
-        lda #OBJECT_PARTICLE4
-        tax
-        lda lifetimeList,x
-        cmp #0
-        bne noParticles
-        txa
-        rts
-
-noParticles anop
-        lda #-1
-        rts
-
 
 
 startParticle entry
 
-        jsr getAvailableParticle
-        cmp #-1
-        beq done
-
-        sta particleIndex
+        jsr getParticle
         tay
 
         lda xOrigin
@@ -108,8 +119,15 @@ startParticle entry
         sbc #100
         sta ySpeedList,y
 
-        lda #80
+        sty savey
+        lda #PARTICLE_LIFETIME
+        pha
+        jsl getRandom
+        ldy savey
         sta lifetimeList,y
+
+        lda #$ff
+        sta colorList,y
 
 done anop
 
@@ -138,22 +156,17 @@ startExplosion entry
         lsr a
         sta yOrigin
 
-        stx savex
+        lda #16
+        sta particleCounter
+explosionParticleLoop anop
         jsr startParticle
-        ldx savex
+        dec particleCounter
+        lda particleCounter
+        cmp #0
+        beq doneExplosion
+        bra explosionParticleLoop
 
-        stx savex
-        jsr startParticle
-        ldx savex
-
-        stx savex
-        jsr startParticle
-        ldx savex
-
-        stx savex
-        jsr startParticle
-        ldx savex
-
+doneExplosion anop
 
         rtl
 
@@ -164,7 +177,12 @@ yOrigin dc i2'0'
 savex dc i2'0'
 savey dc i2'0'
 
+index dc i2'0'
 particleIndex dc i2'0'
+particleCounter dc i2'0'
+color dc i2'0'
+
+PARTICLE_LIFETIME gequ 100
 
         end
 

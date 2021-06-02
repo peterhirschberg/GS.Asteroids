@@ -77,6 +77,9 @@ continue anop
         jsl renderDisplayList
         jsl renderDotList
 
+; fade particles
+        jsl fadeParticles
+
         rtl
 
 
