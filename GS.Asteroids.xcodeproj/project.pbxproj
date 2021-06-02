@@ -83,6 +83,7 @@
 		D06BB5E426654CB200EB1107 /* missiles.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = missiles.s; sourceTree = "<group>"; };
 		D06BB5E62665A75900EB1107 /* collision.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = collision.s; sourceTree = "<group>"; };
 		D06BB5E82665ADE400EB1107 /* rocks.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = rocks.s; sourceTree = "<group>"; };
+		D06BB5EA26678FEA00EB1107 /* explosions.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = explosions.s; sourceTree = "<group>"; };
 		D076F96B2659C6320097A122 /* objects.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = objects.s; sourceTree = "<group>"; };
 		D076F96C265B46FA0097A122 /* color.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = color.s; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,6 +139,7 @@
 				D06BB5E426654CB200EB1107 /* missiles.s */,
 				D06BB5E62665A75900EB1107 /* collision.s */,
 				D06BB5E82665ADE400EB1107 /* rocks.s */,
+				D06BB5EA26678FEA00EB1107 /* explosions.s */,
 			);
 			path = GS.Asteroids;
 			sourceTree = "<group>";

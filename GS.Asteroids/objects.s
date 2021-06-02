@@ -1066,10 +1066,15 @@ OBJECT_PLAYER_MISSILE1          gequ 12
 OBJECT_PLAYER_MISSILE2          gequ 14
 OBJECT_PLAYER_MISSILE3          gequ 16
 OBJECT_PLAYER_MISSILE4          gequ 18
+OBJECT_PARTICLE1                gequ 20
+OBJECT_PARTICLE2                gequ 22
+OBJECT_PARTICLE3                gequ 24
+OBJECT_PARTICLE4                gequ 26
 
-NUM_OBJECTS                     gequ 10
-NUM_PLAYER_MISSILES             gequ 4
+NUM_OBJECTS                     gequ 14
 NUM_ROCKS                       gequ 4
+NUM_PLAYER_MISSILES             gequ 4
+NUM_PLAYER_PARTICLES            gequ 4
 
 shapeList anop
 ; player ship and thrust
@@ -1081,6 +1086,11 @@ shapeList anop
         dc i2'SHAPE_OFFSET_LARGE_ROCK2'
         dc i2'SHAPE_OFFSET_LARGE_ROCK1'
 ; player missiles
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+; explosion particles
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
@@ -1101,6 +1111,11 @@ sizeList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; particles (size not used for these)
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 
 xPosList anop
         dc i2'MIDSCREEN_X'
@@ -1113,6 +1128,10 @@ xPosList anop
         dc i2'MIDSCREEN_X'
         dc i2'MIDSCREEN_X'
         dc i2'MIDSCREEN_X'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 
 yPosList anop
         dc i2'MIDSCREEN_Y'
@@ -1125,8 +1144,16 @@ yPosList anop
         dc i2'MIDSCREEN_Y'
         dc i2'MIDSCREEN_Y'
         dc i2'MIDSCREEN_Y'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 
 xSpeedList anop
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'
@@ -1149,6 +1176,10 @@ ySpeedList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 
 angleList anop
         dc i2'180'
@@ -1161,8 +1192,16 @@ angleList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 
 rotationSpeedList anop
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'
@@ -1185,6 +1224,10 @@ colorList anop
         dc i2'$ff'
         dc i2'$ff'
         dc i2'$ff'
+        dc i2'$ff'
+        dc i2'$ff'
+        dc i2'$ff'
+        dc i2'$ff'
 
 lifetimeList anop
         dc i2'$-1'
@@ -1193,6 +1236,10 @@ lifetimeList anop
         dc i2'$-1'
         dc i2'$-1'
         dc i2'$-1'
+        dc i2'$0'
+        dc i2'$0'
+        dc i2'$0'
+        dc i2'$0'
         dc i2'$0'
         dc i2'$0'
         dc i2'$0'

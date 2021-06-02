@@ -147,11 +147,14 @@ continue3 anop
         jmp rockNext
 
 itsAHit anop
-; for now just eliminate the rock and the missile
-; TODO: add explosion particles
+; eliminate the rock and the missile
         lda #0
         sta lifetimeList,y
         sta lifetimeList,x
+
+; throw some particles
+        tya
+        jsl startExplosion
 
 ; increment to the next rock and loop
 rockNext anop
