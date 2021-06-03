@@ -14,37 +14,24 @@ controls start
 
 checkControls entry
 
+        jsr checkKeydownLeft
+        jsr checkKeydownRight
+
         lda #0
-        sta keydownLeft
-        sta keydownRight
-        sta keydownThrust
-        sta keydownFire
         sta keydownHyperspace
+        sta keydownFire
+        sta keydownThrust
 
         lda >KEYBOARD
         bpl checkKeysDone
         sta >KEYBOARD_STROBE
         and #$007f
 
-        cmp #'z'
-        beq onKeydownLeft
-        cmp #'Z'
-        beq onKeydownLeft
-
-        cmp #'x'
-        beq onKeydownRight
-        cmp #'X'
-        beq onKeydownRight
-
-        cmp #'v'
-        beq onKeydownThrust
-        cmp #'V'
-        beq onKeydownThrust
-
-        cmp #'b'
+        cmp #KEY_SPACE
         beq onKeydownFire
-        cmp #'B'
-        beq onKeydownFire
+
+        cmp #KEY_ENTER
+        beq onKeydownThrust
 
         cmp #'p'
         beq onKeydownPause
@@ -68,15 +55,33 @@ setPaused anop
         sta gamePaused
         rtl
 
-onKeydownLeft anop
+checkKeydownLeft anop
+        lda >BUTTON1
+        and #$80
+        cmp #0
+        beq notPressedLeft
+
         lda #1
         sta keydownLeft
-        rtl
+        rts
+notPressedLeft anop
+        lda #0
+        sta keydownLeft
+        rts
 
-onKeydownRight anop
+checkKeydownRight anop
+        lda >BUTTON2
+        and #$80
+        cmp #0
+        beq notPressedRight
+
         lda #1
         sta keydownRight
-        rtl
+        rts
+notPressedRight anop
+        lda #0
+        sta keydownRight
+        rts
 
 onKeydownThrust anop
         lda #1
@@ -94,8 +99,14 @@ controlsData data
 
 keydownLeft dc i2'0'
 keydownRight dc i2'0'
-keydownThrust dc i2'0'
 keydownFire dc i2'0'
+keydownThrust dc i2'0'
 keydownHyperspace dc i2'0'
+
+BUTTON1 gequ $c061
+BUTTON2 gequ $c062
+
+KEY_SPACE gequ $20
+KEY_ENTER gequ $0d
 
         end

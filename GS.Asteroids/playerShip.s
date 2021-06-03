@@ -162,12 +162,12 @@ thrustShortJump anop
 
 
 onKeydownLeft anop
-        lda #-12
+        lda #-8
         sta rotationSpeedList,x
         rtl
 
 onKeydownRight anop
-        lda #12
+        lda #8
         sta rotationSpeedList,x
         rtl
 
