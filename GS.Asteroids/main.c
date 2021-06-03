@@ -28,7 +28,7 @@ unsigned int randomSeed;
 
 word getRandom(word range)
 {
-    return (rand()*2) % range;
+    return rand() % range;
 }
 
 void waitForNextTick(void)
