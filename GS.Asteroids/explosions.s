@@ -126,7 +126,7 @@ startParticle entry
         ldy savey
         sta lifetimeList,y
 
-        lda #$ff
+        lda #$33
         sta colorList,y
 
 done anop

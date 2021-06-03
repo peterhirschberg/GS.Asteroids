@@ -1519,12 +1519,12 @@ rotationSpeedList anop
         dc i2'0'
 
 colorList anop
-        dc i2'$ff'
+        dc i2'$22'
         dc i2'$00'
-        dc i2'$aa'
-        dc i2'$aa'
-        dc i2'$aa'
-        dc i2'$aa'
+        dc i2'$11'
+        dc i2'$11'
+        dc i2'$11'
+        dc i2'$11'
         dc i2'$ff'
         dc i2'$ff'
         dc i2'$ff'

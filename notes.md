@@ -19,3 +19,12 @@ The issue is to capture ADB keyboard events and process them directly. There is 
 https://retrocomputing.stackexchange.com/questions/16619/how-was-collision-detection-done-on-the-asteroids-arcade-game
 https://www.nicholasmikstas.com/asteroids-program-rom
 https://www.computerarcheology.com/Arcade/Asteroids/Code.html
+
+
+--------
+
+REFERENCE MATERIALS
+
+https://www.kansasfest.org/wp-content/uploads/1992-heineman-gs.pdf
+
+
