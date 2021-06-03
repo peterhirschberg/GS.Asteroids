@@ -1062,33 +1062,37 @@ OBJECT_LARGE_ROCK1              gequ 4
 OBJECT_LARGE_ROCK2              gequ 6
 OBJECT_LARGE_ROCK3              gequ 8
 OBJECT_LARGE_ROCK4              gequ 10
-OBJECT_PLAYER_MISSILE1          gequ 12
-OBJECT_PLAYER_MISSILE2          gequ 14
-OBJECT_PLAYER_MISSILE3          gequ 16
-OBJECT_PLAYER_MISSILE4          gequ 18
-OBJECT_PARTICLE1                gequ 20
-OBJECT_PARTICLE2                gequ 22
-OBJECT_PARTICLE3                gequ 24
-OBJECT_PARTICLE4                gequ 26
-OBJECT_PARTICLE5                gequ 28
-OBJECT_PARTICLE6                gequ 30
-OBJECT_PARTICLE7                gequ 32
-OBJECT_PARTICLE8                gequ 34
-OBJECT_PARTICLE9                gequ 36
-OBJECT_PARTICLE10               gequ 38
-OBJECT_PARTICLE11               gequ 40
-OBJECT_PARTICLE12               gequ 42
-OBJECT_PARTICLE13               gequ 44
-OBJECT_PARTICLE14               gequ 46
-OBJECT_PARTICLE15               gequ 48
-OBJECT_PARTICLE16               gequ 50
-OBJECT_PARTICLE17               gequ 52
-OBJECT_PARTICLE18               gequ 54
-OBJECT_PARTICLE19               gequ 56
-OBJECT_PARTICLE20               gequ 58
+OBJECT_LARGE_ROCK5              gequ 12
+OBJECT_LARGE_ROCK6              gequ 14
+OBJECT_LARGE_ROCK7              gequ 15
+OBJECT_LARGE_ROCK8              gequ 18
+OBJECT_PLAYER_MISSILE1          gequ 20
+OBJECT_PLAYER_MISSILE2          gequ 22
+OBJECT_PLAYER_MISSILE3          gequ 24
+OBJECT_PLAYER_MISSILE4          gequ 26
+OBJECT_PARTICLE1                gequ 28
+OBJECT_PARTICLE2                gequ 30
+OBJECT_PARTICLE3                gequ 32
+OBJECT_PARTICLE4                gequ 34
+OBJECT_PARTICLE5                gequ 36
+OBJECT_PARTICLE6                gequ 39
+OBJECT_PARTICLE7                gequ 40
+OBJECT_PARTICLE8                gequ 42
+OBJECT_PARTICLE9                gequ 44
+OBJECT_PARTICLE10               gequ 46
+OBJECT_PARTICLE11               gequ 48
+OBJECT_PARTICLE12               gequ 50
+OBJECT_PARTICLE13               gequ 52
+OBJECT_PARTICLE14               gequ 54
+OBJECT_PARTICLE15               gequ 56
+OBJECT_PARTICLE16               gequ 58
+OBJECT_PARTICLE17               gequ 60
+OBJECT_PARTICLE18               gequ 62
+OBJECT_PARTICLE19               gequ 64
+OBJECT_PARTICLE20               gequ 68
 
 NUM_PLAYER_OBJECTS              gequ 2
-NUM_ROCKS                       gequ 4
+NUM_ROCKS                       gequ 8
 NUM_PLAYER_MISSILES             gequ 4
 NUM_PARTICLES                   gequ 40
 NUM_OBJECTS                     gequ NUM_PLAYER_OBJECTS+NUM_ROCKS+NUM_PLAYER_MISSILES+NUM_PARTICLES
@@ -1102,6 +1106,10 @@ shapeList anop
         dc i2'SHAPE_OFFSET_LARGE_ROCK1'
         dc i2'SHAPE_OFFSET_LARGE_ROCK2'
         dc i2'SHAPE_OFFSET_LARGE_ROCK1'
+        dc i2'SHAPE_OFFSET_LARGE_ROCK3'
+        dc i2'SHAPE_OFFSET_LARGE_ROCK1'
+        dc i2'SHAPE_OFFSET_LARGE_ROCK2'
+        dc i2'SHAPE_OFFSET_LARGE_ROCK2'
 ; player missiles
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
@@ -1155,6 +1163,10 @@ sizeList anop
         dc i2'6'
         dc i2'0'
 ; large asteroids
+        dc i2'35'
+        dc i2'35'
+        dc i2'35'
+        dc i2'35'
         dc i2'35'
         dc i2'35'
         dc i2'35'
@@ -1257,6 +1269,10 @@ xPosList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 
 yPosList anop
         dc i2'MIDSCREEN_Y'
@@ -1309,8 +1325,16 @@ yPosList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 
 xSpeedList anop
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'
@@ -1413,10 +1437,18 @@ ySpeedList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 
 angleList anop
         dc i2'180'
         dc i2'180'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'
@@ -1517,10 +1549,18 @@ rotationSpeedList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 
 colorList anop
         dc i2'$22'
         dc i2'$00'
+        dc i2'$11'
+        dc i2'$11'
+        dc i2'$11'
+        dc i2'$11'
         dc i2'$11'
         dc i2'$11'
         dc i2'$11'
@@ -1573,10 +1613,14 @@ colorList anop
 lifetimeList anop
         dc i2'$-1'
         dc i2'$-1'
-        dc i2'$-1'
-        dc i2'$-1'
-        dc i2'$-1'
-        dc i2'$-1'
+        dc i2'$0'
+        dc i2'$0'
+        dc i2'$0'
+        dc i2'$0'
+        dc i2'$0'
+        dc i2'$0'
+        dc i2'$0'
+        dc i2'$0'
         dc i2'$0'
         dc i2'$0'
         dc i2'$0'

@@ -13,123 +13,181 @@ rocks start
         using objectData
 
 getRandSpeed entry
-
         lda #180
         pha
         jsl getRandom
         sec
         sbc #90
         bmi isNeg
-
         clc
         adc #30
-
         rtl
-
 isNeg anop
-
         sec
         sbc #30
-
         rtl
+
+getLargeRock entry
+        lda #0
+        sta rockCounter
+        ldy #OBJECT_LARGE_ROCK1
+
+rockLoop1 anop
+
+; check to see if this rock is active
+        lda lifetimeList,y
+        cmp #-1
+        bne rockIsAvailable
+        jmp rockNext1
+
+rockIsAvailable anop
+        tya
+        rts
+
+rockNext1 anop
+        inc rockCounter
+        lda rockCounter
+        cmp #NUM_ROCKS
+        beq rocksDone1
+        iny
+        iny
+        jmp rockLoop1
+
+rocksDone1 anop
+        lda #-1
+        rts
+
+
+spawnRockTop entry
+        jsr getLargeRock
+        sta index
+        lda #SCREEN_XMAX
+        pha
+        jsl getRandom
+        ldx index
+        sta xPosList,x
+        lda #0
+        sta yPosList,x
+        jsl getRandSpeed
+        ldx index
+        sta xSpeedList,x
+        jsl getRandSpeed
+        ldx index
+        sta ySpeedList,x
+; set the lifetime to infinity
+        lda #-1
+        sta lifetimeList,x
+        rts
+
+spawnRockBottom entry
+        jsr getLargeRock
+        sta index
+        lda #SCREEN_XMAX
+        pha
+        jsl getRandom
+        ldx index
+        sta xPosList,x
+        lda #SCREEN_YMAX
+        sta yPosList,x
+        jsl getRandSpeed
+        ldx index
+        sta xSpeedList,x
+        jsl getRandSpeed
+        ldx index
+        sta ySpeedList,x
+; set the lifetime to infinity
+        lda #-1
+        sta lifetimeList,x
+        rts
+
+spawnRockLeft entry
+        jsr getLargeRock
+        sta index
+        lda #0
+        ldx index
+        sta xPosList,x
+        lda #SCREEN_YMAX
+        pha
+        jsl getRandom
+        ldx index
+        sta yPosList,x
+        jsl getRandSpeed
+        ldx index
+        sta xSpeedList,x
+        jsl getRandSpeed
+        ldx index
+        sta ySpeedList,x
+; set the lifetime to infinity
+        lda #-1
+        sta lifetimeList,x
+        rts
+
+spawnRockRight entry
+        jsr getLargeRock
+        sta index
+        lda #SCREEN_XMAX
+        ldx index
+        sta xPosList,x
+        lda #SCREEN_YMAX
+        pha
+        jsl getRandom
+        ldx index
+        sta yPosList,x
+        jsl getRandSpeed
+        ldx index
+        sta xSpeedList,x
+        jsl getRandSpeed
+        ldx index
+        sta ySpeedList,x
+; set the lifetime to infinity
+        lda #-1
+        sta lifetimeList,x
+        rts
+
+
 
 spawnRocks entry
 
-; TODO: this needs a lot of work - this is all just placeholder stuff
+        lda numToSpawn
+        sta count
 
-; top
-        lda #OBJECT_LARGE_ROCK1
-        sta index
-        lda #SCREEN_XMAX
+spawnLoop anop
+
+        lda #4
         pha
         jsl getRandom
-        ldx index
-        sta xPosList,x
-        lda #0
-        sta yPosList,x
+        cmp #0
+        beq spawnLeft
+        cmp #1
+        beq spawnTop
+        cmp #2
+        beq spawnRight
+        cmp #3
+        beq spawnBottom
 
-        jsl getRandSpeed
-        ldx index
-        sta xSpeedList,x
+spawnLeft anop
+        jsr spawnRockLeft
+        jmp spawnNext
 
-        jsl getRandSpeed
-        ldx index
-        sta ySpeedList,x
+spawnTop anop
+        jsr spawnRockTop
+        jmp spawnNext
 
-; set the lifetime to infinity
-        lda #-1
-        sta lifetimeList,x
+spawnRight anop
+        jsr spawnRockRight
+        jmp spawnNext
 
-; bottom
-        lda #OBJECT_LARGE_ROCK2
-        sta index
-        lda #SCREEN_XMAX
-        pha
-        jsl getRandom
-        ldx index
-        sta xPosList,x
-        lda #SCREEN_YMAX
-        sta yPosList,x
+spawnBottom anop
+        jsr spawnRockBottom
 
-        jsl getRandSpeed
-        ldx index
-        sta xSpeedList,x
+spawnNext anop
+        dec count
+        lda count
+        cmp #0
+        beq spawnDone
+        jmp spawnLoop
 
-        jsl getRandSpeed
-        ldx index
-        sta ySpeedList,x
-
-; set the lifetime to infinity
-        lda #-1
-        sta lifetimeList,x
-
-; right
-        lda #OBJECT_LARGE_ROCK3
-        sta index
-        lda #SCREEN_XMAX
-        ldx index
-        sta xPosList,x
-        lda #SCREEN_YMAX
-        pha
-        jsl getRandom
-        ldx index
-        sta yPosList,x
-
-        jsl getRandSpeed
-        ldx index
-        sta xSpeedList,x
-
-        jsl getRandSpeed
-        ldx index
-        sta ySpeedList,x
-
-; set the lifetime to infinity
-        lda #-1
-        sta lifetimeList,x
-
-; left
-        lda #OBJECT_LARGE_ROCK4
-        sta index
-        lda #0
-        ldx index
-        sta xPosList,x
-        lda #SCREEN_YMAX
-        pha
-        jsl getRandom
-        ldx index
-        sta yPosList,x
-
-        jsl getRandSpeed
-        ldx index
-        sta xSpeedList,x
-
-        jsl getRandSpeed
-        ldx index
-        sta ySpeedList,x
-
-; set the lifetime to infinity
-        lda #-1
-        sta lifetimeList,x
+spawnDone anop
 
         rtl
 
@@ -170,5 +228,7 @@ rocksDone anop
 index dc i2'0'
 count dc i2'0'
 rockCounter dc i2'0'
+
+numToSpawn dc i2'4'
 
         end
