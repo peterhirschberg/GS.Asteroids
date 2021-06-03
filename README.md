@@ -9,8 +9,13 @@ Special thanks to Jeremy Rand for his invaluable help and advice, his [build pip
 
 ## Keys
 **OPTION** - rotate left
+
 **COMMAND** - rotate right
+
 **ENTER** - thrust
+
 **SPACE** - fire
+
+
 
 **P** - toggle pause
