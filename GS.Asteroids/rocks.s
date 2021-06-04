@@ -13,6 +13,7 @@ rocks start
         using objectData
 
 getRandSpeed entry
+
         lda #180
         pha
         jsl getRandom
@@ -286,8 +287,11 @@ destroyRock entry
         cmp #OBJECT_LARGE_ROCK
         beq destroyLargeRock
         cmp #OBJECT_MEDIUM_ROCK
-        beq destroyMediumRock
+        beq destroyMediumRockShortJump
         jmp destroySmallRock
+
+destroyMediumRockShortJump anop
+        jmp destroyMediumRock
 
 destroyLargeRock anop
 
