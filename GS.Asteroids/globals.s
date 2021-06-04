@@ -102,7 +102,7 @@ MIDSCREEN_Y                     gequ SCREEN_YMAX/2
 
 ; missile constants (both player and UFO)
 MISSILE_SPEED                   gequ 80
-MISSILE_LIFETIME                gequ 80
+MISSILE_LIFETIME                gequ 40
 
 ; game state
 activeRockCount dc i2'0'

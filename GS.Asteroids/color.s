@@ -26,7 +26,7 @@ initColorTable entry
         sta >COLOR_TABLE,x
 
         ldx #6
-        lda #$0f00
+        lda #$0f66
         sta >COLOR_TABLE,x
 
         ldx #8

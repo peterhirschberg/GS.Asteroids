@@ -236,10 +236,6 @@ fireMissile anop
         adc yspeed
         sta ySpeedList,x
 
-; only needed if I use the missile object instead of the 'dot' object
-;        lda angle
-;        sta angleList,x
-
         lda #MISSILE_LIFETIME
         sta lifetimeList,x
 
