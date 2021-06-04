@@ -292,7 +292,11 @@ destroyRock entry
 destroyLargeRock anop
 
         jsr getMediumRock
+        cmp #-1
+        bne startMediumRock1
+        rtl
 
+startMediumRock1 anop
         sta newRockIndex
         tay
 
@@ -326,7 +330,11 @@ destroyLargeRock anop
 
 
         jsr getMediumRock
+        cmp #-1
+        bne startMediumRock2
+        rtl
 
+startMediumRock2 anop
         sta newRockIndex
         tay
 
@@ -363,7 +371,11 @@ destroyLargeRock anop
 destroyMediumRock anop
 
         jsr getSmallRock
+        cmp #-1
+        bne startSmallRock1
+        rtl
 
+startSmallRock1 anop
         sta newRockIndex
         tay
 
@@ -396,7 +408,11 @@ destroyMediumRock anop
         sta lifetimeList,y
 
         jsr getSmallRock
+        cmp #-1
+        bne startSmallRock2
+        rtl
 
+startSmallRock2 anop
         sta newRockIndex
         tay
 
