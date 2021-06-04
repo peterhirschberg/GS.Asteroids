@@ -27,6 +27,7 @@ isNeg anop
         sbc #30
         rtl
 
+
 getLargeRock entry
         lda #0
         sta rockCounter
@@ -37,10 +38,10 @@ rockLoop1 anop
 ; check to see if this rock is active
         lda lifetimeList,y
         cmp #-1
-        bne rockIsAvailable
+        bne rockIsAvailable1
         jmp rockNext1
 
-rockIsAvailable anop
+rockIsAvailable1 anop
         tya
         rts
 
@@ -56,6 +57,69 @@ rockNext1 anop
 rocksDone1 anop
         lda #-1
         rts
+
+
+getMediumRock entry
+        lda #0
+        sta rockCounter
+        ldy #OBJECT_MEDIUM_ROCK1
+
+rockLoop2 anop
+
+; check to see if this rock is active
+        lda lifetimeList,y
+        cmp #-1
+        bne rockIsAvailable2
+        jmp rockNext2
+
+rockIsAvailable2 anop
+        tya
+        rts
+
+rockNext2 anop
+        inc rockCounter
+        lda rockCounter
+        cmp #NUM_MEDIUM_ROCKS
+        beq rocksDone2
+        iny
+        iny
+        jmp rockLoop2
+
+rocksDone2 anop
+        lda #-1
+        rts
+
+
+getSmallRock entry
+        lda #0
+        sta rockCounter
+        ldy #OBJECT_SMALL_ROCK1
+
+rockLoop3 anop
+
+; check to see if this rock is active
+        lda lifetimeList,y
+        cmp #-1
+        bne rockIsAvailable3
+        jmp rockNext3
+
+rockIsAvailable3 anop
+        tya
+        rts
+
+rockNext3 anop
+        inc rockCounter
+        lda rockCounter
+        cmp #NUM_LARGE_ROCKS
+        beq rocksDone3
+        iny
+        iny
+        jmp rockLoop3
+
+rocksDone3 anop
+        lda #-1
+        rts
+
 
 
 spawnRockTop entry
@@ -146,7 +210,7 @@ spawnRockRight entry
 
 
 
-spawnRocks entry
+spawnInitialRocks entry
 
         lda numToSpawn
         sta count
@@ -192,6 +256,129 @@ spawnDone anop
         rtl
 
 
+
+destroyRock entry
+
+        tax
+
+        lda xPosList,x
+        sta xOrigin
+
+        lda yPosList,x
+        sta yOrigin
+
+        lda #0
+        sta lifetimeList,x
+
+        lda objectTypeList,x
+        cmp #OBJECT_LARGE_ROCK
+        beq destroyLargeRock
+        cmp #OBJECT_MEDIUM_ROCK
+        beq destroyMediumRock
+        jmp destroySmallRock
+
+destroyLargeRock anop
+
+        jsr getMediumRock
+
+        sta newRockIndex
+        tay
+
+        lda xOrigin
+        sta xPosList,y
+
+        lda xOrigin
+        sta xPosList,y
+
+        jsl getRandSpeed
+        ldy newRockIndex
+        sta xSpeedList,y
+        jsl getRandSpeed
+        ldy newRockIndex
+        sta ySpeedList,y
+; set the lifetime to infinity
+        lda #-1
+        sta lifetimeList,y
+
+
+        jsr getMediumRock
+
+        sta newRockIndex
+        tay
+
+        lda xOrigin
+        sta xPosList,y
+
+        lda xOrigin
+        sta xPosList,y
+
+        jsl getRandSpeed
+        ldy newRockIndex
+        sta xSpeedList,y
+        jsl getRandSpeed
+        ldy newRockIndex
+        sta ySpeedList,y
+; set the lifetime to infinity
+        lda #-1
+        sta lifetimeList,y
+
+        rtl
+
+destroyMediumRock anop
+
+        jsr getSmallRock
+
+        sta newRockIndex
+        tay
+
+        lda xOrigin
+        sta xPosList,y
+
+        lda xOrigin
+        sta xPosList,y
+
+        jsl getRandSpeed
+        ldy newRockIndex
+        sta xSpeedList,y
+        jsl getRandSpeed
+        ldy newRockIndex
+        sta ySpeedList,y
+; set the lifetime to infinity
+        lda #-1
+        sta lifetimeList,y
+
+        jsr getSmallRock
+
+        sta newRockIndex
+        tay
+
+        lda xOrigin
+        sta xPosList,y
+
+        lda xOrigin
+        sta xPosList,y
+
+        jsl getRandSpeed
+        ldy newRockIndex
+        sta xSpeedList,y
+        jsl getRandSpeed
+        ldy newRockIndex
+        sta ySpeedList,y
+; set the lifetime to infinity
+        lda #-1
+        sta lifetimeList,y
+
+
+        rtl
+
+destroySmallRock anop
+
+        lda #0
+        sta lifetimeList,y
+
+        rtl
+
+
 numActiveRocks entry
 
         lda #0
@@ -225,10 +412,18 @@ rocksDone anop
         rtl
 
 
+savex dc i2'0'
+savey dc i2'0'
+
 index dc i2'0'
 count dc i2'0'
 rockCounter dc i2'0'
 
 numToSpawn dc i2'4'
+
+xOrigin dc i2'0'
+yOrigin dc i2'0'
+
+newRockIndex dc i2'0'
 
         end

@@ -1048,8 +1048,6 @@ SHAPE_OFFSET_SMALL_ROCK2        gequ $19a
 SHAPE_OFFSET_SMALL_ROCK3        gequ $1d0
 
 
-OBJECT_PLAYER                   gequ 0
-OBJECT_THRUST                   gequ 2
 
 OBJECT_LARGE_ROCK1              gequ 4
 OBJECT_LARGE_ROCK2              gequ 6
@@ -1164,6 +1162,14 @@ NUM_ROCKS                       gequ NUM_LARGE_ROCKS+NUM_MEDIUM_ROCKS+NUM_SMALL_
 NUM_PLAYER_MISSILES             gequ 4
 NUM_PARTICLES                   gequ 40
 NUM_OBJECTS                     gequ NUM_PLAYER_OBJECTS+NUM_ROCKS+NUM_PLAYER_MISSILES+NUM_PARTICLES
+
+OBJECT_PLAYER              gequ 0
+OBJECT_THRUST              gequ 1
+OBJECT_PLAYER_MISSILE      gequ 2
+OBJECT_LARGE_ROCK          gequ 3
+OBJECT_MEDIUM_ROCK         gequ 4
+OBJECT_SMALL_ROCK          gequ 5
+OBJECT_PARTICLE            gequ 6
 
 shapeList anop
 ; player ship and thrust
@@ -2620,5 +2626,167 @@ lifetimeList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+
+
+objectTypeList anop
+        dc i2'OBJECT_PLAYER'
+        dc i2'OBJECT_THRUST'
+
+        dc i2'OBJECT_LARGE_ROCK'
+        dc i2'OBJECT_LARGE_ROCK'
+        dc i2'OBJECT_LARGE_ROCK'
+        dc i2'OBJECT_LARGE_ROCK'
+        dc i2'OBJECT_LARGE_ROCK'
+        dc i2'OBJECT_LARGE_ROCK'
+        dc i2'OBJECT_LARGE_ROCK'
+        dc i2'OBJECT_LARGE_ROCK'
+
+        dc i2'OBJECT_MEDIUM_ROCK'
+        dc i2'OBJECT_MEDIUM_ROCK'
+        dc i2'OBJECT_MEDIUM_ROCK'
+        dc i2'OBJECT_MEDIUM_ROCK'
+        dc i2'OBJECT_MEDIUM_ROCK'
+        dc i2'OBJECT_MEDIUM_ROCK'
+        dc i2'OBJECT_MEDIUM_ROCK'
+        dc i2'OBJECT_MEDIUM_ROCK'
+        dc i2'OBJECT_MEDIUM_ROCK'
+        dc i2'OBJECT_MEDIUM_ROCK'
+        dc i2'OBJECT_MEDIUM_ROCK'
+        dc i2'OBJECT_MEDIUM_ROCK'
+        dc i2'OBJECT_MEDIUM_ROCK'
+        dc i2'OBJECT_MEDIUM_ROCK'
+        dc i2'OBJECT_MEDIUM_ROCK'
+        dc i2'OBJECT_MEDIUM_ROCK'
+
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+        dc i2'OBJECT_SMALL_ROCK'
+
+        dc i2'OBJECT_PLAYER_MISSILE'
+        dc i2'OBJECT_PLAYER_MISSILE'
+        dc i2'OBJECT_PLAYER_MISSILE'
+        dc i2'OBJECT_PLAYER_MISSILE'
+
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+
 
         end

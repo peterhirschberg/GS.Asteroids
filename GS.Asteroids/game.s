@@ -16,7 +16,7 @@ game    start
 gameInit entry
         jsl setupScreen
         jsl initColorTable
-        jsl spawnRocks
+        jsl spawnInitialRocks
 
         rtl
 
@@ -49,7 +49,7 @@ run anop
         lda activeRockCount
         cmp #0
         bne continue
-        jsl spawnRocks
+        jsl spawnInitialRocks
 
 continue anop
 ; update all objects

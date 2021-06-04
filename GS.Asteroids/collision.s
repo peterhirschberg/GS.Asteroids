@@ -147,9 +147,12 @@ continue3 anop
         jmp rockNext
 
 itsAHit anop
-; eliminate the rock and the missile
+; break down the rock
+        tya
+        jsl destroyRock
+
+; eliminate the missile
         lda #0
-        sta lifetimeList,y
         sta lifetimeList,x
 
 ; throw some particles
