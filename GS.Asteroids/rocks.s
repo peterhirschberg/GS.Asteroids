@@ -47,7 +47,7 @@ rockIsAvailable anop
 rockNext1 anop
         inc rockCounter
         lda rockCounter
-        cmp #NUM_ROCKS
+        cmp #NUM_LARGE_ROCKS
         beq rocksDone1
         iny
         iny

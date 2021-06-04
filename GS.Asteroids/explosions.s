@@ -65,6 +65,7 @@ getParticle entry
 
         lda #0
         sta particleIndex
+        sta index
 
 skipReset anop
         lda index
@@ -147,6 +148,7 @@ startExplosion entry
         lsr a
         lsr a
         sta xOrigin
+
         lda yPosList,x
         lsr a
         lsr a
