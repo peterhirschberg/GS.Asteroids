@@ -110,7 +110,7 @@ rockIsAvailable3 anop
 rockNext3 anop
         inc rockCounter
         lda rockCounter
-        cmp #NUM_LARGE_ROCKS
+        cmp #NUM_SMALL_ROCKS
         beq rocksDone3
         iny
         iny
@@ -262,9 +262,21 @@ destroyRock entry
         tax
 
         lda xPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
         sta xOrigin
 
         lda yPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
         sta yOrigin
 
         lda #0
@@ -285,10 +297,22 @@ destroyLargeRock anop
         tay
 
         lda xOrigin
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
         sta xPosList,y
 
-        lda xOrigin
-        sta xPosList,y
+        lda yOrigin
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        sta yPosList,y
 
         jsl getRandSpeed
         ldy newRockIndex
@@ -307,10 +331,22 @@ destroyLargeRock anop
         tay
 
         lda xOrigin
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
         sta xPosList,y
 
-        lda xOrigin
-        sta xPosList,y
+        lda yOrigin
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        sta yPosList,y
 
         jsl getRandSpeed
         ldy newRockIndex
@@ -332,10 +368,22 @@ destroyMediumRock anop
         tay
 
         lda xOrigin
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
         sta xPosList,y
 
-        lda xOrigin
-        sta xPosList,y
+        lda yOrigin
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        sta yPosList,y
 
         jsl getRandSpeed
         ldy newRockIndex
@@ -353,10 +401,22 @@ destroyMediumRock anop
         tay
 
         lda xOrigin
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
         sta xPosList,y
 
-        lda xOrigin
-        sta xPosList,y
+        lda yOrigin
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        sta yPosList,y
 
         jsl getRandSpeed
         ldy newRockIndex

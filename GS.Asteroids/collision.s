@@ -15,7 +15,6 @@ collision start
 collisionCheck entry
 
 ; go through each of player missiles and check against the rocks
-; start with the first player missile
 
         lda #0
         sta missileCounter
@@ -148,8 +147,12 @@ continue3 anop
 
 itsAHit anop
 ; break down the rock
+        stx savex
+        sty savey
         tya
         jsl destroyRock
+        ldx savex
+        ldy savey
 
 ; eliminate the missile
         lda #0
@@ -158,6 +161,9 @@ itsAHit anop
 ; throw some particles
         tya
         jsl startExplosion
+
+; this missile is DONE. Stop checking.
+        jmp rocksDone
 
 ; increment to the next rock and loop
 rockNext anop

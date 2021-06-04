@@ -150,6 +150,7 @@ dontResetYPos anop
         beq saveBackToObject
         cmp #0
         beq saveBackToObject
+
         dec lifetime
 
 saveBackToObject anop
@@ -1164,12 +1165,12 @@ NUM_PARTICLES                   gequ 40
 NUM_OBJECTS                     gequ NUM_PLAYER_OBJECTS+NUM_ROCKS+NUM_PLAYER_MISSILES+NUM_PARTICLES
 
 OBJECT_PLAYER              gequ 0
-OBJECT_THRUST              gequ 1
-OBJECT_PLAYER_MISSILE      gequ 2
-OBJECT_LARGE_ROCK          gequ 3
-OBJECT_MEDIUM_ROCK         gequ 4
-OBJECT_SMALL_ROCK          gequ 5
-OBJECT_PARTICLE            gequ 6
+OBJECT_THRUST              gequ 2
+OBJECT_PLAYER_MISSILE      gequ 4
+OBJECT_LARGE_ROCK          gequ 6
+OBJECT_MEDIUM_ROCK         gequ 8
+OBJECT_SMALL_ROCK          gequ 10
+OBJECT_PARTICLE            gequ 12
 
 shapeList anop
 ; player ship and thrust
@@ -1313,38 +1314,38 @@ sizeList anop
         dc i2'17'
         dc i2'17'
 ; small asteroids
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
-        dc i2'8'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
+        dc i2'10'
 ; player missiles (size not used for these)
         dc i2'0'
         dc i2'0'
