@@ -657,14 +657,14 @@ objectShapeData anop
         dc i2'-2'
         dc i2'-4'
 
-; missile
+; wreckage
         dc i2'2'
 
         dc i2'0'
-        dc i2'-2'
+        dc i2'-4'
 
         dc i2'0'
-        dc i2'2'
+        dc i2'4'
 
 ; dot
         dc i2'1'
@@ -1036,7 +1036,7 @@ objectShapeData anop
 
 SHAPE_OFFSET_PLAYER             gequ $0
 SHAPE_OFFSET_THRUST             gequ $1a
-SHAPE_OFFSET_MISSILE            gequ $28
+SHAPE_OFFSET_WRECKAGE           gequ $28
 SHAPE_OFFSET_DOT                gequ $32
 SHAPE_OFFSET_LARGE_ROCK1        gequ $38
 SHAPE_OFFSET_LARGE_ROCK2        gequ $66
@@ -1114,46 +1114,63 @@ OBJECT_PLAYER_MISSILE2          gequ 120
 OBJECT_PLAYER_MISSILE3          gequ 122
 OBJECT_PLAYER_MISSILE4          gequ 124
 
-OBJECT_PARTICLE1                gequ 126
-OBJECT_PARTICLE2                gequ 128
-OBJECT_PARTICLE3                gequ 130
-OBJECT_PARTICLE4                gequ 132
-OBJECT_PARTICLE5                gequ 134
-OBJECT_PARTICLE6                gequ 136
-OBJECT_PARTICLE7                gequ 138
-OBJECT_PARTICLE8                gequ 140
-OBJECT_PARTICLE9                gequ 142
-OBJECT_PARTICLE10               gequ 144
-OBJECT_PARTICLE11               gequ 146
-OBJECT_PARTICLE12               gequ 148
-OBJECT_PARTICLE13               gequ 150
-OBJECT_PARTICLE14               gequ 152
-OBJECT_PARTICLE15               gequ 154
-OBJECT_PARTICLE16               gequ 156
-OBJECT_PARTICLE17               gequ 158
-OBJECT_PARTICLE18               gequ 160
-OBJECT_PARTICLE19               gequ 162
-OBJECT_PARTICLE20               gequ 164
-OBJECT_PARTICLE21               gequ 166
-OBJECT_PARTICLE22               gequ 168
-OBJECT_PARTICLE23               gequ 170
-OBJECT_PARTICLE24               gequ 172
-OBJECT_PARTICLE25               gequ 174
-OBJECT_PARTICLE26               gequ 176
-OBJECT_PARTICLE27               gequ 178
-OBJECT_PARTICLE28               gequ 180
-OBJECT_PARTICLE29               gequ 182
-OBJECT_PARTICLE30               gequ 184
-OBJECT_PARTICLE31               gequ 186
-OBJECT_PARTICLE32               gequ 188
-OBJECT_PARTICLE33               gequ 190
-OBJECT_PARTICLE34               gequ 192
-OBJECT_PARTICLE35               gequ 194
-OBJECT_PARTICLE36               gequ 196
-OBJECT_PARTICLE37               gequ 198
-OBJECT_PARTICLE38               gequ 200
-OBJECT_PARTICLE39               gequ 202
-OBJECT_PARTICLE40               gequ 204
+OBJECT_WRECKAGE1                gequ 126
+OBJECT_WRECKAGE2                gequ 128
+OBJECT_WRECKAGE3                gequ 130
+OBJECT_WRECKAGE4                gequ 132
+OBJECT_WRECKAGE5                gequ 134
+OBJECT_WRECKAGE6                gequ 136
+OBJECT_WRECKAGE7                gequ 138
+OBJECT_WRECKAGE8                gequ 140
+OBJECT_WRECKAGE9                gequ 142
+OBJECT_WRECKAGE10               gequ 144
+OBJECT_WRECKAGE11               gequ 146
+OBJECT_WRECKAGE12               gequ 148
+OBJECT_WRECKAGE13               gequ 150
+OBJECT_WRECKAGE14               gequ 152
+OBJECT_WRECKAGE15               gequ 154
+OBJECT_WRECKAGE16               gequ 156
+
+OBJECT_PARTICLE1                gequ 158
+OBJECT_PARTICLE2                gequ 160
+OBJECT_PARTICLE3                gequ 162
+OBJECT_PARTICLE4                gequ 164
+OBJECT_PARTICLE5                gequ 166
+OBJECT_PARTICLE6                gequ 168
+OBJECT_PARTICLE7                gequ 170
+OBJECT_PARTICLE8                gequ 172
+OBJECT_PARTICLE9                gequ 174
+OBJECT_PARTICLE10               gequ 176
+OBJECT_PARTICLE11               gequ 178
+OBJECT_PARTICLE12               gequ 180
+OBJECT_PARTICLE13               gequ 182
+OBJECT_PARTICLE14               gequ 184
+OBJECT_PARTICLE15               gequ 186
+OBJECT_PARTICLE16               gequ 188
+OBJECT_PARTICLE17               gequ 190
+OBJECT_PARTICLE18               gequ 192
+OBJECT_PARTICLE19               gequ 194
+OBJECT_PARTICLE20               gequ 196
+OBJECT_PARTICLE21               gequ 198
+OBJECT_PARTICLE22               gequ 200
+OBJECT_PARTICLE23               gequ 202
+OBJECT_PARTICLE24               gequ 204
+OBJECT_PARTICLE25               gequ 206
+OBJECT_PARTICLE26               gequ 208
+OBJECT_PARTICLE27               gequ 210
+OBJECT_PARTICLE28               gequ 212
+OBJECT_PARTICLE29               gequ 214
+OBJECT_PARTICLE30               gequ 216
+OBJECT_PARTICLE31               gequ 218
+OBJECT_PARTICLE32               gequ 220
+OBJECT_PARTICLE33               gequ 222
+OBJECT_PARTICLE34               gequ 224
+OBJECT_PARTICLE35               gequ 226
+OBJECT_PARTICLE36               gequ 228
+OBJECT_PARTICLE37               gequ 230
+OBJECT_PARTICLE38               gequ 232
+OBJECT_PARTICLE39               gequ 234
+OBJECT_PARTICLE40               gequ 236
 
 NUM_PLAYER_OBJECTS              gequ 2
 NUM_LARGE_ROCKS                 gequ 8
@@ -1161,16 +1178,18 @@ NUM_MEDIUM_ROCKS                gequ 16
 NUM_SMALL_ROCKS                 gequ 32
 NUM_ROCKS                       gequ NUM_LARGE_ROCKS+NUM_MEDIUM_ROCKS+NUM_SMALL_ROCKS
 NUM_PLAYER_MISSILES             gequ 4
+NUM_WRECKAGE                    gequ 16
 NUM_PARTICLES                   gequ 40
-NUM_OBJECTS                     gequ NUM_PLAYER_OBJECTS+NUM_ROCKS+NUM_PLAYER_MISSILES+NUM_PARTICLES
+NUM_OBJECTS                     gequ NUM_PLAYER_OBJECTS+NUM_ROCKS+NUM_PLAYER_MISSILES+NUM_WRECKAGE+NUM_PARTICLES
 
 OBJECT_PLAYER              gequ 0
 OBJECT_THRUST              gequ 2
 OBJECT_PLAYER_MISSILE      gequ 4
-OBJECT_LARGE_ROCK          gequ 6
-OBJECT_MEDIUM_ROCK         gequ 8
-OBJECT_SMALL_ROCK          gequ 10
-OBJECT_PARTICLE            gequ 12
+OBJECT_WRECKAGE            gequ 6
+OBJECT_LARGE_ROCK          gequ 8
+OBJECT_MEDIUM_ROCK         gequ 10
+OBJECT_SMALL_ROCK          gequ 12
+OBJECT_PARTICLE            gequ 14
 
 shapeList anop
 ; player ship and thrust
@@ -1240,6 +1259,23 @@ shapeList anop
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
+; wreckage
+        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE'
 ; explosion particles
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
@@ -1347,6 +1383,23 @@ sizeList anop
         dc i2'10'
         dc i2'10'
 ; player missiles (size not used for these)
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+; wreckage (size not used for these)
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'
@@ -1501,6 +1554,23 @@ xPosList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; wreckage
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 ; particles
         dc i2'0'
         dc i2'0'
@@ -1647,6 +1717,23 @@ yPosList anop
         dc i2'0'
         dc i2'0'
 ; player missiles
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+; wreckage
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'
@@ -1801,6 +1888,23 @@ xSpeedList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; wreckage
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 ; particles
         dc i2'0'
         dc i2'0'
@@ -1947,6 +2051,23 @@ ySpeedList anop
         dc i2'0'
         dc i2'0'
 ; player missiles
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+; wreckage
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'
@@ -2101,6 +2222,23 @@ angleList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; wreckage
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 ; particles
         dc i2'0'
         dc i2'0'
@@ -2247,6 +2385,23 @@ rotationSpeedList anop
         dc i2'0'
         dc i2'0'
 ; player missiles
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+; wreckage
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'
@@ -2401,6 +2556,23 @@ colorList anop
         dc i2'$22'
         dc i2'$22'
         dc i2'$22'
+; wreckage
+        dc i2'$22'
+        dc i2'$22'
+        dc i2'$22'
+        dc i2'$22'
+        dc i2'$22'
+        dc i2'$22'
+        dc i2'$22'
+        dc i2'$22'
+        dc i2'$22'
+        dc i2'$22'
+        dc i2'$22'
+        dc i2'$22'
+        dc i2'$22'
+        dc i2'$22'
+        dc i2'$22'
+        dc i2'$22'
 ; particles
         dc i2'0'
         dc i2'0'
@@ -2547,6 +2719,23 @@ lifetimeList anop
         dc i2'0'
         dc i2'0'
 ; player missiles
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+; wreckage
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'
@@ -2704,6 +2893,23 @@ objectTypeList anop
         dc i2'OBJECT_PLAYER_MISSILE'
         dc i2'OBJECT_PLAYER_MISSILE'
         dc i2'OBJECT_PLAYER_MISSILE'
+
+        dc i2'OBJECT_WRECKAGE'
+        dc i2'OBJECT_WRECKAGE'
+        dc i2'OBJECT_WRECKAGE'
+        dc i2'OBJECT_WRECKAGE'
+        dc i2'OBJECT_WRECKAGE'
+        dc i2'OBJECT_WRECKAGE'
+        dc i2'OBJECT_WRECKAGE'
+        dc i2'OBJECT_WRECKAGE'
+        dc i2'OBJECT_WRECKAGE'
+        dc i2'OBJECT_WRECKAGE'
+        dc i2'OBJECT_WRECKAGE'
+        dc i2'OBJECT_WRECKAGE'
+        dc i2'OBJECT_WRECKAGE'
+        dc i2'OBJECT_WRECKAGE'
+        dc i2'OBJECT_WRECKAGE'
+        dc i2'OBJECT_WRECKAGE'
 
         dc i2'OBJECT_PARTICLE'
         dc i2'OBJECT_PARTICLE'
