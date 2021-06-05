@@ -36,8 +36,9 @@ run anop
 ; run the player ship
         jsl runPlayerShip
 
-; collision check
-        jsl collisionCheck
+; collision checks
+        jsl collisionCheckMissiles
+        jsl collisionCheckPlayer
 
 ; check number of active rocks
         jsl numActiveRocks
@@ -78,7 +79,7 @@ continue anop
         jsl renderDotList
 
 ; fade particles
-        jsl fadeParticles
+;        jsl fadeParticles
 
         rtl
 

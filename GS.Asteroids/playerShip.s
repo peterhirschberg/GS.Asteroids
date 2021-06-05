@@ -49,9 +49,54 @@ resetToZero anop
         rtl
 
 
+spawnPlayer entry
+
+        ldx #OBJECT_PLAYER
+
+        lda #MIDSCREEN_X
+        sta xPosList,x
+
+        lda #MIDSCREEN_Y
+        sta yPosList,x
+
+        lda #0
+        sta xSpeedList,x
+        sta ySpeedList,x
+        sta rotationSpeed,x
+
+        lda #180
+        sta angleList,x
+
+        lda #-1
+        sta lifetimeList,x
+
+        rtl
+
 runPlayerShip entry
 
         ldx #OBJECT_PLAYER
+
+; see if we are dead x_x
+
+        lda lifetimeList,x
+        cmp #0
+        beq playerDead
+        jmp notDead
+
+playerDead anop
+; wait for the player to hit the fire button and respawn them
+; this is temporary
+
+        lda keydownFire
+        cmp #1
+        beq playerToRespawn
+        rtl
+
+playerToRespawn anop
+        jsl spawnPlayer
+        rtl
+
+notDead anop
 
 ; zero out rotation speed
         lda #0
