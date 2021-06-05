@@ -18,15 +18,15 @@ initColorTable entry
         sta >COLOR_TABLE,x
 
         ldx #2
-        lda #$048f
+        lda #$0111
         sta >COLOR_TABLE,x
 
         ldx #4
-        lda #$0ff0
+        lda #$0222
         sta >COLOR_TABLE,x
 
         ldx #6
-        lda #$0f66
+        lda #$0333
         sta >COLOR_TABLE,x
 
         ldx #8
@@ -46,35 +46,36 @@ initColorTable entry
         sta >COLOR_TABLE,x
 
         ldx #16
-        lda #$0110
+        lda #$0888
         sta >COLOR_TABLE,x
 
         ldx #18
-        lda #$0330
+        lda #$0999
         sta >COLOR_TABLE,x
 
         ldx #20
-        lda #$0550
+        lda #$0aaa
         sta >COLOR_TABLE,x
 
         ldx #22
-        lda #$0770
+        lda #$0bbb
         sta >COLOR_TABLE,x
 
         ldx #24
-        lda #$0990
+        lda #$0ccc
         sta >COLOR_TABLE,x
 
         ldx #26
-        lda #$0bb0
+        lda #$0ddd
         sta >COLOR_TABLE,x
 
         ldx #28
-        lda #$0dd0
+        lda #$0eee
         sta >COLOR_TABLE,x
 
         ldx #30
-        lda #$0ff0
+        lda #$0fff
         sta >COLOR_TABLE,x
+
         
         end

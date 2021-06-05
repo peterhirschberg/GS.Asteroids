@@ -280,9 +280,11 @@ itsAHit1 anop
         ldx savex
         ldy savey
 
-; destroy the player ship
-        ldx #OBJECT_PLAYER
+; destroy the player ship and the thrust object
         lda #0
+        ldx #OBJECT_PLAYER
+        sta lifetimeList,x
+        ldx #OBJECT_THRUST
         sta lifetimeList,x
 
         lda #OBJECT_PLAYER

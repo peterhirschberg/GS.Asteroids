@@ -13,6 +13,47 @@ explosions start
         using objectData
 
 
+fadeWreckage entry
+
+        lda #0
+        sta wreckageCounter
+
+        lda #OBJECT_WRECKAGE1
+        tax
+
+fadeLoop1 anop
+
+        lda lifetimeList,x
+        cmp #0
+        beq nextFade1
+
+        lda #15
+        cmp lifetimeList,x
+        bcs decrement1
+        bra nextFade1
+
+decrement1 anop
+        lda lifetimeList,x
+        asl a
+        asl a
+        asl a
+        asl a
+        ora lifetimeList,x
+        sta colorList,x
+
+nextFade1 anop
+
+        inx
+        inx
+        inc wreckageCounter
+        lda wreckageCounter
+        cmp #NUM_WRECKAGE
+        bne fadeLoop1
+
+        rtl
+
+        
+        
 fadeParticles entry
 
         lda #0
@@ -27,7 +68,7 @@ fadeLoop anop
         cmp #0
         beq nextFade
 
-        lda #15
+        lda #8
         cmp lifetimeList,x
         bcs decrement
         bra nextFade
@@ -38,7 +79,6 @@ decrement anop
         asl a
         asl a
         asl a
-        sta color
         ora lifetimeList,x
         sta colorList,x
 
@@ -127,7 +167,7 @@ startParticle entry
         ldy savey
         sta lifetimeList,y
 
-        lda #$33
+        lda #$88
         sta colorList,y
 
 done anop
@@ -263,7 +303,7 @@ startWreckage entry
         sbc #8
         sta rotationSpeedList,y
 
-        lda #$22
+        lda #$ff
         sta colorList,y
 
 done2 anop

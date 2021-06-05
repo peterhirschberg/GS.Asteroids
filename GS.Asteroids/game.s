@@ -78,8 +78,9 @@ continue anop
         jsl renderDisplayList
         jsl renderDotList
 
-; fade particles
-;        jsl fadeParticles
+; fade particles and wreckage
+        jsl fadeParticles
+        jsl fadeWreckage
 
         rtl
 
