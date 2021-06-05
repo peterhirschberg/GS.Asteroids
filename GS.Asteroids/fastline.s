@@ -1,5 +1,5 @@
 ;
-;  lines.s
+;  fastline.s
 ;  GS.Asteroids
 ;
 ;  Created by Peter Hirschberg on 5/14/21.
@@ -8,9 +8,10 @@
 
         case on
 
-lines start
+fastLine start
         using globalData
 
+        
 drawDot entry
 
         lda y1
@@ -63,9 +64,8 @@ eraseDot entry
         
         rtl
 
-        
 
-drawLine entry
+drawFastLine entry
 
         lda y1
         cmp y2
@@ -117,8 +117,7 @@ HLloop anop
         tax
 
         lda startX
-        and #1
-        cpa #0
+        bit #$0001
         beq leftNibble3
 
         lda >SCREEN_ADDR,x
@@ -168,8 +167,7 @@ VL2 anop
 VLloop anop
 
         lda x1
-        and #1
-        cpa #0
+        bit #$0001
         beq leftNibble4
         jmp rightNibble1
         
@@ -234,92 +232,50 @@ lineOther anop
 ;int dX = abs(x2-x1);
 
         lda x1
-        sta param1
-        lda x2
-        sta param2
-        jsl compare
-        lda #0
-        cmp relation
-        beq xequal
-        lda #1
-        cmp relation
-        beq x1greater
-        lda #-1
-        cmp relation
-        beq x2greater
-xequal anop
-        lda #0
-        sta dX
-        bra ycompare
-x1greater anop
-        lda x1
         sec
         sbc x2
+        bpl dontNegate1
+        eor #$ffff
+        inc a
+dontNegate1 anop
         sta dX
-        bra ycompare
-x2greater anop
-        lda x2
-        sec
-        sbc x1
-        sta dX
-        bra ycompare
-
-ycompare anop
 
 ;int dY = abs(y2-y1);
 
         lda y1
-        sta param1
-        lda y2
-        sta param2
-        jsl compare
-        lda #0
-        cmp relation
-        beq yequal
-        lda #1
-        cmp relation
-        beq y1greater
-        lda #-1
-        cmp relation
-        beq y2greater
-yequal anop
-        lda #0
-        sta dY
-        bra ycompareDone
-y1greater anop
-        lda y1
         sec
         sbc y2
+        bpl dontNegate2
+        eor #$ffff
+        inc a
+dontNegate2 anop
         sta dY
-        bra ycompareDone
-y2greater anop
-        lda y2
-        sec
-        sbc y1
-        sta dY
-        bra ycompareDone
-
-ycompareDone anop
 
 ;if (x1 > x2) { Xincr=-1; } else { Xincr=1; } // which direction in X?
 
-        lda x2
-        sta param1
         lda x1
-        sta param2
-        jsl compare
-        lda relation
+        cmp x2
+        bcs x1Greater
+        lda #1
         sta Xincr
+        jmp x1LessThan
+x1Greater anop
+        lda #-1
+        sta Xincr
+x1LessThan anop
 
 ;if (y1 > y2) { Yincr=-1; } else { Yincr=1; } // which direction in Y?
 
-        lda y2
-        sta param1
         lda y1
-        sta param2
-        jsl compare
-        lda relation
+        cmp y2
+        bcs y1Greater
+        lda #1
         sta Yincr
+        jmp y1LessThan
+y1Greater anop
+        lda #-1
+        sta Yincr
+y1LessThan anop
 
 ;if (dX >= dY) {                // if X is the independent variable
 
@@ -355,6 +311,14 @@ jump7 anop
 
 ;    for (; dX>=0; dX--) {       // process each point in the line one at a time
 
+
+
+        lda y1
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta offset
+
 lineLoop1 anop
 
 ;        if (x1 & 1)
@@ -362,11 +326,6 @@ lineLoop1 anop
 ;        else
 ;            *(SCREEN_ADDR + ((y1 * SCREEN_WIDTH_BYTES) + (x1/2))) |= 0xf0;
 
-        lda y1
-        asl a
-        tax
-        lda screenRowOffsets,x
-        sta offset
 
         lda x1
         lsr a
@@ -375,8 +334,7 @@ lineLoop1 anop
         tax
 
         lda x1
-        and #1
-        cpa #0
+        bit #$0001
         beq leftNibble1
 
         lda >SCREEN_ADDR,x
@@ -418,6 +376,12 @@ jump9 anop
         clc
         adc dPru
         sta PP
+
+        lda y1
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta offset
 
         bra jump11
 
@@ -477,6 +441,12 @@ slope2 anop
         sbc dY
         sta PP
 
+        lda y1
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta offset
+        
 ;    for (; dY>=0; dY--) {       // process each point in the line one at a time
 
 lineLoop2 anop
@@ -486,12 +456,6 @@ lineLoop2 anop
 ;        else
 ;            *(SCREEN_ADDR + ((y1 * SCREEN_WIDTH_BYTES) + (x1/2))) |= 0xf0;
 
-        lda y1
-        asl a
-        tax
-        lda screenRowOffsets,x
-        sta offset
-
         lda x1
         lsr a
         clc
@@ -499,8 +463,7 @@ lineLoop2 anop
         tax
 
         lda x1
-        and #1
-        cpa #0
+        bit #$0001
         beq leftNibble2
 
         lda >SCREEN_ADDR,x
@@ -542,6 +505,12 @@ jump29 anop
         adc dPru
         sta PP
 
+        lda y1
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta offset
+        
         bra jump21
 
 jump20 anop
@@ -561,6 +530,12 @@ jump20 anop
         clc
         adc dPr
         sta PP
+        
+        lda y1
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta offset
 
 jump21 anop
         dec dY
@@ -580,11 +555,13 @@ lineDone anop
 
         end
 
-eraselines start
+
+
+fastEraselines start
         using globalData
 
 
-eraseLine entry
+eraseFastLine entry
 
         lda y1
         cmp y2
@@ -635,9 +612,10 @@ HLloop anop
         adc offset
         tax
 
-        lda #00
+        lda #0
         sta >SCREEN_ADDR,x
-
+        
+HL3 anop
         inc startX
         lda startX
         cmp endX
@@ -685,9 +663,9 @@ VLloop anop
         adc offset
         tax
 
-        lda #00
+        lda #0
         sta >SCREEN_ADDR,x
-        
+
         inc startY
         lda startY
         cmp endY
@@ -704,92 +682,50 @@ lineOther anop
 ;int dX = abs(x2-x1);
 
         lda x1
-        sta param1
-        lda x2
-        sta param2
-        jsl compare
-        lda #0
-        cmp relation
-        beq xequal
-        lda #1
-        cmp relation
-        beq x1greater
-        lda #-1
-        cmp relation
-        beq x2greater
-xequal anop
-        lda #0
-        sta dX
-        bra ycompare
-x1greater anop
-        lda x1
         sec
         sbc x2
+        bpl dontNegate1
+        eor #$ffff
+        inc a
+dontNegate1 anop
         sta dX
-        bra ycompare
-x2greater anop
-        lda x2
-        sec
-        sbc x1
-        sta dX
-        bra ycompare
-
-ycompare anop
 
 ;int dY = abs(y2-y1);
 
         lda y1
-        sta param1
-        lda y2
-        sta param2
-        jsl compare
-        lda #0
-        cmp relation
-        beq yequal
-        lda #1
-        cmp relation
-        beq y1greater
-        lda #-1
-        cmp relation
-        beq y2greater
-yequal anop
-        lda #0
-        sta dY
-        bra ycompareDone
-y1greater anop
-        lda y1
         sec
         sbc y2
+        bpl dontNegate2
+        eor #$ffff
+        inc a
+dontNegate2 anop
         sta dY
-        bra ycompareDone
-y2greater anop
-        lda y2
-        sec
-        sbc y1
-        sta dY
-        bra ycompareDone
-
-ycompareDone anop
 
 ;if (x1 > x2) { Xincr=-1; } else { Xincr=1; } // which direction in X?
 
-        lda x2
-        sta param1
         lda x1
-        sta param2
-        jsl compare
-        lda relation
+        cmp x2
+        bcs x1Greater
+        lda #1
         sta Xincr
+        jmp x1LessThan
+x1Greater anop
+        lda #-1
+        sta Xincr
+x1LessThan anop
 
 ;if (y1 > y2) { Yincr=-1; } else { Yincr=1; } // which direction in Y?
 
-        lda y2
-        sta param1
         lda y1
-        sta param2
-        jsl compare
-        lda relation
+        cmp y2
+        bcs y1Greater
+        lda #1
         sta Yincr
+        jmp y1LessThan
+y1Greater anop
+        lda #-1
+        sta Yincr
+y1LessThan anop
 
 ;if (dX >= dY) {                // if X is the independent variable
 
@@ -825,12 +761,7 @@ jump7 anop
 
 ;    for (; dX>=0; dX--) {       // process each point in the line one at a time
 
-lineLoop1 anop
 
-;        if (x1 & 1)
-;            *(SCREEN_ADDR + ((y1 * SCREEN_WIDTH_BYTES) + (x1/2))) |= 0x0f;
-;        else
-;            *(SCREEN_ADDR + ((y1 * SCREEN_WIDTH_BYTES) + (x1/2))) |= 0xf0;
 
         lda y1
         asl a
@@ -838,14 +769,24 @@ lineLoop1 anop
         lda screenRowOffsets,x
         sta offset
 
+lineLoop1 anop
+
+;        if (x1 & 1)
+;            *(SCREEN_ADDR + ((y1 * SCREEN_WIDTH_BYTES) + (x1/2))) |= 0x0f;
+;        else
+;            *(SCREEN_ADDR + ((y1 * SCREEN_WIDTH_BYTES) + (x1/2))) |= 0xf0;
+
+
         lda x1
         lsr a
         clc
         adc offset
         tax
 
-        lda #00
+        lda #0
         sta >SCREEN_ADDR,x
+
+jump9 anop
 
 ;        if (P > 0) {             // is the pixel going right AND up?
 
@@ -874,6 +815,12 @@ lineLoop1 anop
         clc
         adc dPru
         sta PP
+
+        lda y1
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta offset
 
         bra jump11
 
@@ -933,6 +880,12 @@ slope2 anop
         sbc dY
         sta PP
 
+        lda y1
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta offset
+        
 ;    for (; dY>=0; dY--) {       // process each point in the line one at a time
 
 lineLoop2 anop
@@ -942,20 +895,18 @@ lineLoop2 anop
 ;        else
 ;            *(SCREEN_ADDR + ((y1 * SCREEN_WIDTH_BYTES) + (x1/2))) |= 0xf0;
 
-        lda y1
-        asl a
-        tax
-        lda screenRowOffsets,x
-        sta offset
-
         lda x1
         lsr a
         clc
         adc offset
         tax
 
-        lda #00
+        lda #0
         sta >SCREEN_ADDR,x
+
+
+jump29 anop
+
 
 ;        if (P > 0) {             // is the pixel going up AND right?
 
@@ -983,6 +934,12 @@ lineLoop2 anop
         adc dPru
         sta PP
 
+        lda y1
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta offset
+        
         bra jump21
 
 jump20 anop
@@ -1002,6 +959,12 @@ jump20 anop
         clc
         adc dPr
         sta PP
+        
+        lda y1
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta offset
 
 jump21 anop
         dec dY
@@ -1017,6 +980,7 @@ jump28 anop
 
 lineDone anop
         rtl
+
 
 
         end

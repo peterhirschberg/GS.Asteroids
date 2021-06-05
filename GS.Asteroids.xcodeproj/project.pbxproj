@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D063C409265737E200C5C7C6 /* lines.s in Sources */ = {isa = PBXBuildFile; fileRef = D063C4082657375000C5C7C6 /* lines.s */; };
 		D063C40B265751C200C5C7C6 /* globals.s in Sources */ = {isa = PBXBuildFile; fileRef = D063C40A265751BA00C5C7C6 /* globals.s */; };
 		D063C40D2657BCD000C5C7C6 /* math.s in Sources */ = {isa = PBXBuildFile; fileRef = D063C40C2657BCD000C5C7C6 /* math.s */; };
 		D063C4112659302A00C5C7C6 /* displayList.s in Sources */ = {isa = PBXBuildFile; fileRef = D063C4102659302A00C5C7C6 /* displayList.s */; };
+		D068E680266B991C00D9E256 /* fastline.s in Sources */ = {isa = PBXBuildFile; fileRef = D068E67F266B991C00D9E256 /* fastline.s */; };
 		D06919B5264F414C006508C1 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D06919B4264F414C006508C1 /* main.c */; };
 		D06919B8264F414C006508C1 /* main.rez in CopyFiles */ = {isa = PBXBuildFile; fileRef = D06919B7264F414C006508C1 /* main.rez */; };
 		D06919BA264F414C006508C1 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = D06919B9264F414C006508C1 /* Makefile */; };
@@ -55,10 +55,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D063C4082657375000C5C7C6 /* lines.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = lines.s; sourceTree = "<group>"; };
 		D063C40A265751BA00C5C7C6 /* globals.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; name = globals.s; path = GS.Asteroids/globals.s; sourceTree = SOURCE_ROOT; };
 		D063C40C2657BCD000C5C7C6 /* math.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = math.s; sourceTree = "<group>"; };
 		D063C4102659302A00C5C7C6 /* displayList.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = displayList.s; sourceTree = "<group>"; };
+		D068E67F266B991C00D9E256 /* fastline.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = fastline.s; sourceTree = "<group>"; };
 		D06919AA264F414B006508C1 /* GS.Asteroids */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Asteroids; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06919AD264F414B006508C1 /* GS.Asteroids.2mg */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Asteroids.2mg; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06919B2264F414B006508C1 /* doNotBuild */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = doNotBuild; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,7 +128,7 @@
 				D06919CE264F414C006508C1 /* Supporting Files */,
 				D06919E6264F5CCB006508C1 /* game.s */,
 				D06919E7264F5D00006508C1 /* game.h */,
-				D063C4082657375000C5C7C6 /* lines.s */,
+				D068E67F266B991C00D9E256 /* fastline.s */,
 				D063C40A265751BA00C5C7C6 /* globals.s */,
 				D063C40C2657BCD000C5C7C6 /* math.s */,
 				D063C4102659302A00C5C7C6 /* displayList.s */,
@@ -285,7 +285,7 @@
 				D063C4112659302A00C5C7C6 /* displayList.s in Sources */,
 				D06BB5E326650BB800EB1107 /* controls.s in Sources */,
 				D06919BA264F414C006508C1 /* Makefile in Sources */,
-				D063C409265737E200C5C7C6 /* lines.s in Sources */,
+				D068E680266B991C00D9E256 /* fastline.s in Sources */,
 				D06919B5264F414C006508C1 /* main.c in Sources */,
 				D063C40D2657BCD000C5C7C6 /* math.s in Sources */,
 				D06919E8264F70EC006508C1 /* game.s in Sources */,

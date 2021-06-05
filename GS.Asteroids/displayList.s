@@ -59,7 +59,7 @@ loop anop
     
     stx counter
     
-    jsl drawLine
+    jsl drawFastLine
     
     jmp loop
     
@@ -106,7 +106,7 @@ loop2 anop
     
     stx counter
     
-    jsl eraseLine
+    jsl eraseFastLine
     
     jmp loop2
     
