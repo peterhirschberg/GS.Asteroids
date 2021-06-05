@@ -68,7 +68,7 @@ fadeLoop anop
         cmp #0
         beq nextFade
 
-        lda #8
+        lda #$a
         cmp lifetimeList,x
         bcs decrement
         bra nextFade
@@ -167,7 +167,7 @@ startParticle entry
         ldy savey
         sta lifetimeList,y
 
-        lda #$88
+        lda #$aa
         sta colorList,y
 
 done anop

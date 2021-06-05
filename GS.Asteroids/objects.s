@@ -672,6 +672,84 @@ objectShapeData anop
         dc i2'0'
         dc i2'0'
 
+; large saucer
+        dc i2'12'
+
+        dc i2'11'
+        dc i2'0'
+
+        dc i2'5'
+        dc i2'3'
+
+        dc i2'-6'
+        dc i2'3'
+
+        dc i2'-12'
+        dc i2'0'
+
+        dc i2'-6'
+        dc i2'-4'
+
+        dc i2'-3'
+        dc i2'-9'
+
+        dc i2'2'
+        dc i2'-9'
+
+        dc i2'5'
+        dc i2'-4'
+
+        dc i2'11'
+        dc i2'0'
+
+        dc i2'-12'
+        dc i2'0'
+
+        dc i2'-6'
+        dc i2'-4'
+
+        dc i2'5'
+        dc i2'-4'
+
+; small saucer
+        dc i2'12'
+
+        dc i2'5'
+        dc i2'0'
+
+        dc i2'2'
+        dc i2'1'
+
+        dc i2'-3'
+        dc i2'1'
+
+        dc i2'-6'
+        dc i2'0'
+
+        dc i2'-3'
+        dc i2'-2'
+
+        dc i2'-2'
+        dc i2'-4'
+
+        dc i2'1'
+        dc i2'-4'
+
+        dc i2'2'
+        dc i2'-2'
+
+        dc i2'5'
+        dc i2'0'
+
+        dc i2'-6'
+        dc i2'0'
+
+        dc i2'-3'
+        dc i2'-2'
+
+        dc i2'2'
+        dc i2'-2'
+
 ; large rock 1
         dc i2'11'
 
@@ -1034,20 +1112,21 @@ objectShapeData anop
 
 
 
-SHAPE_OFFSET_PLAYER             gequ $0
-SHAPE_OFFSET_THRUST             gequ $1a
-SHAPE_OFFSET_WRECKAGE           gequ $28
-SHAPE_OFFSET_DOT                gequ $32
-SHAPE_OFFSET_LARGE_ROCK1        gequ $38
-SHAPE_OFFSET_LARGE_ROCK2        gequ $66
-SHAPE_OFFSET_LARGE_ROCK3        gequ $9c
-SHAPE_OFFSET_MEDIUM_ROCK1       gequ $d2
-SHAPE_OFFSET_MEDIUM_ROCK2       gequ $100
-SHAPE_OFFSET_MEDIUM_ROCK3       gequ $136
-SHAPE_OFFSET_SMALL_ROCK1        gequ $16c
-SHAPE_OFFSET_SMALL_ROCK2        gequ $19a
-SHAPE_OFFSET_SMALL_ROCK3        gequ $1d0
-
+SHAPE_OFFSET_PLAYER                 gequ $0
+SHAPE_OFFSET_THRUST                 gequ $1a
+SHAPE_OFFSET_WRECKAGE               gequ $28
+SHAPE_OFFSET_DOT                        gequ $32
+SHAPE_OFFSET_LARGE_SAUCER       gequ $38
+SHAPE_OFFSET_SMALL_SAUCER       gequ $6a
+SHAPE_OFFSET_LARGE_ROCK1        gequ $9c
+SHAPE_OFFSET_LARGE_ROCK2        gequ $ca
+SHAPE_OFFSET_LARGE_ROCK3        gequ $100
+SHAPE_OFFSET_MEDIUM_ROCK1       gequ $136
+SHAPE_OFFSET_MEDIUM_ROCK2       gequ $164
+SHAPE_OFFSET_MEDIUM_ROCK3       gequ $19a
+SHAPE_OFFSET_SMALL_ROCK1        gequ $1d0
+SHAPE_OFFSET_SMALL_ROCK2        gequ $1fe
+SHAPE_OFFSET_SMALL_ROCK3        gequ $234
 
 
 OBJECT_LARGE_ROCK1              gequ 4
@@ -1171,6 +1250,8 @@ OBJECT_PARTICLE37               gequ 228
 OBJECT_PARTICLE38               gequ 230
 OBJECT_PARTICLE39               gequ 232
 OBJECT_PARTICLE40               gequ 234
+OBJECT_LARGE_SAUCER1            gequ 236
+OBJECT_SMALL_SAUCER1            gequ 238
 
 NUM_PLAYER_OBJECTS              gequ 2
 NUM_LARGE_ROCKS                 gequ 8
@@ -1179,8 +1260,10 @@ NUM_SMALL_ROCKS                 gequ 32
 NUM_ROCKS                       gequ NUM_LARGE_ROCKS+NUM_MEDIUM_ROCKS+NUM_SMALL_ROCKS
 NUM_PLAYER_MISSILES             gequ 4
 NUM_WRECKAGE                    gequ 16
-NUM_PARTICLES                   gequ 40
-NUM_OBJECTS                     gequ NUM_PLAYER_OBJECTS+NUM_ROCKS+NUM_PLAYER_MISSILES+NUM_WRECKAGE+NUM_PARTICLES
+NUM_PARTICLES                   gequ 80
+NUM_LARGE_SAUCER                gequ 1
+NUM_SMALL_SAUCER                gequ 1
+NUM_OBJECTS                     gequ NUM_PLAYER_OBJECTS+NUM_ROCKS+NUM_PLAYER_MISSILES+NUM_WRECKAGE+NUM_PARTICLES+NUM_LARGE_SAUCER+NUM_SMALL_SAUCER
 
 OBJECT_PLAYER              gequ 0
 OBJECT_THRUST              gequ 2
@@ -1190,6 +1273,8 @@ OBJECT_LARGE_ROCK          gequ 8
 OBJECT_MEDIUM_ROCK         gequ 10
 OBJECT_SMALL_ROCK          gequ 12
 OBJECT_PARTICLE            gequ 14
+OBJECT_LARGE_SAUCER        gequ 16
+OBJECT_SMALL_SAUCER        gequ 18
 
 shapeList anop
 ; player ship and thrust
@@ -1317,6 +1402,50 @@ shapeList anop
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+; large saucer
+        dc i2'SHAPE_OFFSET_LARGE_SAUCER'
+; small saucer
+        dc i2'SHAPE_OFFSET_SMALL_SAUCER'
 
 ; used to do hit testing
 sizeList anop
@@ -1485,7 +1614,11 @@ sizeList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-
+; large saucer
+        dc i2'13'
+; small saucer
+        dc i2'7'
+        
 xPosList anop
 ; player ship
         dc i2'MIDSCREEN_X'
@@ -1652,7 +1785,11 @@ xPosList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-
+; large saucer
+        dc i2'MIDSCREEN_X'
+; small saucer
+        dc i2'800'
+        
 yPosList anop
 ; player ship
         dc i2'MIDSCREEN_Y'
@@ -1819,7 +1956,11 @@ yPosList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-
+; large saucer
+        dc i2'600'
+; small saucer
+        dc i2'600'
+        
 xSpeedList anop
 ; player ship
         dc i2'0'
@@ -1986,7 +2127,11 @@ xSpeedList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-
+; large saucer
+        dc i2'0'
+; small saucer
+        dc i2'0'
+        
 ySpeedList anop
 ; player ship
         dc i2'0'
@@ -2153,7 +2298,11 @@ ySpeedList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-
+; large saucer
+        dc i2'0'
+; small saucer
+        dc i2'0'
+        
 angleList anop
 ; player ship
         dc i2'180'
@@ -2320,7 +2469,11 @@ angleList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-
+; large saucer
+        dc i2'0'
+; small saucer
+        dc i2'0'
+        
 rotationSpeedList anop
 ; player ship
         dc i2'0'
@@ -2487,7 +2640,11 @@ rotationSpeedList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-
+; large saucer
+        dc i2'0'
+; small saucer
+        dc i2'0'
+        
 colorList anop
 ; player
         dc i2'$ff'
@@ -2654,7 +2811,11 @@ colorList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-
+; large saucer
+        dc i2'$ff'
+; small saucer
+        dc i2'$ff'
+        
 lifetimeList anop
 ; player ship
         dc i2'-1'
@@ -2821,7 +2982,10 @@ lifetimeList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-
+; large saucer
+        dc i2'0'
+; small saucer
+        dc i2'0'
 
 objectTypeList anop
         dc i2'OBJECT_PLAYER'
@@ -2999,6 +3163,7 @@ objectTypeList anop
         dc i2'OBJECT_PARTICLE'
         dc i2'OBJECT_PARTICLE'
 
-
+        dc i2'OBJECT_LARGE_SAUCER'
+        dc i2'OBJECT_SMALL_SAUCER'
 
         end
