@@ -49,6 +49,7 @@ resetToZero anop
         rtl
 
 
+
 spawnPlayer entry
 
         ldx #OBJECT_PLAYER
@@ -70,7 +71,29 @@ spawnPlayer entry
         lda #-1
         sta lifetimeList,x
 
+
+        ldx #OBJECT_THRUST
+
+        lda #MIDSCREEN_X
+        sta xPosList,x
+
+        lda #MIDSCREEN_Y
+        sta yPosList,x
+
+        lda #0
+        sta xSpeedList,x
+        sta ySpeedList,x
+        sta rotationSpeed,x
+
+        lda #180
+        sta angleList,x
+
+        lda #-1
+        sta lifetimeList,x
+
         rtl
+
+
 
 runPlayerShip entry
 
