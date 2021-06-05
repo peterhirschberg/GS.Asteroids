@@ -352,8 +352,6 @@ jump9 anop
 ;        if (P > 0) {             // is the pixel going right AND up?
 
         lda PP
-        clc
-        adc #0
         bmi jump10
 
 
@@ -482,8 +480,6 @@ jump29 anop
 ;        if (P > 0) {             // is the pixel going up AND right?
 
         lda PP
-        clc
-        adc #0
         bmi jump20
 
 ;            x1+=Xincr;            // increment dependent variable
@@ -791,8 +787,6 @@ jump9 anop
 ;        if (P > 0) {             // is the pixel going right AND up?
 
         lda PP
-        clc
-        adc #0
         bmi jump10
 
 
@@ -911,8 +905,6 @@ jump29 anop
 ;        if (P > 0) {             // is the pixel going up AND right?
 
         lda PP
-        clc
-        adc #0
         bmi jump20
 
 ;            x1+=Xincr;            // increment dependent variable
