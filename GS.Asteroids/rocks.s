@@ -11,6 +11,7 @@
 rocks start
         using globalData
         using objectData
+        using rockData
 
 getRandSpeed entry
 
@@ -499,13 +500,13 @@ rockNext anop
 
 rocksDone anop
         lda count
-        sta activeRockCount
+        sta rockCount
         
         lda largeCount
-        sta activeLargeRockCount
+        sta numLargeRocks
         
         lda smallMediumCount
-        sta activeSmallMediumRockCount
+        sta numOtherRocks
 
         rtl
 
@@ -525,5 +526,13 @@ xOrigin dc i2'0'
 yOrigin dc i2'0'
 
 newRockIndex dc i2'0'
+
+        end
+
+rockData data
+    
+rockCount dc i2'0'
+numLargeRocks dc i2'0'
+numOtherRocks dc i2'0'
 
         end

@@ -11,7 +11,8 @@
 saucers start
         using globalData
         using objectData
-    
+        using rockData
+
     
 spawnSaucer entry
 
@@ -19,43 +20,33 @@ spawnSaucer entry
         ldx #OBJECT_LARGE_SAUCER1
         lda lifetimeList,x
         cmp #0
-        beq doSpawn
+        beq checkTimer
         rtl
         
 ; if less than 4 medium/small rocks left, spawn a saucer
 ;        lda #4
-;        cmp activeSmallMediumRockCount
+;        cmp numOtherRocks
 ;        bcs checklargeRocks
-;        bra continue2
+;        bra doSpawn
 
 ;checklargeRocks anop
 ;        lda #1
-;        cmp activeLargeRockCount
+;        cmp numLargeRocks
 ;        bcs checkSaucers
-;        bra continue2
+;        bra doSpawn
         
-;checkSaucers anop
-; check to see if there is already an active saucer
-;        ldx #OBJECT_LARGE_SAUCER1
-;        lda lifetimeList,x
-;        cmp #0
-;        beq checkSaucerSpawnTimer
-;        bra continue2
 
-;checkSaucerSpawnTimer anop
-;        dec saucerSpawnTimer
-;        lda saucerSpawnTimer
-;        bmi doSpawnSaucer
-;        bra continue2
+checkTimer anop
+        dec spawnTimer
+        lda spawnTimer
+        bmi doSpawnSaucer
+        rtl
         
-;doSpawnSaucer anop
-;        lda #500
-;        sta saucerSpawnTimer
-;        jsl spawnSaucer
+doSpawnSaucer anop
+        lda #500
+        sta spawnTimer
+        jsl spawnSaucer
 
-;continue2 anop
-        
-        
 doSpawn anop
 
         lda #0
@@ -166,7 +157,7 @@ goUp anop
 savex dc i2'0'
 
 directionTimer dc i2'0'
-saucerSpawnTimer dc i2'500'
+spawnTimer dc i2'500'
 
 SAUCER_SPEED gequ 100
         

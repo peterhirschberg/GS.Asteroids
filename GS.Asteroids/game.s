@@ -12,7 +12,7 @@ game    start
         using globalData
         using objectData
         using displayListData
-
+        using rockData
         
 gameInit entry
         jsl setupScreen
@@ -51,7 +51,7 @@ run anop
 ; if no rocks left respawn them
 ; TODO: wait for a delay here
 ; TODO: increment number of rocks
-        lda activeRockCount
+        lda rockCount
         cmp #0
         bne continue1
         jsl spawnInitialRocks

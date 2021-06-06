@@ -35,60 +35,6 @@ done    anop
         rtl
 
         
-
-; x / a -> QUOTNT
-divide entry
-        stz QUOTNT
-        ldy #1
-        
-div1    asl a
-        bcs div2
-        iny
-        cpy #17
-        bne div1
-        
-div2    ror a
-
-div4    pha
-        txa
-        sec
-        sbc 1,s
-        bcc div3
-        tax
-        
-div3    rol QUOTNT
-        pla
-        lsr a
-        dey
-        bne div4
-        
-        rtl
-
-
-compare entry
-        stz relation
-        lda param1
-        sec
-        sbc param2
-        beq same
-        bvs invert
-        bmi less
-greater inc relation
-        bra same
-invert  bmi greater
-less    dec relation
-same    clc
-        xce
-        rtl
-
-        
-; negate A using 2's complement. Should be a macro
-negate entry
-    eor #$ffff
-    inc a
-    rtl
-
-        
 rotate entry
 
         lda param1

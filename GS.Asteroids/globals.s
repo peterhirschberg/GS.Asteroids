@@ -82,14 +82,6 @@ startY         dc i2'0'
 endY           dc i2'0'
 
 
-; math.s vars
-
-relation        dc i2'0'
-
-DIVSOR          dc i2'-$ff'
-DIVDND          dc i2'0'
-QUOTNT gequ $80
-
 
 ; screen bound constants
 ; these are in shifted << 6 format to match object speed/position logic
@@ -103,13 +95,6 @@ MIDSCREEN_Y                     gequ SCREEN_YMAX/2
 ; missile constants (both player and saucers)
 MISSILE_SPEED                   gequ 80
 MISSILE_LIFETIME                gequ 40
-
-; game state
-activeRockCount dc i2'0'
-activeLargeRockCount dc i2'0'
-activeSmallMediumRockCount dc i2'0'
-
-
 
 
         end
