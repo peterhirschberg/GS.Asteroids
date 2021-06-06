@@ -15,27 +15,28 @@ saucers start
 
     
 spawnSaucer entry
-
+        
 ; check to see if there is already an active saucer
         ldx #OBJECT_LARGE_SAUCER1
         lda lifetimeList,x
         cmp #0
-        beq checkTimer
+        beq checkRocks
         rtl
         
-; if less than 4 medium/small rocks left, spawn a saucer
-;        lda #4
-;        cmp numOtherRocks
-;        bcs checklargeRocks
-;        bra doSpawn
+; if less than 10 medium/small rocks left, consider spawning a saucer
+checkRocks anop
+        lda #10
+        cmp numOtherRocks
+        bcs checklargeRocks
+        rtl
 
-;checklargeRocks anop
-;        lda #1
-;        cmp numLargeRocks
-;        bcs checkSaucers
-;        bra doSpawn
+; only spawn a saucer if there are 1 or less large rocks
+checklargeRocks anop
+        lda #1
+        cmp numLargeRocks
+        bcs checkTimer
+        rtl
         
-
 checkTimer anop
         dec spawnTimer
         lda spawnTimer
