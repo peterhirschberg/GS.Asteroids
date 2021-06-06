@@ -363,7 +363,7 @@ wreckageCounter dc i2'0'
 color dc i2'0'
 
 PARTICLE_LIFETIME gequ 100
-WRECKAGE_LIFETIME gequ 100
+WRECKAGE_LIFETIME gequ 200
 
         end
 

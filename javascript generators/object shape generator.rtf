@@ -98,17 +98,17 @@ let rock3 = [\
 \
 let ufo = [\
 	13, 0,\
-  6, -4,\
-  -6, -4,\
+  6, 4,\
+  -6, 4,\
   -13, 0,\
-  -6,4,\
-  -3,9,\
-  3,9,\
-  6,4,\
+  -6,-4,\
+  -3,-9,\
+  3,-9,\
+  6,-4,\
   13,0,\
   -13,0,\
-  -6,4,\
-  6,4\
+  -6,-4,\
+  6,-4\
 ]\
 \
 // ship\
@@ -178,8 +178,8 @@ let ufo = [\
   \
   str += `		dc i2'$\{Math.floor(ufo.length/2)\}'\\n\\n`\
   for (let i=0; i<ufo.length; i+=2) \{\
-    str += `		dc i2'$\{Math.floor(ufo[i])\}'\\n`\
-    str += `		dc i2'$\{Math.floor(ufo[i+1])\}'\\n\\n`\
+    str += `		dc i2'$\{Math.floor(ufo[i]*0.9)\}'\\n`\
+    str += `		dc i2'$\{Math.floor(ufo[i+1]*0.9)\}'\\n\\n`\
   \}\
   \
   largeUFOOffset = offset\
@@ -193,8 +193,8 @@ let ufo = [\
   \
   str += `		dc i2'$\{Math.floor(ufo.length/2)\}'\\n\\n`\
   for (let i=0; i<ufo.length; i+=2) \{\
-    str += `		dc i2'$\{Math.floor(ufo[i]*0.5)\}'\\n`\
-    str += `		dc i2'$\{Math.floor(ufo[i+1]*0.5)\}'\\n\\n`\
+    str += `		dc i2'$\{Math.floor(ufo[i]*0.4)\}'\\n`\
+    str += `		dc i2'$\{Math.floor(ufo[i+1]*0.4)\}'\\n\\n`\
   \}\
   \
   smallUFOOffset = offset\

@@ -287,12 +287,12 @@ itsAHit1 anop
         ldx #OBJECT_THRUST
         sta lifetimeList,x
 
-        lda #OBJECT_PLAYER
-
 ; throw some particles
+        lda #OBJECT_PLAYER
         jsl startExplosion
 
 ; throw some wreckage
+        lda #OBJECT_PLAYER
         jsl startWreckageExplosion
 
 ; player was destroyed - bail
@@ -374,12 +374,207 @@ done anop
         rtl
 
 
+        
+        
+checkSaucerAgainstRocks entry
+
+        lda #0
+        sta rockCounter
+        ldy #OBJECT_LARGE_ROCK1
+
+rockLoop2 anop
+
+; check to see if this rock is active
+        lda lifetimeList,y
+        cmp #-1
+        beq computeBoundingBox2
+        jmp rockNext2
+
+computeBoundingBox2 anop
+; compute the rock bounding box
+        lda sizeList,y
+        lsr a
+        sta size
+
+        lda xPosList,y
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta xRockCenter
+
+        lda yPosList,y
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta yRockCenter
+
+        lda xRockCenter
+        sec
+        sbc size
+        sta testRectLeft
+
+        lda yRockCenter
+        sec
+        sbc size
+        sta testRectTop
+
+        lda xRockCenter
+        clc
+        adc size
+        sta testRectRight
+
+        lda yRockCenter
+        clc
+        adc size
+        sta testRectBottom
+
+
+; hit test the saucer rect against the rock rect
+
+; check saucerRectLeft > testRectRight
+
+        lda saucerRectLeft
+        cmp testRectRight
+        bcs noIntersect2
+
+; check saucerRectRight < testRectLeft
+
+        lda testRectLeft
+        cmp saucerRectRight
+        bcs noIntersect2
+
+; check saucerRectTop > testRectBottom
+
+        lda saucerRectTop
+        cmp testRectBottom
+        bcs noIntersect2
+
+; check saucerRectBottom < testRectTop
+
+        lda testRectTop
+        cmp saucerRectBottom
+        bcs noIntersect2
+
+        bra itsAHit2
+
+noIntersect2 anop
+        jmp rockNext2
+
+itsAHit2 anop
+; break down the rock
+        stx savex
+        sty savey
+        tya
+        jsl destroyRock
+        ldx savex
+        ldy savey
+
+; destroy the saucer
+        lda #0
+        ldx #OBJECT_LARGE_SAUCER1
+        sta lifetimeList,x
+
+; throw some particles
+        lda #OBJECT_LARGE_SAUCER1
+        jsl startExplosion
+
+; throw some wreckage
+        lda #OBJECT_LARGE_SAUCER1
+        jsl startWreckageExplosion
+
+; saucer was destroyed - bail
+        jmp rocksDone2
+
+; increment to the next rock and loop
+rockNext2 anop
+        inc rockCounter
+        lda rockCounter
+        cmp #NUM_ROCKS
+        beq rocksDone2
+        iny
+        iny
+        jmp rockLoop2
+
+rocksDone2 anop
+
+        rtl
+        
+        
+collisionCheckSaucers entry
+
+        ldx #OBJECT_LARGE_SAUCER1
+
+; check to see if the saucer is active
+        lda lifetimeList,x
+        cmp #0
+        bne getSaucerPos
+        jmp done1
+
+getSaucerPos anop
+        lda xPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta xSaucerPos
+        lda yPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta ySaucerPos
+
+        lda sizeList,x
+        lsr a
+        sta saucerSize
+
+        lda xSaucerPos
+        sec
+        sbc saucerSize
+        sta saucerRectLeft
+
+        lda ySaucerPos
+        sec
+        sbc saucerSize
+        sta saucerRectTop
+
+        lda xSaucerPos
+        clc
+        adc saucerSize
+        sta saucerRectRight
+
+        lda ySaucerPos
+        clc
+        adc saucerSize
+        sta saucerRectBottom
+
+        jsl checkSaucerAgainstRocks
+
+done1 anop
+
+        rtl
+        
+        
+        
 
 missileCounter dc i2'0'
 rockCounter dc i2'0'
 xPlayerPos dc i2'0'
 yPlayerPos dc i2'0'
 playerSize dc i2'0'
+xSaucerPos dc i2'0'
+ySaucerPos dc i2'0'
+saucerSize dc i2'0'
 xMissilePos dc i2'0'
 yMissilePos dc i2'0'
 size dc i2'0'
@@ -391,6 +586,10 @@ playerRectLeft dc i2'0'
 playerRectTop dc i2'0'
 playerRectRight dc i2'0'
 playerRectBottom dc i2'0'
+saucerRectLeft dc i2'0'
+saucerRectTop dc i2'0'
+saucerRectRight dc i2'0'
+saucerRectBottom dc i2'0'
 xRockCenter dc i2'0'
 yRockCenter dc i2'0'
 

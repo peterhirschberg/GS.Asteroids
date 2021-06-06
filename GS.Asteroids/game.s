@@ -17,7 +17,6 @@ gameInit entry
         jsl setupScreen
         jsl initColorTable
         jsl spawnInitialRocks
-
         rtl
 
 
@@ -35,10 +34,15 @@ run anop
 
 ; run the player ship
         jsl runPlayerShip
+        
+; spawn / run the saucers
+        jsl spawnSaucer
+        jsl runSaucers
 
 ; collision checks
         jsl collisionCheckMissiles
         jsl collisionCheckPlayer
+        jsl collisionCheckSaucers
 
 ; check number of active rocks
         jsl numActiveRocks
@@ -49,15 +53,23 @@ run anop
 ; TODO: increment number of rocks
         lda activeRockCount
         cmp #0
-        bne continue
+        bne continue1
         jsl spawnInitialRocks
 
-continue anop
+continue1
+        
+; if less than 10 rocks left, spawn a saucer
+        lda #10
+        cmp activeRockCount
+        bcs doSpawnSaucer
+        jmp continue2
+
+doSpawnSaucer anop
+        jsl spawnSaucer
+
+continue2 anop
 ; update all objects
         jsr updateObjects
-
-; wait for VBL
-;        jsl waitForVbl
 
 ; erase all previous lines and dots
         jsl eraseDisplayList
@@ -86,30 +98,8 @@ continue anop
 
 
 ; Credit for the code below goes to Jeremy Rand - author of BuGS
-waitForVbl entry
-vblLoop anop
-        lda >VERTICAL_COUNTER     ; load the counter value
-        and #$80ff                ; mask out the VBL bits
-        asl a                     ; shift the word around
-        adc #0                    ; move MSB -> LSB
-        cmp #$1c8
-        bge vblLoop
-        rtl
 
 setupScreen entry
-        bra dontShadow
-
-        lda >SHADOW_REGISTER     ; Enable shadowing of SHR
-        and #$f7
-        sta >SHADOW_REGISTER
-
-        lda #$a1
-        sta >NEW_VIDEO_REGISTER     ; Enable SHR mode
-        lda >BORDER_COLOUR_REGISTER
-        and #$000f
-        sta borderColour
-
-dontShadow anop
 
         lda >BORDER_COLOUR_REGISTER
         and #$f0

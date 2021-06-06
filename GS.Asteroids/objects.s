@@ -1210,48 +1210,50 @@ OBJECT_WRECKAGE14               gequ 150
 OBJECT_WRECKAGE15               gequ 152
 OBJECT_WRECKAGE16               gequ 154
 
-OBJECT_PARTICLE1                gequ 156
-OBJECT_PARTICLE2                gequ 158
-OBJECT_PARTICLE3                gequ 160
-OBJECT_PARTICLE4                gequ 162
-OBJECT_PARTICLE5                gequ 164
-OBJECT_PARTICLE6                gequ 166
-OBJECT_PARTICLE7                gequ 168
-OBJECT_PARTICLE8                gequ 170
-OBJECT_PARTICLE9                gequ 172
-OBJECT_PARTICLE10               gequ 174
-OBJECT_PARTICLE11               gequ 176
-OBJECT_PARTICLE12               gequ 178
-OBJECT_PARTICLE13               gequ 180
-OBJECT_PARTICLE14               gequ 182
-OBJECT_PARTICLE15               gequ 184
-OBJECT_PARTICLE16               gequ 186
-OBJECT_PARTICLE17               gequ 188
-OBJECT_PARTICLE18               gequ 190
-OBJECT_PARTICLE19               gequ 192
-OBJECT_PARTICLE20               gequ 194
-OBJECT_PARTICLE21               gequ 196
-OBJECT_PARTICLE22               gequ 198
-OBJECT_PARTICLE23               gequ 200
-OBJECT_PARTICLE24               gequ 202
-OBJECT_PARTICLE25               gequ 204
-OBJECT_PARTICLE26               gequ 206
-OBJECT_PARTICLE27               gequ 208
-OBJECT_PARTICLE28               gequ 210
-OBJECT_PARTICLE29               gequ 212
-OBJECT_PARTICLE30               gequ 214
-OBJECT_PARTICLE31               gequ 216
-OBJECT_PARTICLE32               gequ 218
-OBJECT_PARTICLE33               gequ 220
-OBJECT_PARTICLE34               gequ 222
-OBJECT_PARTICLE35               gequ 224
-OBJECT_PARTICLE36               gequ 226
-OBJECT_PARTICLE37               gequ 228
-OBJECT_PARTICLE38               gequ 230
-OBJECT_PARTICLE39               gequ 232
-OBJECT_PARTICLE40               gequ 234
-OBJECT_LARGE_SAUCER1            gequ 236
-OBJECT_SMALL_SAUCER1            gequ 238
+OBJECT_LARGE_SAUCER1            gequ 156
+OBJECT_SMALL_SAUCER1            gequ 158
+
+OBJECT_PARTICLE1                gequ 160
+OBJECT_PARTICLE2                gequ 162
+OBJECT_PARTICLE3                gequ 164
+OBJECT_PARTICLE4                gequ 166
+OBJECT_PARTICLE5                gequ 168
+OBJECT_PARTICLE6                gequ 170
+OBJECT_PARTICLE7                gequ 172
+OBJECT_PARTICLE8               gequ 174
+OBJECT_PARTICLE9               gequ 176
+OBJECT_PARTICLE10               gequ 178
+OBJECT_PARTICLE11               gequ 180
+OBJECT_PARTICLE12               gequ 182
+OBJECT_PARTICLE13               gequ 184
+OBJECT_PARTICLE14               gequ 186
+OBJECT_PARTICLE15               gequ 188
+OBJECT_PARTICLE16               gequ 190
+OBJECT_PARTICLE17               gequ 192
+OBJECT_PARTICLE18               gequ 194
+OBJECT_PARTICLE19               gequ 196
+OBJECT_PARTICLE20               gequ 198
+OBJECT_PARTICLE21               gequ 200
+OBJECT_PARTICLE22               gequ 202
+OBJECT_PARTICLE23               gequ 204
+OBJECT_PARTICLE24               gequ 206
+OBJECT_PARTICLE25               gequ 208
+OBJECT_PARTICLE26               gequ 210
+OBJECT_PARTICLE27               gequ 212
+OBJECT_PARTICLE28               gequ 214
+OBJECT_PARTICLE29               gequ 216
+OBJECT_PARTICLE30               gequ 218
+OBJECT_PARTICLE31               gequ 220
+OBJECT_PARTICLE32               gequ 222
+OBJECT_PARTICLE33               gequ 224
+OBJECT_PARTICLE34               gequ 226
+OBJECT_PARTICLE35               gequ 228
+OBJECT_PARTICLE36               gequ 230
+OBJECT_PARTICLE37               gequ 232
+OBJECT_PARTICLE38               gequ 234
+OBJECT_PARTICLE39               gequ 236
+OBJECT_PARTICLE40               gequ 238
+
 
 NUM_PLAYER_OBJECTS              gequ 2
 NUM_LARGE_ROCKS                 gequ 8
@@ -1261,20 +1263,19 @@ NUM_ROCKS                       gequ NUM_LARGE_ROCKS+NUM_MEDIUM_ROCKS+NUM_SMALL_
 NUM_PLAYER_MISSILES             gequ 4
 NUM_WRECKAGE                    gequ 16
 NUM_PARTICLES                   gequ 80
-NUM_LARGE_SAUCER                gequ 1
-NUM_SMALL_SAUCER                gequ 1
-NUM_OBJECTS                     gequ NUM_PLAYER_OBJECTS+NUM_ROCKS+NUM_PLAYER_MISSILES+NUM_WRECKAGE+NUM_PARTICLES+NUM_LARGE_SAUCER+NUM_SMALL_SAUCER
+NUM_SAUCERS                     gequ 2
+NUM_OBJECTS                     gequ NUM_PLAYER_OBJECTS+NUM_ROCKS+NUM_PLAYER_MISSILES+NUM_WRECKAGE+NUM_PARTICLES+NUM_SAUCERS
 
 OBJECT_PLAYER              gequ 0
 OBJECT_THRUST              gequ 2
 OBJECT_PLAYER_MISSILE      gequ 4
 OBJECT_WRECKAGE            gequ 6
-OBJECT_LARGE_ROCK          gequ 8
-OBJECT_MEDIUM_ROCK         gequ 10
-OBJECT_SMALL_ROCK          gequ 12
-OBJECT_PARTICLE            gequ 14
-OBJECT_LARGE_SAUCER        gequ 16
-OBJECT_SMALL_SAUCER        gequ 18
+OBJECT_LARGE_SAUCER        gequ 8
+OBJECT_SMALL_SAUCER        gequ 10
+OBJECT_LARGE_ROCK          gequ 12
+OBJECT_MEDIUM_ROCK         gequ 14
+OBJECT_SMALL_ROCK          gequ 16
+OBJECT_PARTICLE            gequ 18
 
 shapeList anop
 ; player ship and thrust
@@ -1361,6 +1362,10 @@ shapeList anop
         dc i2'SHAPE_OFFSET_WRECKAGE'
         dc i2'SHAPE_OFFSET_WRECKAGE'
         dc i2'SHAPE_OFFSET_WRECKAGE'
+; large saucer
+        dc i2'SHAPE_OFFSET_LARGE_SAUCER'
+; small saucer
+        dc i2'SHAPE_OFFSET_SMALL_SAUCER'
 ; explosion particles
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
@@ -1442,10 +1447,7 @@ shapeList anop
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
-; large saucer
-        dc i2'SHAPE_OFFSET_LARGE_SAUCER'
-; small saucer
-        dc i2'SHAPE_OFFSET_SMALL_SAUCER'
+
 
 ; used to do hit testing
 sizeList anop
@@ -1533,6 +1535,10 @@ sizeList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; large saucer
+        dc i2'13'
+; small saucer
+        dc i2'7'
 ; particles (size not used for these)
         dc i2'0'
         dc i2'0'
@@ -1614,10 +1620,6 @@ sizeList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-; large saucer
-        dc i2'13'
-; small saucer
-        dc i2'7'
         
 xPosList anop
 ; player ship
@@ -1704,6 +1706,10 @@ xPosList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; large saucer
+        dc i2'0'
+; small saucer
+        dc i2'0'
 ; particles
         dc i2'0'
         dc i2'0'
@@ -1785,10 +1791,6 @@ xPosList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-; large saucer
-        dc i2'MIDSCREEN_X'
-; small saucer
-        dc i2'800'
         
 yPosList anop
 ; player ship
@@ -1875,6 +1877,10 @@ yPosList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; large saucer
+        dc i2'0'
+; small saucer
+        dc i2'0'
 ; particles
         dc i2'0'
         dc i2'0'
@@ -1956,10 +1962,6 @@ yPosList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-; large saucer
-        dc i2'600'
-; small saucer
-        dc i2'600'
         
 xSpeedList anop
 ; player ship
@@ -2046,6 +2048,10 @@ xSpeedList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; large saucer
+        dc i2'0'
+; small saucer
+        dc i2'0'
 ; particles
         dc i2'0'
         dc i2'0'
@@ -2126,10 +2132,6 @@ xSpeedList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-        dc i2'0'
-; large saucer
-        dc i2'0'
-; small saucer
         dc i2'0'
         
 ySpeedList anop
@@ -2217,6 +2219,10 @@ ySpeedList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; large saucer
+        dc i2'0'
+; small saucer
+        dc i2'0'
 ; particles
         dc i2'0'
         dc i2'0'
@@ -2297,10 +2303,6 @@ ySpeedList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-        dc i2'0'
-; large saucer
-        dc i2'0'
-; small saucer
         dc i2'0'
         
 angleList anop
@@ -2388,6 +2390,10 @@ angleList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; large saucer
+        dc i2'0'
+; small saucer
+        dc i2'0'
 ; particles
         dc i2'0'
         dc i2'0'
@@ -2468,10 +2474,6 @@ angleList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-        dc i2'0'
-; large saucer
-        dc i2'0'
-; small saucer
         dc i2'0'
         
 rotationSpeedList anop
@@ -2559,6 +2561,10 @@ rotationSpeedList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; large saucer
+        dc i2'0'
+; small saucer
+        dc i2'0'
 ; particles
         dc i2'0'
         dc i2'0'
@@ -2639,10 +2645,6 @@ rotationSpeedList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-        dc i2'0'
-; large saucer
-        dc i2'0'
-; small saucer
         dc i2'0'
         
 colorList anop
@@ -2730,6 +2732,10 @@ colorList anop
         dc i2'$ff'
         dc i2'$ff'
         dc i2'$ff'
+; large saucer
+        dc i2'$dead'
+; small saucer
+        dc i2'$ff'
 ; particles
         dc i2'0'
         dc i2'0'
@@ -2811,10 +2817,6 @@ colorList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-; large saucer
-        dc i2'$ff'
-; small saucer
-        dc i2'$ff'
         
 lifetimeList anop
 ; player ship
@@ -2901,6 +2903,10 @@ lifetimeList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; large saucer
+        dc i2'0'
+; small saucer
+        dc i2'0'
 ; particles
         dc i2'0'
         dc i2'0'
@@ -2981,10 +2987,6 @@ lifetimeList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
-        dc i2'0'
-; large saucer
-        dc i2'0'
-; small saucer
         dc i2'0'
 
 objectTypeList anop
@@ -3074,96 +3076,97 @@ objectTypeList anop
         dc i2'OBJECT_WRECKAGE'
         dc i2'OBJECT_WRECKAGE'
         dc i2'OBJECT_WRECKAGE'
-
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-        dc i2'OBJECT_PARTICLE'
-
+        
         dc i2'OBJECT_LARGE_SAUCER'
         dc i2'OBJECT_SMALL_SAUCER'
 
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+        dc i2'OBJECT_PARTICLE'
+
+        
         end

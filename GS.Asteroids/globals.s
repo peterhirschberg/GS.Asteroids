@@ -100,7 +100,7 @@ SCREEN_YMAX                     gequ $31c0
 MIDSCREEN_X                     gequ SCREEN_XMAX/2
 MIDSCREEN_Y                     gequ SCREEN_YMAX/2
 
-; missile constants (both player and UFO)
+; missile constants (both player and saucers)
 MISSILE_SPEED                   gequ 80
 MISSILE_LIFETIME                gequ 40
 
