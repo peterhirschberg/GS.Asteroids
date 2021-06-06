@@ -11,7 +11,7 @@
 objects start
         using globalData
         using objectData
-
+        using displayListData
 
 updateObjects entry
 

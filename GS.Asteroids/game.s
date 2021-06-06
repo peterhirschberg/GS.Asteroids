@@ -11,8 +11,9 @@
 game    start
         using globalData
         using objectData
+        using displayListData
 
-
+        
 gameInit entry
         jsl setupScreen
         jsl initColorTable
@@ -36,7 +37,6 @@ run anop
         jsl runPlayerShip
         
 ; spawn / run the saucers
-        jsl spawnSaucer
         jsl runSaucers
 
 ; collision checks
@@ -45,8 +45,7 @@ run anop
         jsl collisionCheckSaucers
 
 ; check number of active rocks
-        jsl numActiveRocks
-        sta activeRockCount
+        jsl calcActiveRocks
 
 ; if no rocks left respawn them
 ; TODO: wait for a delay here
@@ -56,18 +55,8 @@ run anop
         bne continue1
         jsl spawnInitialRocks
 
-continue1
-        
-; if less than 10 rocks left, spawn a saucer
-        lda #10
-        cmp activeRockCount
-        bcs doSpawnSaucer
-        jmp continue2
+continue1 anop
 
-doSpawnSaucer anop
-        jsl spawnSaucer
-
-continue2 anop
 ; update all objects
         jsr updateObjects
 
@@ -141,6 +130,7 @@ gameDone anop
 
         rtl
 
+        
 
         end
 

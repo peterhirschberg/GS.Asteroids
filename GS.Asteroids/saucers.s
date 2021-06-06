@@ -21,7 +21,41 @@ spawnSaucer entry
         cmp #0
         beq doSpawn
         rtl
+        
+; if less than 4 medium/small rocks left, spawn a saucer
+;        lda #4
+;        cmp activeSmallMediumRockCount
+;        bcs checklargeRocks
+;        bra continue2
 
+;checklargeRocks anop
+;        lda #1
+;        cmp activeLargeRockCount
+;        bcs checkSaucers
+;        bra continue2
+        
+;checkSaucers anop
+; check to see if there is already an active saucer
+;        ldx #OBJECT_LARGE_SAUCER1
+;        lda lifetimeList,x
+;        cmp #0
+;        beq checkSaucerSpawnTimer
+;        bra continue2
+
+;checkSaucerSpawnTimer anop
+;        dec saucerSpawnTimer
+;        lda saucerSpawnTimer
+;        bmi doSpawnSaucer
+;        bra continue2
+        
+;doSpawnSaucer anop
+;        lda #500
+;        sta saucerSpawnTimer
+;        jsl spawnSaucer
+
+;continue2 anop
+        
+        
 doSpawn anop
 
         lda #0
@@ -132,6 +166,7 @@ goUp anop
 savex dc i2'0'
 
 directionTimer dc i2'0'
+saucerSpawnTimer dc i2'500'
 
 SAUCER_SPEED gequ 100
         

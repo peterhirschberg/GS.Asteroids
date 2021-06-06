@@ -459,10 +459,12 @@ destroySmallRock anop
         rtl
 
 
-numActiveRocks entry
+calcActiveRocks entry
 
         lda #0
         sta count
+        sta largeCount
+        sta smallMediumCount
         sta rockCounter
         ldy #OBJECT_LARGE_ROCK1
 
@@ -476,6 +478,15 @@ rockLoop anop
 
 rockIsActive anop
         inc count
+        inc largeCount
+        tya
+        cmp #OBJECT_MEDIUM_ROCK1
+        bcs smallMediumRock
+        bra rockNext
+        
+smallMediumRock anop
+        dec largeCount
+        inc smallMediumCount
 
 rockNext anop
         inc rockCounter
@@ -488,6 +499,13 @@ rockNext anop
 
 rocksDone anop
         lda count
+        sta activeRockCount
+        
+        lda largeCount
+        sta activeLargeRockCount
+        
+        lda smallMediumCount
+        sta activeSmallMediumRockCount
 
         rtl
 
@@ -497,6 +515,8 @@ savey dc i2'0'
 
 index dc i2'0'
 count dc i2'0'
+largeCount dc i2'0'
+smallMediumCount dc i2'0'
 rockCounter dc i2'0'
 
 numToSpawn dc i2'4'
