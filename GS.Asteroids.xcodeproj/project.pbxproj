@@ -30,6 +30,7 @@
 		D06BB5E526654CB200EB1107 /* missiles.s in Sources */ = {isa = PBXBuildFile; fileRef = D06BB5E426654CB200EB1107 /* missiles.s */; };
 		D06BB5E72665A75900EB1107 /* collision.s in Sources */ = {isa = PBXBuildFile; fileRef = D06BB5E62665A75900EB1107 /* collision.s */; };
 		D0EFF02D266C443B0066706A /* saucers.s in Sources */ = {isa = PBXBuildFile; fileRef = D0EFF02C266C443B0066706A /* saucers.s */; };
+		D0EFF02F266D4D300066706A /* alphanum.s in Sources */ = {isa = PBXBuildFile; fileRef = D0EFF02E266D4D300066706A /* alphanum.s */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -88,6 +89,7 @@
 		D076F96B2659C6320097A122 /* objects.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = objects.s; sourceTree = "<group>"; };
 		D076F96C265B46FA0097A122 /* color.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = color.s; sourceTree = "<group>"; };
 		D0EFF02C266C443B0066706A /* saucers.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = saucers.s; sourceTree = "<group>"; };
+		D0EFF02E266D4D300066706A /* alphanum.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = alphanum.s; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				D06BB5E82665ADE400EB1107 /* rocks.s */,
 				D06BB5EA26678FEA00EB1107 /* explosions.s */,
 				D0EFF02C266C443B0066706A /* saucers.s */,
+				D0EFF02E266D4D300066706A /* alphanum.s */,
 			);
 			path = GS.Asteroids;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D06BB5E526654CB200EB1107 /* missiles.s in Sources */,
+				D0EFF02F266D4D300066706A /* alphanum.s in Sources */,
 				D06BB5E72665A75900EB1107 /* collision.s in Sources */,
 				D063C4112659302A00C5C7C6 /* displayList.s in Sources */,
 				D06BB5E326650BB800EB1107 /* controls.s in Sources */,

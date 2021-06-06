@@ -76,6 +76,9 @@ continue1 anop
 ; draw everything to the display list
         jsr drawObjects
 
+; alphanumerics
+;        jsl drawText
+        
 ; render the display list and dot list
         jsl renderDisplayList
         jsl renderDotList
