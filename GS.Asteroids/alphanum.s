@@ -95,69 +95,31 @@ drawText entry
         lda #100
         sta charYPos
 
-        lda #OFFSET_A
+        ldx #0
+        
+drawTextLoop anop
+
+        lda textAsteroidsData,x
+        cmp #-1
+        beq drawTextDone
+        
+        stx savexDraw
+        sty saveyDraw
         jsr drawLetter
+        ldx savexDraw
+        ldy saveyDraw
+        
         lda charXPos
         clc
-        adc CHAR_SPACING_X
+        adc #18
         sta charXPos
-
-        lda #OFFSET_S
-        jsr drawLetter
-        lda charXPos
-        clc
-        adc CHAR_SPACING_X
-        sta charXPos
-
-        lda #OFFSET_T
-        jsr drawLetter
-        lda charXPos
-        clc
-        adc CHAR_SPACING_X
-        sta charXPos
-
-        lda #OFFSET_E
-        jsr drawLetter
-        lda charXPos
-        clc
-        adc CHAR_SPACING_X
-        sta charXPos
-
-        lda #OFFSET_R
-        jsr drawLetter
-        lda charXPos
-        clc
-        adc CHAR_SPACING_X
-        sta charXPos
-
-        lda #OFFSET_O
-        jsr drawLetter
-        lda charXPos
-        clc
-        adc CHAR_SPACING_X
-        sta charXPos
-
-        lda #OFFSET_I
-        jsr drawLetter
-        lda charXPos
-        clc
-        adc CHAR_SPACING_X
-        sta charXPos
-
-        lda #OFFSET_D
-        jsr drawLetter
-        lda charXPos
-        clc
-        adc CHAR_SPACING_X
-        sta charXPos
-
-        lda #OFFSET_S
-        jsr drawLetter
-        lda charXPos
-        clc
-        adc CHAR_SPACING_X
-        sta charXPos
-
+        
+        inx
+        inx
+        jmp drawTextLoop
+        
+drawTextDone anop
+        
         rtl
 
 
@@ -167,7 +129,8 @@ charYPos dc i4'0'
 color dc i2'$ff'
 savex dc i2'0'
 savey dc i2'0'
-
+savexDraw dc i2'0'
+saveyDraw dc i2'0'
         end
 
 
@@ -176,6 +139,19 @@ alphanumData data
 CHAR_SPACING_X gequ 10
 CHAR_SPACING_Y gequ 20
 
+
+textAsteroidsData anop
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_S'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_O'
+        dc i2'OFFSET_I'
+        dc i2'OFFSET_D'
+        dc i2'OFFSET_S'
+        dc i2'-1'
+        
 characterData anop
 ; A
         dc i2'10'
