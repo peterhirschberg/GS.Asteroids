@@ -37,6 +37,7 @@ run anop
         jsl runPlayerShip
         
 ; spawn / run the saucers
+        jsl spawnSaucer
         jsl runSaucers
 
 ; collision checks
