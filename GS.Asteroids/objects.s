@@ -1193,66 +1193,75 @@ OBJECT_PLAYER_MISSILE2          gequ 118
 OBJECT_PLAYER_MISSILE3          gequ 120
 OBJECT_PLAYER_MISSILE4          gequ 122
 
-OBJECT_WRECKAGE1                gequ 124
-;OBJECT_WRECKAGE2                gequ 126
-;OBJECT_WRECKAGE3                gequ 128
-;OBJECT_WRECKAGE4                gequ 130
-;OBJECT_WRECKAGE5                gequ 132
-;OBJECT_WRECKAGE6                gequ 134
-;OBJECT_WRECKAGE7                gequ 136
-;OBJECT_WRECKAGE8                gequ 138
-;OBJECT_WRECKAGE9                gequ 140
-;OBJECT_WRECKAGE10               gequ 142
-;OBJECT_WRECKAGE11               gequ 144
-;OBJECT_WRECKAGE12               gequ 146
-;OBJECT_WRECKAGE13               gequ 148
-;OBJECT_WRECKAGE14               gequ 150
-;OBJECT_WRECKAGE15               gequ 152
-;OBJECT_WRECKAGE16               gequ 154
+OBJECT_SAUCER_MISSILE1          gequ 124
+OBJECT_SAUCER_MISSILE2          gequ 126
+OBJECT_SAUCER_MISSILE3          gequ 128
+OBJECT_SAUCER_MISSILE4          gequ 130
+OBJECT_SAUCER_MISSILE5          gequ 132
+OBJECT_SAUCER_MISSILE6          gequ 134
+OBJECT_SAUCER_MISSILE7          gequ 136
+OBJECT_SAUCER_MISSILE8          gequ 138
 
-OBJECT_LARGE_SAUCER1            gequ 156
-OBJECT_SMALL_SAUCER1            gequ 158
+OBJECT_WRECKAGE1                gequ 140
+;OBJECT_WRECKAGE2                gequ 142
+;OBJECT_WRECKAGE3                gequ 144
+;OBJECT_WRECKAGE4                gequ 146
+;OBJECT_WRECKAGE5                gequ 148
+;OBJECT_WRECKAGE6                gequ 150
+;OBJECT_WRECKAGE7                gequ 152
+;OBJECT_WRECKAGE8                gequ 154
+;OBJECT_WRECKAGE9                gequ 156
+;OBJECT_WRECKAGE10               gequ 158
+;OBJECT_WRECKAGE11               gequ 160
+;OBJECT_WRECKAGE12               gequ 162
+;OBJECT_WRECKAGE13               gequ 164
+;OBJECT_WRECKAGE14               gequ 166
+;OBJECT_WRECKAGE15               gequ 168
+;OBJECT_WRECKAGE16               gequ 170
 
-OBJECT_PARTICLE1                gequ 160
-;OBJECT_PARTICLE2                gequ 162
-;OBJECT_PARTICLE3                gequ 164
-;OBJECT_PARTICLE4                gequ 166
-;OBJECT_PARTICLE5                gequ 168
-;OBJECT_PARTICLE6                gequ 170
-;OBJECT_PARTICLE7                gequ 172
-;OBJECT_PARTICLE8               gequ 174
-;OBJECT_PARTICLE9               gequ 176
-;OBJECT_PARTICLE10               gequ 178
-;OBJECT_PARTICLE11               gequ 180
-;OBJECT_PARTICLE12               gequ 182
-;OBJECT_PARTICLE13               gequ 184
-;OBJECT_PARTICLE14               gequ 186
-;OBJECT_PARTICLE15               gequ 188
-;OBJECT_PARTICLE16               gequ 190
-;OBJECT_PARTICLE17               gequ 192
-;OBJECT_PARTICLE18               gequ 194
-;OBJECT_PARTICLE19               gequ 196
-;OBJECT_PARTICLE20               gequ 198
-;OBJECT_PARTICLE21               gequ 200
-;OBJECT_PARTICLE22               gequ 202
-;OBJECT_PARTICLE23               gequ 204
-;OBJECT_PARTICLE24               gequ 206
-;OBJECT_PARTICLE25               gequ 208
-;OBJECT_PARTICLE26               gequ 210
-;OBJECT_PARTICLE27               gequ 212
-;OBJECT_PARTICLE28               gequ 214
-;OBJECT_PARTICLE29               gequ 216
-;OBJECT_PARTICLE30               gequ 218
-;OBJECT_PARTICLE31               gequ 220
-;OBJECT_PARTICLE32               gequ 222
-;OBJECT_PARTICLE33               gequ 224
-;OBJECT_PARTICLE34               gequ 226
-;OBJECT_PARTICLE35               gequ 228
-;OBJECT_PARTICLE36               gequ 230
-;OBJECT_PARTICLE37               gequ 232
-;OBJECT_PARTICLE38               gequ 234
-;OBJECT_PARTICLE39               gequ 236
-;OBJECT_PARTICLE40               gequ 238
+OBJECT_LARGE_SAUCER1            gequ 172
+OBJECT_SMALL_SAUCER1            gequ 174
+
+OBJECT_PARTICLE1                gequ 176
+;OBJECT_PARTICLE2                gequ 178
+;OBJECT_PARTICLE3                gequ 180
+;OBJECT_PARTICLE4                gequ 182
+;OBJECT_PARTICLE5                gequ 184
+;OBJECT_PARTICLE6                gequ 186
+;OBJECT_PARTICLE7                gequ 188
+;OBJECT_PARTICLE8               gequ 190
+;OBJECT_PARTICLE9               gequ 192
+;OBJECT_PARTICLE10               gequ 194
+;OBJECT_PARTICLE11               gequ 196
+;OBJECT_PARTICLE12               gequ 198
+;OBJECT_PARTICLE13               gequ 200
+;OBJECT_PARTICLE14               gequ 202
+;OBJECT_PARTICLE15               gequ 204
+;OBJECT_PARTICLE16               gequ 206
+;OBJECT_PARTICLE17               gequ 208
+;OBJECT_PARTICLE18               gequ 210
+;OBJECT_PARTICLE19               gequ 212
+;OBJECT_PARTICLE20               gequ 214
+;OBJECT_PARTICLE21               gequ 216
+;OBJECT_PARTICLE22               gequ 218
+;OBJECT_PARTICLE23               gequ 220
+;OBJECT_PARTICLE24               gequ 222
+;OBJECT_PARTICLE25               gequ 224
+;OBJECT_PARTICLE26               gequ 226
+;OBJECT_PARTICLE27               gequ 228
+;OBJECT_PARTICLE28               gequ 230
+;OBJECT_PARTICLE29               gequ 232
+;OBJECT_PARTICLE30               gequ 234
+;OBJECT_PARTICLE31               gequ 236
+;OBJECT_PARTICLE32               gequ 238
+;OBJECT_PARTICLE33               gequ 240
+;OBJECT_PARTICLE34               gequ 242
+;OBJECT_PARTICLE35               gequ 244
+;OBJECT_PARTICLE36               gequ 246
+;OBJECT_PARTICLE37               gequ 248
+;OBJECT_PARTICLE38               gequ 250
+;OBJECT_PARTICLE39               gequ 252
+;OBJECT_PARTICLE40               gequ 254
 
 
 NUM_PLAYER_OBJECTS              gequ 2
@@ -1261,21 +1270,23 @@ NUM_MEDIUM_ROCKS                gequ 16
 NUM_SMALL_ROCKS                 gequ 32
 NUM_ROCKS                       gequ NUM_LARGE_ROCKS+NUM_MEDIUM_ROCKS+NUM_SMALL_ROCKS
 NUM_PLAYER_MISSILES             gequ 4
+NUM_SAUCER_MISSILES             gequ 8
 NUM_WRECKAGE                    gequ 16
 NUM_PARTICLES                   gequ 80
 NUM_SAUCERS                     gequ 2
-NUM_OBJECTS                     gequ NUM_PLAYER_OBJECTS+NUM_ROCKS+NUM_PLAYER_MISSILES+NUM_WRECKAGE+NUM_PARTICLES+NUM_SAUCERS
+NUM_OBJECTS                     gequ NUM_PLAYER_OBJECTS+NUM_ROCKS+NUM_PLAYER_MISSILES+NUM_SAUCER_MISSILES+NUM_WRECKAGE+NUM_PARTICLES+NUM_SAUCERS
 
 OBJECT_PLAYER              gequ 0
 OBJECT_THRUST              gequ 2
 OBJECT_PLAYER_MISSILE      gequ 4
-OBJECT_WRECKAGE            gequ 6
-OBJECT_LARGE_SAUCER        gequ 8
-OBJECT_SMALL_SAUCER        gequ 10
-OBJECT_LARGE_ROCK          gequ 12
-OBJECT_MEDIUM_ROCK         gequ 14
-OBJECT_SMALL_ROCK          gequ 16
-OBJECT_PARTICLE            gequ 18
+OBJECT_SAUCER_MISSILE      gequ 6
+OBJECT_WRECKAGE            gequ 8
+OBJECT_LARGE_SAUCER        gequ 10
+OBJECT_SMALL_SAUCER        gequ 12
+OBJECT_LARGE_ROCK          gequ 14
+OBJECT_MEDIUM_ROCK         gequ 16
+OBJECT_SMALL_ROCK          gequ 18
+OBJECT_PARTICLE            gequ 20
 
 shapeList anop
 ; player ship and thrust
@@ -1341,6 +1352,15 @@ shapeList anop
         dc i2'SHAPE_OFFSET_SMALL_ROCK1'
         dc i2'SHAPE_OFFSET_SMALL_ROCK2'
 ; player missiles
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+; saucer missiles
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
+        dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
@@ -1518,6 +1538,15 @@ sizeList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; saucer missiles (size not used for these)
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 ; wreckage (size not used for these)
         dc i2'0'
         dc i2'0'
@@ -1685,6 +1714,15 @@ xPosList anop
         dc i2'0'
         dc i2'0'
 ; player missiles
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+; saucer missiles
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'
@@ -1860,6 +1898,15 @@ yPosList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; saucer missiles
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 ; wreckage
         dc i2'0'
         dc i2'0'
@@ -2027,6 +2074,15 @@ xSpeedList anop
         dc i2'0'
         dc i2'0'
 ; player missiles
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+; saucer missiles
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'
@@ -2202,6 +2258,15 @@ ySpeedList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; saucer missiles
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 ; wreckage
         dc i2'0'
         dc i2'0'
@@ -2369,6 +2434,15 @@ angleList anop
         dc i2'0'
         dc i2'0'
 ; player missiles
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+; saucer missiles
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'
@@ -2544,6 +2618,15 @@ rotationSpeedList anop
         dc i2'0'
         dc i2'0'
         dc i2'0'
+; saucer missiles
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
 ; wreckage
         dc i2'0'
         dc i2'0'
@@ -2715,6 +2798,15 @@ colorList anop
         dc i2'$ff'
         dc i2'$ff'
         dc i2'$ff'
+; saucer missiles
+        dc i2'$ff'
+        dc i2'$ff'
+        dc i2'$ff'
+        dc i2'$ff'
+        dc i2'$ff'
+        dc i2'$ff'
+        dc i2'$ff'
+        dc i2'$ff'
 ; wreckage
         dc i2'$ff'
         dc i2'$ff'
@@ -2882,6 +2974,15 @@ lifetimeList anop
         dc i2'0'
         dc i2'0'
 ; player missiles
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+; saucer missiles
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
+        dc i2'0'
         dc i2'0'
         dc i2'0'
         dc i2'0'
@@ -3059,6 +3160,15 @@ objectTypeList anop
         dc i2'OBJECT_PLAYER_MISSILE'
         dc i2'OBJECT_PLAYER_MISSILE'
         dc i2'OBJECT_PLAYER_MISSILE'
+
+        dc i2'OBJECT_SAUCER_MISSILE'
+        dc i2'OBJECT_SAUCER_MISSILE'
+        dc i2'OBJECT_SAUCER_MISSILE'
+        dc i2'OBJECT_SAUCER_MISSILE'
+        dc i2'OBJECT_SAUCER_MISSILE'
+        dc i2'OBJECT_SAUCER_MISSILE'
+        dc i2'OBJECT_SAUCER_MISSILE'
+        dc i2'OBJECT_SAUCER_MISSILE'
 
         dc i2'OBJECT_WRECKAGE'
         dc i2'OBJECT_WRECKAGE'
