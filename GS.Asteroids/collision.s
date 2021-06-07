@@ -21,6 +21,10 @@ collisionCheckMissiles entry
         lda #0
         sta missileCounter
         ldx #OBJECT_PLAYER_MISSILE1
+        
+        lda #NUM_PLAYER_MISSILES
+        sta isPlayerMissile
+        dec isPlayerMissile
 
 missileLoop anop
 
@@ -52,9 +56,10 @@ getMissilePos anop
 
 ; increment to the next missile and loop
 nextMissile anop
+        dec isPlayerMissile
         inc missileCounter
         lda missileCounter
-        cmp #NUM_PLAYER_MISSILES
+        cmp #NUM_MISSILES
         beq missilesDone
         inx
         inx
@@ -161,6 +166,9 @@ itsAHit anop
         lda #0
         sta lifetimeList,x
 
+        lda isPlayerMissile
+        bmi skipScore
+        
 ; update the score
         lda #20
         sta tempScore
@@ -189,6 +197,7 @@ scoreDone anop
         ldx savex
         ldy savey
 
+skipScore anop
 ; throw some particles
         tya
         jsl startExplosion
@@ -628,6 +637,7 @@ saucerRectBottom dc i2'0'
 xRockCenter dc i2'0'
 yRockCenter dc i2'0'
 tempScore dc i2'0'
+isPlayerMissile dc i2'0'
 
 savex dc i2'0'
 savey dc i2'0'

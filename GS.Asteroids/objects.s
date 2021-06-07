@@ -1271,6 +1271,7 @@ NUM_SMALL_ROCKS                 gequ 32
 NUM_ROCKS                       gequ NUM_LARGE_ROCKS+NUM_MEDIUM_ROCKS+NUM_SMALL_ROCKS
 NUM_PLAYER_MISSILES             gequ 4
 NUM_SAUCER_MISSILES             gequ 8
+NUM_MISSILES                    gequ NUM_PLAYER_MISSILES+NUM_SAUCER_MISSILES
 NUM_WRECKAGE                    gequ 16
 NUM_PARTICLES                   gequ 80
 NUM_SAUCERS                     gequ 2
