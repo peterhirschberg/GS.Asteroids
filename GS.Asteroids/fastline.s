@@ -165,6 +165,8 @@ VL1 anop
         sta endY
 VL2 anop
 
+        inc endY
+
 VLloop anop
 
         lda x1
@@ -193,10 +195,8 @@ leftNibble4 anop
         inc startY
         lda startY
         cmp endY
-        beq VLdone
-        sta startY
+        bcs VLdone
         jmp leftNibble4
-
 
 rightNibble1 anop
 
@@ -219,10 +219,8 @@ rightNibble1 anop
         inc startY
         lda startY
         cmp endY
-        beq VLdone
-        sta startY
+        bcs VLdone
         jmp rightNibble1
-        
         
 VLdone anop
 
@@ -647,6 +645,8 @@ VL1 anop
         sta endY
 VL2 anop
 
+        inc endY
+
 VLloop anop
 
         lda startY
@@ -667,8 +667,7 @@ VLloop anop
         inc startY
         lda startY
         cmp endY
-        beq VLdone
-        sta startY
+        bcs VLdone
         jmp VLloop
         
 VLdone anop
