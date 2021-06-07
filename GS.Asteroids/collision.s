@@ -166,7 +166,7 @@ itsAHit anop
         sta tempScore
 
         lda objectTypeList,y
-        cmp OBJECT_MEDIUM_ROCK
+        cmp #OBJECT_MEDIUM_ROCK
         beq mediumRock
         jmp checkSmallRock
 mediumRock anop
@@ -175,16 +175,17 @@ mediumRock anop
         jmp scoreDone
 checkSmallRock anop
         lda objectTypeList,y
-        cmp OBJECT_SMALL_ROCK
+        cmp #OBJECT_SMALL_ROCK
         beq smallRock
         jmp scoreDone
 smallRock anop
+;        brk
         lda #100
         sta tempScore
 scoreDone anop
-        lda tempScore
         stx savex
         sty savey
+        lda tempScore
         jsr addToScore
         ldx savex
         ldy savey

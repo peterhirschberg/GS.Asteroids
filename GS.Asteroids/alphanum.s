@@ -150,6 +150,9 @@ drawTextDone anop
         
 drawScore entry
 
+        lda #0
+        sta firstDigit
+
         lda #10
         sta charXPos
 
@@ -158,60 +161,89 @@ drawScore entry
 
         
         lda scoreDigit100000s
+        cmp firstDigit
+        beq scoreSkip1
         asl a
         tax
         lda digitData,x
         jsr drawLetter
         lda charXPos
         clc
-        adc #10
+        adc #7
         sta charXPos
 
-
+        lda #-1
+        sta firstDigit
+        
+scoreSkip1 anop
         
         lda scoreDigit10000s
+        cmp firstDigit
+        beq scoreSkip2
         asl a
         tax
         lda digitData,x
         jsr drawLetter
         lda charXPos
         clc
-        adc #10
+        adc #7
         sta charXPos
 
+        lda #-1
+        sta firstDigit
 
-        
+scoreSkip2 anop
+
         lda scoreDigit1000s
+        cmp firstDigit
+        beq scoreSkip3
         asl a
         tax
         lda digitData,x
         jsr drawLetter
         lda charXPos
         clc
-        adc #10
+        adc #7
         sta charXPos
 
-        
+        lda #-1
+        sta firstDigit
+
+scoreSkip3 anop
+
         lda scoreDigit100s
+        cmp firstDigit
+        beq scoreSkip4
         asl a
         tax
         lda digitData,x
         jsr drawLetter
         lda charXPos
         clc
-        adc #10
+        adc #7
         sta charXPos
 
-        
+        lda #-1
+        sta firstDigit
+
+scoreSkip4 anop
+
         lda scoreDigit10s
+        cmp firstDigit
+        beq scoreSkip5
         asl a
         tax
         lda digitData,x
         jsr drawLetter
         lda charXPos
         clc
-        adc #10
+        adc #7
         sta charXPos
+
+        lda #-1
+        sta firstDigit
+
+scoreSkip5 anop
         
 ; 1s place is always 0 :-)
         lda #OFFSET_0
@@ -224,12 +256,13 @@ drawScore entry
 lineCount dc i2'0'
 charXPos dc i4'0'
 charYPos dc i4'0'
-color dc i2'$ff'
+color dc i2'$aa'
 savex dc i2'0'
 savey dc i2'0'
 savexDraw dc i2'0'
 saveyDraw dc i2'0'
 temp dc i2'0'
+firstDigit dc i2'0'
 
         end
 
@@ -265,205 +298,205 @@ characterData anop
 ; A
         dc i2'10'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-3'
+        dc i2'-5'
+        dc i2'-2'
 
-        dc i2'-7'
-        dc i2'-3'
-
-        dc i2'0'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-2'
 
         dc i2'0'
-        dc i2'-10'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-3'
+        dc i2'0'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-3'
+        dc i2'5'
+        dc i2'-2'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'-2'
 
-        dc i2'-7'
+        dc i2'5'
+        dc i2'8'
+
+        dc i2'-5'
         dc i2'2'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'2'
 
 ; B
         dc i2'20'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
-
-        dc i2'4'
-        dc i2'-10'
-
-        dc i2'4'
-        dc i2'-10'
-
-        dc i2'7'
-        dc i2'-7'
-
-        dc i2'7'
-        dc i2'-7'
-
-        dc i2'7'
-        dc i2'-4'
-
-        dc i2'7'
-        dc i2'-4'
+        dc i2'-5'
+        dc i2'-8'
 
         dc i2'3'
+        dc i2'-8'
+
+        dc i2'3'
+        dc i2'-8'
+
+        dc i2'5'
+        dc i2'-6'
+
+        dc i2'5'
+        dc i2'-6'
+
+        dc i2'5'
+        dc i2'-3'
+
+        dc i2'5'
+        dc i2'-3'
+
+        dc i2'2'
         dc i2'0'
 
-        dc i2'3'
+        dc i2'2'
         dc i2'0'
 
-        dc i2'7'
-        dc i2'3'
+        dc i2'5'
+        dc i2'2'
 
-        dc i2'7'
-        dc i2'3'
+        dc i2'5'
+        dc i2'2'
 
-        dc i2'7'
-        dc i2'6'
+        dc i2'5'
+        dc i2'5'
 
-        dc i2'7'
-        dc i2'6'
-
-        dc i2'4'
-        dc i2'10'
-
-        dc i2'4'
-        dc i2'10'
-
-        dc i2'-7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'5'
 
         dc i2'3'
+        dc i2'8'
+
+        dc i2'3'
+        dc i2'8'
+
+        dc i2'-5'
+        dc i2'8'
+
+        dc i2'2'
         dc i2'0'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
 ; C
         dc i2'6'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
 ; D
         dc i2'12'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
+        dc i2'1'
+        dc i2'-8'
+
+        dc i2'1'
+        dc i2'-8'
+
+        dc i2'5'
+        dc i2'-3'
+
+        dc i2'5'
+        dc i2'-3'
+
+        dc i2'5'
         dc i2'2'
-        dc i2'-10'
 
+        dc i2'5'
         dc i2'2'
-        dc i2'-10'
 
-        dc i2'7'
-        dc i2'-4'
+        dc i2'1'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'-4'
+        dc i2'1'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'3'
-
-        dc i2'7'
-        dc i2'3'
-
-        dc i2'2'
-        dc i2'10'
-
-        dc i2'2'
-        dc i2'10'
-
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
 ; E
         dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'3'
+        dc i2'2'
         dc i2'0'
 
 ; F
         dc i2'6'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'3'
+        dc i2'2'
         dc i2'0'
 
 ; G
@@ -472,443 +505,443 @@ characterData anop
         dc i2'0'
         dc i2'2'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'2'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'2'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-3'
+        dc i2'5'
+        dc i2'-2'
 
 ; H
         dc i2'6'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
 ; I
         dc i2'6'
 
         dc i2'0'
-        dc i2'-10'
+        dc i2'-8'
 
         dc i2'0'
-        dc i2'10'
+        dc i2'8'
 
-        dc i2'-5'
-        dc i2'-10'
+        dc i2'-4'
+        dc i2'-8'
 
-        dc i2'4'
-        dc i2'-10'
+        dc i2'3'
+        dc i2'-8'
 
-        dc i2'-5'
-        dc i2'10'
+        dc i2'-4'
+        dc i2'8'
 
-        dc i2'4'
-        dc i2'10'
+        dc i2'3'
+        dc i2'8'
 
 ; J
         dc i2'6'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
-
-        dc i2'1'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
         dc i2'1'
-        dc i2'10'
+        dc i2'8'
 
-        dc i2'-5'
-        dc i2'3'
+        dc i2'1'
+        dc i2'8'
+
+        dc i2'-4'
+        dc i2'2'
 
 ; K
         dc i2'6'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
 ; L
         dc i2'4'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
 ; M
         dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
-
-        dc i2'0'
-        dc i2'0'
+        dc i2'-5'
+        dc i2'-8'
 
         dc i2'0'
         dc i2'0'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'0'
+        dc i2'0'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'-8'
+
+        dc i2'5'
+        dc i2'8'
 
 ; N
         dc i2'6'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
 ; O
         dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
 ; P
         dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
 ; Q
         dc i2'12'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'3'
+        dc i2'5'
+        dc i2'2'
 
-        dc i2'7'
-        dc i2'3'
-
-        dc i2'0'
-        dc i2'10'
+        dc i2'5'
+        dc i2'2'
 
         dc i2'0'
-        dc i2'10'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'0'
+        dc i2'8'
+
+        dc i2'-5'
+        dc i2'8'
 
         dc i2'0'
         dc i2'0'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
 ; R
         dc i2'10'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
 ; S
         dc i2'10'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
 ; T
         dc i2'4'
 
         dc i2'0'
-        dc i2'-10'
+        dc i2'-8'
 
         dc i2'0'
-        dc i2'10'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
 ; U
         dc i2'6'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
 ; V
         dc i2'4'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
         dc i2'0'
-        dc i2'10'
+        dc i2'8'
 
         dc i2'0'
-        dc i2'10'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
 ; W
         dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
-
-        dc i2'0'
-        dc i2'2'
+        dc i2'-5'
+        dc i2'8'
 
         dc i2'0'
-        dc i2'2'
+        dc i2'1'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'0'
+        dc i2'1'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'8'
+
+        dc i2'5'
+        dc i2'-8'
 
 ; X
         dc i2'4'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
 ; Y
         dc i2'6'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
         dc i2'0'
         dc i2'0'
@@ -916,545 +949,545 @@ characterData anop
         dc i2'0'
         dc i2'0'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
         dc i2'0'
         dc i2'0'
 
         dc i2'0'
-        dc i2'10'
+        dc i2'8'
 
 ; Z
         dc i2'6'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
 ; 0
         dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
 ; 1
         dc i2'2'
 
         dc i2'0'
-        dc i2'-10'
+        dc i2'-8'
 
         dc i2'0'
-        dc i2'10'
+        dc i2'8'
 
 ; 2
         dc i2'10'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
 ; 3
         dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'-4'
+        dc i2'-3'
         dc i2'0'
 
 ; 4
         dc i2'6'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
 ; 5
         dc i2'10'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
 ; 6
         dc i2'12'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
 ; 7
         dc i2'4'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
 ; 8
         dc i2'10'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
 ; 9
         dc i2'12'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
 ; LT
         dc i2'4'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
 ; GT
         dc i2'4'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
 ; L bracket
         dc i2'6'
 
-        dc i2'4'
-        dc i2'-10'
+        dc i2'3'
+        dc i2'-8'
 
         dc i2'0'
-        dc i2'-10'
+        dc i2'-8'
 
         dc i2'0'
-        dc i2'-10'
+        dc i2'-8'
 
         dc i2'0'
-        dc i2'10'
+        dc i2'8'
 
         dc i2'0'
-        dc i2'10'
+        dc i2'8'
 
-        dc i2'4'
-        dc i2'10'
+        dc i2'3'
+        dc i2'8'
 
 ; R bracket
         dc i2'6'
 
-        dc i2'-5'
-        dc i2'-10'
+        dc i2'-4'
+        dc i2'-8'
 
         dc i2'0'
-        dc i2'-10'
+        dc i2'-8'
 
         dc i2'0'
-        dc i2'-10'
+        dc i2'-8'
 
         dc i2'0'
-        dc i2'10'
+        dc i2'8'
 
         dc i2'0'
-        dc i2'10'
+        dc i2'8'
 
-        dc i2'-5'
-        dc i2'10'
+        dc i2'-4'
+        dc i2'8'
 
 ; Degrees
         dc i2'8'
 
-        dc i2'-14'
         dc i2'-10'
+        dc i2'-8'
 
-        dc i2'-19'
-        dc i2'-10'
+        dc i2'-13'
+        dc i2'-8'
 
-        dc i2'-19'
-        dc i2'-10'
+        dc i2'-13'
+        dc i2'-8'
 
-        dc i2'-19'
+        dc i2'-13'
         dc i2'-4'
 
-        dc i2'-19'
+        dc i2'-13'
         dc i2'-4'
 
-        dc i2'-14'
-        dc i2'-4'
-
-        dc i2'-14'
-        dc i2'-4'
-
-        dc i2'-14'
         dc i2'-10'
+        dc i2'-4'
+
+        dc i2'-10'
+        dc i2'-4'
+
+        dc i2'-10'
+        dc i2'-8'
 
 ; Asterisk
         dc i2'6'
 
-        dc i2'-7'
-        dc i2'-10'
+        dc i2'-5'
+        dc i2'-8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'-10'
+        dc i2'5'
+        dc i2'-8'
 
-        dc i2'-7'
+        dc i2'-5'
         dc i2'0'
 
-        dc i2'7'
+        dc i2'5'
         dc i2'0'
 
 ; Period
         dc i2'2'
 
         dc i2'0'
-        dc i2'6'
-
-        dc i2'0'
-        dc i2'10'
-
-; Exclamation
         dc i2'4'
 
         dc i2'0'
         dc i2'8'
 
-        dc i2'0'
-        dc i2'10'
-
-        dc i2'0'
-        dc i2'-10'
-
-        dc i2'0'
+; Exclamation
         dc i2'4'
+
+        dc i2'0'
+        dc i2'6'
+
+        dc i2'0'
+        dc i2'8'
+
+        dc i2'0'
+        dc i2'-8'
+
+        dc i2'0'
+        dc i2'3'
 
 ; Hyphen
         dc i2'2'
 
-        dc i2'-6'
+        dc i2'-4'
         dc i2'0'
 
-        dc i2'5'
+        dc i2'4'
         dc i2'0'
 
 ; Plus
         dc i2'4'
 
-        dc i2'-6'
+        dc i2'-4'
         dc i2'0'
 
-        dc i2'5'
+        dc i2'4'
         dc i2'0'
 
         dc i2'0'
-        dc i2'5'
+        dc i2'4'
 
         dc i2'0'
-        dc i2'-5'
+        dc i2'-4'
 
 ; Copyright
         dc i2'14'
 
-        dc i2'7'
-        dc i2'10'
-
-        dc i2'-7'
-        dc i2'10'
-
-        dc i2'-7'
-        dc i2'10'
-
-        dc i2'-7'
-        dc i2'-10'
-
-        dc i2'-7'
-        dc i2'-10'
-
-        dc i2'7'
-        dc i2'-10'
-
-        dc i2'7'
-        dc i2'-10'
-
-        dc i2'7'
-        dc i2'10'
-
-        dc i2'3'
         dc i2'5'
+        dc i2'8'
 
-        dc i2'-4'
+        dc i2'-5'
+        dc i2'8'
+
+        dc i2'-5'
+        dc i2'8'
+
+        dc i2'-5'
+        dc i2'-8'
+
+        dc i2'-5'
+        dc i2'-8'
+
         dc i2'5'
+        dc i2'-8'
 
-        dc i2'-4'
         dc i2'5'
+        dc i2'-8'
 
+        dc i2'5'
+        dc i2'8'
+
+        dc i2'2'
+        dc i2'4'
+
+        dc i2'-3'
+        dc i2'4'
+
+        dc i2'-3'
+        dc i2'4'
+
+        dc i2'-3'
         dc i2'-4'
-        dc i2'-5'
 
+        dc i2'-3'
         dc i2'-4'
-        dc i2'-5'
 
-        dc i2'3'
-        dc i2'-5'
+        dc i2'2'
+        dc i2'-4'
 
 ; Doublequote
         dc i2'4'
 
-        dc i2'3'
-        dc i2'-10'
+        dc i2'2'
+        dc i2'-8'
 
-        dc i2'3'
+        dc i2'2'
         dc i2'0'
 
-        dc i2'-4'
-        dc i2'-10'
+        dc i2'-3'
+        dc i2'-8'
 
-        dc i2'-4'
+        dc i2'-3'
         dc i2'0'
 
 ; Quote
         dc i2'2'
 
         dc i2'0'
-        dc i2'-10'
+        dc i2'-8'
 
         dc i2'0'
         dc i2'-2'
@@ -1462,20 +1495,20 @@ characterData anop
 ; Comma
         dc i2'2'
 
-        dc i2'-6'
-        dc i2'18'
+        dc i2'-4'
+        dc i2'14'
 
         dc i2'0'
-        dc i2'5'
+        dc i2'4'
 
 ; Underscore
         dc i2'2'
 
-        dc i2'-7'
-        dc i2'10'
+        dc i2'-5'
+        dc i2'8'
 
-        dc i2'7'
-        dc i2'10'
+        dc i2'5'
+        dc i2'8'
 
 
 
