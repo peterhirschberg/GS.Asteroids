@@ -20,22 +20,22 @@ spawnSaucer entry
         ldx #OBJECT_LARGE_SAUCER1
         lda lifetimeList,x
         cmp #0
-        beq checkRocks
+        beq checkTimer
         rtl
         
 ; if less than 10 medium/small rocks left, consider spawning a saucer
-checkRocks anop
-        lda #10
-        cmp numOtherRocks
-        bcs checklargeRocks
-        rtl
+;checkRocks anop
+;        lda #10
+;        cmp numOtherRocks
+;        bcs checklargeRocks
+;        rtl
 
 ; only spawn a saucer if there are 1 or less large rocks
-checklargeRocks anop
-        lda #1
-        cmp numLargeRocks
-        bcs checkTimer
-        rtl
+;checklargeRocks anop
+;        lda #1
+;        cmp numLargeRocks
+;        bcs checkTimer
+;        rtl
         
 checkTimer anop
         dec spawnTimer
@@ -113,8 +113,37 @@ runSaucers entry
 
         dec directionTimer
         lda directionTimer
-        bmi changeDirection
+        bmi doChangeDirection
+        jmp offscreenCheck
+        
+doChangeDirection anop
+        jsr changeDirection
+        
+offscreenCheck anop
+; test to see if saucer has moved offscreen
+        ldx #OBJECT_LARGE_SAUCER1
+        lda xSpeedList,x
+        bmi goingLeft
+        
+        lda xPosList,x
+        cmp #SAUCER_END_XMAX
+        bcs killSaucer
+        
         rtl
+        
+goingLeft anop
+        lda #SAUCER_END_MIN
+        cmp xPosList,x
+        bcs killSaucer
+        rtl
+        
+killSaucer anop
+
+        lda #0
+        sta lifetimeList,x
+        
+        rtl
+        
         
 changeDirection anop
 
@@ -142,17 +171,17 @@ changeDirection anop
 goStraight anop
         lda #0
         sta ySpeedList,x
-        rtl
+        rts
 
 goDown anop
         lda #SAUCER_SPEED
         sta ySpeedList,x
-        rtl
+        rts
 
 goUp anop
         lda #-SAUCER_SPEED
         sta ySpeedList,x
-        rtl
+        rts
 
 
 savex dc i2'0'
@@ -161,5 +190,8 @@ directionTimer dc i2'0'
 spawnTimer dc i2'500'
 
 SAUCER_SPEED gequ 100
-        
+
+SAUCER_END_MIN gequ SAUCER_SPEED
+SAUCER_END_XMAX gequ SCREEN_XMAX-SAUCER_SPEED
+
         end
