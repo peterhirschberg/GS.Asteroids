@@ -12,8 +12,29 @@ alphanum start
         using globalData
         using alphanumData
         using displayListData
+        using gameData
+        using scoreData
         
+        
+scaleCoord entry
 
+        bmi isNeg
+        lsr a
+        rts
+        
+isNeg anop
+
+        eor #$ffff
+        inc a
+
+        lsr a
+
+        eor #$ffff
+        inc a
+
+        rts
+
+        
 ; Letter to draw is in A
 drawLetter entry
 
@@ -31,6 +52,7 @@ lineLoop anop
         ldx displayListLength
 
         lda characterData,y
+        jsr scaleCoord
         clc
         adc charXPos
         sta displayListList,x
@@ -40,6 +62,7 @@ lineLoop anop
         iny
 
         lda characterData,y
+        jsr scaleCoord
         clc
         adc charYPos
         sta displayListList,x
@@ -49,6 +72,7 @@ lineLoop anop
         iny
 
         lda characterData,y
+        jsr scaleCoord
         clc
         adc charXPos
         sta displayListList,x
@@ -58,6 +82,7 @@ lineLoop anop
         iny
 
         lda characterData,y
+        jsr scaleCoord
         clc
         adc charYPos
         sta displayListList,x
@@ -89,10 +114,10 @@ letterDone anop
         
 drawText entry
 
-        lda #100
+        lda #10
         sta charXPos
 
-        lda #100
+        lda #10
         sta charYPos
 
         ldx #0
@@ -111,7 +136,7 @@ drawTextLoop anop
         
         lda charXPos
         clc
-        adc #18
+        adc #10
         sta charXPos
         
         inx
@@ -122,6 +147,79 @@ drawTextDone anop
         
         rtl
 
+        
+drawScore entry
+
+        lda #10
+        sta charXPos
+
+        lda #10
+        sta charYPos
+
+        
+        lda scoreDigit100000s
+        asl a
+        tax
+        lda digitData,x
+        jsr drawLetter
+        lda charXPos
+        clc
+        adc #10
+        sta charXPos
+
+
+        
+        lda scoreDigit10000s
+        asl a
+        tax
+        lda digitData,x
+        jsr drawLetter
+        lda charXPos
+        clc
+        adc #10
+        sta charXPos
+
+
+        
+        lda scoreDigit1000s
+        asl a
+        tax
+        lda digitData,x
+        jsr drawLetter
+        lda charXPos
+        clc
+        adc #10
+        sta charXPos
+
+        
+        lda scoreDigit100s
+        asl a
+        tax
+        lda digitData,x
+        jsr drawLetter
+        lda charXPos
+        clc
+        adc #10
+        sta charXPos
+
+        
+        lda scoreDigit10s
+        asl a
+        tax
+        lda digitData,x
+        jsr drawLetter
+        lda charXPos
+        clc
+        adc #10
+        sta charXPos
+        
+; 1s place is always 0 :-)
+        lda #OFFSET_0
+        jsr drawLetter
+
+
+        rtl
+        
 
 lineCount dc i2'0'
 charXPos dc i4'0'
@@ -131,14 +229,24 @@ savex dc i2'0'
 savey dc i2'0'
 savexDraw dc i2'0'
 saveyDraw dc i2'0'
+temp dc i2'0'
+
         end
 
 
 alphanumData data
-    
-CHAR_SPACING_X gequ 10
-CHAR_SPACING_Y gequ 20
 
+digitData anop
+        dc i2'OFFSET_0'
+        dc i2'OFFSET_1'
+        dc i2'OFFSET_2'
+        dc i2'OFFSET_3'
+        dc i2'OFFSET_4'
+        dc i2'OFFSET_5'
+        dc i2'OFFSET_6'
+        dc i2'OFFSET_7'
+        dc i2'OFFSET_8'
+        dc i2'OFFSET_9'
 
 textAsteroidsData anop
         dc i2'OFFSET_A'
@@ -151,7 +259,8 @@ textAsteroidsData anop
         dc i2'OFFSET_D'
         dc i2'OFFSET_S'
         dc i2'-1'
-        
+    
+    
 characterData anop
 ; A
         dc i2'10'

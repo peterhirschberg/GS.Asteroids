@@ -13,11 +13,16 @@ game    start
         using objectData
         using displayListData
         using rockData
+        using gameData
+        using scoreData
+        
         
 gameInit entry
         jsl setupScreen
         jsl initColorTable
         jsl spawnInitialRocks
+        lda #0
+        sta playerScore
         rtl
 
 
@@ -73,11 +78,11 @@ continue1 anop
 ; init the color list
         sta displayListColorLength
 
-; draw everything to the display list
-        jsr drawObjects
-
 ; alphanumerics
-;        jsl drawText
+        jsl drawScore
+        
+; draw all objects
+        jsr drawObjects
         
 ; render the display list and dot list
         jsl renderDisplayList
@@ -139,7 +144,9 @@ gameDone anop
         end
 
 
+gameData data
 
+        end
 
 
 

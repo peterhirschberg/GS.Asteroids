@@ -11,6 +11,8 @@
 collision start
         using globalData
         using objectData
+        using gameData
+        
 
 collisionCheckMissiles entry
 
@@ -146,6 +148,7 @@ continue3 anop
         jmp rockNext
 
 itsAHit anop
+
 ; break down the rock
         stx savex
         sty savey
@@ -157,6 +160,34 @@ itsAHit anop
 ; eliminate the missile
         lda #0
         sta lifetimeList,x
+
+; update the score
+        lda #20
+        sta tempScore
+
+        lda objectTypeList,y
+        cmp OBJECT_MEDIUM_ROCK
+        beq mediumRock
+        jmp checkSmallRock
+mediumRock anop
+        lda #50
+        sta tempScore
+        jmp scoreDone
+checkSmallRock anop
+        lda objectTypeList,y
+        cmp OBJECT_SMALL_ROCK
+        beq smallRock
+        jmp scoreDone
+smallRock anop
+        lda #100
+        sta tempScore
+scoreDone anop
+        lda tempScore
+        stx savex
+        sty savey
+        jsr addToScore
+        ldx savex
+        ldy savey
 
 ; throw some particles
         tya
@@ -592,6 +623,7 @@ saucerRectRight dc i2'0'
 saucerRectBottom dc i2'0'
 xRockCenter dc i2'0'
 yRockCenter dc i2'0'
+tempScore dc i2'0'
 
 savex dc i2'0'
 savey dc i2'0'
