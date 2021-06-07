@@ -179,7 +179,6 @@ checkSmallRock anop
         beq smallRock
         jmp scoreDone
 smallRock anop
-;        brk
         lda #100
         sta tempScore
 scoreDone anop
@@ -326,6 +325,10 @@ itsAHit1 anop
 ; throw some wreckage
         lda #OBJECT_PLAYER
         jsl startWreckageExplosion
+        
+; set player respawn timer
+        lda #100
+        sta playerRespawnTimer
 
 ; player was destroyed - bail
         jmp rocksDone1

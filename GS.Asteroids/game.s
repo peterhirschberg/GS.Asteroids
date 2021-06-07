@@ -146,6 +146,8 @@ gameDone anop
 
 gameData data
 
+playerRespawnTimer dc i2'0'
+    
         end
 
 

@@ -11,6 +11,7 @@
 playerShip start
         using globalData
         using objectData
+        using gameData
         using controlsData
 
 
@@ -107,9 +108,12 @@ runPlayerShip entry
         jmp notDead
 
 playerDead anop
+        dec playerRespawnTimer
+        lda playerRespawnTimer
+        bmi checkForRespawnKey
+        rtl
 ; wait for the player to hit the fire button and respawn them
-; this is temporary
-
+checkForRespawnKey anop
         lda keydownFire
         cmp #1
         beq playerToRespawn
