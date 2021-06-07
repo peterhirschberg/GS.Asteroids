@@ -22,6 +22,7 @@ collisionCheckMissiles entry
         sta missileCounter
         ldx #OBJECT_PLAYER_MISSILE1
         
+; isPlayerMissile will be negative if it is a saucer missile
         lda #NUM_PLAYER_MISSILES
         sta isPlayerMissile
         dec isPlayerMissile
@@ -53,6 +54,17 @@ getMissilePos anop
         sta yMissilePos
 
         jsl checkMissileAgainstRocks
+        
+        lda isPlayerMissile
+        bmi checkAgainstPlayer
+        jmp nextMissile
+        
+checkAgainstPlayer anop
+        stx savex
+        sty savey
+        jsl checkMissileAgainstPlayer
+        ldx savex
+        ldy savey
 
 ; increment to the next missile and loop
 nextMissile anop
@@ -69,6 +81,111 @@ missilesDone anop
 
         rtl
 
+        
+        
+        
+checkMissileAgainstPlayer entry
+
+        ldx #OBJECT_PLAYER
+
+; check to see if the player is active
+        lda lifetimeList,x
+        cmp #0
+        bne getPlayerPos1
+        rtl
+
+getPlayerPos1 anop
+        lda xPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta xPlayerPos
+        lda yPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta yPlayerPos
+
+        lda sizeList,x
+        lsr a
+        sta playerSize
+
+        lda xPlayerPos
+        sec
+        sbc playerSize
+        sta playerRectLeft
+
+        lda yPlayerPos
+        sec
+        sbc playerSize
+        sta playerRectTop
+
+        lda xPlayerPos
+        clc
+        adc playerSize
+        sta playerRectRight
+
+        lda yPlayerPos
+        clc
+        adc playerSize
+        sta playerRectBottom
+        
+; hit test the missile point against the bounding box
+        lda xMissilePos
+        cmp playerRectLeft
+        bcs continue1a
+        rtl
+
+continue1a anop
+        lda playerRectRight
+        cmp xMissilePos
+        bcs continue2a
+        rtl
+
+continue2a anop
+
+        lda yMissilePos
+        cmp playerRectTop
+        bcs continue3a
+        rtl
+
+continue3a anop
+        lda playerRectBottom
+        cmp yMissilePos
+        bcs itsAHit3
+        rtl
+
+itsAHit3 anop
+        
+; destroy the player ship and the thrust object
+        lda #0
+        ldx #OBJECT_PLAYER
+        sta lifetimeList,x
+        ldx #OBJECT_THRUST
+        sta lifetimeList,x
+
+; throw some particles
+        lda #OBJECT_PLAYER
+        jsl startExplosion
+
+; throw some wreckage
+        lda #OBJECT_PLAYER
+        jsl startWreckageExplosion
+        
+; set player respawn timer
+        lda #100
+        sta playerRespawnTimer
+
+        rtl
+        
+        
+        
 checkMissileAgainstRocks entry
 
         lda #0
