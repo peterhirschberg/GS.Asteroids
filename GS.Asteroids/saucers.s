@@ -50,6 +50,9 @@ doSpawnSaucer anop
 
 doSpawn anop
 
+        lda #30
+        sta fireTimer
+
         lda #0
         sta directionTimer
 
@@ -111,6 +114,72 @@ spawnFromLeft anop
     
 runSaucers entry
 
+        ldx #OBJECT_LARGE_SAUCER1
+        lda lifetimeList,x
+        cmp #-1
+        beq checkForFire
+        rtl
+
+checkForFire anop
+        dec fireTimer
+        bmi doFire
+        jmp doDirectionTimer
+
+; fire a missile
+doFire anop
+
+; ask for a player missile - accumulator will be -1 if none available
+        jsr getAvailableSaucerMissile
+        cmp #-1
+        beq doDirectionTimer
+        
+        sta missileIndex
+
+        lda #20
+        sta fireTimer
+
+        lda #360
+        pha
+        jsl getRandom
+        sta fireAngle
+        
+        lda #0
+        sta param1
+        lda #MISSILE_SPEED
+        sta param2
+        
+        lda fireAngle
+        sta param3
+        
+        jsl rotate
+
+        ldx missileIndex
+
+        lda result1
+        asl a
+        asl a
+        sta xSpeedList,x
+        
+        lda result2
+        asl a
+        asl a
+        sta ySpeedList,x
+        
+        ldy #OBJECT_LARGE_SAUCER1
+        
+        lda xPosList,y
+        sta xPosList,x
+        
+        lda yPosList,y
+        sta yPosList,x
+        
+        lda #MISSILE_LIFETIME
+        ldx missileIndex
+        sta lifetimeList,x
+        
+
+; change directions
+doDirectionTimer anop
         dec directionTimer
         lda directionTimer
         bmi doChangeDirection
@@ -188,6 +257,9 @@ savex dc i2'0'
 
 directionTimer dc i2'0'
 spawnTimer dc i2'500'
+fireTimer dc i2'0'
+fireAngle dc i2'0'
+missileIndex dc i2'0'
 
 SAUCER_SPEED gequ 100
 

@@ -12,6 +12,7 @@ missiles start
         using globalData
         using objectData
 
+        
 getAvailablePlayerMissile entry
 
         lda #OBJECT_PLAYER_MISSILE1
@@ -56,5 +57,94 @@ noPlayerMissiles anop
         lda #-1
         rts
 
+        
+        
+getAvailableSaucerMissile entry
+
+        lda #OBJECT_SAUCER_MISSILE1
+        tax
+        lda lifetimeList,x
+        cmp #0
+        bne checkMissile2b
+        txa
+        rts
+
+checkMissile2b anop
+
+        lda #OBJECT_SAUCER_MISSILE2
+        tax
+        lda lifetimeList,x
+        cmp #0
+        bne checkMissile3
+        txa
+        rts
+
+checkMissile3b anop
+
+        lda #OBJECT_SAUCER_MISSILE3
+        tax
+        lda lifetimeList,x
+        cmp #0
+        bne checkMissile4
+        txa
+        rts
+
+checkMissile4b anop
+
+        lda #OBJECT_SAUCER_MISSILE4
+        tax
+        lda lifetimeList,x
+        cmp #0
+        bne noSaucerMissiles
+        txa
+        rts
+
+checkMissile5b anop
+        
+        lda #OBJECT_SAUCER_MISSILE5
+        tax
+        lda lifetimeList,x
+        cmp #0
+        bne noSaucerMissiles
+        txa
+        rts
+
+checkMissile6b anop
+        
+        lda #OBJECT_SAUCER_MISSILE6
+        tax
+        lda lifetimeList,x
+        cmp #0
+        bne noSaucerMissiles
+        txa
+        rts
+
+checkMissile7b anop
+        
+        lda #OBJECT_SAUCER_MISSILE7
+        tax
+        lda lifetimeList,x
+        cmp #0
+        bne noSaucerMissiles
+        txa
+        rts
+
+checkMissile8b anop
+        
+        lda #OBJECT_SAUCER_MISSILE8
+        tax
+        lda lifetimeList,x
+        cmp #0
+        bne noSaucerMissiles
+        txa
+        rts
+
+noSaucerMissiles anop
+        lda #-1
+        rts
+
+
+        
+        
         end
 
