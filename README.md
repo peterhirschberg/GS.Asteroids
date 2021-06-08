@@ -7,15 +7,4 @@ Special thanks to Jeremy Rand for his invaluable help and advice, his [build pip
 
 ![Screenshot](/screenshot1.png)
 
-## Keys
-**OPTION** - rotate left
-
-**COMMAND** - rotate right
-
-**ENTER** - thrust
-
-**SPACE** - fire
-
-
-
-**P** - toggle pause
+**PLEASE READ THE WIKI FOR THE LATEST INFO**
