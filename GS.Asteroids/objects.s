@@ -2826,7 +2826,7 @@ colorList anop
         dc i2'$ff'
         dc i2'$ff'
 ; large saucer
-        dc i2'$dead'
+        dc i2'$ff'
 ; small saucer
         dc i2'$ff'
 ; particles

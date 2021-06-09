@@ -135,13 +135,14 @@ doFire anop
         
         sta missileIndex
 
-        lda #20
+        lda #40
         sta fireTimer
 
-        lda #360
-        pha
-        jsl getRandom
-        sta fireAngle
+;        lda #360
+;        pha
+;        jsl getRandom
+;        sta fireAngle
+        jsr calcFireAngle
         
         lda #0
         sta param1
@@ -252,6 +253,90 @@ goUp anop
         sta ySpeedList,x
         rts
 
+        
+        
+calcFireAngle entry
+
+        ldx #OBJECT_LARGE_SAUCER1
+
+        lda xPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta saucerX
+        
+        lda yPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta saucerY
+        
+        ldx #OBJECT_PLAYER
+
+        lda xPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta playerX
+        
+        lda yPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta playerY
+
+; get quadrant
+        lda saucerX
+        cmp playerX
+        bcs leftHalf
+        
+; right half
+        lda saucerY
+        cmp playerY
+        bcs topRight
+        
+; lower right quadrant
+        lda #315
+        sta fireAngle
+        rts
+
+; upper right quadrant
+topRight anop
+        lda #225
+        sta fireAngle
+        rts
+
+; left half
+leftHalf anop
+        lda playerY
+        cmp saucerY
+        bcs topLeft
+
+; lower left quadrant
+        lda #135
+        sta fireAngle
+        rts
+        
+; top left
+topLeft anop
+        lda #45
+        sta fireAngle
+        rts
+
+        
+        
 
 savex dc i2'0'
 
@@ -260,6 +345,12 @@ spawnTimer dc i2'500'
 fireTimer dc i2'0'
 fireAngle dc i2'0'
 missileIndex dc i2'0'
+
+saucerX dc i2'0'
+saucerY dc i2'0'
+
+playerX dc i2'0'
+playerY dc i2'0'
 
 SAUCER_SPEED gequ 100
 
