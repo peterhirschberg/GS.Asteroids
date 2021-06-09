@@ -26,6 +26,7 @@ clock_t lastTick;
 unsigned int randomSeed;
 
 
+// Do this in assembly with a lookup table
 word getRandom(word range)
 {
     return rand() % range;
