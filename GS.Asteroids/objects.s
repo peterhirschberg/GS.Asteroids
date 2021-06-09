@@ -657,11 +657,38 @@ objectShapeData anop
         dc i2'-2'
         dc i2'-4'
 
-; wreckage
+; wreckage 1
         dc i2'2'
 
         dc i2'0'
         dc i2'-4'
+
+        dc i2'0'
+        dc i2'4'
+
+; wreckage 2
+        dc i2'2'
+
+        dc i2'0'
+        dc i2'-3'
+
+        dc i2'0'
+        dc i2'3'
+
+; wreckage 3
+        dc i2'2'
+
+        dc i2'0'
+        dc i2'-2'
+
+        dc i2'0'
+        dc i2'2'
+
+; wreckage 4
+        dc i2'2'
+
+        dc i2'0'
+        dc i2'-1'
 
         dc i2'0'
         dc i2'4'
@@ -1114,19 +1141,24 @@ objectShapeData anop
 
 SHAPE_OFFSET_PLAYER                 gequ $0
 SHAPE_OFFSET_THRUST                 gequ $1a
-SHAPE_OFFSET_WRECKAGE               gequ $28
-SHAPE_OFFSET_DOT                        gequ $32
-SHAPE_OFFSET_LARGE_SAUCER       gequ $38
-SHAPE_OFFSET_SMALL_SAUCER       gequ $6a
-SHAPE_OFFSET_LARGE_ROCK1        gequ $9c
-SHAPE_OFFSET_LARGE_ROCK2        gequ $ca
-SHAPE_OFFSET_LARGE_ROCK3        gequ $100
-SHAPE_OFFSET_MEDIUM_ROCK1       gequ $136
-SHAPE_OFFSET_MEDIUM_ROCK2       gequ $164
-SHAPE_OFFSET_MEDIUM_ROCK3       gequ $19a
-SHAPE_OFFSET_SMALL_ROCK1        gequ $1d0
-SHAPE_OFFSET_SMALL_ROCK2        gequ $1fe
-SHAPE_OFFSET_SMALL_ROCK3        gequ $234
+SHAPE_OFFSET_WRECKAGE1          gequ $28
+SHAPE_OFFSET_WRECKAGE2          gequ $32
+SHAPE_OFFSET_WRECKAGE3          gequ $3c
+SHAPE_OFFSET_WRECKAGE4          gequ $46
+SHAPE_OFFSET_DOT                        gequ $50
+SHAPE_OFFSET_LARGE_SAUCER       gequ $56
+SHAPE_OFFSET_SMALL_SAUCER       gequ $88
+SHAPE_OFFSET_LARGE_ROCK1        gequ $ba
+SHAPE_OFFSET_LARGE_ROCK2        gequ $e8
+SHAPE_OFFSET_LARGE_ROCK3        gequ $11e
+SHAPE_OFFSET_MEDIUM_ROCK1       gequ $154
+SHAPE_OFFSET_MEDIUM_ROCK2       gequ $182
+SHAPE_OFFSET_MEDIUM_ROCK3       gequ $1b8
+SHAPE_OFFSET_SMALL_ROCK1        gequ $1ee
+SHAPE_OFFSET_SMALL_ROCK2        gequ $21c
+SHAPE_OFFSET_SMALL_ROCK3        gequ $252
+
+
 
 
 OBJECT_LARGE_ROCK1              gequ 4
@@ -1367,22 +1399,22 @@ shapeList anop
         dc i2'SHAPE_OFFSET_DOT'
         dc i2'SHAPE_OFFSET_DOT'
 ; wreckage
-        dc i2'SHAPE_OFFSET_WRECKAGE'
-        dc i2'SHAPE_OFFSET_WRECKAGE'
-        dc i2'SHAPE_OFFSET_WRECKAGE'
-        dc i2'SHAPE_OFFSET_WRECKAGE'
-        dc i2'SHAPE_OFFSET_WRECKAGE'
-        dc i2'SHAPE_OFFSET_WRECKAGE'
-        dc i2'SHAPE_OFFSET_WRECKAGE'
-        dc i2'SHAPE_OFFSET_WRECKAGE'
-        dc i2'SHAPE_OFFSET_WRECKAGE'
-        dc i2'SHAPE_OFFSET_WRECKAGE'
-        dc i2'SHAPE_OFFSET_WRECKAGE'
-        dc i2'SHAPE_OFFSET_WRECKAGE'
-        dc i2'SHAPE_OFFSET_WRECKAGE'
-        dc i2'SHAPE_OFFSET_WRECKAGE'
-        dc i2'SHAPE_OFFSET_WRECKAGE'
-        dc i2'SHAPE_OFFSET_WRECKAGE'
+        dc i2'SHAPE_OFFSET_WRECKAGE1'
+        dc i2'SHAPE_OFFSET_WRECKAGE2'
+        dc i2'SHAPE_OFFSET_WRECKAGE3'
+        dc i2'SHAPE_OFFSET_WRECKAGE4'
+        dc i2'SHAPE_OFFSET_WRECKAGE1'
+        dc i2'SHAPE_OFFSET_WRECKAGE2'
+        dc i2'SHAPE_OFFSET_WRECKAGE3'
+        dc i2'SHAPE_OFFSET_WRECKAGE4'
+        dc i2'SHAPE_OFFSET_WRECKAGE1'
+        dc i2'SHAPE_OFFSET_WRECKAGE2'
+        dc i2'SHAPE_OFFSET_WRECKAGE3'
+        dc i2'SHAPE_OFFSET_WRECKAGE4'
+        dc i2'SHAPE_OFFSET_WRECKAGE1'
+        dc i2'SHAPE_OFFSET_WRECKAGE2'
+        dc i2'SHAPE_OFFSET_WRECKAGE3'
+        dc i2'SHAPE_OFFSET_WRECKAGE4'
 ; large saucer
         dc i2'SHAPE_OFFSET_LARGE_SAUCER'
 ; small saucer

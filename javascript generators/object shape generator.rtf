@@ -9,7 +9,10 @@
 let offset = 0\
 let playerShipOffset = 0\
 let thrustOffset = 0\
-let wreckageOffset = 0\
+let wreckage1Offset = 0\
+let wreckage2Offset = 0\
+let wreckage3Offset = 0\
+let wreckage4Offset = 0\
 let dotOffset = 0\
 let largeRock1Offset = 0\
 let largeRock2Offset = 0\
@@ -41,8 +44,23 @@ let thrust = [\
   -2,-4\
 ]\
 \
-let wreckage = [\
+let wreckage1 = [\
 	0,-4,\
+  0,4\
+]\
+\
+let wreckage2 = [\
+	0,-3,\
+  0,3\
+]\
+\
+let wreckage3 = [\
+	0,-2,\
+  0,2\
+]\
+\
+let wreckage4 = [\
+	0,-1,\
   0,4\
 ]\
 \
@@ -142,19 +160,64 @@ let ufo = [\
 \}\
 \
 \
-// wreckage\
+// wreckage 1\
 \
 \{\
-  str += '; wreckage\\n'\
+  str += '; wreckage 1\\n'\
 \
-  str += `		dc i2'$\{Math.floor(wreckage.length/2)\}'\\n\\n`\
-  for (let i=0; i<wreckage.length; i+=2) \{\
-    str += `		dc i2'$\{Math.floor(wreckage[i])\}'\\n`\
-    str += `		dc i2'$\{Math.floor(wreckage[i+1])\}'\\n\\n`\
+  str += `		dc i2'$\{Math.floor(wreckage1.length/2)\}'\\n\\n`\
+  for (let i=0; i<wreckage1.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(wreckage1[i])\}'\\n`\
+    str += `		dc i2'$\{Math.floor(wreckage1[i+1])\}'\\n\\n`\
   \}\
   \
-  wreckageOffset = offset\
-	offset += wreckage.length + 1  \
+  wreckage1Offset = offset\
+	offset += wreckage1.length + 1  \
+\}\
+\
+// wreckage 2\
+\
+\{\
+  str += '; wreckage 2\\n'\
+\
+  str += `		dc i2'$\{Math.floor(wreckage2.length/2)\}'\\n\\n`\
+  for (let i=0; i<wreckage2.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(wreckage2[i])\}'\\n`\
+    str += `		dc i2'$\{Math.floor(wreckage2[i+1])\}'\\n\\n`\
+  \}\
+  \
+  wreckage2Offset = offset\
+	offset += wreckage2.length + 1  \
+\}\
+\
+// wreckage 3\
+\
+\{\
+  str += '; wreckage 3\\n'\
+\
+  str += `		dc i2'$\{Math.floor(wreckage3.length/2)\}'\\n\\n`\
+  for (let i=0; i<wreckage3.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(wreckage3[i])\}'\\n`\
+    str += `		dc i2'$\{Math.floor(wreckage3[i+1])\}'\\n\\n`\
+  \}\
+  \
+  wreckage3Offset = offset\
+	offset += wreckage3.length + 1  \
+\}\
+\
+// wreckage 4\
+\
+\{\
+  str += '; wreckage 4\\n'\
+\
+  str += `		dc i2'$\{Math.floor(wreckage4.length/2)\}'\\n\\n`\
+  for (let i=0; i<wreckage4.length; i+=2) \{\
+    str += `		dc i2'$\{Math.floor(wreckage4[i])\}'\\n`\
+    str += `		dc i2'$\{Math.floor(wreckage4[i+1])\}'\\n\\n`\
+  \}\
+  \
+  wreckage4Offset = offset\
+	offset += wreckage4.length + 1  \
 \}\
 \
 // dot\
@@ -374,7 +437,10 @@ str += '\\n\\n'\
 \
 str += `SHAPE_OFFSET_PLAYER					gequ $$\{(playerShipOffset*2).toString(16)\}\\n`\
 str += `SHAPE_OFFSET_THRUST					gequ $$\{(thrustOffset*2).toString(16)\}\\n`\
-str += `SHAPE_OFFSET_WRECKAGE				gequ $$\{(wreckageOffset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_WRECKAGE1			gequ $$\{(wreckage1Offset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_WRECKAGE2			gequ $$\{(wreckage2Offset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_WRECKAGE3			gequ $$\{(wreckage3Offset*2).toString(16)\}\\n`\
+str += `SHAPE_OFFSET_WRECKAGE4			gequ $$\{(wreckage4Offset*2).toString(16)\}\\n`\
 str += `SHAPE_OFFSET_DOT						gequ $$\{(dotOffset*2).toString(16)\}\\n`\
 str += `SHAPE_OFFSET_LARGE_SAUCER		gequ $$\{(largeUFOOffset*2).toString(16)\}\\n`\
 str += `SHAPE_OFFSET_SMALL_SAUCER		gequ $$\{(smallUFOOffset*2).toString(16)\}\\n`\
