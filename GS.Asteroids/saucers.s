@@ -300,37 +300,37 @@ calcFireAngle entry
 ; get quadrant
         lda saucerX
         cmp playerX
-        bcs leftHalf
+        bcs shootLeft
         
-; right half
+; shoot right
         lda saucerY
         cmp playerY
-        bcs topRight
+        bcs shootRightAndUp
         
-; lower right quadrant
+; shoot right and down
         lda #315
         sta fireAngle
         rts
 
-; upper right quadrant
-topRight anop
+; shoot right and up
+shootRightAndUp anop
         lda #225
         sta fireAngle
         rts
 
-; left half
-leftHalf anop
+; shoot left
+shootLeft anop
         lda playerY
         cmp saucerY
-        bcs topLeft
+        bcs shootLeftAndDown
 
-; lower left quadrant
+; shoot left and up
         lda #135
         sta fireAngle
         rts
         
-; top left
-topLeft anop
+; shoot left and down
+shootLeftAndDown anop
         lda #45
         sta fireAngle
         rts
