@@ -7,4 +7,4 @@ Special thanks to Jeremy Rand for his invaluable help and advice, his [build pip
 
 ![Screenshot](/screenshot1.png)
 
-**PLEASE READ THE WIKI FOR THE LATEST INFO**
+**PLEASE READ THE [WIKI](https://github.com/peterhirschberg/GS.Asteroids/wiki) FOR THE LATEST INFO**
