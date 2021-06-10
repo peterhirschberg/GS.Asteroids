@@ -27,23 +27,13 @@ clock_t lastTick;
 unsigned int randomSeed;
 
 
-word catan(word val)
+// Shifted division
+// As with the C functions below,
+// try to move this into ASM
+word fpDivide(word a, word b)
 {
-    float angle;
-    float v = val / 64.0;
-    angle = atan(v) * 57.2957795786;
-    return angle;
+    return floor(((float)a / b) * 64);
 }
-
-word catan2(word dx, word dy)
-{
-    float dxy;
-    float angle;
-    dxy = (float)dy/dx;
-    angle = atan(dxy) * 57.2957795786;
-    return angle;
-}
-
 
 // Do this in assembly with a lookup table
 word getRandom(word range)
@@ -105,10 +95,10 @@ int main(void)
     InitMouse(0);
     SetMouse(transparent);
   
-    randomSeed = (int)time(NULL);
-    if (randomSeed == 0)
-        randomSeed = 1;
-    srand(randomSeed);
+//    randomSeed = (int)time(NULL);
+//    if (randomSeed == 0)
+//        randomSeed = 1;
+//    srand(randomSeed);
     
     gameInit();
 
