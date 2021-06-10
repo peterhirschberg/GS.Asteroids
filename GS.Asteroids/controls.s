@@ -38,10 +38,19 @@ checkControls entry
         cmp #'P'
         beq onKeydownPause
 
+        cmp #'q'
+        beq onKeydownQuit
+        cmp #'Q'
+        beq onKeydownQuit
+
 checkKeysDone anop
 
         rtl
 
+
+onKeydownQuit anop
+        jsl signalQuit
+        rtl
 
 onKeydownPause anop
         lda gamePaused

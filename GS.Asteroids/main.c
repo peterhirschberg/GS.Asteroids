@@ -27,6 +27,14 @@ clock_t lastTick;
 unsigned int randomSeed;
 
 
+boolean shouldQuit;
+
+void signalQuit(void)
+{
+    shouldQuit = true;
+}
+
+
 // Shifted division
 // As with the C functions below,
 // try to move this into ASM
@@ -72,7 +80,7 @@ word getScoreDigit100000s(word score)
 
 void waitForNextTick(void)
 {
-    while (1) {
+    while (!shouldQuit) {
         clock_t t;
         runGameTick();
         do {
@@ -94,7 +102,8 @@ int main(void)
     CompactMem();
     InitMouse(0);
     SetMouse(transparent);
-  
+
+// Why is this blowing up the compiler?
 //    randomSeed = (int)time(NULL);
 //    if (randomSeed == 0)
 //        randomSeed = 1;
@@ -104,8 +113,6 @@ int main(void)
 
     lastTick = clock();
     waitForNextTick();
-
-    // TODO - allow for quitting the game!! :-)
     
     ShutDownTools(refIsHandle, toolStartupRef);
     TLShutDown();
