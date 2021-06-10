@@ -26,55 +26,55 @@ initColorTable entry
         sta >COLOR_TABLE,x
 
         ldx #6
-        lda #$0033
+        lda #$0023
         sta >COLOR_TABLE,x
 
         ldx #8
-        lda #$0044
+        lda #$0034
         sta >COLOR_TABLE,x
 
         ldx #10
-        lda #$0055
+        lda #$0045
         sta >COLOR_TABLE,x
 
         ldx #12
-        lda #$0066
+        lda #$0056
         sta >COLOR_TABLE,x
 
         ldx #14
-        lda #$0077
+        lda #$0067
         sta >COLOR_TABLE,x
 
         ldx #16
-        lda #$0088
+        lda #$0078
         sta >COLOR_TABLE,x
 
         ldx #18
-        lda #$0099
+        lda #$0089
         sta >COLOR_TABLE,x
 
         ldx #20
-        lda #$00aa
+        lda #$009a
         sta >COLOR_TABLE,x
 
         ldx #22
-        lda #$00bb
+        lda #$00ab
         sta >COLOR_TABLE,x
 
         ldx #24
-        lda #$00cc
+        lda #$00bc
         sta >COLOR_TABLE,x
 
         ldx #26
-        lda #$00dd
+        lda #$00cd
         sta >COLOR_TABLE,x
 
         ldx #28
-        lda #$00ee
+        lda #$00de
         sta >COLOR_TABLE,x
 
         ldx #30
-        lda #$00ff
+        lda #$00ef
         sta >COLOR_TABLE,x
 
         

@@ -22,11 +22,11 @@ getRandSpeed entry
         sbc #90
         bmi isNeg
         clc
-        adc #30
+        adc #10
         rtl
 isNeg anop
         sec
-        sbc #30
+        sbc #10
         rtl
 
 

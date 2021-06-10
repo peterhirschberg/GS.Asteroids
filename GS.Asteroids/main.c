@@ -8,6 +8,7 @@
  */
 
 #include <stdlib.h>
+#include <math.h>
 #include <string.h>
 #include <time.h>
 
@@ -24,6 +25,24 @@
 unsigned int userid;
 clock_t lastTick;
 unsigned int randomSeed;
+
+
+word catan(word val)
+{
+    float angle;
+    float v = val / 64.0;
+    angle = atan(v) * 57.2957795786;
+    return angle;
+}
+
+word catan2(word dx, word dy)
+{
+    float dxy;
+    float angle;
+    dxy = (float)dy/dx;
+    angle = atan(dxy) * 57.2957795786;
+    return angle;
+}
 
 
 // Do this in assembly with a lookup table

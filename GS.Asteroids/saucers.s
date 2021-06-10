@@ -131,22 +131,75 @@ doFire anop
 ; ask for a player missile - accumulator will be -1 if none available
         jsr getAvailableSaucerMissile
         cmp #-1
-        beq doDirectionTimer
-        
+        beq doDirectionTimerShortJump
+        bra fireMissile
+
+doDirectionTimerShortJump anop
+        jmp doDirectionTimer
+
+fireMissile anop
         sta missileIndex
 
         lda #40
         sta fireTimer
 
+; shoot randomly (will be used if the player is dead)
 ;        lda #360
 ;        pha
 ;        jsl getRandom
 ;        sta fireAngle
-        jsr calcFireAngle
-        
-        lda #0
+
+; Aim at the player
+; Note this currently aims DIRECTLY at the player :-)
+
+        ldx #OBJECT_LARGE_SAUCER1
+
+        lda xPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
         sta param1
+
+        lda yPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta param2
+
+        ldx #OBJECT_PLAYER
+
+        lda xPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta param3
+
+        lda yPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta param4
+
+
+        jsr calcPointsAngle
+        sta fireAngle
+
+        
         lda #MISSILE_SPEED
+        sta param1
+        lda #0
         sta param2
         
         lda fireAngle
@@ -167,13 +220,13 @@ doFire anop
         sta ySpeedList,x
         
         ldy #OBJECT_LARGE_SAUCER1
-        
+
         lda xPosList,y
         sta xPosList,x
-        
+
         lda yPosList,y
         sta yPosList,x
-        
+
         lda #MISSILE_LIFETIME
         ldx missileIndex
         sta lifetimeList,x
@@ -253,89 +306,7 @@ goUp anop
         sta ySpeedList,x
         rts
 
-        
-        
-calcFireAngle entry
 
-        ldx #OBJECT_LARGE_SAUCER1
-
-        lda xPosList,x
-        lsr a
-        lsr a
-        lsr a
-        lsr a
-        lsr a
-        lsr a
-        sta saucerX
-        
-        lda yPosList,x
-        lsr a
-        lsr a
-        lsr a
-        lsr a
-        lsr a
-        lsr a
-        sta saucerY
-        
-        ldx #OBJECT_PLAYER
-
-        lda xPosList,x
-        lsr a
-        lsr a
-        lsr a
-        lsr a
-        lsr a
-        lsr a
-        sta playerX
-        
-        lda yPosList,x
-        lsr a
-        lsr a
-        lsr a
-        lsr a
-        lsr a
-        lsr a
-        sta playerY
-
-; get quadrant
-        lda saucerX
-        cmp playerX
-        bcs shootLeft
-        
-; shoot right
-        lda saucerY
-        cmp playerY
-        bcs shootRightAndUp
-        
-; shoot right and down
-        lda #315
-        sta fireAngle
-        rts
-
-; shoot right and up
-shootRightAndUp anop
-        lda #225
-        sta fireAngle
-        rts
-
-; shoot left
-shootLeft anop
-        lda playerY
-        cmp saucerY
-        bcs shootLeftAndDown
-
-; shoot left and up
-        lda #135
-        sta fireAngle
-        rts
-        
-; shoot left and down
-shootLeftAndDown anop
-        lda #45
-        sta fireAngle
-        rts
-
-        
         
 
 savex dc i2'0'

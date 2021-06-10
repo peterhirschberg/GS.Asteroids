@@ -34,6 +34,40 @@ mult2   asl param2
 done    anop
         rtl
 
+
+
+
+; x / a -> quotnt
+divide entry
+        stz quotnt
+        ldy #1
+
+div1    asl a
+        bcs div2
+        iny
+        cpy #17
+        bne div1
+
+div2    ror a
+
+div4    pha
+        txa
+        sec
+        sbc 1,s
+        bcc div3
+        tax
+
+div3    rol quotnt
+        pla
+        lsr a
+        dey
+        bne div4
+
+        rtl
+
+
+
+
         
 rotate entry
 
@@ -171,14 +205,216 @@ posY anop
 rotateDone anop
         
         rtl
-        
+
+
+
+; Calculates the angle between two specified points
+calcPointsAngle entry
+
+; saucer
+        lda param1
+        sta x1
+        lda param2
+        sta y1
+
+; player
+        lda param3
+        sta x2
+        lda param4
+        sta y2
+
+; get left/right
+        lda x1
+        cmp x2
+        bcs left
+
+; right
+        lda y1
+        cmp y2
+        bcs rightAndUp
+
+; right and down
+        lda #3
+        sta quadrant
+        jsr getQuadrantAngle
+        rts
+
+; right and up
+rightAndUp anop
+        lda #2
+        sta quadrant
+        jsr getQuadrantAngle
+        rts
+
+; left
+left anop
+        lda y2
+        cmp y1
+        bcs leftAndDown
+
+; left and up
+        lda #1
+        sta quadrant
+        jsr getQuadrantAngle
+        rts
+
+; left and down
+leftAndDown anop
+        lda #0
+        sta quadrant
+        jsr getQuadrantAngle
+        rts
+
+
+getQuadrantAngle entry
+
+; get distances
+
+        lda x2
+        sec
+        sbc x1
+        sta dx
+
+        lda y2
+        sec
+        sbc y1
+        sta dy
+
+; rotate to correct quadrant
+
+        lda quadrant
+        asl a
+        tax
+        lda quadrantAngleTable,x
+        sta quadrantAngle
+
+        lda dx
+        sta param1
+
+        lda dy
+        sta param2
+
+        lda quadrantAngle
+        sta param3
+
+        jsl rotate
+
+        lda result1
+        sta rx
+
+        lda result2
+        sta ry
+
+; get XY distance
+
+        ldx ry
+        lda rx
+        jsl divide
+        lda quotnt
+        sta distanceXY
+
+; atan
+
+; TODO: Do this in ASM with a atan lookup table
+; For now I am calling into C code to do the distance division
+; which produces a very small floating point number that gets
+; fed into the atan function. Need to figure out how to handle
+; this without the call into C code.
+
+
+;        lda distanceXY
+;        pha
+
+        lda ry
+        pha
+
+        lda rx
+        pha
+
+; CALL INTO C FUNCTION FOR ATAN
+        jsl catan2
+        sta pointAngle
+
+; rotate back from rotated quadrant
+
+        lda quadrant
+        asl a
+        tax
+        lda invQuadrantAngleTable,x
+        sta quadrantAngle
+
+        lda pointAngle
+        clc
+        adc quadrantAngle
+        sta pointAngle
+
+
+; range check the angle - keep within 0-359
+
+        bmi isNeg
+
+        lda pointAngle
+        cmp #360
+        bcs tooLarge
+
+        lda pointAngle
+        rts
+
+tooLarge anop
+        lda pointAngle
+        sec
+        sbc #360
+        sta pointAngle
+        rts
+
+isNeg anop
+        clc
+        adc #360
+        sta pointAngle
+
+        rts
+
+
+
+
+
+quotnt dc i2'0'
 
 xpoint dc i2'0'
 ypoint dc i2'0'
+
 angle dc i2'0'
+
 sinvalue dc i2'0'
 cosvalue dc i2'0'
 
+quadrant dc i2'0'
+quadrantAngle dc i2'0'
+
+dx dc i2'0'
+dy dc i2'0'
+
+rx dc i2'0'
+ry dc i2'0'
+
+distanceXY dc i2'0'
+
+pointAngle dc i2'0'
+
+
+
+
+quadrantAngleTable anop
+        dc i2'270'
+        dc i2'180'
+        dc i2'90'
+        dc i2'0'
+
+invQuadrantAngleTable anop
+        dc i2'-270'
+        dc i2'-180'
+        dc i2'-90'
+        dc i2'0'
 
 sinTable anop
         dc i2'$0'
