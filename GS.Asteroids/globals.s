@@ -95,6 +95,6 @@ MIDSCREEN_Y                     gequ SCREEN_YMAX/2
 ; missile constants (both player and saucers)
 MISSILE_SPEED                   gequ 80
 MISSILE_LIFETIME                gequ 40
-
+SAUCER_MISSILE_LIFETIME         gequ 80
 
         end

@@ -14,23 +14,33 @@ rocks start
         using rockData
 
 getRandSpeed entry
+        lda speedMax
+        lsr a
+        sta halfSpeed
+        lsr a
+        lsr a
+        sta minSpeed
 
-        lda #180
+        lda speedMax
         pha
         jsl getRandom
         sec
-        sbc #90
+        sbc halfSpeed
         bmi isNeg
         clc
-        adc #10
+        adc minSpeed
         rtl
 isNeg anop
         sec
-        sbc #10
+        sbc minSpeed
         rtl
 
 
 getLargeRock entry
+
+        lda #120
+        sta speedMax
+
         lda #0
         sta rockCounter
         ldy #OBJECT_LARGE_ROCK1
@@ -62,6 +72,10 @@ rocksDone1 anop
 
 
 getMediumRock entry
+
+        lda #140
+        sta speedMax
+
         lda #0
         sta rockCounter
         ldy #OBJECT_MEDIUM_ROCK1
@@ -93,6 +107,10 @@ rocksDone2 anop
 
 
 getSmallRock entry
+
+        lda #180
+        sta speedMax
+
         lda #0
         sta rockCounter
         ldy #OBJECT_SMALL_ROCK1
@@ -213,6 +231,9 @@ spawnRockRight entry
 
 
 spawnInitialRocks entry
+
+        lda #120
+        sta speedMax
 
         lda numToSpawn
         sta count
@@ -526,6 +547,10 @@ xOrigin dc i2'0'
 yOrigin dc i2'0'
 
 newRockIndex dc i2'0'
+
+speedMax dc i2'180'
+halfSpeed dc i2'0'
+minSpeed dc i2'0'
 
         end
 

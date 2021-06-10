@@ -227,7 +227,7 @@ fireMissile anop
         lda yPosList,y
         sta yPosList,x
 
-        lda #MISSILE_LIFETIME
+        lda #SAUCER_MISSILE_LIFETIME
         ldx missileIndex
         sta lifetimeList,x
         
