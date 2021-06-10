@@ -20,8 +20,24 @@ spawnSaucer entry
         ldx #OBJECT_LARGE_SAUCER1
         lda lifetimeList,x
         cmp #0
-        beq checkTimer
+        beq checkPlayer
         rtl
+
+; check to see if the player is alive or not - don't spawn if the player is dead
+; TODO - skip this check if we are in attract mode
+checkPlayer anop
+
+        ldx #OBJECT_PLAYER
+        lda lifetimeList,x
+        cmp #0
+        beq playerDead2
+        jmp notDead2
+
+playerDead2 anop
+
+        rtl
+
+notDead2 anop
         
 ; if less than 10 medium/small rocks left, consider spawning a saucer
 ;checkRocks anop
@@ -46,6 +62,7 @@ checkTimer anop
 doSpawnSaucer anop
         lda #500
         sta spawnTimer
+; WAIT WHAT??
         jsl spawnSaucer
 
 doSpawn anop
@@ -143,11 +160,23 @@ fireMissile anop
         lda #40
         sta fireTimer
 
-; shoot randomly (will be used if the player is dead)
-;        lda #360
-;        pha
-;        jsl getRandom
-;        sta fireAngle
+; see if the player is alive or not
+        ldx #OBJECT_PLAYER
+        lda lifetimeList,x
+        cmp #0
+        beq playerDead1
+        jmp notDead1
+
+playerDead1 anop
+
+; shoot randomly
+        lda #360
+        pha
+        jsl getRandom
+        sta fireAngle
+        jmp doneAiming
+
+notDead1 anop
 
 ; Aim at the player
 ; Note this currently aims DIRECTLY at the player :-)
@@ -192,11 +221,11 @@ fireMissile anop
         lsr a
         sta param4
 
-
         jsr calcPointsAngle
         sta fireAngle
 
-        
+doneAiming anop
+
         lda #MISSILE_SPEED
         sta param1
         lda #0
