@@ -8,7 +8,6 @@
  */
 
 #include <stdlib.h>
-#include <math.h>
 #include <string.h>
 #include <time.h>
 
@@ -103,12 +102,6 @@ int main(void)
     InitMouse(0);
     SetMouse(transparent);
 
-// Why is this blowing up the compiler?
-//    randomSeed = (int)time(NULL);
-//    if (randomSeed == 0)
-//        randomSeed = 1;
-//    srand(randomSeed);
-    
     gameInit();
 
     lastTick = clock();

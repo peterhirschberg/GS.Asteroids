@@ -21,6 +21,7 @@ collisionCheckMissiles entry
         lda #0
         sta missileCounter
         ldx #OBJECT_PLAYER_MISSILE1
+        stx missileIndex
         
 ; isPlayerMissile will be negative if it is a saucer missile
         lda #NUM_PLAYER_MISSILES
@@ -30,6 +31,7 @@ collisionCheckMissiles entry
 missileLoop anop
 
 ; check to see if this missile is active
+        ldx missileIndex
         lda lifetimeList,x
         cmp #0
         bne getMissilePos
@@ -54,7 +56,9 @@ getMissilePos anop
         sta yMissilePos
 
         jsl checkMissileAgainstRocks
-        
+
+        ldx missileIndex
+
         lda isPlayerMissile
         bmi checkAgainstPlayer
         jsl checkMissileAgainstSaucers
@@ -63,6 +67,7 @@ getMissilePos anop
 checkAgainstPlayer anop
         stx savex
         sty savey
+        ldx missileIndex
         jsl checkMissileAgainstPlayer
         ldx savex
         ldy savey
@@ -75,8 +80,10 @@ nextMissile anop
         lda missileCounter
         cmp #NUM_MISSILES
         beq missilesDone
+        ldx missileIndex
         inx
         inx
+        stx missileIndex
         jmp missileLoop
 
 missilesDone anop
@@ -578,6 +585,125 @@ rocksDone1 anop
 
 
 
+checkPlayerAgainstSaucers entry
+
+        jsr getSaucer
+        tay
+
+; check to see if the saucer is active
+        lda lifetimeList,y
+        cmp #-1
+        beq computeBoundingBox5
+        rtl
+
+computeBoundingBox5 anop
+; compute the saucer bounding box
+        lda sizeList,y
+        lsr a
+        sta size
+
+        lda xPosList,y
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta xSaucerCenter
+
+        lda yPosList,y
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta ySaucerCenter
+
+        lda xSaucerCenter
+        sec
+        sbc size
+        sta testRectLeft
+
+        lda ySaucerCenter
+        sec
+        sbc size
+        sta testRectTop
+
+        lda xSaucerCenter
+        clc
+        adc size
+        sta testRectRight
+
+        lda ySaucerCenter
+        clc
+        adc size
+        sta testRectBottom
+
+
+; hit test the player rect against the saucer rect
+
+; check playerRectLeft > testRectRight
+
+        lda playerRectLeft
+        cmp testRectRight
+        bcs noIntersect5
+
+; check playerRectRight < testRectLeft
+
+        lda testRectLeft
+        cmp playerRectRight
+        bcs noIntersect5
+
+; check playerRectTop > testRectBottom
+
+        lda playerRectTop
+        cmp testRectBottom
+        bcs noIntersect5
+
+; check playerRectBottom < testRectTop
+
+        lda testRectTop
+        cmp playerRectBottom
+        bcs noIntersect5
+
+        bra itsAHit5
+
+noIntersect5 anop
+        rtl
+
+itsAHit5 anop
+; destroy the saucer
+        jsr getSaucer
+        tay
+        lda #0
+        sta lifetimeList,y
+
+; destroy the player ship and the thrust object
+        lda #0
+        ldx #OBJECT_PLAYER
+        sta lifetimeList,x
+        ldx #OBJECT_THRUST
+        sta lifetimeList,x
+
+; throw some particles
+        lda #OBJECT_PLAYER
+        jsl startExplosion
+
+; throw some wreckage
+        lda #OBJECT_PLAYER
+        jsl startWreckageExplosion
+        jsr getSaucer
+        jsl startWreckageExplosion
+
+; set player respawn timer
+        lda #100
+        sta playerRespawnTimer
+
+        rtl
+
+
+
 
 collisionCheckPlayer entry
 
@@ -632,6 +758,7 @@ getPlayerPos anop
         sta playerRectBottom
 
         jsl checkPlayerAgainstRocks
+        jsl checkPlayerAgainstSaucers
 
 done anop
 
@@ -828,10 +955,22 @@ done1 anop
 
         rtl
         
-        
+
+
+
+
+doAllCollisionChecks entry
+        jsl collisionCheckMissiles
+        jsl collisionCheckPlayer
+        jsl collisionCheckSaucers
+        rtl
+
+
+
         
 
 missileCounter dc i2'0'
+missileIndex dc i2'0'
 rockCounter dc i2'0'
 xPlayerPos dc i2'0'
 yPlayerPos dc i2'0'
@@ -856,6 +995,8 @@ saucerRectRight dc i2'0'
 saucerRectBottom dc i2'0'
 xRockCenter dc i2'0'
 yRockCenter dc i2'0'
+xSaucerCenter dc i2'0'
+ySaucerCenter dc i2'0'
 tempScore dc i2'0'
 isPlayerMissile dc i2'0'
 

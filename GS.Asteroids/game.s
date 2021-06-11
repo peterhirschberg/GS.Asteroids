@@ -46,9 +46,7 @@ run anop
         jsl runSaucers
 
 ; collision checks
-        jsl collisionCheckMissiles
-        jsl collisionCheckPlayer
-        jsl collisionCheckSaucers
+        jsl doAllCollisionChecks
 
 ; check number of active rocks
         jsl calcActiveRocks
