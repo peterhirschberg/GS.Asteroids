@@ -17,7 +17,8 @@ saucers start
 spawnSaucer entry
         
 ; check to see if there is already an active saucer
-        ldx #OBJECT_LARGE_SAUCER1
+        jsr getSaucer
+        tax
         lda lifetimeList,x
         cmp #0
         beq checkPlayer
@@ -62,10 +63,6 @@ checkTimer anop
 doSpawnSaucer anop
         lda #500
         sta spawnTimer
-; WAIT WHAT??
-        jsl spawnSaucer
-
-doSpawn anop
 
         lda #30
         sta fireTimer
@@ -81,8 +78,9 @@ doSpawn anop
         beq spawnFromLeft
         
 ; spawn from right
-        ldx #OBJECT_LARGE_SAUCER1
-        
+        jsr getSaucer
+        tax
+
         lda #SCREEN_XMAX
         sta xPosList,x
         
@@ -105,8 +103,9 @@ doSpawn anop
         rtl
         
 spawnFromLeft anop
-        ldx #OBJECT_LARGE_SAUCER1
-    
+        jsr getSaucer
+        tax
+
         lda #0
         sta xPosList,x
     
@@ -131,7 +130,8 @@ spawnFromLeft anop
     
 runSaucers entry
 
-        ldx #OBJECT_LARGE_SAUCER1
+        jsr getSaucer
+        tax
         lda lifetimeList,x
         cmp #-1
         beq checkForFire
@@ -179,9 +179,9 @@ playerDead1 anop
 notDead1 anop
 
 ; Aim at the player
-; Note this currently aims DIRECTLY at the player :-)
 
-        ldx #OBJECT_LARGE_SAUCER1
+        jsr getSaucer
+        tax
 
         lda xPosList,x
         lsr a
@@ -224,6 +224,9 @@ notDead1 anop
         jsr calcPointsAngle
         sta fireAngle
 
+; Adjust the aim a bit for reduced accuracy
+        jsr adjustAim
+
 doneAiming anop
 
         lda #MISSILE_SPEED
@@ -248,7 +251,8 @@ doneAiming anop
         asl a
         sta ySpeedList,x
         
-        ldy #OBJECT_LARGE_SAUCER1
+        jsr getSaucer
+        tay
 
         lda xPosList,y
         sta xPosList,x
@@ -273,7 +277,8 @@ doChangeDirection anop
         
 offscreenCheck anop
 ; test to see if saucer has moved offscreen
-        ldx #OBJECT_LARGE_SAUCER1
+        jsr getSaucer
+        tax
         lda xSpeedList,x
         bmi goingLeft
         
@@ -299,7 +304,8 @@ killSaucer anop
         
 changeDirection anop
 
-        ldx #OBJECT_LARGE_SAUCER1
+        jsr getSaucer
+        tax
 
         lda #50
         sta directionTimer
@@ -336,6 +342,38 @@ goUp anop
         rts
 
 
+adjustAim entry
+
+        lda #40
+        pha
+        jsl getRandom
+        sec
+        sbc #20
+        sta fireAngleAdjust
+
+        lda fireAngle
+        clc
+        adc fireAngleAdjust
+        sta fireAngle
+
+        bmi wrapAim
+        rts
+
+wrapAim anop
+
+        lda fireAngle
+        clc
+        adc #360
+        sta fireAngle
+        rts
+
+
+getSaucer entry
+
+        lda #OBJECT_LARGE_SAUCER1
+
+        rts
+
         
 
 savex dc i2'0'
@@ -344,6 +382,7 @@ directionTimer dc i2'0'
 spawnTimer dc i2'500'
 fireTimer dc i2'0'
 fireAngle dc i2'0'
+fireAngleAdjust dc i2'0'
 missileIndex dc i2'0'
 
 saucerX dc i2'0'
