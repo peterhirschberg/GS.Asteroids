@@ -57,6 +57,7 @@ getMissilePos anop
         
         lda isPlayerMissile
         bmi checkAgainstPlayer
+        jsl checkMissileAgainstSaucers
         jmp nextMissile
         
 checkAgainstPlayer anop
@@ -65,6 +66,7 @@ checkAgainstPlayer anop
         jsl checkMissileAgainstPlayer
         ldx savex
         ldy savey
+        jmp nextMissile
 
 ; increment to the next missile and loop
 nextMissile anop
@@ -184,7 +186,108 @@ itsAHit3 anop
 
         rtl
         
-        
+
+
+checkMissileAgainstSaucers entry
+
+        jsr getSaucer
+        tax
+
+; check to see if the saucer is active
+        lda lifetimeList,x
+        cmp #0
+        bne getSaucerPos1
+        rtl
+
+getSaucerPos1 anop
+        lda xPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta xSaucerPos
+        lda yPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta ySaucerPos
+
+        lda sizeList,x
+        lsr a
+        sta saucerSize
+
+        lda xSaucerPos
+        sec
+        sbc saucerSize
+        sta saucerRectLeft
+
+        lda ySaucerPos
+        sec
+        sbc saucerSize
+        sta saucerRectTop
+
+        lda xSaucerPos
+        clc
+        adc saucerSize
+        sta saucerRectRight
+
+        lda ySaucerPos
+        clc
+        adc saucerSize
+        sta saucerRectBottom
+
+; hit test the missile point against the bounding box
+        lda xMissilePos
+        cmp saucerRectLeft
+        bcs continue1b
+        rtl
+
+continue1b anop
+        lda saucerRectRight
+        cmp xMissilePos
+        bcs continue2b
+        rtl
+
+continue2b anop
+
+        lda yMissilePos
+        cmp saucerRectTop
+        bcs continue3b
+        rtl
+
+continue3b anop
+        lda saucerRectBottom
+        cmp yMissilePos
+        bcs itsAHit4
+        rtl
+
+itsAHit4 anop
+
+; destroy the saucer
+        jsr getSaucer
+        tax
+        lda #0
+        sta lifetimeList,x
+
+; throw some particles
+        jsr getSaucer
+        jsl startExplosion
+
+; throw some wreckage
+        jsr getSaucer
+        jsl startWreckageExplosion
+
+; add points (TODO: account for small saucer's points here)
+        lda #200
+        jsr addToScore
+
+        rtl
+
         
 checkMissileAgainstRocks entry
 

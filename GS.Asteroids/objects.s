@@ -1598,9 +1598,9 @@ sizeList anop
         dc i2'0'
         dc i2'0'
 ; large saucer
-        dc i2'13'
+        dc i2'20'
 ; small saucer
-        dc i2'7'
+        dc i2'10'
 ; particles (size not used for these)
         dc i2'0'
         dc i2'0'
