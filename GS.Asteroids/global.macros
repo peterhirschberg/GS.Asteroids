@@ -1,0 +1,20 @@
+;
+;
+;  Created by Jeremy Rand on 2020-12-16.
+;Copyright © 2020 Jeremy Rand. All rights reserved.
+;
+
+; Wait for the DOC to be ready
+        macro
+        _docWait
+_docWait_&SYSCNT anop
+        lda >SOUND_CONTROL_REG
+        bmi _docWait_&SYSCNT
+        mend
+
+        macro
+        _writeReg &reg,&value
+        ldy &reg
+        lda &value
+        jsr writeReg
+        mend

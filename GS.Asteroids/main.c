@@ -77,6 +77,27 @@ word getScoreDigit100000s(word score)
     return (score/100000) % 10;
 }
 
+// Sounds
+
+static void loadSound(Word addr, Word soundNum)
+{
+    Handle handle = LoadResource(rRawSound, soundNum);
+    HLock(handle);
+    WriteRamBlock(*handle, addr, GetHandleSize(handle));
+    HUnlock(handle);
+}
+
+void loadFireSound(word addr)
+{
+    loadSound(addr, FIRE_SOUND);
+}
+
+void preloadSound(void)
+{
+    LoadResource(rRawSound, FIRE_SOUND);
+}
+
+// Game loop
 void waitForNextTick(void)
 {
     while (!shouldQuit) {

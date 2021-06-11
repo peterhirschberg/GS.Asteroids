@@ -20,6 +20,7 @@ game    start
 gameInit entry
         jsl setupScreen
         jsl initColorTable
+        jsl soundInit
         jsl spawnInitialRocks
         lda #0
         sta playerScore

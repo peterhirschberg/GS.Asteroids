@@ -72,3 +72,12 @@ resource rToolStartup (TOOL_STARTUP) {
         
     }
 };
+
+
+/* Sounds */
+
+type rRawSound {
+    hex string;
+};
+
+read rRawSound (FIRE_SOUND) "sounds/fire.raw";

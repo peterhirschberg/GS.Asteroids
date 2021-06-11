@@ -13,4 +13,8 @@
 /* Tools */
 #define TOOL_STARTUP 1
 
+/* Sounds */
+#define rRawSound 1
+#define FIRE_SOUND 1
+
 #endif /* defined(_GUARD_PROJECTGS_Asteroids_FILEmain_) */
