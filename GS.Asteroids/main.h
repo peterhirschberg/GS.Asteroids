@@ -15,6 +15,10 @@
 
 /* Sounds */
 #define rRawSound 1
+
 #define FIRE_SOUND 1
+#define EXPLODE1_SOUND 2
+#define EXPLODE2_SOUND 3
+#define EXPLODE3_SOUND 4
 
 #endif /* defined(_GUARD_PROJECTGS_Asteroids_FILEmain_) */

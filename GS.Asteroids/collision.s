@@ -396,15 +396,30 @@ itsAHit anop
         lda isPlayerMissile
         bmi skipScore
         
-; update the score
+; see what type of rock we hit
+        lda objectTypeList,y
+        cmp #OBJECT_LARGE_ROCK
+        beq largeRock
+        jmp checkMediumRock
+largeRock anop
+        stx savex
+        sty savey
+        jsl playExplode1Sound
+        ldx savex
+        ldy savey
         lda #20
         sta tempScore
-
-        lda objectTypeList,y
+        jmp scoreDone
+checkMediumRock anop
         cmp #OBJECT_MEDIUM_ROCK
         beq mediumRock
         jmp checkSmallRock
 mediumRock anop
+        stx savex
+        sty savey
+        jsl playExplode2Sound
+        ldx savex
+        ldy savey
         lda #50
         sta tempScore
         jmp scoreDone
@@ -414,6 +429,11 @@ checkSmallRock anop
         beq smallRock
         jmp scoreDone
 smallRock anop
+        stx savex
+        sty savey
+        jsl playExplode3Sound
+        ldx savex
+        ldy savey
         lda #100
         sta tempScore
 scoreDone anop

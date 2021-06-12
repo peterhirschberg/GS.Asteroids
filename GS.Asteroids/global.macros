@@ -1,8 +1,15 @@
 ;
+;  sound.s
+;
+; ********************************************
+; Code pulled from Jeremy Rand's "BuGS" game
+; Github: https://github.com/jeremysrand/BuGS
+; ********************************************
 ;
 ;  Created by Jeremy Rand on 2020-12-16.
 ;Copyright © 2020 Jeremy Rand. All rights reserved.
 ;
+
 
 ; Wait for the DOC to be ready
         macro
