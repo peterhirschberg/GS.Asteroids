@@ -284,6 +284,7 @@ itsAHit4 anop
         stx savex
         sty savey
         jsl playExplode1Sound
+        jsl stopLSaucerSound
         ldx savex
         ldy savey
 
@@ -716,6 +717,7 @@ itsAHit5 anop
         stx savex
         sty savey
         jsl playExplode1Sound
+        jsl stopLSaucerSound
         ldx savex
         ldy savey
 
@@ -908,6 +910,7 @@ itsAHit2 anop
         stx savex
         sty savey
         jsl playExplode1Sound
+        jsl stopLSaucerSound
         ldx savex
         ldy savey
 

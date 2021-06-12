@@ -30,6 +30,7 @@ SOUND_HALTED		equ 1
 SOUND_STARTED		equ 0
 
 SOUND_ONE_SHOT_MODE	equ 2
+SOUND_SWAP_MODE equ 6
 
 SOUND_RIGHT_SPEAKER    equ $10
 SOUND_LEFT_SPEAKER    equ $00
@@ -70,7 +71,19 @@ EXPLODE3_FREQ_LOW        equ 560
 EXPLODE3_CONTROL        equ SOUND_ONE_SHOT_MODE
 EXPLODE3_SIZE            equ $2b
 
+THRUST_SOUND_ADDR     equ $8000
+THRUST_OSC_NUM        equ 8
+THRUST_FREQ_HIGH        equ 0
+THRUST_FREQ_LOW        equ 560
+THRUST_CONTROL        equ SOUND_SWAP_MODE
+THRUST_SIZE            equ $2b
 
+LSAUCER_SOUND_ADDR     equ $c000
+LSAUCER_OSC_NUM        equ 14
+LSAUCER_FREQ_HIGH        equ 0
+LSAUCER_FREQ_LOW        equ 560
+LSAUCER_CONTROL        equ SOUND_SWAP_MODE
+LSAUCER_SIZE            equ $2b
 
 ; Y has the register to write to (16 bit mode)
 ; A has the value to write (8 bit mode)
@@ -118,6 +131,12 @@ soundInit entry
 
         pea EXPLODE3_SOUND_ADDR
         jsl loadExplode3Sound
+
+        pea THRUST_SOUND_ADDR
+        jsl loadThrustSound
+
+        pea LSAUCER_SOUND_ADDR
+        jsl loadLSaucerSound
 
 		_docWait
 
@@ -235,9 +254,178 @@ playExplode3Sound entry
 
 		rtl
 
+startThrustSound entry
 
+        lda thrustSoundIsPlaying
+        cmp #1
+        beq thrustAlreadyPlaying
+        jmp doStartThrustSound
+
+thrustAlreadyPlaying anop
+        rtl
+
+doStartThrustSound anop
+        lda #1
+        sta thrustSoundIsPlaying
+
+		_docWait
+
+		lda >SOUND_SYSTEM_VOLUME
+		and #$0f
+		sta >SOUND_CONTROL_REG
+
+		_writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM,#THRUST_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+1,#THRUST_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER
+        _writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+2,#THRUST_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER
+        _writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+3,#THRUST_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER
+
+		ldy #SOUND_REG_VOLUME+THRUST_OSC_NUM
+        lda #$fff
+        jsr writeReg
+        iny
+        lda #$ff
+        jsr writeReg
+        iny
+        lda #$ff
+        eor #$ff
+        jsr writeReg
+        iny
+        lda #$ff
+        eor #$ff
+        jsr writeReg
+
+		_writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM,#THRUST_CONTROL+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+1,#THRUST_CONTROL+SOUND_RIGHT_SPEAKER
+        _writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+2,#THRUST_CONTROL+SOUND_LEFT_SPEAKER
+        _writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+3,#THRUST_CONTROL+SOUND_LEFT_SPEAKER
+
+		rtl
+
+
+stopThrustSound entry
+        lda thrustSoundIsPlaying
+        cmp #0
+        beq thrustNotPlaying
+        jmp doStopThrustSound
+
+thrustNotPlaying anop
+        rtl
+
+doStopThrustSound anop
+        lda #0
+        sta thrustSoundIsPlaying
+
+		_docWait
+		lda >SOUND_SYSTEM_VOLUME
+		and #$0f
+		sta >SOUND_CONTROL_REG
+
+		_writeReg #SOUND_REG_VOLUME+THRUST_OSC_NUM,#0
+		_writeReg #SOUND_REG_VOLUME+THRUST_OSC_NUM+1,#0
+		_writeReg #SOUND_REG_VOLUME+THRUST_OSC_NUM+1,#0
+		_writeReg #SOUND_REG_VOLUME+THRUST_OSC_NUM+1,#0
+
+		_writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM,#SOUND_ONE_SHOT_MODE+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+1,#SOUND_ONE_SHOT_MODE+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+2,#SOUND_ONE_SHOT_MODE+SOUND_LEFT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+3,#SOUND_ONE_SHOT_MODE+SOUND_LEFT_SPEAKER
+
+		_writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM,#SOUND_ONE_SHOT_MODE+SOUND_HALTED+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+1,#SOUND_ONE_SHOT_MODE+SOUND_HALTED+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+2,#SOUND_ONE_SHOT_MODE+SOUND_HALTED+SOUND_LEFT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+3,#SOUND_ONE_SHOT_MODE+SOUND_HALTED+SOUND_LEFT_SPEAKER
+
+        rtl
+
+
+; LSAUCER
+
+startLSaucerSound entry
+
+        lda lSaucerSoundIsPlaying
+        cmp #1
+        beq lSaucerAlreadyPlaying
+        jmp doStartLSaucerSound
+
+lSaucerAlreadyPlaying anop
+        rtl
+
+doStartLSaucerSound anop
+        lda #1
+        sta lSaucerSoundIsPlaying
+
+		_docWait
+
+		lda >SOUND_SYSTEM_VOLUME
+		and #$0f
+		sta >SOUND_CONTROL_REG
+
+		_writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM,#LSAUCER_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+1,#LSAUCER_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER
+        _writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+2,#LSAUCER_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER
+        _writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+3,#LSAUCER_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER
+
+		ldy #SOUND_REG_VOLUME+LSAUCER_OSC_NUM
+        lda #$fff
+        jsr writeReg
+        iny
+        lda #$ff
+        jsr writeReg
+        iny
+        lda #$ff
+        eor #$ff
+        jsr writeReg
+        iny
+        lda #$ff
+        eor #$ff
+        jsr writeReg
+
+		_writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM,#LSAUCER_CONTROL+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+1,#LSAUCER_CONTROL+SOUND_RIGHT_SPEAKER
+        _writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+2,#LSAUCER_CONTROL+SOUND_LEFT_SPEAKER
+        _writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+3,#LSAUCER_CONTROL+SOUND_LEFT_SPEAKER
+
+		rtl
+
+
+stopLSaucerSound entry
+        lda lSaucerSoundIsPlaying
+        cmp #0
+        beq lSaucerNotPlaying
+        jmp doStopLSaucerSound
+
+lSaucerNotPlaying anop
+        rtl
+
+doStopLSaucerSound anop
+        lda #0
+        sta lSaucerSoundIsPlaying
+
+		_docWait
+		lda >SOUND_SYSTEM_VOLUME
+		and #$0f
+		sta >SOUND_CONTROL_REG
+
+		_writeReg #SOUND_REG_VOLUME+LSAUCER_OSC_NUM,#0
+		_writeReg #SOUND_REG_VOLUME+LSAUCER_OSC_NUM+1,#0
+		_writeReg #SOUND_REG_VOLUME+LSAUCER_OSC_NUM+1,#0
+		_writeReg #SOUND_REG_VOLUME+LSAUCER_OSC_NUM+1,#0
+
+		_writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM,#SOUND_ONE_SHOT_MODE+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+1,#SOUND_ONE_SHOT_MODE+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+2,#SOUND_ONE_SHOT_MODE+SOUND_LEFT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+3,#SOUND_ONE_SHOT_MODE+SOUND_LEFT_SPEAKER
+
+		_writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM,#SOUND_ONE_SHOT_MODE+SOUND_HALTED+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+1,#SOUND_ONE_SHOT_MODE+SOUND_HALTED+SOUND_RIGHT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+2,#SOUND_ONE_SHOT_MODE+SOUND_HALTED+SOUND_LEFT_SPEAKER
+		_writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+3,#SOUND_ONE_SHOT_MODE+SOUND_HALTED+SOUND_LEFT_SPEAKER
+
+        rtl
 
 registerValue dc i2'0'
+thrustSoundIsPlaying dc i2'0'
+lSaucerSoundIsPlaying dc i2'0'
 
 soundRegDefaults anop
 
@@ -289,6 +477,31 @@ soundRegDefaults anop
         dc i1'SOUND_REG_CONTROL+EXPLODE3_OSC_NUM',i1'EXPLODE3_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER'
         dc i1'SOUND_REG_CONTROL+EXPLODE3_OSC_NUM+1',i1'EXPLODE3_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER'
 
+; Thrust
+        dc i1'SOUND_REG_FREQ_LOW+THRUST_OSC_NUM',i1'THRUST_FREQ_LOW'
+        dc i1'SOUND_REG_FREQ_LOW+THRUST_OSC_NUM+1',i1'THRUST_FREQ_LOW'
+        dc i1'SOUND_REG_FREQ_HIGH+THRUST_OSC_NUM',i1'THRUST_FREQ_HIGH'
+        dc i1'SOUND_REG_FREQ_HIGH+THRUST_OSC_NUM+1',i1'THRUST_FREQ_HIGH'
+        dc i1'SOUND_REG_SIZE+THRUST_OSC_NUM',i1'THRUST_SIZE'
+        dc i1'SOUND_REG_SIZE+THRUST_OSC_NUM+1',i1'THRUST_SIZE'
+        dc i1'SOUND_REG_POINTER+THRUST_OSC_NUM',i1'THRUST_SOUND_ADDR/256'
+        dc i1'SOUND_REG_POINTER+THRUST_OSC_NUM+1',i1'THRUST_SOUND_ADDR/256'
+        dc i1'SOUND_REG_CONTROL+THRUST_OSC_NUM',i1'THRUST_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER'
+        dc i1'SOUND_REG_CONTROL+THRUST_OSC_NUM+1',i1'THRUST_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER'
+
+; Large Saucer
+        dc i1'SOUND_REG_FREQ_LOW+LSAUCER_OSC_NUM',i1'LSAUCER_FREQ_LOW'
+        dc i1'SOUND_REG_FREQ_LOW+LSAUCER_OSC_NUM+1',i1'LSAUCER_FREQ_LOW'
+        dc i1'SOUND_REG_FREQ_HIGH+LSAUCER_OSC_NUM',i1'LSAUCER_FREQ_HIGH'
+        dc i1'SOUND_REG_FREQ_HIGH+LSAUCER_OSC_NUM+1',i1'LSAUCER_FREQ_HIGH'
+        dc i1'SOUND_REG_SIZE+LSAUCER_OSC_NUM',i1'LSAUCER_SIZE'
+        dc i1'SOUND_REG_SIZE+LSAUCER_OSC_NUM+1',i1'LSAUCER_SIZE'
+        dc i1'SOUND_REG_POINTER+LSAUCER_OSC_NUM',i1'LSAUCER_SOUND_ADDR/256'
+        dc i1'SOUND_REG_POINTER+LSAUCER_OSC_NUM+1',i1'LSAUCER_SOUND_ADDR/256'
+        dc i1'SOUND_REG_CONTROL+LSAUCER_OSC_NUM',i1'LSAUCER_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER'
+        dc i1'SOUND_REG_CONTROL+LSAUCER_OSC_NUM+1',i1'LSAUCER_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER'
+
 soundRegDefaultsEnd	anop
+
 
         end

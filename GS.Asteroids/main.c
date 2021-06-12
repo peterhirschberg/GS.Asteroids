@@ -107,12 +107,24 @@ void loadExplode3Sound(word addr)
     loadSound(addr, EXPLODE3_SOUND);
 }
 
+void loadThrustSound(word addr)
+{
+    loadSound(addr, THRUST_SOUND);
+}
+
+void loadLSaucerSound(word addr)
+{
+    loadSound(addr, LSAUCER_SOUND);
+}
+
 void preloadSound(void)
 {
     LoadResource(rRawSound, FIRE_SOUND);
     LoadResource(rRawSound, EXPLODE1_SOUND);
     LoadResource(rRawSound, EXPLODE2_SOUND);
     LoadResource(rRawSound, EXPLODE3_SOUND);
+    LoadResource(rRawSound, THRUST_SOUND);
+    LoadResource(rRawSound, LSAUCER_SOUND);
 }
 
 // Game loop

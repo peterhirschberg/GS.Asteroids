@@ -84,3 +84,5 @@ read rRawSound (FIRE_SOUND) "sounds/fire.raw";
 read rRawSound (EXPLODE1_SOUND) "sounds/explode1.raw";
 read rRawSound (EXPLODE2_SOUND) "sounds/explode2.raw";
 read rRawSound (EXPLODE3_SOUND) "sounds/explode3.raw";
+read rRawSound (THRUST_SOUND) "sounds/thrust.raw";
+read rRawSound (LSAUCER_SOUND) "sounds/lsaucer.raw";

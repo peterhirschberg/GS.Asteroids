@@ -61,10 +61,13 @@ checkTimer anop
         rtl
         
 doSpawnSaucer anop
+
+        jsl startLSaucerSound
+
         lda #500
         sta spawnTimer
 
-        lda #30
+        lda #20
         sta fireTimer
 
         lda #0
@@ -157,8 +160,12 @@ doDirectionTimerShortJump anop
 fireMissile anop
         sta missileIndex
 
-        lda #40
+        lda #30
         sta fireTimer
+
+        stx savex
+        jsl playFireSound
+        ldx savex
 
 ; see if the player is alive or not
         ldx #OBJECT_PLAYER
@@ -298,7 +305,9 @@ killSaucer anop
 
         lda #0
         sta lifetimeList,x
-        
+
+        jsl stopLSaucerSound
+
         rtl
         
         

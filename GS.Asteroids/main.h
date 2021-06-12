@@ -20,5 +20,7 @@
 #define EXPLODE1_SOUND 2
 #define EXPLODE2_SOUND 3
 #define EXPLODE3_SOUND 4
+#define THRUST_SOUND 5
+#define LSAUCER_SOUND 6
 
 #endif /* defined(_GUARD_PROJECTGS_Asteroids_FILEmain_) */

@@ -129,10 +129,17 @@ notDead anop
         lda #0
         sta rotationSpeedList,x
 
-; apply "friction" to the ship
+; apply "friction" to the ship if the player is not pressing thrust
+; TODO: need to debounce keydownThrust because of the GS's key repeat
         lda keydownThrust
         cmp #1
         beq dontSlowDown
+
+        stx savex
+        sty savey
+        jsl stopThrustSound
+        ldx savex
+        ldy savey
 
         lda xSpeedList,x
         jsl slowDownA
@@ -318,6 +325,12 @@ fireMissile anop
 
 
 onKeydownThrust anop
+
+        stx savex
+        sty savey
+        jsl startThrustSound
+        ldx savex
+        ldy savey
 
 ; vector the thrust
         lda #0
