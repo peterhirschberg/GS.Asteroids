@@ -91,6 +91,9 @@ continue1 anop
         jsl fadeParticles
         jsl fadeWreckage
 
+; "thump" sounds
+        jsr doThumpSounds
+
         rtl
 
 
@@ -138,7 +141,42 @@ gameDone anop
 
         rtl
 
-        
+
+doThumpSounds entry
+
+        dec thumpTimer
+        lda #0
+        cmp thumpTimer
+        beq resetThumpTimer
+        jmp thumpDone
+
+resetThumpTimer anop
+        lda #20
+        sta thumpTimer
+
+        lda thumpWhich
+        cmp #0
+        beq thump1
+
+        lda #0
+        sta thumpWhich
+
+        jsl playThumpLowSound
+
+        jmp thumpDone
+
+thump1 anop
+
+        lda #1
+        sta thumpWhich
+
+        jsl playThumpHighSound
+
+thumpDone anop
+
+        rts
+
+
 
         end
 
@@ -146,6 +184,8 @@ gameDone anop
 gameData data
 
 playerRespawnTimer dc i2'0'
+thumpTimer dc i2'20'
+thumpWhich dc i2'0'
     
         end
 

@@ -22,5 +22,9 @@
 #define EXPLODE3_SOUND 4
 #define THRUST_SOUND 5
 #define LSAUCER_SOUND 6
+#define SSAUCER_SOUND 7
+#define THUMPLO_SOUND 8
+#define THUMPHI_SOUND 9
+
 
 #endif /* defined(_GUARD_PROJECTGS_Asteroids_FILEmain_) */

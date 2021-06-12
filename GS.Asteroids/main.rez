@@ -86,3 +86,6 @@ read rRawSound (EXPLODE2_SOUND) "sounds/explode2.raw";
 read rRawSound (EXPLODE3_SOUND) "sounds/explode3.raw";
 read rRawSound (THRUST_SOUND) "sounds/thrust.raw";
 read rRawSound (LSAUCER_SOUND) "sounds/lsaucer.raw";
+read rRawSound (SSAUCER_SOUND) "sounds/ssaucer.raw";
+read rRawSound (THUMPLO_SOUND) "sounds/thumplo.raw";
+read rRawSound (THUMPHI_SOUND) "sounds/thumphi.raw";

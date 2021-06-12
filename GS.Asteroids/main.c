@@ -117,6 +117,21 @@ void loadLSaucerSound(word addr)
     loadSound(addr, LSAUCER_SOUND);
 }
 
+void loadSSaucerSound(word addr)
+{
+    loadSound(addr, SSAUCER_SOUND);
+}
+
+void loadThumpLowSound(word addr)
+{
+    loadSound(addr, THUMPLO_SOUND);
+}
+
+void loadThumpHighSound(word addr)
+{
+    loadSound(addr, THUMPHI_SOUND);
+}
+
 void preloadSound(void)
 {
     LoadResource(rRawSound, FIRE_SOUND);
@@ -125,6 +140,9 @@ void preloadSound(void)
     LoadResource(rRawSound, EXPLODE3_SOUND);
     LoadResource(rRawSound, THRUST_SOUND);
     LoadResource(rRawSound, LSAUCER_SOUND);
+    LoadResource(rRawSound, SSAUCER_SOUND);
+    LoadResource(rRawSound, THUMPLO_SOUND);
+    LoadResource(rRawSound, THUMPHI_SOUND);
 }
 
 // Game loop
