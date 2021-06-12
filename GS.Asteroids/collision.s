@@ -171,6 +171,12 @@ continue3a anop
         rtl
 
 itsAHit3 anop
+
+        stx savex
+        sty savey
+        jsl playExplode1Sound
+        ldx savex
+        ldy savey
         
 ; destroy the player ship and the thrust object
         lda #0
@@ -274,6 +280,12 @@ continue3b anop
         rtl
 
 itsAHit4 anop
+
+        stx savex
+        sty savey
+        jsl playExplode1Sound
+        ldx savex
+        ldy savey
 
 ; destroy the saucer
         jsr getSaucer
@@ -567,6 +579,13 @@ itsAHit1 anop
         ldx savex
         ldy savey
 
+; play sound
+        stx savex
+        sty savey
+        jsl playExplode1Sound
+        ldx savex
+        ldy savey
+
 ; destroy the player ship and the thrust object
         lda #0
         ldx #OBJECT_PLAYER
@@ -693,6 +712,13 @@ noIntersect5 anop
         rtl
 
 itsAHit5 anop
+
+        stx savex
+        sty savey
+        jsl playExplode1Sound
+        ldx savex
+        ldy savey
+
 ; destroy the saucer
         jsr getSaucer
         tay
@@ -878,6 +904,13 @@ noIntersect2 anop
         jmp rockNext2
 
 itsAHit2 anop
+
+        stx savex
+        sty savey
+        jsl playExplode1Sound
+        ldx savex
+        ldy savey
+
 ; break down the rock
         stx savex
         sty savey
