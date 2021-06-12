@@ -7,9 +7,10 @@
 ; Wait for the DOC to be ready
         macro
         _docWait
-_docWait_&SYSCNT anop
-        lda >SOUND_CONTROL_REG
-        bmi _docWait_&SYSCNT
+; hangs the game when uncommmented
+;_docWait_&SYSCNT anop
+;        lda >SOUND_CONTROL_REG
+;        bmi _docWait_&SYSCNT
         mend
 
         macro

@@ -14,35 +14,35 @@ sound start
         using globalData
 
 
-SOUND_REG_FREQ_LOW	gequ $0000
-SOUND_REG_FREQ_HIGH	gequ $0020
-SOUND_REG_VOLUME	gequ $0040
-SOUND_REG_POINTER	gequ $0080
-SOUND_REG_CONTROL	gequ $00a0
-SOUND_REG_SIZE		gequ $00c0
+SOUND_REG_FREQ_LOW	equ $0000
+SOUND_REG_FREQ_HIGH	equ $0020
+SOUND_REG_VOLUME	equ $0040
+SOUND_REG_POINTER	equ $0080
+SOUND_REG_CONTROL	equ $00a0
+SOUND_REG_SIZE		equ $00c0
 
-SOUND_HALTED		gequ 1
-SOUND_STARTED		gequ 0
+SOUND_HALTED		equ 1
+SOUND_STARTED		equ 0
 
-SOUND_ONE_SHOT_MODE	gequ 2
+SOUND_ONE_SHOT_MODE	equ 2
 
-SOUND_RIGHT_SPEAKER    gequ $10
-SOUND_LEFT_SPEAKER    gequ $00
+SOUND_RIGHT_SPEAKER    equ $10
+SOUND_LEFT_SPEAKER    equ $00
 
-SOUND_CONTROL_REG        gequ $e1c03c
-SOUND_DATA_REG            gequ $e1c03d
-SOUND_ADDR_LOW            gequ $e1c03e
-SOUND_ADDR_HIGH         gequ $e1c03f
-SOUND_SYSTEM_VOLUME        gequ $e100ca
+SOUND_CONTROL_REG        equ $e1c03c
+SOUND_DATA_REG            equ $e1c03d
+SOUND_ADDR_LOW            equ $e1c03e
+SOUND_ADDR_HIGH         equ $e1c03f
+SOUND_SYSTEM_VOLUME        equ $e100ca
 
 
 ; OSC 6 & 7 for L/R channels
-FIRE_SOUND_ADDR     gequ $0000
-FIRE_OSC_NUM        gequ 6
-FIRE_FREQ_HIGH        gequ 0
-FIRE_FREQ_LOW        gequ 214
-FIRE_CONTROL        gequ SOUND_ONE_SHOT_MODE
-FIRE_SIZE            gequ $1b
+FIRE_SOUND_ADDR     equ $0000
+FIRE_OSC_NUM        equ 6
+FIRE_FREQ_HIGH        equ 0
+FIRE_FREQ_LOW        equ 214
+FIRE_CONTROL        equ SOUND_ONE_SHOT_MODE
+FIRE_SIZE            equ $1b
 
 
 ; Y has the register to write to (16 bit mode)
@@ -62,7 +62,8 @@ writeReg_loop anop
 		lda >SOUND_DATA_REG
 		lda >SOUND_DATA_REG
 		cmp registerValue
-		bne writeReg_loop
+; hangs the game when uncommmented
+;		bne writeReg_loop
 		rts
 
 
@@ -84,6 +85,7 @@ soundInit entry
 		jsl loadFireSound
 
 		_docWait
+
 		lda >SOUND_SYSTEM_VOLUME
 		and #$0f
 		sta >SOUND_CONTROL_REG
@@ -102,6 +104,7 @@ soundInit_loop anop
 		rtl
 
 playFireSound entry
+
 		_docWait
 
 		lda >SOUND_SYSTEM_VOLUME
@@ -123,6 +126,9 @@ playFireSound entry
 		_writeReg #SOUND_REG_CONTROL+FIRE_OSC_NUM+1,#FIRE_CONTROL+SOUND_LEFT_SPEAKER
 
 		rtl
+
+
+
 
 registerValue        dc i2'0'
 

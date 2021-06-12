@@ -311,8 +311,8 @@ fireMissile anop
         lda #MISSILE_LIFETIME
         sta lifetimeList,x
 
-; play sound
-;        jsl playFireSound
+; play fire sound
+        jsl playFireSound
 
         rtl
 
