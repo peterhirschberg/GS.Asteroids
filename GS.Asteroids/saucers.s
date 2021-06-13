@@ -344,7 +344,7 @@ changeDirection anop
         jsr getSaucer
         tax
 
-        lda #500
+        lda #50
         sta directionTimer
         
         lda ySpeedList,x
@@ -440,13 +440,16 @@ getLargeSaucer anop
         rts
 
 
+isSmallSaucer entry
+        lda currentSaucer
+        rts
 
 currentSaucer dc i2'0'
 
 savex dc i2'0'
 
 directionTimer dc i2'0'
-spawnTimer dc i2'50'
+spawnTimer dc i2'500'
 fireTimer dc i2'0'
 fireAngle dc i2'0'
 fireAngleAdjust dc i2'0'
