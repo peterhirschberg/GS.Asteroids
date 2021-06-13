@@ -62,7 +62,7 @@ checkTimer anop
         
 doSpawnSaucer anop
 
-        jsl startLSaucerSound
+        jsl startSaucerSound
 
         lda #500
         sta spawnTimer
@@ -306,7 +306,7 @@ killSaucer anop
         lda #0
         sta lifetimeList,x
 
-        jsl stopLSaucerSound
+        jsl stopSaucerSound
 
         rtl
         
@@ -379,7 +379,7 @@ wrapAim anop
 
 getSaucer entry
 
-        lda #OBJECT_LARGE_SAUCER1
+        lda #OBJECT_SMALL_SAUCER1
 
         rts
 
