@@ -64,6 +64,9 @@ doSpawnSaucer anop
 
         jsl startSaucerSound
 
+        lda #1
+        sta firstShot
+
         lda #500
         sta spawnTimer
 
@@ -168,6 +171,9 @@ fireMissile anop
         ldx savex
 
 ; see if the player is alive or not
+
+  jmp notDead1
+
         ldx #OBJECT_PLAYER
         lda lifetimeList,x
         cmp #0
@@ -184,6 +190,22 @@ playerDead1 anop
         jmp doneAiming
 
 notDead1 anop
+
+; if this is the first shot, aim randomly
+        lda firstShot
+        cmp #0
+        beq notFirstShot
+
+        lda #0
+        sta firstShot
+
+        lda #360
+        pha
+        jsl getRandom
+        sta fireAngle
+        jmp doneAiming
+
+notFirstShot anop
 
 ; Aim at the player
 
@@ -353,6 +375,10 @@ goUp anop
 
 adjustAim entry
 
+        jsr getSaucer
+        cmp #OBJECT_SMALL_SAUCER1
+        beq smallSaucerAim
+
         lda #40
         pha
         jsl getRandom
@@ -368,6 +394,24 @@ adjustAim entry
         bmi wrapAim
         rts
 
+smallSaucerAim anop
+
+        lda #20
+        pha
+        jsl getRandom
+        sec
+        sbc #10
+        sta fireAngleAdjust
+
+        lda fireAngle
+        clc
+        adc fireAngleAdjust
+        sta fireAngle
+
+        bmi wrapAim
+        rts
+
+
 wrapAim anop
 
         lda fireAngle
@@ -379,7 +423,7 @@ wrapAim anop
 
 getSaucer entry
 
-        lda #OBJECT_SMALL_SAUCER1
+        lda #OBJECT_LARGE_SAUCER1
 
         rts
 
@@ -393,6 +437,8 @@ fireTimer dc i2'0'
 fireAngle dc i2'0'
 fireAngleAdjust dc i2'0'
 missileIndex dc i2'0'
+
+firstShot dc i2'0'
 
 saucerX dc i2'0'
 saucerY dc i2'0'

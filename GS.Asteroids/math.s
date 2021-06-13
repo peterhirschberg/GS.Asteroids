@@ -305,16 +305,6 @@ getQuadrantAngle entry
         lda result2
         sta ry
 
-; get XY distance
-
-        ldx ry
-        lda rx
-        jsl divide
-        lda quotnt
-        sta distanceXY
-
-; atan
-
 ; CALL INTO C FUNCTION TO DO A FIXED POINT DIVISION TO GET THE DISTANCE
         lda rx
         pha

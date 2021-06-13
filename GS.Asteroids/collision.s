@@ -926,16 +926,17 @@ itsAHit2 anop
         ldy savey
 
 ; destroy the saucer
+        jsr getSaucer
+        tax
         lda #0
-        ldx #OBJECT_LARGE_SAUCER1
         sta lifetimeList,x
 
 ; throw some particles
-        lda #OBJECT_LARGE_SAUCER1
+        jsr getSaucer
         jsl startExplosion
 
 ; throw some wreckage
-        lda #OBJECT_LARGE_SAUCER1
+        jsr getSaucer
         jsl startWreckageExplosion
 
 ; saucer was destroyed - bail
@@ -958,7 +959,8 @@ rocksDone2 anop
         
 collisionCheckSaucers entry
 
-        ldx #OBJECT_LARGE_SAUCER1
+        jsr getSaucer
+        tax
 
 ; check to see if the saucer is active
         lda lifetimeList,x
