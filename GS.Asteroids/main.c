@@ -171,6 +171,11 @@ int main(void)
     InitMouse(0);
     SetMouse(transparent);
 
+    randomSeed = (int)time(NULL);
+    if (randomSeed == 0)
+        randomSeed = 1;
+    srand(randomSeed);
+    
     gameInit();
 
     lastTick = clock();
