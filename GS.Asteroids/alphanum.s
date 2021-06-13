@@ -38,6 +38,15 @@ isNeg anop
 ; Letter to draw is in A
 drawLetter entry
 
+        cmp #OFFSET_SPACE
+        beq isSpace
+        bra notSpace
+
+isSpace anop
+        rts
+
+notSpace anop
+
         asl a
         tay
 
@@ -112,19 +121,22 @@ letterDone anop
         
         
         
-drawText entry
+drawGameOverText entry
 
-        lda #10
+        lda #$cc
+        sta color
+
+        lda #118
         sta charXPos
 
-        lda #10
+        lda #130
         sta charYPos
 
         ldx #0
         
 drawTextLoop anop
 
-        lda textAsteroidsData,x
+        lda gameOverTextData,x
         cmp #-1
         beq drawTextDone
         
@@ -149,6 +161,16 @@ drawTextDone anop
 
         
 drawScore entry
+
+        jsl isGameOver
+        cmp #0
+        beq doDrawScore
+        rtl
+
+doDrawScore anop
+
+        lda #$aa
+        sta color
 
         lda #0
         sta firstDigit
@@ -281,16 +303,16 @@ digitData anop
         dc i2'OFFSET_8'
         dc i2'OFFSET_9'
 
-textAsteroidsData anop
+gameOverTextData anop
+        dc i2'OFFSET_G'
         dc i2'OFFSET_A'
-        dc i2'OFFSET_S'
-        dc i2'OFFSET_T'
+        dc i2'OFFSET_M'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_SPACE'
+        dc i2'OFFSET_O'
+        dc i2'OFFSET_V'
         dc i2'OFFSET_E'
         dc i2'OFFSET_R'
-        dc i2'OFFSET_O'
-        dc i2'OFFSET_I'
-        dc i2'OFFSET_D'
-        dc i2'OFFSET_S'
         dc i2'-1'
     
     
@@ -1565,7 +1587,7 @@ OFFSET_COMMA gequ $2ed
 OFFSET_UNDERSCORE gequ $2f2
 
 
-
+OFFSET_SPACE gequ $ff00
 
 
 

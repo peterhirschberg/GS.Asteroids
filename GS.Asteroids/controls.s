@@ -98,6 +98,15 @@ onKeydownThrust anop
         rtl
 
 onKeydownFire anop
+
+        jsl isGameOver
+        cmp #0
+        beq gameNotOver
+        jsl startNewGame
+        rtl
+
+gameNotOver anop
+
         lda #1
         sta keydownFire
         rtl

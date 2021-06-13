@@ -189,6 +189,13 @@ soundInit_loop anop
 
 playFireSound entry
 
+        jsl isGameOver
+        cmp #0
+        beq doPlayerFireSound
+        rtl
+
+doPlayerFireSound anop
+
 		_docWait
 
 		lda >SOUND_SYSTEM_VOLUME
@@ -214,6 +221,13 @@ playFireSound entry
 
 playExplode1Sound entry
 
+        jsl isGameOver
+        cmp #0
+        beq doExplode1Sound
+        rtl
+
+doExplode1Sound anop
+
 		_docWait
 
 		lda >SOUND_SYSTEM_VOLUME
@@ -237,6 +251,13 @@ playExplode1Sound entry
 		rtl
 
 playExplode2Sound entry
+
+        jsl isGameOver
+        cmp #0
+        beq doExplode2Sound
+        rtl
+
+doExplode2Sound anop
 
 		_docWait
 
@@ -262,6 +283,13 @@ playExplode2Sound entry
 
 playExplode3Sound entry
 
+        jsl isGameOver
+        cmp #0
+        beq doExplode3Sound
+        rtl
+
+doExplode3Sound anop
+
 		_docWait
 
 		lda >SOUND_SYSTEM_VOLUME
@@ -285,6 +313,13 @@ playExplode3Sound entry
 		rtl
 
 startThrustSound entry
+
+        jsl isGameOver
+        cmp #0
+        beq doThrustSound
+        rtl
+
+doThrustSound anop
 
         lda thrustSoundIsPlaying
         cmp #1
@@ -371,6 +406,14 @@ doStopThrustSound anop
 ; SAUCERS
 
 startSaucerSound entry
+
+        jsl isGameOver
+        cmp #0
+        beq doSaucerSound
+        rtl
+
+doSaucerSound anop
+
         jsr isSmallSaucer
         cmp #1
         beq startLargeSaucerSound
@@ -569,6 +612,13 @@ doStopSSaucerSound anop
 
 playThumpLowSound entry
 
+        jsl isGameOver
+        cmp #0
+        beq doThumpLowSound
+        rtl
+
+doThumpLowSound anop
+
 		_docWait
 
 		lda >SOUND_SYSTEM_VOLUME
@@ -593,6 +643,13 @@ playThumpLowSound entry
 
 
 playThumpHighSound entry
+
+        jsl isGameOver
+        cmp #0
+        beq doThumpHighSound
+        rtl
+
+doThumpHighSound anop
 
         _docWait
 

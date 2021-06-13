@@ -183,7 +183,16 @@ done anop
         
 drawObjects entry
 
+        jsl isGameOver
+        cmp #1
+        beq gameOver
+
         lda #0
+        sta objectIndex
+        jmp loop1
+
+gameOver anop
+        lda #2
         sta objectIndex
 
 loop1 anop

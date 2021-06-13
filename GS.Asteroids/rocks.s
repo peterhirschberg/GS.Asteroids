@@ -532,6 +532,32 @@ rocksDone anop
         rtl
 
 
+
+stopAllRocks entry
+
+        lda #0
+        sta rockCounter
+        ldy #OBJECT_LARGE_ROCK1
+
+rockLoop4 anop
+
+        lda #0
+        sta lifetimeList,y
+
+        inc rockCounter
+        lda rockCounter
+        cmp #NUM_ROCKS
+        beq rocksDone4
+        iny
+        iny
+        jmp rockLoop4
+
+rocksDone4 anop
+
+        rtl
+
+
+
 savex dc i2'0'
 savey dc i2'0'
 

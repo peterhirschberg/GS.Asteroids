@@ -65,6 +65,7 @@
 		D063C4102659302A00C5C7C6 /* displayList.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = displayList.s; sourceTree = "<group>"; };
 		D0678F652673747100A8010C /* sound.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = sound.s; sourceTree = "<group>"; };
 		D0678F67267376E800A8010C /* global.macros */ = {isa = PBXFileReference; lastKnownFileType = text; path = global.macros; sourceTree = "<group>"; };
+		D0678F6926767EFC00A8010C /* osdisplay.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = osdisplay.s; sourceTree = "<group>"; };
 		D068E67F266B991C00D9E256 /* fastline.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = fastline.s; sourceTree = "<group>"; };
 		D06919AA264F414B006508C1 /* GS.Asteroids */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Asteroids; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06919AD264F414B006508C1 /* GS.Asteroids.2mg */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Asteroids.2mg; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +156,7 @@
 				D0EFF030266DB46D0066706A /* scores.s */,
 				D0678F652673747100A8010C /* sound.s */,
 				D0678F67267376E800A8010C /* global.macros */,
+				D0678F6926767EFC00A8010C /* osdisplay.s */,
 			);
 			path = GS.Asteroids;
 			sourceTree = "<group>";

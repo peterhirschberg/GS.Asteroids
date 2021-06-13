@@ -98,6 +98,13 @@ missilesDone anop
         
 checkMissileAgainstPlayer entry
 
+        jsl isGameOver
+        cmp #0
+        beq gameNotOver2
+        rtl
+
+gameNotOver2 anop
+
         ldx #OBJECT_PLAYER
 
 ; check to see if the player is active
@@ -630,6 +637,13 @@ rocksDone1 anop
 
 checkPlayerAgainstSaucers entry
 
+        jsl isGameOver
+        cmp #0
+        beq gameNotOver1
+        rtl
+
+gameNotOver1 anop
+
         jsr getSaucer
         tay
 
@@ -1021,9 +1035,22 @@ done1 anop
 
 
 doAllCollisionChecks entry
+
         jsl collisionCheckMissiles
+
+        jsl isGameOver
+        cmp #0
+        beq gameNotOver
+        bra gameOver
+
+gameNotOver anop
+
         jsl collisionCheckPlayer
+
+gameOver anop
+
         jsl collisionCheckSaucers
+
         rtl
 
 
