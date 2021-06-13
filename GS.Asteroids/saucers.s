@@ -62,6 +62,12 @@ checkTimer anop
         
 doSpawnSaucer anop
 
+;pick large or small
+        lda #2
+        pha
+        jsl getRandom
+        sta currentSaucer
+
         jsl startSaucerSound
 
         lda #1
@@ -338,7 +344,7 @@ changeDirection anop
         jsr getSaucer
         tax
 
-        lda #50
+        lda #500
         sta directionTimer
         
         lda ySpeedList,x
@@ -423,16 +429,24 @@ wrapAim anop
 
 getSaucer entry
 
+        lda currentSaucer
+        cmp #0
+        beq getLargeSaucer
         lda #OBJECT_LARGE_SAUCER1
-
         rts
 
-        
+getLargeSaucer anop
+        lda #OBJECT_SMALL_SAUCER1
+        rts
+
+
+
+currentSaucer dc i2'0'
 
 savex dc i2'0'
 
 directionTimer dc i2'0'
-spawnTimer dc i2'500'
+spawnTimer dc i2'50'
 fireTimer dc i2'0'
 fireAngle dc i2'0'
 fireAngleAdjust dc i2'0'

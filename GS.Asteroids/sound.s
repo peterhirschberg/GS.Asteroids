@@ -522,33 +522,33 @@ doStartSSaucerSound anop
         _writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+3,#LSAUCER_CONTROL+SOUND_LEFT_SPEAKER
 
 
-        lda >SOUND_SYSTEM_VOLUME
-        and #$0f
-        ora #$20
-        sta >SOUND_CONTROL_REG
+;        lda >SOUND_SYSTEM_VOLUME
+;        and #$0f
+;        ora #$20
+;        sta >SOUND_CONTROL_REG
 
-        lda #SOUND_REG_FREQ_LOW+LSAUCER_OSC_NUM
-        sta >SOUND_ADDR_LOW
-        lda #SSAUCER_FREQ_LOW
-        sta >SOUND_DATA_REG
-
-
-       lda #SOUND_REG_FREQ_LOW+LSAUCER_OSC_NUM+1
-        sta >SOUND_ADDR_LOW
-        lda #SSAUCER_FREQ_LOW
-        sta >SOUND_DATA_REG
+;        lda #SOUND_REG_FREQ_LOW+LSAUCER_OSC_NUM
+;        sta >SOUND_ADDR_LOW
+;        lda #SSAUCER_FREQ_LOW
+;        sta >SOUND_DATA_REG
 
 
-       lda #SOUND_REG_FREQ_LOW+LSAUCER_OSC_NUM+2
-       sta >SOUND_ADDR_LOW
-       lda #SSAUCER_FREQ_LOW
-       sta >SOUND_DATA_REG
+;       lda #SOUND_REG_FREQ_LOW+LSAUCER_OSC_NUM+1
+;        sta >SOUND_ADDR_LOW
+;        lda #SSAUCER_FREQ_LOW
+;        sta >SOUND_DATA_REG
 
 
-       lda #SOUND_REG_FREQ_LOW+LSAUCER_OSC_NUM+3
-       sta >SOUND_ADDR_LOW
-       lda #SSAUCER_FREQ_LOW
-       sta >SOUND_DATA_REG
+;       lda #SOUND_REG_FREQ_LOW+LSAUCER_OSC_NUM+2
+;       sta >SOUND_ADDR_LOW
+;       lda #SSAUCER_FREQ_LOW
+;       sta >SOUND_DATA_REG
+
+
+;       lda #SOUND_REG_FREQ_LOW+LSAUCER_OSC_NUM+3
+;       sta >SOUND_ADDR_LOW
+;       lda #SSAUCER_FREQ_LOW
+;       sta >SOUND_DATA_REG
 
 
 		rtl
