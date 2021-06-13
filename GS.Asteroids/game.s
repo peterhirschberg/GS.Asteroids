@@ -21,7 +21,7 @@ gameInit entry
         jsl setupScreen
         jsl initColorTable
         jsl soundInit
-;        jsl spawnInitialRocks
+        jsl spawnInitialRocks
         lda #0
         sta playerScore
         rtl
@@ -58,7 +58,7 @@ run anop
         lda rockCount
         cmp #0
         bne continue1
-;        jsl spawnInitialRocks
+        jsl spawnInitialRocks
 
 continue1 anop
 
