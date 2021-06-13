@@ -21,7 +21,7 @@ gameInit entry
         jsl setupScreen
         jsl initColorTable
         jsl soundInit
-        jsl spawnInitialRocks
+;        jsl spawnInitialRocks
         lda #0
         sta playerScore
         rtl
@@ -58,7 +58,7 @@ run anop
         lda rockCount
         cmp #0
         bne continue1
-        jsl spawnInitialRocks
+;        jsl spawnInitialRocks
 
 continue1 anop
 
@@ -98,86 +98,6 @@ continue1 anop
         jsr doThumpSounds
 
         rtl
-
-
-; Credit for the code below goes to Jeremy Rand - author of BuGS
-
-setupScreen entry
-
-        lda >BORDER_COLOUR_REGISTER
-        and #$f0
-        sta >BORDER_COLOUR_REGISTER
-
-        sei
-        phd
-        tsc
-        sta backupStack
-        lda >STATE_REGISTER      ; Direct Page and Stack in Bank 01/
-        ora #$0030
-        sta >STATE_REGISTER
-        ldx #$0000
-
-        lda #$9dfe
-        tcs
-        ldy #$7e00
-nextWord anop
-        phx
-        dey
-        dey
-        bpl nextWord
-
-        lda >STATE_REGISTER
-        and #$ffcf
-        sta >STATE_REGISTER
-        lda backupStack
-        tcs
-        pld
-        cli
-
-        rtl
-
-gameDone anop
-        lda >BORDER_COLOUR_REGISTER
-        and #$f0
-        ora borderColour
-        sta >BORDER_COLOUR_REGISTER
-
-        rtl
-
-
-doThumpSounds entry
-
-        dec thumpTimer
-        lda #0
-        cmp thumpTimer
-        beq resetThumpTimer
-        jmp thumpDone
-
-resetThumpTimer anop
-        lda #20
-        sta thumpTimer
-
-        lda thumpWhich
-        cmp #0
-        beq thump1
-
-        lda #0
-        sta thumpWhich
-
-        jsl playThumpLowSound
-
-        jmp thumpDone
-
-thump1 anop
-
-        lda #1
-        sta thumpWhich
-
-        jsl playThumpHighSound
-
-thumpDone anop
-
-        rts
 
 
 
@@ -320,6 +240,87 @@ drawObjectDone anop
 
         rtl
 
+
+
+
+; Credit for the code below goes to Jeremy Rand - author of BuGS
+
+setupScreen entry
+
+        lda >BORDER_COLOUR_REGISTER
+        and #$f0
+        sta >BORDER_COLOUR_REGISTER
+
+        sei
+        phd
+        tsc
+        sta backupStack
+        lda >STATE_REGISTER      ; Direct Page and Stack in Bank 01/
+        ora #$0030
+        sta >STATE_REGISTER
+        ldx #$0000
+
+        lda #$9dfe
+        tcs
+        ldy #$7e00
+nextWord anop
+        phx
+        dey
+        dey
+        bpl nextWord
+
+        lda >STATE_REGISTER
+        and #$ffcf
+        sta >STATE_REGISTER
+        lda backupStack
+        tcs
+        pld
+        cli
+
+        rtl
+
+gameDone anop
+        lda >BORDER_COLOUR_REGISTER
+        and #$f0
+        ora borderColour
+        sta >BORDER_COLOUR_REGISTER
+
+        rtl
+
+
+doThumpSounds entry
+
+        dec thumpTimer
+        lda #0
+        cmp thumpTimer
+        beq resetThumpTimer
+        jmp thumpDone
+
+resetThumpTimer anop
+        lda #20
+        sta thumpTimer
+
+        lda thumpWhich
+        cmp #0
+        beq thump1
+
+        lda #0
+        sta thumpWhich
+
+        jsl playThumpLowSound
+
+        jmp thumpDone
+
+thump1 anop
+
+        lda #1
+        sta thumpWhich
+
+        jsl playThumpHighSound
+
+thumpDone anop
+
+        rts
 
 
 

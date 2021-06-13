@@ -57,11 +57,14 @@ getMissilePos anop
 
         jsl checkMissileAgainstRocks
 
-        ldx missileIndex
-
         lda isPlayerMissile
         bmi checkAgainstPlayer
+        stx savex
+        sty savey
+        ldx missileIndex
         jsl checkMissileAgainstSaucers
+        ldx savex
+        ldy savey
         jmp nextMissile
         
 checkAgainstPlayer anop

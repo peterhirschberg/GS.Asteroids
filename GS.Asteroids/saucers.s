@@ -148,7 +148,7 @@ checkForFire anop
 ; fire a missile
 doFire anop
 
-; ask for a player missile - accumulator will be -1 if none available
+; ask for a saucer missile - accumulator will be -1 if none available
         jsr getAvailableSaucerMissile
         cmp #-1
         beq doDirectionTimerShortJump

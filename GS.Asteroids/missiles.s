@@ -75,7 +75,7 @@ checkMissile2b anop
         tax
         lda lifetimeList,x
         cmp #0
-        bne checkMissile3
+        bne checkMissile3b
         txa
         rts
 
@@ -85,7 +85,7 @@ checkMissile3b anop
         tax
         lda lifetimeList,x
         cmp #0
-        bne checkMissile4
+        bne checkMissile4b
         txa
         rts
 
@@ -95,7 +95,7 @@ checkMissile4b anop
         tax
         lda lifetimeList,x
         cmp #0
-        bne noSaucerMissiles
+        bne checkMissile5b
         txa
         rts
 
@@ -105,7 +105,7 @@ checkMissile5b anop
         tax
         lda lifetimeList,x
         cmp #0
-        bne noSaucerMissiles
+        bne checkMissile6b
         txa
         rts
 
@@ -115,7 +115,7 @@ checkMissile6b anop
         tax
         lda lifetimeList,x
         cmp #0
-        bne noSaucerMissiles
+        bne checkMissile7b
         txa
         rts
 
@@ -125,7 +125,7 @@ checkMissile7b anop
         tax
         lda lifetimeList,x
         cmp #0
-        bne noSaucerMissiles
+        bne checkMissile8b
         txa
         rts
 
