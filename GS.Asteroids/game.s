@@ -79,6 +79,9 @@ continue1 anop
 
 ; alphanumerics
         jsl drawScore
+
+; remaining ships
+        jsl drawLives
         
 ; draw all objects
         jsr drawObjects
@@ -178,15 +181,166 @@ thumpDone anop
 
 
 
+drawLives entry
+
+        lda playerLives
+        sta livesCounter
+        cmp #0
+        beq livesDone
+
+        stz livesXOffset
+
+livesLoop anop
+
+        lda #10
+        clc
+        adc livesXOffset
+        sta drawX
+
+        lda #25
+        sta drawY
+
+        jsl drawLifeShip
+
+        dec livesCounter
+        lda livesCounter
+        cmp #0
+        beq livesDone
+
+        lda livesXOffset
+        clc
+        adc #7
+        sta livesXOffset
+
+        bra livesLoop
+
+livesDone anop
+
+        rtl
+
+
+drawLifeShip anop
+
+        ldx #0
+        lda livesShipShapeData,x
+        sta counter
+        inx
+        inx
+
+        lda livesShipShapeData,x
+        clc
+        adc drawX
+        sta fromx
+        inx
+        inx
+
+        lda livesShipShapeData,x
+        clc
+        adc drawY
+        sta fromy
+        inx
+        inx
+
+drawObjectLoop anop
+
+        dec counter
+        lda counter
+        cmp #0
+        beq drawObjectDoneShortJump
+        bra continue
+
+drawObjectDoneShortJump anop
+        brl drawObjectDone
+
+continue anop
+
+        lda fromx
+        sta x1
+
+        lda fromy
+        sta y1
+
+        lda livesShipShapeData,x
+        clc
+        adc drawX
+        sta x2
+        inx
+        inx
+
+        lda livesShipShapeData,x
+        clc
+        adc drawY
+        sta y2
+        inx
+        inx
+
+        lda x2
+        sta fromx
+
+        lda y2
+        sta fromy
+
+        ldy displayListLength
+
+        lda x1
+        sta displayListList,y
+        iny
+        iny
+
+        lda y1
+        sta displayListList,y
+        iny
+        iny
+
+        lda x2
+        sta displayListList,y
+        iny
+        iny
+
+        lda y2
+        sta displayListList,y
+        iny
+        iny
+
+        sty displayListLength
+
+        ldy displayListColorLength
+        lda #$aa
+        sta displayListColors,y
+        iny
+        iny
+        sty displayListColorLength
+
+skipLine1 anop
+
+        jmp drawObjectLoop
+
+drawObjectDone anop
+
+
+        rtl
+
+
+
+
         end
 
 
 gameData data
 
+playerLives dc i2'3'
+
 playerRespawnTimer dc i2'0'
+
 thumpTimer dc i2'20'
 thumpWhich dc i2'0'
-    
+
+fromx dc i2'0'
+fromy dc i2'0'
+
+livesXOffset dc i2'0'
+livesCounter dc i2'0'
+
         end
 
 

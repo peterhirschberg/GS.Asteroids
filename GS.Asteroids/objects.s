@@ -623,6 +623,30 @@ toy      dc i2'0'
 objectData data
 
 
+; "lives" ship
+livesShipShapeData anop
+        dc i2'6'
+
+        dc i2'-2'
+        dc i2'2'
+
+        dc i2'0'
+        dc i2'-4'
+
+        dc i2'2'
+        dc i2'2'
+
+        dc i2'1'
+        dc i2'1'
+
+        dc i2'-1'
+        dc i2'1'
+
+        dc i2'-2'
+        dc i2'2'
+
+
+; data for all shapes drawn
 objectShapeData anop
 ; player ship
         dc i2'6'

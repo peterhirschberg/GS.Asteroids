@@ -108,6 +108,7 @@ runPlayerShip entry
         jmp notDead
 
 playerDead anop
+        jsl stopThrustSound
         dec playerRespawnTimer
         lda playerRespawnTimer
         bmi checkForRespawnKey
