@@ -54,6 +54,13 @@ resetToZero anop
 spawnPlayer entry
 
         ldx #OBJECT_PLAYER
+        lda lifetimeList,x
+        cmp #0
+        beq continueSpawnPlayer
+; player is already alive
+        rtl
+
+continueSpawnPlayer anop
 
         lda #MIDSCREEN_X
         sta xPosList,x

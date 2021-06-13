@@ -235,7 +235,7 @@ spawnInitialRocks entry
         lda #120
         sta speedMax
 
-        lda numToSpawn
+        lda numRocksToSpawn
         sta count
 
 spawnLoop anop
@@ -541,8 +541,6 @@ largeCount dc i2'0'
 smallMediumCount dc i2'0'
 rockCounter dc i2'0'
 
-numToSpawn dc i2'4'
-
 xOrigin dc i2'0'
 yOrigin dc i2'0'
 
@@ -559,5 +557,6 @@ rockData data
 rockCount dc i2'0'
 numLargeRocks dc i2'0'
 numOtherRocks dc i2'0'
+numRocksToSpawn dc i2'4'
 
         end

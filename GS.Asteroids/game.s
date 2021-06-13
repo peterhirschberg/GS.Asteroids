@@ -52,13 +52,11 @@ run anop
 ; check number of active rocks
         jsl calcActiveRocks
 
-; if no rocks left respawn them
-; TODO: wait for a delay here
-; TODO: increment number of rocks
+; if no rocks left restart with next level
         lda rockCount
         cmp #0
         bne continue1
-        jsl spawnInitialRocks
+        jsr resetForNextWave
 
 continue1 anop
 
@@ -290,6 +288,22 @@ gameDone anop
 
 doThumpSounds entry
 
+; no thumps between levels
+        lda interWaveTimer
+        cmp #60
+        beq checkPlayer
+        rts
+
+checkPlayer anop
+; no thumps if the player is not active
+        ldx #OBJECT_PLAYER
+        lda lifetimeList,x
+        cmp #-1
+        beq doThumps
+        rts
+
+doThumps anop
+
         dec thumpTimer
         lda #0
         cmp thumpTimer
@@ -297,7 +311,7 @@ doThumpSounds entry
         jmp thumpDone
 
 resetThumpTimer anop
-        lda #20
+        lda thumpTime
         sta thumpTimer
 
         lda thumpWhich
@@ -320,11 +334,82 @@ thump1 anop
 
 thumpDone anop
 
+; increase thump speed
+
+        dec thumpDecTimer
+        lda thumpDecTimer
+        bmi decThumpTime
+        rts
+
+decThumpTime anop
+        dec thumpTime
+        lda #50
+        sta thumpDecTimer
+
+        lda #6
+        cmp thumpTime
+        bcs resetThumpTime
+        rts
+
+resetThumpTime anop
+        lda #6
+        sta thumpTime
+
         rts
 
 
+resetForNextWave entry
+
+        dec interWaveTimer
+        lda interWaveTimer
+        bmi checkSaucers
+        rts
+
+checkSaucers anop
+
+; wait for any saucers to finish
+
+        jsr getSaucer
+        tax
+        lda lifetimeList,x
+        cmp #0
+        beq doWaveReset
+        rts
+
+doWaveReset anop
+
+        lda #60
+        sta interWaveTimer
+
+        lda #30
+        sta thumpDecTimer
+        lda #30
+        sta thumpTime
+        lda #20
+        sta thumpTimer
+        lda #0
+        sta thumpWhich
+
+        inc numRocksToSpawn
+        lda numRocksToSpawn
+        cmp #8
+        bcs limitRocksToSpawn
+        bra respawnRocksAndPlayer
+
+limitRocksToSpawn anop
+        lda #8
+        sta numRocksToSpawn
+
+respawnRocksAndPlayer anop
+        jsl spawnInitialRocks
+        jsl spawnPlayer
+
+        rts
+
 
         end
+
+
 
 
 gameData data
@@ -333,8 +418,12 @@ playerLives dc i2'3'
 
 playerRespawnTimer dc i2'0'
 
+thumpDecTimer dc i2'30'
+thumpTime dc i2'30'
 thumpTimer dc i2'20'
 thumpWhich dc i2'0'
+
+interWaveTimer dc i2'60'
 
 fromx dc i2'0'
 fromy dc i2'0'
