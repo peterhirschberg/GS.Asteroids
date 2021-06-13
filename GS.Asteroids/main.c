@@ -174,7 +174,7 @@ int main(void)
     randomSeed = (int)time(NULL);
     if (randomSeed == 0)
         randomSeed = 1;
-    //srand(randomSeed);
+    srand(randomSeed);
     
     gameInit();
 
