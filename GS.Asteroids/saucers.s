@@ -12,6 +12,7 @@ saucers start
         using globalData
         using objectData
         using rockData
+        using saucerData
 
     
 spawnSaucer entry
@@ -55,8 +56,8 @@ notDead2 anop
 ;        rtl
         
 checkTimer anop
-        dec spawnTimer
-        lda spawnTimer
+        dec saucerSpawnTimer
+        lda saucerSpawnTimer
         bmi doSpawnSaucer
         rtl
         
@@ -74,7 +75,7 @@ doSpawnSaucer anop
         sta firstShot
 
         lda #500
-        sta spawnTimer
+        sta saucerSpawnTimer
 
         lda #20
         sta fireTimer
@@ -449,7 +450,6 @@ currentSaucer dc i2'0'
 savex dc i2'0'
 
 directionTimer dc i2'0'
-spawnTimer dc i2'500'
 fireTimer dc i2'0'
 fireAngle dc i2'0'
 fireAngleAdjust dc i2'0'
@@ -467,5 +467,11 @@ SAUCER_SPEED gequ 100
 
 SAUCER_END_MIN gequ SAUCER_SPEED
 SAUCER_END_XMAX gequ SCREEN_XMAX-SAUCER_SPEED
+
+        end
+
+saucerData data
+
+saucerSpawnTimer dc i2'500'
 
         end

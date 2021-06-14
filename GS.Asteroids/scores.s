@@ -50,6 +50,18 @@ addToScore entry
         rts
         
 
+zeroScore entry
+
+        stz playerScore
+        stz scoreDigit0
+        stz scoreDigit10s
+        stz scoreDigit100s
+        stz scoreDigit1000s
+        stz scoreDigit10000s
+        stz scoreDigit100000s
+
+        rtl
+
         
 temp dc i2'0'
 

@@ -15,6 +15,7 @@ game    start
         using rockData
         using gameData
         using scoreData
+        using saucerData
         
         
 gameInit entry
@@ -26,6 +27,32 @@ gameInit entry
 
 
 runGameTick entry
+
+; if on last life and player is dead, go to game over
+; But, wait until all missiles and saucers are done
+        lda playerLives
+        cmp #1
+        beq checkAlive
+        bra doCheckControls
+
+checkAlive anop
+        ldx #OBJECT_PLAYER
+        lda lifetimeList,x
+        cmp #0
+        beq checkOutstandingMissiles
+        bra doCheckControls
+
+checkOutstandingMissiles anop
+        jsl getActiveMissileCount
+        cmp #0
+        beq startGameOver
+        bra doCheckControls
+
+startGameOver anop
+        lda #GAMEMODE_GAMEOVER
+        sta gameMode
+
+doCheckControls anop
 
         jsl checkControls
 
@@ -215,7 +242,6 @@ limitRocksToSpawn anop
 
 respawnRocksAndPlayer anop
         jsl spawnInitialRocks
-        jsl spawnPlayer
 
         rts
 
@@ -234,11 +260,14 @@ yesGameOver anop
 
 startNewGame entry
 
-        lda #0
-        sta playerScore
+        lda playerRespawnTimer
+        bmi doStart
+        dec playerRespawnTimer
+        rtl
 
-        lda #3
-        sta playerLives
+doStart anop
+
+        jsl zeroScore
 
         lda #4
         sta numRocksToSpawn
@@ -246,8 +275,30 @@ startNewGame entry
         jsl stopAllRocks
         jsl spawnInitialRocks
 
+        lda #500
+        sta saucerSpawnTimer
+
         lda #GAMEMODE_PLAYING
         sta gameMode
+
+        jsl spawnPlayer
+
+        lda #3
+        sta playerLives
+
+        rtl
+
+
+
+usePlayerLife entry
+
+        dec playerLives
+        lda playerLives
+        bmi resetLivesToZero
+        rtl
+
+resetLivesToZero anop
+        stz playerLives
 
         rtl
 

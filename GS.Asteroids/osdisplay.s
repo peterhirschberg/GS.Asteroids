@@ -25,6 +25,8 @@ drawLives entry
 doDrawLives anop
 
         lda playerLives
+        sec
+        sbc #1
         sta livesCounter
         cmp #0
         beq livesDone

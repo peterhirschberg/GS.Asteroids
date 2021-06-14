@@ -144,6 +144,42 @@ noSaucerMissiles anop
         rts
 
 
+
+getActiveMissileCount entry
+
+        ldx #OBJECT_PLAYER_MISSILE1
+
+        stz counter
+        stz count
+
+loop anop
+
+        lda lifetimeList,x
+        cmp #0
+        beq next
+
+        inc count
+
+next anop
+
+        inx
+        inx
+        inc counter
+        lda counter
+        cmp #NUM_MISSILES
+        beq done
+        jmp loop
+
+done anop
+
+        lda count
+
+        rtl
+
+
+
+counter dc i2'0'
+count dc i2'0'
         
         
         end

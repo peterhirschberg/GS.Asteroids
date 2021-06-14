@@ -62,6 +62,8 @@ spawnPlayer entry
 
 continueSpawnPlayer anop
 
+        jsl usePlayerLife
+
         lda #MIDSCREEN_X
         sta xPosList,x
 
@@ -78,7 +80,6 @@ continueSpawnPlayer anop
 
         lda #-1
         sta lifetimeList,x
-
 
         ldx #OBJECT_THRUST
 
@@ -120,6 +121,7 @@ playerDead anop
         lda playerRespawnTimer
         bmi checkForRespawnKey
         rtl
+
 ; wait for the player to hit the fire button and respawn them
 checkForRespawnKey anop
         lda keydownFire
@@ -128,6 +130,7 @@ checkForRespawnKey anop
         rtl
 
 playerToRespawn anop
+
         jsl spawnPlayer
         rtl
 
@@ -138,7 +141,6 @@ notDead anop
         sta rotationSpeedList,x
 
 ; apply "friction" to the ship if the player is not pressing thrust
-; TODO: need to debounce keydownThrust because of the GS's key repeat
         lda keydownThrust
         cmp #1
         beq dontSlowDown
