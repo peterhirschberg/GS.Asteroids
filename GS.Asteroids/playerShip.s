@@ -26,7 +26,6 @@ slowDownA entry
 slowDownPos anop
         dec a
         dec a
-        dec a
         bmi resetToZero
         rtl
 
@@ -34,7 +33,6 @@ slowDownNeg anop
         eor #$ffff
         inc a
 
-        dec a
         dec a
         dec a
 

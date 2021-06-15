@@ -121,8 +121,24 @@ continue1 anop
 ; "thump" sounds
         jsr doThumpSounds
 
+        jsl isGameOver
+        cmp #1
+        beq skipLevelTimer
+
+; increment level timer
+        inc gameLevelTimer
+        lda gameLevelTimer
+        cmp #30000
+        bcs resetLevelTimer
         rtl
 
+resetLevelTimer anop
+        lda #30000
+        sta gameLevelTimer
+
+skipLevelTimer anop
+
+        rtl
 
 
 
@@ -230,6 +246,9 @@ doWaveReset anop
         lda #0
         sta thumpWhich
 
+        lda #0
+        sta gameLevelTimer
+
         inc numRocksToSpawn
         lda numRocksToSpawn
         cmp #8
@@ -277,6 +296,13 @@ doStart anop
 
         lda #500
         sta saucerSpawnTimer
+
+        lda #30
+        sta thumpDecTimer
+        sta thumpTime
+        lda #20
+        sta thumpTimer
+        stz thumpWhich
 
         lda #GAMEMODE_PLAYING
         sta gameMode
@@ -372,6 +398,7 @@ thumpWhich dc i2'0'
 
 interWaveTimer dc i2'60'
 
+gameLevelTimer dc i2'0'
 
         end
 

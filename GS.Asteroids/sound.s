@@ -415,7 +415,7 @@ startSaucerSound entry
 doSaucerSound anop
 
         jsr isSmallSaucer
-        cmp #1
+        cmp #0
         beq startLargeSaucerSound
         jsl startSSaucerSound
         rtl
@@ -425,7 +425,7 @@ startLargeSaucerSound anop
 
 stopSaucerSound entry
         jsr isSmallSaucer
-        cmp #1
+        cmp #0
         beq stopLargeSaucerSound
         jsl stopSSaucerSound
         rtl

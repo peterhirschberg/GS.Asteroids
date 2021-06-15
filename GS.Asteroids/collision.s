@@ -416,9 +416,6 @@ itsAHit anop
         lda #0
         sta lifetimeList,x
 
-        lda isPlayerMissile
-        bmi skipScore
-        
 ; see what type of rock we hit
         lda objectTypeList,y
         cmp #OBJECT_LARGE_ROCK
@@ -430,6 +427,8 @@ largeRock anop
         jsl playExplode1Sound
         ldx savex
         ldy savey
+        lda isPlayerMissile
+        bmi skipScore
         lda #20
         sta tempScore
         jmp scoreDone
@@ -443,6 +442,8 @@ mediumRock anop
         jsl playExplode2Sound
         ldx savex
         ldy savey
+        lda isPlayerMissile
+        bmi skipScore
         lda #50
         sta tempScore
         jmp scoreDone
@@ -457,6 +458,8 @@ smallRock anop
         jsl playExplode3Sound
         ldx savex
         ldy savey
+        lda isPlayerMissile
+        bmi skipScore
         lda #100
         sta tempScore
 scoreDone anop

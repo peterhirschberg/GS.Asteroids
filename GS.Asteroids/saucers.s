@@ -13,8 +13,47 @@ saucers start
         using objectData
         using rockData
         using saucerData
+        using scoreData
+        using gameData
 
-    
+
+
+chooseNewSaucer entry
+
+; if the player is hanging around on a level for a while give them the small saucer
+        lda gameLevelTimer
+        cmp #4000
+        bcs chooseSmallSaucer
+
+; above 30000 pts always get the small saucer
+        lda playerScore
+        cmp #30000
+        bcs chooseSmallSaucer
+
+; below 9000 pts always get the large saucer
+        lda #9000
+        cmp playerScore
+        bcs chooseLargeSaucer
+
+; randomly pick large or small
+        lda #2
+        pha
+        jsl getRandom
+        sta currentSaucer
+        rtl
+
+chooseLargeSaucer anop
+        lda #0
+        sta currentSaucer
+        rtl
+
+chooseSmallSaucer anop
+        lda #1
+        sta currentSaucer
+        rtl
+
+
+
 spawnSaucer entry
         
 ; check to see if there is already an active saucer
@@ -63,11 +102,7 @@ checkTimer anop
         
 doSpawnSaucer anop
 
-;pick large or small
-        lda #2
-        pha
-        jsl getRandom
-        sta currentSaucer
+        jsl chooseNewSaucer
 
         jsl startSaucerSound
 
@@ -382,8 +417,8 @@ goUp anop
 
 adjustAim entry
 
-        jsr getSaucer
-        cmp #OBJECT_SMALL_SAUCER1
+        jsr isSmallSaucer
+        cmp #1
         beq smallSaucerAim
 
         lda #40
@@ -433,11 +468,11 @@ getSaucer entry
         lda currentSaucer
         cmp #0
         beq getLargeSaucer
-        lda #OBJECT_LARGE_SAUCER1
+        lda #OBJECT_SMALL_SAUCER1
         rts
 
 getLargeSaucer anop
-        lda #OBJECT_SMALL_SAUCER1
+        lda #OBJECT_LARGE_SAUCER1
         rts
 
 
