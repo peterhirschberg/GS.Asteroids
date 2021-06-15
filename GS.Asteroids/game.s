@@ -37,7 +37,7 @@ runGameTick entry
 ;    pha
 ;    pha
 ;    pha
-    jsl asmDrawLine
+    jsl newLine
 
 
 ; if on last life and player is dead, go to game over
