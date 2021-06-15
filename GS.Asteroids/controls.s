@@ -28,10 +28,15 @@ checkControls entry
         and #$007f
 
         cmp #KEY_SPACE
-        beq onKeydownFire
+        beq keydownFireShort
 
         cmp #KEY_ENTER
         beq onKeydownThrust
+
+        cmp #'h'
+        beq onKeydownHyperspace
+        cmp #'H'
+        beq onKeydownHyperspace
 
         cmp #'p'
         beq onKeydownPause
@@ -43,10 +48,19 @@ checkControls entry
         cmp #'Q'
         beq onKeydownQuit
 
+        bra checkKeysDone
+
+keydownFireShort anop
+        brl onKeydownFire
+
 checkKeysDone anop
 
         rtl
 
+onKeydownHyperspace anop
+        lda #1
+        sta keydownHyperspace
+        rtl
 
 onKeydownQuit anop
         jsl signalQuit
@@ -110,6 +124,9 @@ gameNotOver anop
         lda #1
         sta keydownFire
         rtl
+
+
+
 
         end
 

@@ -16,6 +16,7 @@ game    start
         using gameData
         using scoreData
         using saucerData
+        using playerData
         
         
 gameInit entry
@@ -36,6 +37,13 @@ runGameTick entry
         bra doCheckControls
 
 checkAlive anop
+
+        lda hyperspaceTimer
+        cmp #0
+        beq check2
+        jmp run
+
+check2 anop
         ldx #OBJECT_PLAYER
         lda lifetimeList,x
         cmp #0
@@ -151,6 +159,11 @@ doThumpSounds entry
         rts
 
 checkPlayer anop
+; skip player active check if in hyperspace
+        lda hyperspaceTimer
+        cmp #0
+        bne doThumps
+
 ; no thumps if the player is not active
         ldx #OBJECT_PLAYER
         lda lifetimeList,x

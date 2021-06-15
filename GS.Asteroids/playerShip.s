@@ -13,6 +13,7 @@ playerShip start
         using objectData
         using gameData
         using controlsData
+        using playerData
 
 
 ; takes a value in A
@@ -51,6 +52,12 @@ resetToZero anop
 
 spawnPlayer entry
 
+        lda hyperspaceTimer
+        cmp #0
+        beq alreadyAliveCheck
+        rtl
+
+alreadyAliveCheck anop
         ldx #OBJECT_PLAYER
         lda lifetimeList,x
         cmp #0
@@ -98,6 +105,8 @@ continueSpawnPlayer anop
         lda #-1
         sta lifetimeList,x
 
+        stz hyperspaceTimer
+
         rtl
 
 
@@ -105,6 +114,101 @@ continueSpawnPlayer anop
 runPlayerShip entry
 
         ldx #OBJECT_PLAYER
+
+        lda hyperspaceTimer
+        cmp #0
+        beq notInHyperspaceShort
+
+        dec hyperspaceTimer
+        lda hyperspaceTimer
+        cmp #0
+        beq exitHyperspace
+        rtl
+
+notInHyperspaceShort anop
+        brl notInHyperspace
+
+exitHyperspace anop
+
+        stx savex
+        sty savey
+        lda #300
+        pha
+        jsl getRandom
+        ldx savex
+        ldy savey
+        clc
+        adc #10
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        sta xPosList,x
+
+        stx savex
+        sty savey
+        lda #180
+        pha
+        jsl getRandom
+        ldx savex
+        ldy savey
+        clc
+        adc #10
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        asl a
+        sta yPosList,x
+
+        stz xSpeedList,x
+        stz ySpeedList,x
+
+; chance of blowing up after hyperspace
+        stx savex
+        sty savey
+        lda #3
+        pha
+        jsl getRandom
+        sta temp
+        ldx savex
+        ldy savey
+        lda temp
+        cmp #0
+        beq blowUp
+        bra dontBlowUp
+
+blowUp anop
+
+        jsl playExplode1Sound
+
+; throw some particles
+        lda #OBJECT_PLAYER
+        jsl startExplosion
+
+; throw some wreckage
+        lda #OBJECT_PLAYER
+        jsl startWreckageExplosion
+
+        rtl
+
+dontBlowUp anop
+
+        lda #-1
+        sta lifetimeList,x
+
+        stx savex
+        lda #-1
+        ldx #OBJECT_THRUST
+        sta lifetimeList,x
+        ldx savex
+
+        rtl
+
+notInHyperspace anop
 
 ; see if we are dead x_x
 
@@ -122,6 +226,13 @@ playerDead anop
 
 ; wait for the player to hit the fire button and respawn them
 checkForRespawnKey anop
+
+        lda hyperspaceTimer
+        cmp #0
+        beq check2
+        rtl
+
+check2 anop
         lda keydownFire
         cmp #1
         beq playerToRespawn
@@ -163,7 +274,6 @@ dontSlowDown anop
 
 ; check the controls
         jsl checkKeys
-
 
 ; get the ship data to update the thrust object with
 
@@ -240,6 +350,10 @@ checkKeys entry
 
         cmp keydownFire
         beq onKeydownFire
+
+        cmp keydownHyperspace
+        beq onKeydownHyperspace
+
         rtl
 
 thrustShortJump anop
@@ -247,6 +361,24 @@ thrustShortJump anop
 
         rtl
 
+onKeydownHyperspace anop
+        lda hyperspaceTimer
+        cmp #0
+        beq startHyperspace
+        rtl
+
+startHyperspace anop
+        lda #50
+        sta hyperspaceTimer
+
+        ldx #OBJECT_PLAYER
+        stz lifetimeList,x
+        stx savex
+        ldx #OBJECT_THRUST
+        stz lifetimeList,x
+        ldx savex
+
+        rtl
 
 onKeydownLeft anop
         lda #-8
@@ -500,6 +632,16 @@ rotationSpeed dc i2'0'
 savex dc i2'0'
 savey dc i2'0'
 
+temp dc i2'0'
+
 speedLimit gequ $0600
 
         end
+
+
+playerData data
+
+hyperspaceTimer dc i2'0'
+
+        end
+
