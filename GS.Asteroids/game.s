@@ -29,6 +29,17 @@ gameInit entry
 
 runGameTick entry
 
+;    lda temp
+;    pha
+;    pha
+;    pha
+;    pha
+;    pha
+;    pha
+;    pha
+    jsl asmDrawLine
+
+
 ; if on last life and player is dead, go to game over
 ; But, wait until all missiles and saucers are done
         lda playerLives
