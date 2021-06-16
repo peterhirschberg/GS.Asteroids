@@ -7,6 +7,8 @@
 ;----------------------------------------
 
     case on
+    mcopy global.macros
+    keep global
 
 asmDrawLine	start
 
@@ -22,9 +24,7 @@ even_c	equ	17
 odd_c	equ	19
 
 
-newLine entry
-
-;	jsubroutine (4:surface,2:penColor,2:clpx0,2:clpy0,2:clpx1,2:clpy1),20
+    jsubroutine (4:surface,2:penColor,2:clpx0,2:clpy0,2:clpx1,2:clpy1),20
 
 ;			Say surface = $012000...
 
@@ -520,14 +520,7 @@ fx_done	brl	Exit
 ;
 Exit	plb		; return to original bank
 
-    rtl
+    jreturn
 
-; testing data
-surface dc i4'$012000'
-penColor dc i2'$0f'
-clpx0 dc i2'1'
-clpy0 dc i2'1'
-clpx1 dc i2'100'
-clpy1 dc i2'100'
 
 	end
