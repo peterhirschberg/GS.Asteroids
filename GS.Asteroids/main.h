@@ -25,6 +25,6 @@
 #define SSAUCER_SOUND 7
 #define THUMPLO_SOUND 8
 #define THUMPHI_SOUND 9
-
+#define LIFE_SOUND 10
 
 #endif /* defined(_GUARD_PROJECTGS_Asteroids_FILEmain_) */

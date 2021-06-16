@@ -89,3 +89,4 @@ read rRawSound (LSAUCER_SOUND) "sounds/lsaucer.raw";
 read rRawSound (SSAUCER_SOUND) "sounds/ssaucer.raw";
 read rRawSound (THUMPLO_SOUND) "sounds/thumplo.raw";
 read rRawSound (THUMPHI_SOUND) "sounds/thumphi.raw";
+read rRawSound (LIFE_SOUND) "sounds/life.raw";

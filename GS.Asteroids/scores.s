@@ -12,6 +12,7 @@ scores start
 
 addToScore entry
         using scoreData
+        using gameData
         
 
 ; add to the current score
@@ -47,6 +48,23 @@ addToScore entry
         jsl getScoreDigit100000s
         sta scoreDigit100000s
 
+; check for extra life
+        lda scoreDigit10000s
+        cmp lastScoreDigit10000s
+        bne addExtraLife
+        lda scoreDigit10000s
+        sta lastScoreDigit10000s
+        rts
+
+addExtraLife anop
+; add another life
+        lda scoreDigit10000s
+        sta lastScoreDigit10000s
+        inc playerLives
+
+; play extra sound effect
+        jsl doLifeSound
+
         rts
         
 
@@ -59,6 +77,8 @@ zeroScore entry
         stz scoreDigit1000s
         stz scoreDigit10000s
         stz scoreDigit100000s
+
+        stz lastScoreDigit10000s
 
         rtl
 
@@ -79,5 +99,6 @@ scoreDigit1000s dc i2'0'
 scoreDigit10000s dc i2'0'
 scoreDigit100000s dc i2'0'
 
+lastScoreDigit10000s dc i2'0'
 
         end

@@ -133,6 +133,11 @@ void loadThumpHighSound(word addr)
     loadSound(addr, THUMPHI_SOUND);
 }
 
+void loadLifeSound(word addr)
+{
+    loadSound(addr, LIFE_SOUND);
+}
+
 void preloadSound(void)
 {
     LoadResource(rRawSound, FIRE_SOUND);
@@ -144,6 +149,7 @@ void preloadSound(void)
     LoadResource(rRawSound, SSAUCER_SOUND);
     LoadResource(rRawSound, THUMPLO_SOUND);
     LoadResource(rRawSound, THUMPHI_SOUND);
+    LoadResource(rRawSound, LIFE_SOUND);
 }
 
 // Game loop

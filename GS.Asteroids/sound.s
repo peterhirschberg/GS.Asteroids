@@ -2,14 +2,13 @@
 ;  sound.s
 ;
 ; ********************************************
-; Almost all this code is pulled from Jeremy Rand's "BuGS" game
+; Almost all this code/structure is pulled from Jeremy Rand's "BuGS" game
 ; Github: https://github.com/jeremysrand/BuGS
 ; ********************************************
 ;
 ;  Created by Jeremy Rand on 2020-12-16.
-;Copyright © 2020 Jeremy Rand. All rights reserved.
+;  Copyright © 2020 Jeremy Rand. All rights reserved.
 ;
-
 
         case on
         mcopy global.macros
@@ -105,6 +104,14 @@ THUMPHI_FREQ_LOW        equ 560
 THUMPHI_CONTROL        equ SOUND_ONE_SHOT_MODE
 THUMPHI_SIZE            equ $10
 
+; TODO: Figure out how to fit this sound effect in ~somewhere~ :-(
+;LIFE_SOUND_ADDR     equ $10000
+;LIFE_OSC_NUM        equ 24
+;LIFE_FREQ_HIGH        equ 0
+;LIFE_FREQ_LOW        equ 560
+;LIFE_CONTROL        equ SOUND_ONE_SHOT_MODE
+;LIFE_SIZE            equ $2b
+
 
 ; Y has the register to write to (16 bit mode)
 ; A has the value to write (8 bit mode)
@@ -123,8 +130,7 @@ writeReg_loop anop
 		lda >SOUND_DATA_REG
 		lda >SOUND_DATA_REG
 		cmp registerValue
-; hangs the game when uncommmented
-;		bne writeReg_loop
+		bne writeReg_loop
 		rts
 
 
@@ -168,6 +174,11 @@ soundInit entry
         pea THUMPHI_SOUND_ADDR
         jsl loadThumpHighSound
 
+;        pea LIFE_SOUND_ADDR
+;        jsl loadLifeSound
+
+; Set registers
+        short m
 		_docWait
 
 		lda >SOUND_SYSTEM_VOLUME
@@ -184,6 +195,7 @@ soundInit_loop anop
 		inx
 		cpx #soundRegDefaultsEnd
 		blt soundInit_loop
+        long m
 
 		rtl
 
@@ -195,7 +207,7 @@ playFireSound entry
         rtl
 
 doPlayerFireSound anop
-
+        short m
 		_docWait
 
 		lda >SOUND_SYSTEM_VOLUME
@@ -215,7 +227,7 @@ doPlayerFireSound anop
 
 		_writeReg #SOUND_REG_CONTROL+FIRE_OSC_NUM,#FIRE_CONTROL+SOUND_RIGHT_SPEAKER
 		_writeReg #SOUND_REG_CONTROL+FIRE_OSC_NUM+1,#FIRE_CONTROL+SOUND_LEFT_SPEAKER
-
+        long m
 		rtl
 
 
@@ -227,7 +239,7 @@ playExplode1Sound entry
         rtl
 
 doExplode1Sound anop
-
+        short m
 		_docWait
 
 		lda >SOUND_SYSTEM_VOLUME
@@ -247,7 +259,7 @@ doExplode1Sound anop
 
 		_writeReg #SOUND_REG_CONTROL+EXPLODE1_OSC_NUM,#EXPLODE1_CONTROL+SOUND_RIGHT_SPEAKER
 		_writeReg #SOUND_REG_CONTROL+EXPLODE1_OSC_NUM+1,#EXPLODE1_CONTROL+SOUND_LEFT_SPEAKER
-
+        long m
 		rtl
 
 playExplode2Sound entry
@@ -258,7 +270,7 @@ playExplode2Sound entry
         rtl
 
 doExplode2Sound anop
-
+        short m
 		_docWait
 
 		lda >SOUND_SYSTEM_VOLUME
@@ -278,7 +290,7 @@ doExplode2Sound anop
 
 		_writeReg #SOUND_REG_CONTROL+EXPLODE2_OSC_NUM,#EXPLODE2_CONTROL+SOUND_RIGHT_SPEAKER
 		_writeReg #SOUND_REG_CONTROL+EXPLODE2_OSC_NUM+1,#EXPLODE2_CONTROL+SOUND_LEFT_SPEAKER
-
+        long m
 		rtl
 
 playExplode3Sound entry
@@ -289,7 +301,7 @@ playExplode3Sound entry
         rtl
 
 doExplode3Sound anop
-
+        short m
 		_docWait
 
 		lda >SOUND_SYSTEM_VOLUME
@@ -309,7 +321,7 @@ doExplode3Sound anop
 
 		_writeReg #SOUND_REG_CONTROL+EXPLODE3_OSC_NUM,#EXPLODE3_CONTROL+SOUND_RIGHT_SPEAKER
 		_writeReg #SOUND_REG_CONTROL+EXPLODE3_OSC_NUM+1,#EXPLODE3_CONTROL+SOUND_LEFT_SPEAKER
-
+        long m
 		rtl
 
 startThrustSound entry
@@ -333,6 +345,7 @@ doStartThrustSound anop
         lda #1
         sta thrustSoundIsPlaying
 
+        short m
 		_docWait
 
 		lda >SOUND_SYSTEM_VOLUME
@@ -364,6 +377,7 @@ doStartThrustSound anop
         _writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+2,#THRUST_CONTROL+SOUND_LEFT_SPEAKER
         _writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+3,#THRUST_CONTROL+SOUND_LEFT_SPEAKER
 
+        long m
 		rtl
 
 
@@ -380,6 +394,7 @@ doStopThrustSound anop
         lda #0
         sta thrustSoundIsPlaying
 
+        short m
 		_docWait
 		lda >SOUND_SYSTEM_VOLUME
 		and #$0f
@@ -400,6 +415,7 @@ doStopThrustSound anop
 		_writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+2,#SOUND_ONE_SHOT_MODE+SOUND_HALTED+SOUND_LEFT_SPEAKER
 		_writeReg #SOUND_REG_CONTROL+THRUST_OSC_NUM+3,#SOUND_ONE_SHOT_MODE+SOUND_HALTED+SOUND_LEFT_SPEAKER
 
+        long m
         rtl
 
 
@@ -433,8 +449,6 @@ stopLargeSaucerSound anop
         jsl stopLSaucerSound
         rtl
 
-
-
 ; LSAUCER
 
 startLSaucerSound entry
@@ -451,6 +465,7 @@ doStartLSaucerSound anop
         lda #1
         sta lSaucerSoundIsPlaying
 
+        short m
 		_docWait
 
 		lda >SOUND_SYSTEM_VOLUME
@@ -482,6 +497,7 @@ doStartLSaucerSound anop
         _writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+2,#LSAUCER_CONTROL+SOUND_LEFT_SPEAKER
         _writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+3,#LSAUCER_CONTROL+SOUND_LEFT_SPEAKER
 
+        long m
         rtl
 
 
@@ -498,6 +514,7 @@ doStopLSaucerSound anop
         lda #0
         sta lSaucerSoundIsPlaying
 
+        short m
 		_docWait
 
 		lda >SOUND_SYSTEM_VOLUME
@@ -519,6 +536,7 @@ doStopLSaucerSound anop
 		_writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+2,#SOUND_ONE_SHOT_MODE+SOUND_HALTED+SOUND_LEFT_SPEAKER
 		_writeReg #SOUND_REG_CONTROL+LSAUCER_OSC_NUM+3,#SOUND_ONE_SHOT_MODE+SOUND_HALTED+SOUND_LEFT_SPEAKER
 
+        long m
         rtl
 
 
@@ -538,6 +556,7 @@ doStartSSaucerSound anop
         lda #1
         sta sSaucerSoundIsPlaying
 
+        short m
 		_docWait
 
         lda >SOUND_SYSTEM_VOLUME
@@ -569,7 +588,7 @@ doStartSSaucerSound anop
         _writeReg #SOUND_REG_CONTROL+SSAUCER_OSC_NUM+2,#SSAUCER_CONTROL+SOUND_LEFT_SPEAKER
         _writeReg #SOUND_REG_CONTROL+SSAUCER_OSC_NUM+3,#SSAUCER_CONTROL+SOUND_LEFT_SPEAKER
 
-
+        long m
 		rtl
 
 
@@ -586,6 +605,7 @@ doStopSSaucerSound anop
         lda #0
         sta sSaucerSoundIsPlaying
 
+        short m
 		_docWait
 
         lda >SOUND_SYSTEM_VOLUME
@@ -607,7 +627,8 @@ doStopSSaucerSound anop
         _writeReg #SOUND_REG_CONTROL+SSAUCER_OSC_NUM+2,#SOUND_ONE_SHOT_MODE+SOUND_HALTED+SOUND_LEFT_SPEAKER
         _writeReg #SOUND_REG_CONTROL+SSAUCER_OSC_NUM+3,#SOUND_ONE_SHOT_MODE+SOUND_HALTED+SOUND_LEFT_SPEAKER
 
-       rtl
+        long m
+        rtl
 
 
 playThumpLowSound entry
@@ -619,6 +640,7 @@ playThumpLowSound entry
 
 doThumpLowSound anop
 
+        short m
 		_docWait
 
 		lda >SOUND_SYSTEM_VOLUME
@@ -639,6 +661,7 @@ doThumpLowSound anop
 		_writeReg #SOUND_REG_CONTROL+THUMPLO_OSC_NUM,#THUMPLO_CONTROL+SOUND_RIGHT_SPEAKER
 		_writeReg #SOUND_REG_CONTROL+THUMPLO_OSC_NUM+1,#THUMPLO_CONTROL+SOUND_LEFT_SPEAKER
 
+        long m
 		rtl
 
 
@@ -651,6 +674,7 @@ playThumpHighSound entry
 
 doThumpHighSound anop
 
+        short m
         _docWait
 
         lda >SOUND_SYSTEM_VOLUME
@@ -671,10 +695,35 @@ doThumpHighSound anop
         _writeReg #SOUND_REG_CONTROL+THUMPHI_OSC_NUM,#THUMPHI_CONTROL+SOUND_RIGHT_SPEAKER
         _writeReg #SOUND_REG_CONTROL+THUMPHI_OSC_NUM+1,#THUMPHI_CONTROL+SOUND_LEFT_SPEAKER
 
+        long m
         rtl
 
 
+doLifeSound entry
 
+;        short m
+;		_docWait
+
+;		lda >SOUND_SYSTEM_VOLUME
+;		and #$0f
+;		sta >SOUND_CONTROL_REG
+
+;		_writeReg #SOUND_REG_CONTROL+LIFE_OSC_NUM,#LIFE_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER
+;		_writeReg #SOUND_REG_CONTROL+LIFE_OSC_NUM+1,#LIFE_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER
+
+;		ldy #SOUND_REG_VOLUME+LIFE_OSC_NUM
+;       lda #$ff
+;		jsr writeReg
+;		iny
+;       lda #$ff
+;		eor #$ff
+;		jsr writeReg
+
+;		_writeReg #SOUND_REG_CONTROL+LIFE_OSC_NUM,#LIFE_CONTROL+SOUND_RIGHT_SPEAKER
+;		_writeReg #SOUND_REG_CONTROL+LIFE_OSC_NUM+1,#LIFE_CONTROL+SOUND_LEFT_SPEAKER
+
+;       long m
+		rtl
 
 
 registerValue dc i2'0'
@@ -793,6 +842,17 @@ soundRegDefaults anop
         dc i1'SOUND_REG_CONTROL+THUMPHI_OSC_NUM',i1'THUMPHI_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER'
         dc i1'SOUND_REG_CONTROL+THUMPHI_OSC_NUM+1',i1'THUMPHI_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER'
 
+; Life
+;        dc i1'SOUND_REG_FREQ_LOW+LIFE_OSC_NUM',i1'LIFE_FREQ_LOW'
+;        dc i1'SOUND_REG_FREQ_LOW+LIFE_OSC_NUM+1',i1'LIFE_FREQ_LOW'
+;        dc i1'SOUND_REG_FREQ_HIGH+LIFE_OSC_NUM',i1'LIFE_FREQ_HIGH'
+;        dc i1'SOUND_REG_FREQ_HIGH+LIFE_OSC_NUM+1',i1'LIFE_FREQ_HIGH'
+;        dc i1'SOUND_REG_SIZE+LIFE_OSC_NUM',i1'LIFE_SIZE'
+;        dc i1'SOUND_REG_SIZE+LIFE_OSC_NUM+1',i1'LIFE_SIZE'
+;        dc i1'SOUND_REG_POINTER+LIFE_OSC_NUM',i1'LIFE_SOUND_ADDR/256'
+;        dc i1'SOUND_REG_POINTER+LIFE_OSC_NUM+1',i1'LIFE_SOUND_ADDR/256'
+;        dc i1'SOUND_REG_CONTROL+LIFE_OSC_NUM',i1'LIFE_CONTROL+SOUND_HALTED+SOUND_RIGHT_SPEAKER'
+;        dc i1'SOUND_REG_CONTROL+LIFE_OSC_NUM+1',i1'LIFE_CONTROL+SOUND_HALTED+SOUND_LEFT_SPEAKER'
 
 soundRegDefaultsEnd	anop
 
