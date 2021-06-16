@@ -7,6 +7,8 @@
 ;
 
         case on
+        mcopy global.macros
+        keep global
 
 fastLine start
         using globalData
@@ -67,6 +69,17 @@ eraseDot entry
 
 
 drawFastLine entry
+
+
+        ph2 y2
+        ph2 x2
+        ph2 y1
+        ph2 x1
+        ph2 pencolor
+        ph4 surface
+        jsl asmDrawLine
+        rtl
+
 
         lda y1
         cmp y2
@@ -548,6 +561,9 @@ lineDone anop
         rtl
 
 
+surface dc i4'$12000'
+pencolor dc i2'$0f'
+
         end
 
 
@@ -558,6 +574,17 @@ fastEraselines start
 
 
 eraseFastLine entry
+
+
+        ph2 y2
+        ph2 x2
+        ph2 y1
+        ph2 x1
+        ph2 pencolor
+        ph4 surface
+        jsl asmDrawLine
+        rtl
+
 
         lda y1
         cmp y2
@@ -974,7 +1001,9 @@ jump28 anop
 lineDone anop
         rtl
 
-        
+surface dc i4'$12000'
+pencolor dc i2'$00'
+
         end
 
 

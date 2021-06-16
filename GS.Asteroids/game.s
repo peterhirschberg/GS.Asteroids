@@ -7,8 +7,6 @@
 ;
 
         case on
-        mcopy global.macros
-        keep global
 
 game    start
         using globalData
@@ -30,17 +28,6 @@ gameInit entry
 
 
 runGameTick entry
-
-
-        ph2 toy
-        ph2 tox
-        ph2 fromy
-        ph2 fromx
-        ph2 pencolor
-        ph4 surface
-        jsl asmDrawLine
-
-
 
 ; if on last life and player is dead, go to game over
 ; But, wait until all missiles and saucers are done
@@ -425,13 +412,6 @@ thumpWhich dc i2'0'
 interWaveTimer dc i2'60'
 
 gameLevelTimer dc i2'0'
-
-surface dc i4'$12000'
-pencolor dc i2'$0f'
-fromx dc i2'0'
-fromy dc i2'0'
-tox dc i2'100'
-toy dc i2'60'
 
         end
 
