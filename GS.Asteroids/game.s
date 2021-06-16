@@ -17,17 +17,54 @@ game    start
         using scoreData
         using saucerData
         using playerData
-        
-        
+        using controlsData
+
+
 gameInit entry
         jsl setupScreen
         jsl initColorTable
         jsl soundInit
-        jsl spawnInitialRocks
         rtl
 
 
+runIntroScreen entry
+; init the display list, dot list, and color list
+        stz displayListLength
+        stz dotListLength
+        stz displayListColorLength
+
+        jsl drawIntroScreen
+
+;        jsr updateObjects
+;        jsr drawObjects
+
+; render the display list and dot list
+        jsl renderDisplayList
+        jsl renderDotList
+
+        jsl checkControls
+
+        lda keydownFire
+        cmp #1
+        beq exitIntroScreen
+        rtl
+
+exitIntroScreen anop
+        jsl spawnInitialRocks
+        lda #GAMEMODE_GAMEOVER
+        sta gameMode
+        rtl
+
 runGameTick entry
+
+        jsl isIntroScreen
+        cmp #1
+        bne gameRunning
+
+        jsl runIntroScreen
+        rtl
+
+gameRunning anop
 
 ; if on last life and player is dead, go to game over
 ; But, wait until all missiles and saucers are done
@@ -100,13 +137,10 @@ continue1 anop
         jsl eraseDisplayList
         jsl eraseDotList
 
-; init the display list and dot list
-        lda #0
-        sta displayListLength
-        sta dotListLength
-
-; init the color list
-        sta displayListColorLength
+; init the display list, dot list, and color list
+        stz displayListLength
+        stz dotListLength
+        stz displayListColorLength
 
 ; alphanumerics
         jsl drawScore
@@ -278,6 +312,17 @@ respawnRocksAndPlayer anop
         rts
 
 
+isIntroScreen entry
+        lda gameMode
+        cmp #GAMEMODE_INTRO
+        beq yesIntro
+        lda #0
+        rtl
+yesIntro anop
+        lda #1
+        rtl
+
+
 isGameOver entry
         lda gameMode
         cmp #GAMEMODE_GAMEOVER
@@ -394,11 +439,11 @@ gameDone anop
 
 gameData data
 
+GAMEMODE_INTRO gequ 0
+GAMEMODE_GAMEOVER gequ 1
+GAMEMODE_PLAYING gequ 2
 
-GAMEMODE_GAMEOVER gequ 0
-GAMEMODE_PLAYING gequ 1
-
-gameMode dc i2'GAMEMODE_GAMEOVER'
+gameMode dc i2'GAMEMODE_INTRO'
 
 playerLives dc i2'0'
 

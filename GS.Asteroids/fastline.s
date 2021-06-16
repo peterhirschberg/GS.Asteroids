@@ -91,6 +91,7 @@ horizontalLine anop
         sta startX
         lda x2
         sta endX
+        inc endX
         bra HL2
 HL1 anop
         lda x1
@@ -101,6 +102,7 @@ HL1 anop
         sta startX
         lda x1
         sta endX
+        inc endX
 HL2 anop
 
         lda y1
@@ -582,6 +584,7 @@ horizontalLine anop
         sta startX
         lda x2
         sta endX
+        inc endX
         bra HL2
 HL1 anop
         lda x1
@@ -592,6 +595,7 @@ HL1 anop
         sta startX
         lda x1
         sta endX
+        inc endX
 HL2 anop
 
         lda y1

@@ -14,27 +14,53 @@ alphanum start
         using displayListData
         using gameData
         using scoreData
+        using objectData
         
         
 scaleCoord entry
 
-        bmi isNeg
+        sta coord
+
+        lda scale
+        cmp #0
+        beq scaleSmall
+        cmp #1
+        beq scaleNormal
+        cmp #2
+        beq scaleLarge
+
+scaleSmall anop
+        lda coord
+        bmi isNeg1
+        lsr a
         lsr a
         rts
-        
-isNeg anop
-
+isNeg1 anop
         eor #$ffff
         inc a
-
         lsr a
-
+        lsr a
         eor #$ffff
         inc a
-
         rts
 
-        
+scaleNormal anop
+        lda coord
+        bmi isNeg2
+        lsr a
+        rts
+isNeg2 anop
+        eor #$ffff
+        inc a
+        lsr a
+        eor #$ffff
+        inc a
+        rts
+
+scaleLarge anop
+        lda coord
+        rts
+
 ; Letter to draw is in A
 drawLetter entry
 
@@ -123,6 +149,9 @@ letterDone anop
         
 drawGameOverText entry
 
+        lda #1
+        sta scale
+
         lda #$cc
         sta color
 
@@ -159,6 +188,131 @@ drawTextDone anop
         
         rtl
 
+
+drawTitleText entry
+
+        lda #2
+        sta scale
+
+        lda #$ff
+        sta color
+
+        lda #80
+        sta charXPos
+
+        lda #20
+        sta charYPos
+
+        ldx #0
+
+drawTextLoop1 anop
+
+        lda gameTitleData,x
+        cmp #-1
+        beq drawTextDone1
+
+        stx savexDraw
+        sty saveyDraw
+        jsr drawLetter
+        ldx savexDraw
+        ldy saveyDraw
+
+        lda charXPos
+        clc
+        adc #15
+        sta charXPos
+
+        inx
+        inx
+        jmp drawTextLoop1
+
+drawTextDone1 anop
+
+        rtl
+
+drawCopyrightText entry
+
+        lda #0
+        sta scale
+
+        lda #$cc
+        sta color
+
+        lda #35
+        sta charXPos
+
+        lda #40
+        sta charYPos
+
+        ldx #0
+
+drawTextLoop2 anop
+
+        lda copyrightData,x
+        cmp #-1
+        beq drawTextDone2
+
+        stx savexDraw
+        sty saveyDraw
+        jsr drawLetter
+        ldx savexDraw
+        ldy saveyDraw
+
+        lda charXPos
+        clc
+        adc #8
+        sta charXPos
+
+        inx
+        inx
+        jmp drawTextLoop2
+
+drawTextDone2 anop
+
+        rtl
+
+
+drawThanksText entry
+
+        lda #0
+        sta scale
+
+        lda #$cc
+        sta color
+
+        lda #45
+        sta charXPos
+
+        lda #170
+        sta charYPos
+
+        ldx #0
+
+drawTextLoop3 anop
+
+        lda thanksTextData,x
+        cmp #-1
+        beq drawTextDone3
+
+        stx savexDraw
+        sty saveyDraw
+        jsr drawLetter
+        ldx savexDraw
+        ldy saveyDraw
+
+        lda charXPos
+        clc
+        adc #8
+        sta charXPos
+
+        inx
+        inx
+        jmp drawTextLoop3
+
+drawTextDone3 anop
+
+        rtl
+
         
 drawScore entry
 
@@ -168,6 +322,9 @@ drawScore entry
         rtl
 
 doDrawScore anop
+
+        lda #1
+        sta scale
 
         lda #$aa
         sta color
@@ -273,7 +430,18 @@ scoreSkip5 anop
 
 
         rtl
-        
+
+
+drawIntroScreen entry
+
+        jsl drawTitleText
+        jsl drawCopyrightText
+        jsl drawThanksText
+
+
+        rtl
+
+
 
 lineCount dc i2'0'
 charXPos dc i4'0'
@@ -285,6 +453,8 @@ savexDraw dc i2'0'
 saveyDraw dc i2'0'
 temp dc i2'0'
 firstDigit dc i2'0'
+scale dc i2'1'
+coord dc i2'0'
 
         end
 
@@ -314,8 +484,91 @@ gameOverTextData anop
         dc i2'OFFSET_E'
         dc i2'OFFSET_R'
         dc i2'-1'
-    
-    
+
+gameTitleData anop
+        dc i2'OFFSET_G'
+        dc i2'OFFSET_S'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_S'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_O'
+        dc i2'OFFSET_I'
+        dc i2'OFFSET_D'
+        dc i2'OFFSET_S'
+        dc i2'-1'
+
+copyrightData anop
+        dc i2'OFFSET_C'
+        dc i2'OFFSET_O'
+        dc i2'OFFSET_P'
+        dc i2'OFFSET_Y'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_I'
+        dc i2'OFFSET_G'
+        dc i2'OFFSET_H'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_SPACE'
+        dc i2'OFFSET_COPY'
+        dc i2'OFFSET_2'
+        dc i2'OFFSET_0'
+        dc i2'OFFSET_2'
+        dc i2'OFFSET_1'
+        dc i2'OFFSET_SPACE'
+        dc i2'OFFSET_P'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_SPACE'
+        dc i2'OFFSET_H'
+        dc i2'OFFSET_I'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_S'
+        dc i2'OFFSET_C'
+        dc i2'OFFSET_H'
+        dc i2'OFFSET_B'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_G'
+        dc i2'-1'
+
+thanksTextData anop
+        dc i2'OFFSET_S'
+        dc i2'OFFSET_P'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_C'
+        dc i2'OFFSET_I'
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_L'
+        dc i2'OFFSET_SPACE'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_H'
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_N'
+        dc i2'OFFSET_K'
+        dc i2'OFFSET_S'
+        dc i2'OFFSET_SPACE'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_O'
+        dc i2'OFFSET_SPACE'
+        dc i2'OFFSET_J'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_M'
+        dc i2'OFFSET_Y'
+        dc i2'OFFSET_SPACE'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_N'
+        dc i2'OFFSET_D'
+        dc i2'-1'
+
+
+
 characterData anop
 ; A
         dc i2'10'
