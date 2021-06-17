@@ -242,6 +242,7 @@ drawIt anop
 
         stx savex
         sty savey
+        lda objectShapeDataIndex
         jsr drawObjectWithRotate
         ldx savex
         ldy savey
@@ -251,6 +252,7 @@ drawIt anop
 drawNoRotate anop
         stx savex
         sty savey
+        lda objectShapeDataIndex
         jsr drawObject
         ldx savex
         ldy savey
@@ -272,7 +274,8 @@ drawObject entry
 ; ------------------
 ; check for dots
 
-        ldx objectShapeDataIndex
+        sta objectShapeDataIndex
+        tax
         lda objectShapeData,x
         sta counter
 
@@ -437,7 +440,8 @@ drawObjectDone anop
         
 drawObjectWithRotate entry
 
-        ldx objectShapeDataIndex
+        sta objectShapeDataIndex
+        tax
         lda objectShapeData,x
         sta counter
 
@@ -604,6 +608,33 @@ skipLine2 anop
 drawObjectDone1 anop
 
         rts
+
+
+drawAttractMode entry
+
+        lda #0
+        sta angle
+        lda #70
+        sta drawX
+        lda #70
+        sta drawY
+        lda #$ff
+        sta color
+        lda #SHAPE_OFFSET_LARGE_ROCK2
+        jsr drawObject
+
+        lda #140
+        sta angle
+        lda #220
+        sta drawX
+        lda #140
+        sta drawY
+        lda #$ff
+        sta color
+        lda #SHAPE_OFFSET_PLAYER
+        jsr drawObjectWithRotate
+
+        rtl
 
 
 objectIndex         dc i2'0'

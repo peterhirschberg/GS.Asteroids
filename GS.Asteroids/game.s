@@ -35,9 +35,6 @@ runIntroScreen entry
 
         jsl drawIntroScreen
 
-;        jsr updateObjects
-;        jsr drawObjects
-
 ; render the display list and dot list
         jsl renderDisplayList
         jsl renderDotList

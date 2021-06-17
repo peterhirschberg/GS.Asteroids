@@ -313,6 +313,91 @@ drawTextDone3 anop
 
         rtl
 
+
+drawControlsText1 entry
+
+        lda #1
+        sta scale
+
+        lda #$ff
+        sta color
+
+        lda #120
+        sta charXPos
+
+        lda #70
+        sta charYPos
+
+        ldx #0
+
+drawTextLoop4 anop
+
+        lda controlsText1Data,x
+        cmp #-1
+        beq drawTextDone4
+
+        stx savexDraw
+        sty saveyDraw
+        jsr drawLetter
+        ldx savexDraw
+        ldy saveyDraw
+
+        lda charXPos
+        clc
+        adc #8
+        sta charXPos
+
+        inx
+        inx
+        jmp drawTextLoop4
+
+drawTextDone4 anop
+
+        rtl
+
+
+drawControlsText2 entry
+
+        lda #1
+        sta scale
+
+        lda #$88
+        sta color
+
+        lda #120
+        sta charXPos
+
+        lda #90
+        sta charYPos
+
+        ldx #0
+
+drawTextLoop5 anop
+
+        lda controlsText2Data,x
+        cmp #-1
+        beq drawTextDone5
+
+        stx savexDraw
+        sty saveyDraw
+        jsr drawLetter
+        ldx savexDraw
+        ldy saveyDraw
+
+        lda charXPos
+        clc
+        adc #8
+        sta charXPos
+
+        inx
+        inx
+        jmp drawTextLoop5
+
+drawTextDone5 anop
+
+        rtl
+
+
         
 drawScore entry
 
@@ -437,7 +522,10 @@ drawIntroScreen entry
         jsl drawTitleText
         jsl drawCopyrightText
         jsl drawThanksText
+        jsl drawControlsText1
+        jsl drawControlsText2
 
+        jsl drawAttractMode
 
         rtl
 
@@ -565,6 +653,32 @@ thanksTextData anop
         dc i2'OFFSET_A'
         dc i2'OFFSET_N'
         dc i2'OFFSET_D'
+        dc i2'-1'
+
+controlsText1Data anop
+        dc i2'OFFSET_LBRACKET'
+        dc i2'OFFSET_K'
+        dc i2'OFFSET_RBRACKET'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_Y'
+        dc i2'OFFSET_B'
+        dc i2'OFFSET_O'
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_D'
+        dc i2'-1'
+
+controlsText2Data anop
+        dc i2'OFFSET_LBRACKET'
+        dc i2'OFFSET_J'
+        dc i2'OFFSET_RBRACKET'
+        dc i2'OFFSET_O'
+        dc i2'OFFSET_Y'
+        dc i2'OFFSET_S'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_I'
+        dc i2'OFFSET_C'
+        dc i2'OFFSET_K'
         dc i2'-1'
 
 
