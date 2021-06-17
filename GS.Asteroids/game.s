@@ -106,6 +106,9 @@ doCheckControls anop
 
 run anop
 
+; run the sounds
+        jsl runSounds
+
 ; run the player ship
         jsl runPlayerShip
         

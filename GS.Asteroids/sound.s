@@ -107,9 +107,9 @@ THUMPHI_SIZE            equ $2b
 LIFE_SOUND_ADDR     equ $e000
 LIFE_OSC_NUM        equ 24
 LIFE_FREQ_HIGH        equ 0
-LIFE_FREQ_LOW        equ 400
+LIFE_FREQ_LOW        equ 310
 LIFE_CONTROL        equ SOUND_ONE_SHOT_MODE
-LIFE_SIZE            equ $1b
+LIFE_SIZE            equ $10
 
 
 ; Y has the register to write to (16 bit mode)

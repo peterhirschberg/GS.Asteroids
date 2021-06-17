@@ -49,21 +49,24 @@ addToScore entry
         sta scoreDigit100000s
 
 ; check for extra life
-        lda scoreDigit10000s
+        lda scoreDigit1000s
         cmp lastScoreDigit10000s
         bne addExtraLife
-        lda scoreDigit10000s
+        lda scoreDigit1000s
         sta lastScoreDigit10000s
         rts
 
 addExtraLife anop
 ; add another life
-        lda scoreDigit10000s
+        lda scoreDigit1000s
         sta lastScoreDigit10000s
         inc playerLives
 
-; play extra sound effect
-        jsl doLifeSound
+; start extra life sound effect
+        lda #5
+        sta lifeSoundCounter
+        lda #4
+        sta lifeSoundTimer
 
         rts
         
@@ -82,7 +85,33 @@ zeroScore entry
 
         rtl
 
-        
+
+runSounds entry
+
+        lda lifeSoundCounter
+        cmp #0
+        beq runSoundDone
+
+        dec lifeSoundTimer
+        lda lifeSoundTimer
+        cmp #0
+        beq nextBeep
+        bra runSoundDone
+
+nextBeep anop
+        dec lifeSoundCounter
+        lda #4
+        sta lifeSoundTimer
+
+        jsl doLifeSound
+
+runSoundDone anop
+        rtl
+
+
+
+lifeSoundCounter dc i2'0'
+lifeSoundTimer dc i2'0'
 temp dc i2'0'
 
         end
