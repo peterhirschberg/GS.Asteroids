@@ -284,6 +284,9 @@ doWaveReset anop
         lda #60
         sta interWaveTimer
 
+        jsl getNextSaucerTimer
+        sta saucerSpawnTimer
+
         lda #30
         sta thumpDecTimer
         lda #30
@@ -352,7 +355,7 @@ doStart anop
         jsl stopAllRocks
         jsl spawnInitialRocks
 
-        lda #500
+        jsl getNextSaucerTimer
         sta saucerSpawnTimer
 
         lda #30

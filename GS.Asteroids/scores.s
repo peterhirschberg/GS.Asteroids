@@ -49,16 +49,16 @@ addToScore entry
         sta scoreDigit100000s
 
 ; check for extra life
-        lda scoreDigit1000s
+        lda scoreDigit10000s
         cmp lastScoreDigit10000s
         bne addExtraLife
-        lda scoreDigit1000s
+        lda scoreDigit10000s
         sta lastScoreDigit10000s
         rts
 
 addExtraLife anop
 ; add another life
-        lda scoreDigit1000s
+        lda scoreDigit10000s
         sta lastScoreDigit10000s
         inc playerLives
 

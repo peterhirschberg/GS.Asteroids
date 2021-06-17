@@ -113,12 +113,21 @@ onKeydownThrust anop
 
 onKeydownFire anop
 
+        jsl isIntroScreen
+        cmp #0
+        beq notIntroScreen
+        bra onIntroScreen
+
+notIntroScreen anop
+
         jsl isGameOver
         cmp #0
         beq gameNotOver
+
         jsl startNewGame
         rtl
 
+onIntroScreen anop
 gameNotOver anop
 
         lda #1

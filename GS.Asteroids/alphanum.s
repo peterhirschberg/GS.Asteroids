@@ -155,7 +155,7 @@ drawGameOverText entry
         lda #$cc
         sta color
 
-        lda #118
+        lda #130
         sta charXPos
 
         lda #130
@@ -177,7 +177,7 @@ drawTextLoop anop
         
         lda charXPos
         clc
-        adc #10
+        adc #7
         sta charXPos
         
         inx
@@ -400,13 +400,6 @@ drawTextDone5 anop
 
         
 drawScore entry
-
-        jsl isGameOver
-        cmp #0
-        beq doDrawScore
-        rtl
-
-doDrawScore anop
 
         lda #1
         sta scale

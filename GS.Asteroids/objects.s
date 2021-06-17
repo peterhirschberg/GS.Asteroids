@@ -625,7 +625,7 @@ drawAttractMode entry
 
         lda #140
         sta angle
-        lda #220
+        lda #240
         sta drawX
         lda #140
         sta drawY

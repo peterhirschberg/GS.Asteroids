@@ -17,6 +17,25 @@ saucers start
         using gameData
 
 
+getNextSaucerTimer entry
+        lda playerScore
+        cmp #30000
+        bcs timerShort
+        cmp #9000
+        bcs timerMedium
+
+timerNormal anop
+        lda #500
+        rtl
+
+timerMedium anop
+        lda #150
+        rtl
+
+timerShort anop
+        lda #50
+        rtl
+
 
 chooseNewSaucer entry
 
@@ -61,13 +80,16 @@ spawnSaucer entry
         tax
         lda lifetimeList,x
         cmp #0
-        beq checkPlayer
+        beq checkGameMode
         rtl
 
-; check to see if the player is alive or not - don't spawn if the player is dead
-; TODO - skip this check if we are in attract mode
-checkPlayer anop
+checkGameMode anop
+; ignore next check if in attract mode
+        jsl isGameOver
+        cmp #1
+        beq notDead2
 
+; check to see if the player is alive or not - don't spawn if the player is dead
         ldx #OBJECT_PLAYER
         lda lifetimeList,x
         cmp #0
@@ -79,22 +101,7 @@ playerDead2 anop
         rtl
 
 notDead2 anop
-        
-; if less than 10 medium/small rocks left, consider spawning a saucer
-;checkRocks anop
-;        lda #10
-;        cmp numOtherRocks
-;        bcs checklargeRocks
-;        rtl
 
-; only spawn a saucer if there are 1 or less large rocks
-;checklargeRocks anop
-;        lda #1
-;        cmp numLargeRocks
-;        bcs checkTimer
-;        rtl
-        
-checkTimer anop
         dec saucerSpawnTimer
         lda saucerSpawnTimer
         bmi doSpawnSaucer
@@ -109,7 +116,7 @@ doSpawnSaucer anop
         lda #1
         sta firstShot
 
-        lda #500
+        jsl getNextSaucerTimer
         sta saucerSpawnTimer
 
         lda #20
