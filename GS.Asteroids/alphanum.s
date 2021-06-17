@@ -576,7 +576,7 @@ gameOverTextData anop
 gameTitleData anop
         dc i2'OFFSET_G'
         dc i2'OFFSET_S'
-        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_SPACE'
         dc i2'OFFSET_A'
         dc i2'OFFSET_S'
         dc i2'OFFSET_T'
