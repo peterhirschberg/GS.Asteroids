@@ -72,9 +72,9 @@ FIRE_SIZE            equ $1b
 THRUST_SOUND_ADDR     equ $8000
 THRUST_OSC_NUM        equ 8
 THRUST_FREQ_HIGH        equ 0
-THRUST_FREQ_LOW        equ 800
+THRUST_FREQ_LOW        equ 400
 THRUST_CONTROL        equ SOUND_SWAP_MODE
-THRUST_SIZE            equ $2b
+THRUST_SIZE            equ $1b
 
 LSAUCER_SOUND_ADDR     equ $9000
 LSAUCER_OSC_NUM        equ 12

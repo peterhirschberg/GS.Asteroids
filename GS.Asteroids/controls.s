@@ -94,6 +94,7 @@ notPressedLeft anop
 
 checkKeydownRight anop
         lda >BUTTON1
+
         and #$80
         cmp #0
         beq notPressedRight
