@@ -7,8 +7,23 @@
 ;
 
 
+
         macro
         pixelLeft
+        lda >SCREEN_ADDR,x
+        ora currentColorLeft
+        sta >SCREEN_ADDR,x
+        mend
+
+        macro
+        pixelRight
+        lda >SCREEN_ADDR,x
+        ora currentColorRight
+        sta >SCREEN_ADDR,x
+        mend
+
+        macro
+        pixelLeftTranslucent
         lda >SCREEN_ADDR,x
         sta tempColor
         and #$f0
@@ -24,9 +39,8 @@ dontClampLeft_&SYSCNT anop
         sta >SCREEN_ADDR,x
         mend
 
-
         macro
-        pixelRight
+        pixelRightTranslucent
         lda >SCREEN_ADDR,x
         sta tempColor
         and #$0f
@@ -41,7 +55,6 @@ dontClampRight_&SYSCNT anop
         ora tempColor
         sta >SCREEN_ADDR,x
         mend
-
 
 
 

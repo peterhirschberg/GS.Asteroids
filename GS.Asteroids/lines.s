@@ -1,5 +1,5 @@
 ;
-;  fastline.s
+;  lines.s
 ;  GS.Asteroids
 ;
 ;  Created by Peter Hirschberg on 5/14/21.
@@ -10,7 +10,7 @@
         mcopy global.macros
         keep global
 
-fastLine start
+lines start
         using globalData
         using lineData
 
@@ -62,7 +62,7 @@ eraseDot entry
         rtl
 
 
-drawFastLine entry
+drawLine entry
 
         lda y1
         cmp y2
@@ -536,12 +536,11 @@ tempColor dc i2'0'
 
 
 
-fastEraselines start
+eraseLines start
         using globalData
         using lineData
 
-
-eraseFastLine entry
+eraseLine entry
 
         lda y1
         cmp y2

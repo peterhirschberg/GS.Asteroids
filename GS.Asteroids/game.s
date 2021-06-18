@@ -37,6 +37,10 @@ runIntroScreen entry
 doDrawIntroScreen anop
         stz needToDrawIntroScreen
 
+; erase all previous lines and dots
+        jsl eraseDisplayList
+        jsl eraseDotList
+
 ; init the display list, dot list, and color list
         stz displayListLength
         stz dotListLength
@@ -457,6 +461,8 @@ GAMEMODE_GAMEOVER gequ 1
 GAMEMODE_PLAYING gequ 2
 
 gameMode dc i2'GAMEMODE_INTRO'
+
+enableTranslucency dc i2'1'
 
 playerLives dc i2'0'
 

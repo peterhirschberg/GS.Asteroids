@@ -11,6 +11,7 @@
 displayList start
     using globalData
     using displayListData
+    using gameData
     
 renderDisplayList entry
 
@@ -59,9 +60,16 @@ loop anop
     inx
     
     stx counter
-    
-    jsl drawFastLine
-    
+
+    lda enableTranslucency
+    cmp #0
+    beq normalDraw
+
+    jsl drawTranslucentLine
+    jmp loop
+
+normalDraw anop
+    jsl drawLine
     jmp loop
     
 done anop
@@ -107,7 +115,7 @@ loop2 anop
     
     stx counter
     
-    jsl eraseFastLine
+    jsl eraseLine
     
     jmp loop2
     
@@ -152,9 +160,16 @@ loop4 anop
     inx
 
     stx counter
-    
-    jsl drawDot
 
+    lda enableTranslucency
+    cmp #0
+    beq normalDrawDot
+
+    jsl drawTranslucentDot
+    jmp loop4
+
+normalDrawDot anop
+    jsl drawDot
     jmp loop4
     
 done4 anop

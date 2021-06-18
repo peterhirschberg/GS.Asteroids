@@ -11,6 +11,7 @@
 controls start
         using globalData
         using controlsData
+        using gameData
 
 checkControls entry
 
@@ -31,7 +32,7 @@ checkControls entry
         beq keydownFireShort
 
         cmp #KEY_ENTER
-        beq onKeydownThrust
+        beq keydownThrustShort
 
         cmp #'h'
         beq onKeydownHyperspace
@@ -48,7 +49,15 @@ checkControls entry
         cmp #'Q'
         beq onKeydownQuit
 
+        cmp #'t'
+        beq onKeydownTranslucency
+        cmp #'T'
+        beq onKeydownTranslucency
+
         bra checkKeysDone
+
+keydownThrustShort anop
+    brl onKeydownThrust
 
 keydownFireShort anop
         brl onKeydownFire
@@ -76,6 +85,22 @@ onKeydownPause anop
 setPaused anop
         lda #1
         sta gamePaused
+        rtl
+
+onKeydownTranslucency anop
+        lda enableTranslucency
+        cmp #0
+        beq setTranslucent
+        lda #0
+        sta enableTranslucency
+        lda #1
+        sta needToDrawIntroScreen
+        rtl
+setTranslucent anop
+        lda #1
+        sta enableTranslucency
+        lda #1
+        sta needToDrawIntroScreen
         rtl
 
 checkKeydownLeft anop
