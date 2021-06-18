@@ -235,7 +235,7 @@ drawCopyrightText entry
         lda #0
         sta scale
 
-        lda #$cc
+        lda #$ff
         sta color
 
         lda #35
@@ -314,9 +314,9 @@ drawTextDone3 anop
         rtl
 
 
-drawControlsText1 entry
+drawControlsText entry
 
-        lda #1
+        lda #0
         sta scale
 
         lda #$ff
@@ -324,76 +324,51 @@ drawControlsText1 entry
 
         lda #120
         sta charXPos
+        sta xStart
 
-        lda #70
+        lda #80
         sta charYPos
 
         ldx #0
 
 drawTextLoop4 anop
 
-        lda controlsText1Data,x
+        lda controlsTextData,x
         cmp #-1
         beq drawTextDone4
+
+        cmp #OFFSET_NEWLINE
+        beq newLine
 
         stx savexDraw
         sty saveyDraw
         jsr drawLetter
         ldx savexDraw
         ldy saveyDraw
+        bra nextCharOnRow
 
-        lda charXPos
-        clc
-        adc #8
+newLine anop
+        lda xStart
         sta charXPos
 
+        lda charYPos
+        clc
+        adc #8
+        sta charYPos
+        bra nextChar
+
+nextCharOnRow anop
+        lda charXPos
+        clc
+        adc #6
+        sta charXPos
+
+nextChar anop
         inx
         inx
         jmp drawTextLoop4
 
 drawTextDone4 anop
-
-        rtl
-
-
-drawControlsText2 entry
-
-        lda #1
-        sta scale
-
-        lda #$88
-        sta color
-
-        lda #120
-        sta charXPos
-
-        lda #90
-        sta charYPos
-
-        ldx #0
-
-drawTextLoop5 anop
-
-        lda controlsText2Data,x
-        cmp #-1
-        beq drawTextDone5
-
-        stx savexDraw
-        sty saveyDraw
-        jsr drawLetter
-        ldx savexDraw
-        ldy saveyDraw
-
-        lda charXPos
-        clc
-        adc #8
-        sta charXPos
-
-        inx
-        inx
-        jmp drawTextLoop5
-
-drawTextDone5 anop
 
         rtl
 
@@ -515,8 +490,7 @@ drawIntroScreen entry
         jsl drawTitleText
         jsl drawCopyrightText
         jsl drawThanksText
-        jsl drawControlsText1
-        jsl drawControlsText2
+        jsl drawControlsText
 
         jsl drawAttractMode
 
@@ -536,6 +510,7 @@ temp dc i2'0'
 firstDigit dc i2'0'
 scale dc i2'1'
 coord dc i2'0'
+xStart dc i2'0'
 
         end
 
@@ -648,30 +623,129 @@ thanksTextData anop
         dc i2'OFFSET_D'
         dc i2'-1'
 
-controlsText1Data anop
-        dc i2'OFFSET_LBRACKET'
-        dc i2'OFFSET_K'
-        dc i2'OFFSET_RBRACKET'
-        dc i2'OFFSET_E'
-        dc i2'OFFSET_Y'
-        dc i2'OFFSET_B'
+controlsTextData anop
         dc i2'OFFSET_O'
-        dc i2'OFFSET_A'
-        dc i2'OFFSET_R'
-        dc i2'OFFSET_D'
-        dc i2'-1'
-
-controlsText2Data anop
-        dc i2'OFFSET_LBRACKET'
-        dc i2'OFFSET_J'
-        dc i2'OFFSET_RBRACKET'
-        dc i2'OFFSET_O'
-        dc i2'OFFSET_Y'
-        dc i2'OFFSET_S'
+        dc i2'OFFSET_P'
         dc i2'OFFSET_T'
         dc i2'OFFSET_I'
+        dc i2'OFFSET_O'
+        dc i2'OFFSET_N'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_O'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_SPACE'
+        dc i2'OFFSET_L'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_F'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_NEWLINE'
         dc i2'OFFSET_C'
-        dc i2'OFFSET_K'
+        dc i2'OFFSET_O'
+        dc i2'OFFSET_M'
+        dc i2'OFFSET_M'
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_N'
+        dc i2'OFFSET_D'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_O'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_SPACE'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_I'
+        dc i2'OFFSET_G'
+        dc i2'OFFSET_H'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_NEWLINE'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_N'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_H'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_U'
+        dc i2'OFFSET_S'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_NEWLINE'
+        dc i2'OFFSET_S'
+        dc i2'OFFSET_P'
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_C'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_F'
+        dc i2'OFFSET_I'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_COMMA'
+        dc i2'OFFSET_S'
+        dc i2'OFFSET_P'
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_W'
+        dc i2'OFFSET_N'
+        dc i2'OFFSET_COMMA'
+        dc i2'OFFSET_S'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_SPACE'
+        dc i2'OFFSET_G'
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_M'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_NEWLINE'
+        dc i2'OFFSET_H'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_H'
+        dc i2'OFFSET_Y'
+        dc i2'OFFSET_P'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_S'
+        dc i2'OFFSET_P'
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_C'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_NEWLINE'
+        dc i2'OFFSET_P'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_P'
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_U'
+        dc i2'OFFSET_S'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_NEWLINE'
+        dc i2'OFFSET_Q'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_Q'
+        dc i2'OFFSET_U'
+        dc i2'OFFSET_I'
+        dc i2'OFFSET_T'
         dc i2'-1'
 
 
@@ -1947,7 +2021,8 @@ OFFSET_COMMA gequ $2ed
 OFFSET_UNDERSCORE gequ $2f2
 
 
-OFFSET_SPACE gequ $ff00
+OFFSET_SPACE gequ -2
+OFFSET_NEWLINE gequ -3
 
 
 
