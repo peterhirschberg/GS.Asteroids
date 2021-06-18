@@ -14,10 +14,10 @@
 /* Version resource */
 resource rVersion (1) {
     {
-        0,          /* Major version number in BCD */
-        1,          /* Minor version number in BCD */
+        1,          /* Major version number in BCD */
+        0,          /* Minor version number in BCD */
         0,          /* Bug version number in BCD */
-        development,/* Development phase */
+        release,/* Development phase */
         0           /* Release number */
     },
     verUS,
