@@ -1,5 +1,50 @@
 ;
-;  sound.s
+;  global.macros
+;  GS.Asteroids
+;
+;  Created by Peter Hirschberg on 5/14/21.
+;Copyright © 2021 Peter Hirschberg. All rights reserved.
+;
+
+
+        macro
+        pixelLeft
+        lda >SCREEN_ADDR,x
+        sta tempColor
+        and #$f0
+        clc
+        adc currentColorLeft
+        cmp #$f0
+        bcs clampLeft_&SYSCNT
+        bra dontClampLeft_&SYSCNT
+clampLeft_&SYSCNT anop
+        lda #$f0
+dontClampLeft_&SYSCNT anop
+        ora tempColor
+        sta >SCREEN_ADDR,x
+        mend
+
+
+        macro
+        pixelRight
+        lda >SCREEN_ADDR,x
+        sta tempColor
+        and #$0f
+        clc
+        adc currentColorRight
+        cmp #$0f
+        bcs clampRight_&SYSCNT
+        bra dontClampRight_&SYSCNT
+clampRight_&SYSCNT anop
+        lda #$0f
+dontClampRight_&SYSCNT anop
+        ora tempColor
+        sta >SCREEN_ADDR,x
+        mend
+
+
+
+
 ;
 ; ********************************************
 ; Code pulled from Jeremy Rand's "BuGS" game

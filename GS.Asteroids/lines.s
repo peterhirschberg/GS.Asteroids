@@ -7,6 +7,8 @@
 ;
 
         case on
+        mcopy global.macros
+        keep global
 
 fastLine start
         using globalData
@@ -32,17 +34,11 @@ drawDot entry
         cpa #0
         beq leftNibble5
 
-        lda >SCREEN_ADDR,x
-        ora currentColorRight
-        sta >SCREEN_ADDR,x
-
+        pixelRight
         rtl
 
 leftNibble5 anop
-        lda >SCREEN_ADDR,x
-        ora currentColorLeft
-        sta >SCREEN_ADDR,x
-
+        pixelLeft
         rtl
 
         
@@ -123,16 +119,12 @@ HLloop anop
         bit #$0001
         beq leftNibble3
 
-        lda >SCREEN_ADDR,x
-        ora currentColorRight
-        sta >SCREEN_ADDR,x
+        pixelRight
         bra HL3
 
 leftNibble3 anop
-        lda >SCREEN_ADDR,x
-        ora currentColorLeft
-        sta >SCREEN_ADDR,x
-        
+        pixelLeft
+
 HL3 anop
         inc startX
         lda startX
@@ -190,10 +182,8 @@ leftNibble4 anop
         adc offset
         tax
 
-        lda >SCREEN_ADDR,x
-        ora currentColorLeft
-        sta >SCREEN_ADDR,x
-        
+        pixelLeft
+
         inc startY
         lda startY
         cmp endY
@@ -214,10 +204,8 @@ rightNibble1 anop
         adc offset
         tax
 
-        lda >SCREEN_ADDR,x
-        ora currentColorRight
-        sta >SCREEN_ADDR,x
-        
+        pixelRight
+
         inc startY
         lda startY
         cmp endY
@@ -338,15 +326,11 @@ lineLoop1 anop
         bit #$0001
         beq leftNibble1
 
-        lda >SCREEN_ADDR,x
-        ora currentColorRight
-        sta >SCREEN_ADDR,x
+        pixelRight
         bra jump9
 
 leftNibble1 anop
-        lda >SCREEN_ADDR,x
-        ora currentColorLeft
-        sta >SCREEN_ADDR,x
+        pixelLeft
 
 jump9 anop
 
@@ -465,15 +449,11 @@ lineLoop2 anop
         bit #$0001
         beq leftNibble2
 
-        lda >SCREEN_ADDR,x
-        ora currentColorRight
-        sta >SCREEN_ADDR,x
+        pixelRight
         bra jump29
 
 leftNibble2 anop
-        lda >SCREEN_ADDR,x
-        ora currentColorLeft
-        sta >SCREEN_ADDR,x
+        pixelLeft
 
 jump29 anop
 
@@ -549,6 +529,8 @@ jump28 anop
 lineDone anop
         rtl
 
+
+tempColor dc i2'0'
 
         end
 
