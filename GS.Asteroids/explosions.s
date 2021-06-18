@@ -27,7 +27,7 @@ fadeLoop1 anop
         cmp #0
         beq nextFade1
 
-        lda #15
+        lda #$b
         cmp lifetimeList,x
         bcs decrement1
         bra nextFade1

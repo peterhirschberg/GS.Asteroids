@@ -28,6 +28,19 @@ gameInit entry
 
 
 runIntroScreen entry
+
+        lda needToDrawIntroScreen
+        cmp #1
+        beq doDrawIntroScreen
+        bra introScreenCheckControls
+
+doDrawIntroScreen anop
+        stz needToDrawIntroScreen
+
+; erase all previous lines and dots
+        jsl eraseDisplayList
+        jsl eraseDotList
+
 ; init the display list, dot list, and color list
         stz displayListLength
         stz dotListLength
@@ -39,6 +52,7 @@ runIntroScreen entry
         jsl renderDisplayList
         jsl renderDotList
 
+introScreenCheckControls anop
         jsl checkControls
 
         lda keydownFire
@@ -448,6 +462,8 @@ GAMEMODE_PLAYING gequ 2
 
 gameMode dc i2'GAMEMODE_INTRO'
 
+enableTranslucency dc i2'1'
+
 playerLives dc i2'0'
 
 playerRespawnTimer dc i2'0'
@@ -460,6 +476,8 @@ thumpWhich dc i2'0'
 interWaveTimer dc i2'60'
 
 gameLevelTimer dc i2'0'
+
+needToDrawIntroScreen dc i2'1'
 
         end
 

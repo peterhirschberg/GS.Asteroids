@@ -152,7 +152,7 @@ drawGameOverText entry
         lda #1
         sta scale
 
-        lda #$cc
+        lda #$bb
         sta color
 
         lda #130
@@ -194,7 +194,7 @@ drawTitleText entry
         lda #2
         sta scale
 
-        lda #$ff
+        lda #$bb
         sta color
 
         lda #80
@@ -235,7 +235,7 @@ drawCopyrightText entry
         lda #0
         sta scale
 
-        lda #$ff
+        lda #$bb
         sta color
 
         lda #35
@@ -277,7 +277,7 @@ drawThanksText entry
         lda #0
         sta scale
 
-        lda #$cc
+        lda #$bb
         sta color
 
         lda #45
@@ -319,14 +319,14 @@ drawControlsText entry
         lda #0
         sta scale
 
-        lda #$ff
+        lda #$bb
         sta color
 
         lda #120
         sta charXPos
         sta xStart
 
-        lda #80
+        lda #60
         sta charYPos
 
         ldx #0
@@ -728,6 +728,7 @@ controlsTextData anop
         dc i2'OFFSET_C'
         dc i2'OFFSET_E'
         dc i2'OFFSET_NEWLINE'
+        dc i2'OFFSET_NEWLINE'
         dc i2'OFFSET_P'
         dc i2'OFFSET_PERIOD'
         dc i2'OFFSET_PERIOD'
@@ -737,6 +738,23 @@ controlsTextData anop
         dc i2'OFFSET_U'
         dc i2'OFFSET_S'
         dc i2'OFFSET_E'
+        dc i2'OFFSET_NEWLINE'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_PERIOD'
+        dc i2'OFFSET_T'
+        dc i2'OFFSET_R'
+        dc i2'OFFSET_A'
+        dc i2'OFFSET_N'
+        dc i2'OFFSET_S'
+        dc i2'OFFSET_L'
+        dc i2'OFFSET_U'
+        dc i2'OFFSET_C'
+        dc i2'OFFSET_E'
+        dc i2'OFFSET_N'
+        dc i2'OFFSET_C'
+        dc i2'OFFSET_Y'
         dc i2'OFFSET_NEWLINE'
         dc i2'OFFSET_Q'
         dc i2'OFFSET_PERIOD'
