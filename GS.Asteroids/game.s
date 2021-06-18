@@ -28,6 +28,15 @@ gameInit entry
 
 
 runIntroScreen entry
+
+        lda needToDrawIntroScreen
+        cmp #1
+        beq doDrawIntroScreen
+        bra introScreenCheckControls
+
+doDrawIntroScreen anop
+        stz needToDrawIntroScreen
+
 ; init the display list, dot list, and color list
         stz displayListLength
         stz dotListLength
@@ -39,6 +48,7 @@ runIntroScreen entry
         jsl renderDisplayList
         jsl renderDotList
 
+introScreenCheckControls anop
         jsl checkControls
 
         lda keydownFire
@@ -460,6 +470,8 @@ thumpWhich dc i2'0'
 interWaveTimer dc i2'60'
 
 gameLevelTimer dc i2'0'
+
+needToDrawIntroScreen dc i2'1'
 
         end
 

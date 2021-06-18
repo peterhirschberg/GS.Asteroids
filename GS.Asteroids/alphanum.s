@@ -152,7 +152,7 @@ drawGameOverText entry
         lda #1
         sta scale
 
-        lda #$cc
+        lda #$bb
         sta color
 
         lda #130
@@ -194,7 +194,7 @@ drawTitleText entry
         lda #2
         sta scale
 
-        lda #$ff
+        lda #$bb
         sta color
 
         lda #80
@@ -235,7 +235,7 @@ drawCopyrightText entry
         lda #0
         sta scale
 
-        lda #$ff
+        lda #$bb
         sta color
 
         lda #35
@@ -277,7 +277,7 @@ drawThanksText entry
         lda #0
         sta scale
 
-        lda #$cc
+        lda #$bb
         sta color
 
         lda #45
@@ -319,7 +319,7 @@ drawControlsText entry
         lda #0
         sta scale
 
-        lda #$ff
+        lda #$bb
         sta color
 
         lda #120
