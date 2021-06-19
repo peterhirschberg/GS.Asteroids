@@ -147,6 +147,12 @@ continue1 anop
 ; update all objects
         jsr updateObjects
 
+; ****************************
+; Start drawing
+; ****************************
+;        jsl asmGrOff
+; ****************************
+
 ; erase all previous lines and dots
         jsl eraseDisplayList
         jsl eraseDotList
@@ -169,6 +175,13 @@ continue1 anop
 ; render the display list and dot list
         jsl renderDisplayList
         jsl renderDotList
+
+; ****************************
+; Finished drawing
+; ****************************
+;        jsl asmGrOn
+        jsl asmSlam
+; ****************************
 
 ; fade particles and wreckage
         jsl fadeParticles
@@ -411,6 +424,7 @@ setupScreen entry
         lda >BORDER_COLOUR_REGISTER
         and #$f0
         sta >BORDER_COLOUR_REGISTER
+        rtl
 
         sei
         phd

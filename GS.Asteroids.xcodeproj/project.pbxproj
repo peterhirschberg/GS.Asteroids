@@ -13,6 +13,7 @@
 		D0678F662673747100A8010C /* sound.s in Sources */ = {isa = PBXBuildFile; fileRef = D0678F652673747100A8010C /* sound.s */; };
 		D0678F68267376E800A8010C /* global.macros in Sources */ = {isa = PBXBuildFile; fileRef = D0678F67267376E800A8010C /* global.macros */; };
 		D0678F6F267D016000A8010C /* translucentLines.s in Sources */ = {isa = PBXBuildFile; fileRef = D0678F6E267D016000A8010C /* translucentLines.s */; };
+		D0678F71267D57F500A8010C /* screen.s in Sources */ = {isa = PBXBuildFile; fileRef = D0678F70267D57F500A8010C /* screen.s */; };
 		D068E680266B991C00D9E256 /* lines.s in Sources */ = {isa = PBXBuildFile; fileRef = D068E67F266B991C00D9E256 /* lines.s */; };
 		D06919B5264F414C006508C1 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D06919B4264F414C006508C1 /* main.c */; };
 		D06919B8264F414C006508C1 /* main.rez in CopyFiles */ = {isa = PBXBuildFile; fileRef = D06919B7264F414C006508C1 /* main.rez */; };
@@ -68,6 +69,7 @@
 		D0678F67267376E800A8010C /* global.macros */ = {isa = PBXFileReference; lastKnownFileType = text; path = global.macros; sourceTree = "<group>"; };
 		D0678F6926767EFC00A8010C /* osdisplay.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = osdisplay.s; sourceTree = "<group>"; };
 		D0678F6E267D016000A8010C /* translucentLines.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = translucentLines.s; sourceTree = "<group>"; };
+		D0678F70267D57F500A8010C /* screen.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = screen.s; sourceTree = "<group>"; };
 		D068E67F266B991C00D9E256 /* lines.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = lines.s; sourceTree = "<group>"; };
 		D06919AA264F414B006508C1 /* GS.Asteroids */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Asteroids; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06919AD264F414B006508C1 /* GS.Asteroids.2mg */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Asteroids.2mg; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +162,7 @@
 				D0678F652673747100A8010C /* sound.s */,
 				D0678F67267376E800A8010C /* global.macros */,
 				D0678F6926767EFC00A8010C /* osdisplay.s */,
+				D0678F70267D57F500A8010C /* screen.s */,
 			);
 			path = GS.Asteroids;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				D06BB5E72665A75900EB1107 /* collision.s in Sources */,
 				D0678F68267376E800A8010C /* global.macros in Sources */,
 				D063C4112659302A00C5C7C6 /* displayList.s in Sources */,
+				D0678F71267D57F500A8010C /* screen.s in Sources */,
 				D06BB5E326650BB800EB1107 /* controls.s in Sources */,
 				D06919BA264F414C006508C1 /* Makefile in Sources */,
 				D068E680266B991C00D9E256 /* lines.s in Sources */,
