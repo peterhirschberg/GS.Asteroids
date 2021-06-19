@@ -21,7 +21,7 @@ NEW_VIDEO_REGISTER      gequ $e0c029
 BORDER_COLOUR_REGISTER  gequ $e0c034
 STATE_REGISTER          gequ $e1c068
 SCREEN_ADDR             gequ $012000
-COLOR_TABLE             gequ $e19e00
+COLOR_TABLE             gequ $019e00
 
 gamePaused dc i2'0'
 

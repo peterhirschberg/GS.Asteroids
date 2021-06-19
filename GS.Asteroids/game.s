@@ -122,6 +122,8 @@ continue1 anop
         jsl renderDisplayList
         jsl renderDotList
 
+        jsl asmSlam
+
 ; fade particles and wreckage
         jsl fadeParticles
         jsl fadeWreckage
