@@ -16,7 +16,7 @@ resource rVersion (1) {
     {
         1,          /* Major version number in BCD */
         0,          /* Minor version number in BCD */
-        0,          /* Bug version number in BCD */
+        1,          /* Bug version number in BCD */
         release,/* Development phase */
         0           /* Release number */
     },

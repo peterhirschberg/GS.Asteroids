@@ -154,6 +154,8 @@ getPlayerPos1 anop
         clc
         adc playerSize
         sta playerRectBottom
+
+        jsl hitTestRectBoundsFix
         
 ; hit test the missile point against the bounding box
         lda xMissilePos
@@ -263,6 +265,8 @@ getSaucerPos1 anop
         clc
         adc saucerSize
         sta saucerRectBottom
+
+        jsl hitTestRectBoundsFix
 
 ; hit test the missile point against the bounding box
         lda xMissilePos
@@ -376,6 +380,8 @@ computeBoundingBox anop
         clc
         adc size
         sta testRectBottom
+
+        jsl hitTestRectBoundsFix
 
 ; hit test the missile point against the bounding box
         lda xMissilePos
@@ -552,6 +558,7 @@ computeBoundingBox1 anop
         adc size
         sta testRectBottom
 
+        jsl hitTestRectBoundsFix
 
 ; hit test the player rect against the rock rect
 
@@ -700,6 +707,7 @@ computeBoundingBox5 anop
         adc size
         sta testRectBottom
 
+        jsl hitTestRectBoundsFix
 
 ; hit test the player rect against the saucer rect
 
@@ -825,6 +833,8 @@ getPlayerPos anop
         adc playerSize
         sta playerRectBottom
 
+        jsl hitTestRectBoundsFix
+
         jsl checkPlayerAgainstRocks
         jsl checkPlayerAgainstSaucers
 
@@ -893,6 +903,7 @@ computeBoundingBox2 anop
         adc size
         sta testRectBottom
 
+        jsl hitTestRectBoundsFix
 
 ; hit test the saucer rect against the rock rect
 
@@ -1027,6 +1038,8 @@ getSaucerPos anop
         adc saucerSize
         sta saucerRectBottom
 
+        jsl hitTestRectBoundsFix
+
         jsl checkSaucerAgainstRocks
 
 done1 anop
@@ -1034,7 +1047,51 @@ done1 anop
         rtl
         
 
+hitTestRectBoundsFix entry
 
+        lda testRectLeft
+        bmi fixTestRectLeft
+        bra dontFixTestRectLeft
+fixTestRectLeft anop
+        stz testRectLeft
+dontFixTestRectLeft anop
+
+        lda testRectTop
+        bmi fixTestRectTop
+        bra dontFixTestRectTop
+fixTestRectTop anop
+        stz testRectTop
+dontFixTestRectTop anop
+
+        lda playerRectLeft
+        bmi fixPlayerRectLeft
+        bra dontFixPlayerRectLeft
+fixPlayerRectLeft anop
+        stz playerRectLeft
+dontFixPlayerRectLeft anop
+
+        lda playerRectTop
+        bmi fixPlayerRectTop
+        bra dontFixPlayerRectTop
+fixPlayerRectTop anop
+        stz playerRectTop
+dontFixPlayerRectTop anop
+
+        lda saucerRectLeft
+        bmi fixSaucerRectLeft
+        bra dontFixSaucerRectLeft
+fixSaucerRectLeft anop
+        stz saucerRectLeft
+dontFixSaucerRectLeft anop
+
+        lda saucerRectTop
+        bmi fixSaucerRectTop
+        bra dontFixSaucerRectTop
+fixSaucerRectTop anop
+        stz saucerRectTop
+dontFixSaucerRectTop anop
+
+        rtl
 
 
 doAllCollisionChecks entry
