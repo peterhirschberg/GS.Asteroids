@@ -1,5 +1,5 @@
 # GS.Asteroids
-### Asteroids clone for the Apple IIgs computer
+## Asteroids clone for the Apple IIgs computer
 
 Download available in the [Downloads Section](https://github.com/peterhirschberg/GS.Asteroids/releases)
 
