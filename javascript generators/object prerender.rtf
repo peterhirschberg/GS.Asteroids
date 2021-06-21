@@ -1,0 +1,660 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww21160\viewh19440\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 let strPixels = '\\nprerenderPixelData anop\\n'\
+let strEvenOdd = '\\nprerenderEvenOddData anop\\n'\
+let strCounts = '\\nprerenderCountsData anop\\n'\
+let strLookup = ''\
+\
+let offset = 0\
+\
+let largeRock1Offset = 0\
+let largeRock2Offset = 0\
+let largeRock3Offset = 0\
+\
+let mediumRock1Offset = 0\
+let mediumRock2Offset = 0\
+let mediumRock3Offset = 0\
+\
+let smallRock1Offset = 0\
+let smallRock2Offset = 0\
+let smallRock3Offset = 0\
+\
+let largeUFOOffset = 0\
+let smallUFOOffset = 0\
+\
+\
+let pixelData = []\
+let evenOddNibble = []\
+let counts = []\
+let lookup = []\
+const screenBase = 0 // 73728\
+let pixelCount = 0\
+let i\
+\
+\
+\
+let rock1 = [\
+	18, 66,\
+  43, 66,\
+  67, 51,\
+  59, 35,\
+  67, 18,\
+  51, 0,\
+  34, 17,\
+  18, 0,\
+  0, 18,\
+  0, 51,\
+  18, 66\
+]\
+\
+let rock2 = [\
+	25, 15,\
+  17, 0,\
+  41, 0,\
+  67, 15,\
+  67, 25,\
+  42, 31,\
+  67, 48,\
+  49, 65,\
+  42, 57,\
+  17, 66,\
+  0, 42,\
+  0, 15,\
+  25, 15\
+]\
+\
+let rock3 = [\
+	49, 25,\
+ 	66, 42,\
+  49, 65,\
+  24, 58,\
+  15, 65,\
+  0, 50,\
+  6, 34,\
+  0, 17,\
+  16, 0,\
+  33, 7,\
+  49, 0,\
+  66, 16,\
+  49, 25\
+]\
+\
+let ufo = [\
+	13, 0,\
+  6, 4,\
+  -6, 4,\
+  -13, 0,\
+  -6,-4,\
+  -3,-9,\
+  3,-9,\
+  6,-4,\
+  13,0,\
+  -13,0,\
+  -6,-4,\
+  6,-4\
+]\
+\
+\
+// large rocks\
+\
+	// center the objects\
+  \{\
+    let xmax = -9999\
+    let xmin = 9999\
+    let ymax = -9999\
+    let ymin = 9999\
+\
+    for (let i=0; i<rock1.length; i+=2) \{\
+      if (rock1[i] > xmax)\
+        xmax = rock1[i];\
+      if (rock1[i] < xmin)\
+        xmin = rock1[i];\
+\
+      if (rock1[i+1] > ymax)\
+        ymax = rock1[i+1];\
+      if (rock1[i+1] < ymin)\
+        ymin = rock1[i+1];\
+    \}\
+    for (let i=0; i<rock1.length; i+=2) \{\
+      rock1[i] -= xmax/2;\
+      rock1[i+1] -= ymax/2;\
+    \}  \
+  \}\
+  \{\
+    let xmax = -9999\
+    let xmin = 9999\
+    let ymax = -9999\
+    let ymin = 9999\
+\
+    for (let i=0; i<rock2.length; i+=2) \{\
+      if (rock2[i] > xmax)\
+        xmax = rock2[i];\
+      if (rock2[i] < xmin)\
+        xmin = rock2[i];\
+\
+      if (rock2[i+1] > ymax)\
+        ymax = rock2[i+1];\
+      if (rock2[i+1] < ymin)\
+        ymin = rock2[i+1];\
+    \}\
+    for (let i=0; i<rock2.length; i+=2) \{\
+      rock2[i] -= xmax/2;\
+      rock2[i+1] -= ymax/2;\
+    \}  \
+  \}\
+  \{\
+    let xmax = -9999\
+    let xmin = 9999\
+    let ymax = -9999\
+    let ymin = 9999\
+\
+    for (let i=0; i<rock3.length; i+=2) \{\
+      if (rock3[i] > xmax)\
+        xmax = rock3[i];\
+      if (rock3[i] < xmin)\
+        xmin = rock3[i];\
+\
+      if (rock3[i+1] > ymax)\
+        ymax = rock3[i+1];\
+      if (rock3[i+1] < ymin)\
+        ymin = rock3[i+1];\
+    \}\
+    for (let i=0; i<rock3.length; i+=2) \{\
+      rock3[i] -= xmax/2;\
+      rock3[i+1] -= ymax/2;\
+    \}  \
+  \}\
+\
+\
+	let fromx, fromy\
+  let tox, toy\
+  \
+  // Large rock 1\
+\
+  fromx = Math.floor(rock1[0]*0.45)\
+  fromy = Math.floor(rock1[1]*0.45)\
+  \
+  for (i=2; i<rock1.length; i+=2) \{\
+  \
+  	tox = Math.floor(rock1[i] *0.45)\
+  	toy = Math.floor(rock1[i+1] *0.45)\
+  \
+  	drawLine(fromx, fromy, tox, toy)\
+    \
+    fromx = tox\
+    fromy = toy\
+  \}\
+ \
+ 	counts.push(pixelCount)\
+  lookup.push(`PR_LARGE_ROCK1 gequ $\{offset\}\\n`)\
+	offset += pixelCount + 1\
+\
+	strPixels += '; large rock 1\\n'\
+  strPixels += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<pixelData.length; i++) \{\
+  	strPixels += `		dc i2'$\{pixelData[i]\}'\\n`\
+  \}\
+\
+	strEvenOdd += '; large rock 1\\n'\
+  strEvenOdd += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<evenOddNibble.length; i++) \{\
+  	strEvenOdd += `		dc i2'$\{evenOddNibble[i]\}'\\n`\
+  \}\
+  \
+  pixelCount = 0\
+  pixelData = []\
+  evenOddNibble = []\
+\
+  // Large rock 2\
+\
+  fromx = Math.floor(rock2[0]*0.45)\
+  fromy = Math.floor(rock2[1]*0.45)\
+  \
+  for (i=2; i<rock2.length; i+=2) \{\
+  \
+  	tox = Math.floor(rock2[i] *0.45)\
+  	toy = Math.floor(rock2[i+1] *0.45)\
+  \
+  	drawLine(fromx, fromy, tox, toy)\
+    \
+    fromx = tox\
+    fromy = toy\
+  \}\
+ \
+ 	counts.push(pixelCount)\
+  lookup.push(`PR_LARGE_ROCK2 gequ $\{offset\}\\n`)\
+	offset += pixelCount + 1\
+\
+	strPixels += '; large rock 2\\n'\
+  strPixels += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<pixelData.length; i++) \{\
+  	strPixels += `		dc i2'$\{pixelData[i]\}'\\n`\
+  \}\
+\
+	strEvenOdd += '; large rock 2\\n'\
+  strEvenOdd += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<evenOddNibble.length; i++) \{\
+  	strEvenOdd += `		dc i2'$\{evenOddNibble[i]\}'\\n`\
+  \}\
+\
+  pixelCount = 0\
+  pixelData = []\
+  evenOddNibble = []\
+\
+\
+  // Large rock 3\
+\
+  fromx = Math.floor(rock3[0]*0.45)\
+  fromy = Math.floor(rock3[1]*0.45)\
+  \
+  for (i=2; i<rock3.length; i+=2) \{\
+  \
+  	tox = Math.floor(rock3[i] *0.45)\
+  	toy = Math.floor(rock3[i+1] *0.45)\
+  \
+  	drawLine(fromx, fromy, tox, toy)\
+    \
+    fromx = tox\
+    fromy = toy\
+  \}\
+ \
+ 	counts.push(pixelCount)\
+  lookup.push(`PR_LARGE_ROCK3 gequ $\{offset\}\\n`)\
+	offset += pixelCount + 1\
+\
+	strPixels += '; large rock 3\\n'\
+  strPixels += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<pixelData.length; i++) \{\
+  	strPixels += `		dc i2'$\{pixelData[i]\}'\\n`\
+  \}\
+\
+	strEvenOdd += '; large rock 3\\n'\
+  strEvenOdd += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<evenOddNibble.length; i++) \{\
+  	strEvenOdd += `		dc i2'$\{evenOddNibble[i]\}'\\n`\
+  \}\
+\
+  pixelCount = 0\
+  pixelData = []\
+  evenOddNibble = []\
+ \
+ // --------------------\
+ \
+ \
+   // Medium rock 1\
+\
+  fromx = Math.floor(rock1[0]*0.225)\
+  fromy = Math.floor(rock1[1]*0.225)\
+  \
+  for (i=2; i<rock1.length; i+=2) \{\
+  \
+  	tox = Math.floor(rock1[i] *0.225)\
+  	toy = Math.floor(rock1[i+1] *0.225)\
+  \
+  	drawLine(fromx, fromy, tox, toy)\
+    \
+    fromx = tox\
+    fromy = toy\
+  \}\
+ \
+ 	counts.push(pixelCount)\
+  lookup.push(`PR_MEDIUM_ROCK1 gequ $\{offset\}\\n`)\
+	offset += pixelCount + 1\
+\
+	strPixels += '; medium rock 1\\n'\
+  strPixels += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<pixelData.length; i++) \{\
+  	strPixels += `		dc i2'$\{pixelData[i]\}'\\n`\
+  \}\
+\
+	strEvenOdd += '; medium rock 1\\n'\
+  strEvenOdd += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<evenOddNibble.length; i++) \{\
+  	strEvenOdd += `		dc i2'$\{evenOddNibble[i]\}'\\n`\
+  \}\
+  \
+  pixelCount = 0\
+  pixelData = []\
+  evenOddNibble = []\
+\
+  // Medium rock 2\
+\
+  fromx = Math.floor(rock2[0]*0.225)\
+  fromy = Math.floor(rock2[1]*0.225)\
+  \
+  for (i=2; i<rock2.length; i+=2) \{\
+  \
+  	tox = Math.floor(rock2[i] *0.225)\
+  	toy = Math.floor(rock2[i+1] *0.225)\
+  \
+  	drawLine(fromx, fromy, tox, toy)\
+    \
+    fromx = tox\
+    fromy = toy\
+  \}\
+ \
+ 	counts.push(pixelCount)\
+  lookup.push(`PR_MEDIUM_ROCK2 gequ $\{offset\}\\n`)\
+	offset += pixelCount + 1\
+\
+	strPixels += '; medium rock 2\\n'\
+  strPixels += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<pixelData.length; i++) \{\
+  	strPixels += `		dc i2'$\{pixelData[i]\}'\\n`\
+  \}\
+\
+	strEvenOdd += '; medium rock 2\\n'\
+  strEvenOdd += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<evenOddNibble.length; i++) \{\
+  	strEvenOdd += `		dc i2'$\{evenOddNibble[i]\}'\\n`\
+  \}\
+\
+  pixelCount = 0\
+  pixelData = []\
+  evenOddNibble = []\
+\
+\
+  // Large rock 3\
+\
+  fromx = Math.floor(rock3[0]*0.225)\
+  fromy = Math.floor(rock3[1]*0.225)\
+  \
+  for (i=2; i<rock3.length; i+=2) \{\
+  \
+  	tox = Math.floor(rock3[i] *0.225)\
+  	toy = Math.floor(rock3[i+1] *0.225)\
+  \
+  	drawLine(fromx, fromy, tox, toy)\
+    \
+    fromx = tox\
+    fromy = toy\
+  \}\
+ \
+ 	counts.push(pixelCount)\
+  lookup.push(`PR_MEDIUM_ROCK3 gequ $\{offset\}\\n`)\
+	offset += pixelCount + 1\
+\
+	strPixels += '; medium rock 3\\n'\
+  strPixels += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<pixelData.length; i++) \{\
+  	strPixels += `		dc i2'$\{pixelData[i]\}'\\n`\
+  \}\
+\
+	strEvenOdd += '; medium rock 3\\n'\
+  strEvenOdd += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<evenOddNibble.length; i++) \{\
+  	strEvenOdd += `		dc i2'$\{evenOddNibble[i]\}'\\n`\
+  \}\
+\
+  pixelCount = 0\
+  pixelData = []\
+  evenOddNibble = []\
+ \
+ // ----------------------\
+ \
+  \
+   // Small rock 1\
+\
+  fromx = Math.floor(rock1[0]*0.112)\
+  fromy = Math.floor(rock1[1]*0.112)\
+  \
+  for (i=2; i<rock1.length; i+=2) \{\
+  \
+  	tox = Math.floor(rock1[i] *0.112)\
+  	toy = Math.floor(rock1[i+1] *0.112)\
+  \
+  	drawLine(fromx, fromy, tox, toy)\
+    \
+    fromx = tox\
+    fromy = toy\
+  \}\
+ \
+ 	counts.push(pixelCount)\
+  lookup.push(`PR_SMALL_ROCK1 gequ $\{offset\}\\n`)\
+	offset += pixelCount + 1\
+\
+	strPixels += '; small rock 1\\n'\
+  strPixels += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<pixelData.length; i++) \{\
+  	strPixels += `		dc i2'$\{pixelData[i]\}'\\n`\
+  \}\
+\
+	strEvenOdd += '; small rock 1\\n'\
+  strEvenOdd += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<evenOddNibble.length; i++) \{\
+  	strEvenOdd += `		dc i2'$\{evenOddNibble[i]\}'\\n`\
+  \}\
+  \
+  pixelCount = 0\
+  pixelData = []\
+  evenOddNibble = []\
+\
+  // Small rock 2\
+\
+  fromx = Math.floor(rock2[0]*0.112)\
+  fromy = Math.floor(rock2[1]*0.112)\
+  \
+  for (i=2; i<rock2.length; i+=2) \{\
+  \
+  	tox = Math.floor(rock2[i] *0.112)\
+  	toy = Math.floor(rock2[i+1] *0.112)\
+  \
+  	drawLine(fromx, fromy, tox, toy)\
+    \
+    fromx = tox\
+    fromy = toy\
+  \}\
+ \
+ 	counts.push(pixelCount)\
+  lookup.push(`PR_SMALL_ROCK2 gequ $\{offset\}\\n`)\
+	offset += pixelCount + 1\
+\
+	strPixels += '; small rock 2\\n'\
+  strPixels += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<pixelData.length; i++) \{\
+  	strPixels += `		dc i2'$\{pixelData[i]\}'\\n`\
+  \}\
+\
+	strEvenOdd += '; small rock 2\\n'\
+  strEvenOdd += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<evenOddNibble.length; i++) \{\
+  	strEvenOdd += `		dc i2'$\{evenOddNibble[i]\}'\\n`\
+  \}\
+\
+  pixelCount = 0\
+  pixelData = []\
+  evenOddNibble = []\
+\
+\
+  // Small rock 3\
+\
+  fromx = Math.floor(rock3[0]*0.112)\
+  fromy = Math.floor(rock3[1]*0.112)\
+  \
+  for (i=2; i<rock3.length; i+=2) \{\
+  \
+  	tox = Math.floor(rock3[i] *0.112)\
+  	toy = Math.floor(rock3[i+1] *0.112)\
+  \
+  	drawLine(fromx, fromy, tox, toy)\
+    \
+    fromx = tox\
+    fromy = toy\
+  \}\
+ \
+ 	counts.push(pixelCount)\
+  lookup.push(`PR_SMALL_ROCK3 gequ $\{offset\}\\n`)\
+	offset += pixelCount + 1\
+\
+	strPixels += '; small rock 3\\n'\
+  strPixels += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<pixelData.length; i++) \{\
+  	strPixels += `		dc i2'$\{pixelData[i]\}'\\n`\
+  \}\
+\
+	strEvenOdd += '; small rock 3\\n'\
+  strEvenOdd += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<evenOddNibble.length; i++) \{\
+  	strEvenOdd += `		dc i2'$\{evenOddNibble[i]\}'\\n`\
+  \}\
+\
+  pixelCount = 0\
+  pixelData = []\
+  evenOddNibble = []\
+ \
+ // -------------------\
+ \
+ // Large UFO\
+\
+  fromx = Math.floor(ufo[0]*0.9)\
+  fromy = Math.floor(ufo[1]*0.9)\
+  \
+  for (i=2; i<ufo.length; i+=2) \{\
+  \
+  	tox = Math.floor(ufo[i] *0.9)\
+  	toy = Math.floor(ufo[i+1] *0.9)\
+  \
+  	drawLine(fromx, fromy, tox, toy)\
+    \
+    fromx = tox\
+    fromy = toy\
+  \}\
+ \
+ 	counts.push(pixelCount)\
+  lookup.push(`PR_LARGE_SAUCER gequ $\{offset\}\\n`)\
+	offset += pixelCount + 1\
+\
+	strPixels += '; large saucer\\n'\
+  strPixels += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<pixelData.length; i++) \{\
+  	strPixels += `		dc i2'$\{pixelData[i]\}'\\n`\
+  \}\
+\
+	strEvenOdd += '; large saucer\\n'\
+  strEvenOdd += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<evenOddNibble.length; i++) \{\
+  	strEvenOdd += `		dc i2'$\{evenOddNibble[i]\}'\\n`\
+  \}\
+\
+  pixelCount = 0\
+  pixelData = []\
+  evenOddNibble = []\
+ \
+ // -------------------\
+ \
+ // Small UFO\
+\
+  fromx = Math.floor(ufo[0]*0.4)\
+  fromy = Math.floor(ufo[1]*0.4)\
+  \
+  for (i=2; i<ufo.length; i+=2) \{\
+  \
+  	tox = Math.floor(ufo[i] *0.4)\
+  	toy = Math.floor(ufo[i+1] *0.4)\
+  \
+  	drawLine(fromx, fromy, tox, toy)\
+    \
+    fromx = tox\
+    fromy = toy\
+  \}\
+ \
+ 	counts.push(pixelCount)\
+  lookup.push(`PR_SMALL_SAUCER gequ $\{offset\}\\n`)\
+	offset += pixelCount + 1\
+\
+	strPixels += '; small saucer\\n'\
+  strPixels += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<pixelData.length; i++) \{\
+  	strPixels += `		dc i2'$\{pixelData[i]\}'\\n`\
+  \}\
+\
+	strEvenOdd += '; small saucer\\n'\
+  strEvenOdd += `		dc i2'$\{pixelCount\}'\\n`\
+  for (i=0; i<evenOddNibble.length; i++) \{\
+  	strEvenOdd += `		dc i2'$\{evenOddNibble[i]\}'\\n`\
+  \}\
+\
+  pixelCount = 0\
+  pixelData = []\
+  evenOddNibble = [] \
+\
+\
+ for (i=0; i<lookup.length; i++) \{\
+   strLookup += lookup[i]\
+ \}\
+\
+console.log(strPixels + '\\n' + strEvenOdd + '\\n'\'a0+ '\\n' + strLookup + '\\n\\n')\
+\
+\
+\
+function drawLine(x1, y1, x2, y2)\
+\{\
+    \{\
+        let dX = Math.abs(x2-x1);\
+        let dY = Math.abs(y2-y1);\
+        let Xincr, Yincr;\
+        if (x1 > x2) \{ Xincr=-1; \} else \{ Xincr=1; \} // which direction in X?\
+        if (y1 > y2) \{ Yincr=-1; \} else \{ Yincr=1; \} // which direction in Y?\
+        \
+        if (dX >= dY) \{                // if X is the independent variable\
+            let dPr  = dY<<1;           // amount to increment decision if right is chosen\
+            let dPru = dPr - (dX<<1);   // amount to increment decision if up is chosen\
+            let P    = dPr - dX;        // decision variable start value\
+            for (; dX>=0; dX--) \{       // process each point in the line one at a time\
+                if (x1 & 1) \{\
+                	let addr = screenBase + (y1 * 160) + (x1/2)\
+                  pixelData.push(Math.floor(addr))\
+                  evenOddNibble.push(1)\
+                  ++pixelCount\
+                \}\
+                else \{\
+                	let addr = screenBase + (y1 * 160) + (x1/2)\
+                  pixelData.push(Math.floor(addr))\
+                  evenOddNibble.push(0)\
+                  ++pixelCount\
+                \}\
+                if (P > 0) \{             // is the pixel going right AND up?\
+                    x1+=Xincr;            // increment independent variable\
+                    y1+=Yincr;            // increment dependent variable\
+                    P+=dPru;              // increment decision (for up)\
+                \} else \{                 // is the pixel just going right?\
+                    x1+=Xincr;            // increment independent variable\
+                    P+=dPr;               // increment decision (for right)\
+                \}\
+            \}\
+        \} else \{                       // if Y is the independent variable\
+            let dPr  = dX<<1;           // amount to increment decision if right is chosen\
+            let dPru = dPr - (dY<<1);   // amount to increment decision if up is chosen\
+            let P    = dPr - dY;        // decision variable start value\
+            for (; dY>=0; dY--) \{       // process each point in the line one at a time\
+                if (x1 & 1) \{\
+                	let addr = screenBase + (y1 * 160) + (x1/2)\
+                  pixelData.push(Math.floor(addr))\
+                  evenOddNibble.push(1)\
+                  ++pixelCount\
+                \}\
+                else \{\
+                	let addr = screenBase + (y1 * 160) + (x1/2)\
+                  pixelData.push(Math.floor(addr))\
+                  evenOddNibble.push(0)\
+                  ++pixelCount\
+                \}\
+                if (P > 0) \{             // is the pixel going up AND right?\
+                    x1+=Xincr;            // increment dependent variable\
+                    y1+=Yincr;            // increment independent variable\
+                    P+=dPru;              // increment decision (for up)\
+                \} else \{                 // is the pixel just going up?\
+                    y1+=Yincr;            // increment independent variable\
+                    P+=dPr;               // increment decision (for right)\
+                \}\
+            \}\
+        \}\
+    \}\
+    \
+\}\
+}
