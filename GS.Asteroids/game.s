@@ -37,6 +37,8 @@ runIntroScreen entry
 doDrawIntroScreen anop
         stz needToDrawIntroScreen
 
+        jsl prerenderObject
+
 ; erase all previous lines and dots
         jsl eraseDisplayList
         jsl eraseDotList
