@@ -37,6 +37,8 @@ runIntroScreen entry
 doDrawIntroScreen anop
         stz needToDrawIntroScreen
 
+
+        lda #PR_LARGE_ROCK2
         jsl prerenderObject
 
 ; erase all previous lines and dots
