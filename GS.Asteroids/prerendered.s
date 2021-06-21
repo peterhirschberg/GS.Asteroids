@@ -26,9 +26,11 @@ prerenderObject entry
         lda #1
         sta counter
 
+        inc objectOffset
+
 loop anop
 
-        lda counter
+        lda objectOffset
         asl a
         tax
 
@@ -56,6 +58,7 @@ odd anop
         sta >SCREEN_ADDR,x
 
 next anop
+        inc objectOffset
         inc counter
         lda counter
         cmp pixelCount
@@ -552,7 +555,7 @@ prerenderEvenOddData anop
 
 
 PR_LARGE_ROCK1 gequ 0
-PR_LARGE_ROCK2 gequ 102
+PR_LARGE_ROCK2 gequ 103
 
 
         end
