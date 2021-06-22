@@ -236,6 +236,64 @@ drawIt anop
         lda shapeList,x
         sta objectShapeDataIndex
 
+        lda #SHAPE_OFFSET_LARGE_ROCK1
+        cmp objectShapeDataIndex
+        beq prerenderedLargeRock1
+
+        lda #SHAPE_OFFSET_LARGE_ROCK2
+        cmp objectShapeDataIndex
+        beq prerenderedLargeRock2
+
+        lda #SHAPE_OFFSET_LARGE_ROCK3
+        cmp objectShapeDataIndex
+        beq prerenderedLargeRock3
+
+        lda #SHAPE_OFFSET_MEDIUM_ROCK1
+        cmp objectShapeDataIndex
+        beq prerenderedMediumRock1
+
+        lda #SHAPE_OFFSET_MEDIUM_ROCK2
+        cmp objectShapeDataIndex
+        beq prerenderedMediumRock2
+
+        lda #SHAPE_OFFSET_MEDIUM_ROCK3
+        cmp objectShapeDataIndex
+        beq prerenderedMediumRock3
+
+        bra drawNormal
+
+prerenderedLargeRock1 anop
+        lda #PR_LARGE_ROCK1
+        jsl prerenderTranslucentObject
+        bra nextObject
+
+prerenderedLargeRock2 anop
+        lda #PR_LARGE_ROCK2
+        jsl prerenderTranslucentObject
+        bra nextObject
+
+prerenderedLargeRock3 anop
+        lda #PR_LARGE_ROCK3
+        jsl prerenderTranslucentObject
+        bra nextObject
+
+prerenderedMediumRock1 anop
+        lda #PR_MEDIUM_ROCK1
+        jsl prerenderTranslucentObject
+        bra nextObject
+
+prerenderedMediumRock2 anop
+        lda #PR_MEDIUM_ROCK2
+        jsl prerenderTranslucentObject
+        bra nextObject
+
+prerenderedMediumRock3 anop
+        lda #PR_MEDIUM_ROCK3
+        jsl prerenderTranslucentObject
+        bra nextObject
+
+drawNormal anop
+
         lda #0
         cmp angle
         beq drawNoRotate
