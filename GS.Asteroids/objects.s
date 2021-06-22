@@ -264,32 +264,32 @@ drawIt anop
 
 prerenderedLargeRock1 anop
         lda #PR_LARGE_ROCK1
-        jsl prerenderTranslucentObject
+        jsl prerenderObject
         bra nextObject
 
 prerenderedLargeRock2 anop
         lda #PR_LARGE_ROCK2
-        jsl prerenderTranslucentObject
+        jsl prerenderObject
         bra nextObject
 
 prerenderedLargeRock3 anop
         lda #PR_LARGE_ROCK3
-        jsl prerenderTranslucentObject
+        jsl prerenderObject
         bra nextObject
 
 prerenderedMediumRock1 anop
         lda #PR_MEDIUM_ROCK1
-        jsl prerenderTranslucentObject
+        jsl prerenderObject
         bra nextObject
 
 prerenderedMediumRock2 anop
         lda #PR_MEDIUM_ROCK2
-        jsl prerenderTranslucentObject
+        jsl prerenderObject
         bra nextObject
 
 prerenderedMediumRock3 anop
         lda #PR_MEDIUM_ROCK3
-        jsl prerenderTranslucentObject
+        jsl prerenderObject
         bra nextObject
 
 drawNormal anop
@@ -325,6 +325,131 @@ nextObject anop
 done1 anop
 
         rts
+
+
+
+erasePRObjects entry
+
+        jsl isGameOver
+        cmp #1
+        beq gameOver1
+
+        lda #0
+        sta objectIndex
+        jmp loop2
+
+gameOver1 anop
+        lda #2
+        sta objectIndex
+
+loop2 anop
+        lda objectIndex
+        asl a
+        tax
+
+; check lifetimes and only draw as appropriate
+        lda lifetimeList,x
+        cmp #-1
+        beq drawIt1
+        cmp #0
+        bne drawIt1
+        jmp nextObject
+
+drawIt1 anop
+        lda colorList,x
+        sta color
+
+        lda xPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta drawX
+
+        lda yPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta drawY
+
+        lda angleList,x
+        sta angle
+
+        lda shapeList,x
+        sta objectShapeDataIndex
+
+        lda #SHAPE_OFFSET_LARGE_ROCK1
+        cmp objectShapeDataIndex
+        beq prerenderedLargeRock1a
+
+        lda #SHAPE_OFFSET_LARGE_ROCK2
+        cmp objectShapeDataIndex
+        beq prerenderedLargeRock2a
+
+        lda #SHAPE_OFFSET_LARGE_ROCK3
+        cmp objectShapeDataIndex
+        beq prerenderedLargeRock3a
+
+        lda #SHAPE_OFFSET_MEDIUM_ROCK1
+        cmp objectShapeDataIndex
+        beq prerenderedMediumRock1a
+
+        lda #SHAPE_OFFSET_MEDIUM_ROCK2
+        cmp objectShapeDataIndex
+        beq prerenderedMediumRock2a
+
+        lda #SHAPE_OFFSET_MEDIUM_ROCK3
+        cmp objectShapeDataIndex
+        beq prerenderedMediumRock3a
+
+        bra nextObject2
+
+prerenderedLargeRock1a anop
+        lda #PR_LARGE_ROCK1
+        jsl prerenderEraseObject
+        bra nextObject2
+
+prerenderedLargeRock2a anop
+        lda #PR_LARGE_ROCK2
+        jsl prerenderEraseObject
+        bra nextObject2
+
+prerenderedLargeRock3a anop
+        lda #PR_LARGE_ROCK3
+        jsl prerenderEraseObject
+        bra nextObject2
+
+prerenderedMediumRock1a anop
+        lda #PR_MEDIUM_ROCK1
+        jsl prerenderEraseObject
+        bra nextObject2
+
+prerenderedMediumRock2a anop
+        lda #PR_MEDIUM_ROCK2
+        jsl prerenderEraseObject
+        bra nextObject2
+
+prerenderedMediumRock3a anop
+        lda #PR_MEDIUM_ROCK3
+        jsl prerenderEraseObject
+        bra nextObject2
+
+nextObject2 anop
+        inc objectIndex
+        lda objectIndex
+        cmp #NUM_OBJECTS
+        beq done2
+        brl loop2
+
+done2 anop
+
+        rts
+
 
 
 drawObject entry

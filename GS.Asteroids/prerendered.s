@@ -138,6 +138,58 @@ done2 anop
         rtl
 
 
+prerenderEraseObject entry
+
+        sta objectOffset
+        asl a
+        tax
+        lda prerenderPixelData,x
+        sta pixelCount
+
+        lda #1
+        sta counter
+
+        inc objectOffset
+
+        lda drawY
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta drawAddress
+        lda drawX
+        lsr a
+        clc
+        adc drawAddress
+        sta drawAddress
+
+loop3 anop
+
+        lda objectOffset
+        asl a
+        tax
+
+        lda prerenderEvenOddData,x
+        sta evenOdd
+
+        lda prerenderPixelData,x
+        clc
+        adc drawAddress
+        tax
+
+        lda #$00
+        sta >SCREEN_ADDR,x
+
+        inc objectOffset
+        inc counter
+        lda counter
+        cmp pixelCount
+        beq done3
+        jmp loop3
+
+done3 anop
+        rtl
+
+
 drawAddress dc i4'0'
 evenOdd dc i4'0'
 counter dc i2'0'

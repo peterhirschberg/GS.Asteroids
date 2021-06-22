@@ -37,20 +37,6 @@ runIntroScreen entry
 doDrawIntroScreen anop
         stz needToDrawIntroScreen
 
-
-        lda #$80
-        sta currentColorLeft
-        lda #$08
-        sta currentColorRight
-
-        lda #100
-        sta drawX
-        lda #100
-        sta drawY
-
-        lda #PR_LARGE_SAUCER
-        jsl prerenderTranslucentObject
-
 ; erase all previous lines and dots
         jsl eraseDisplayList
         jsl eraseDotList
@@ -133,6 +119,8 @@ doCheckControls anop
         rtl
 
 run anop
+
+        jsr erasePRObjects
 
 ; run the sounds
         jsl runSounds
