@@ -123,7 +123,7 @@ checkYPos anop
 
 checkYPlus anop
         lda ypos
-        cmp #SCREEN_YMAX
+        cmp #MIDSCREEN_Y
         bcs resetYPlus
         bra dontResetYPos
 
@@ -138,7 +138,7 @@ checkYNeg anop
         bra dontResetYPos
 
 resetYNeg anop
-        lda #SCREEN_YMAX
+        lda #MIDSCREEN_Y
         sta ypos
 
 
@@ -250,46 +250,47 @@ drawIt anop
 
         lda #SHAPE_OFFSET_MEDIUM_ROCK1
         cmp objectShapeDataIndex
-        beq prerenderedMediumRock1
+        beq prerenderedLargeRock1
 
         lda #SHAPE_OFFSET_MEDIUM_ROCK2
         cmp objectShapeDataIndex
-        beq prerenderedMediumRock2
+        beq prerenderedLargeRock2
 
         lda #SHAPE_OFFSET_MEDIUM_ROCK3
         cmp objectShapeDataIndex
-        beq prerenderedMediumRock3
+        beq prerenderedLargeRock3
 
         bra drawNormal
 
 prerenderedLargeRock1 anop
-        lda #PR_LARGE_ROCK1
-        jsl prerenderObject
+        lda drawX
+        and #1
+        cmp #1
+        beq doOddLargeRock1
+        jsl spriteLargeRock1Even
         bra nextObject
-
+doOddLargeRock1 anop
+        jsl spriteLargeRock1Odd
+        bra nextObject
 prerenderedLargeRock2 anop
-        lda #PR_LARGE_ROCK2
-        jsl prerenderObject
+        lda drawX
+        and #1
+        cmp #1
+        beq doOddLargeRock2
+        jsl spriteLargeRock2Even
         bra nextObject
-
+doOddLargeRock2 anop
+        jsl spriteLargeRock2Odd
+        bra nextObject
 prerenderedLargeRock3 anop
-        lda #PR_LARGE_ROCK3
-        jsl prerenderObject
+        lda drawX
+        and #1
+        cmp #1
+        beq doOddLargeRock3
+        jsl spriteLargeRock3Even
         bra nextObject
-
-prerenderedMediumRock1 anop
-        lda #PR_MEDIUM_ROCK1
-        jsl prerenderObject
-        bra nextObject
-
-prerenderedMediumRock2 anop
-        lda #PR_MEDIUM_ROCK2
-        jsl prerenderObject
-        bra nextObject
-
-prerenderedMediumRock3 anop
-        lda #PR_MEDIUM_ROCK3
-        jsl prerenderObject
+doOddLargeRock3 anop
+        jsl spriteLargeRock3Odd
         bra nextObject
 
 drawNormal anop
@@ -410,33 +411,27 @@ drawIt1 anop
         bra nextObject2
 
 prerenderedLargeRock1a anop
-        lda #PR_LARGE_ROCK1
-        jsl prerenderEraseObject
+        jsl spriteLargeRock1Erase
         bra nextObject2
 
 prerenderedLargeRock2a anop
-        lda #PR_LARGE_ROCK2
-        jsl prerenderEraseObject
+        jsl spriteLargeRock2Erase
         bra nextObject2
 
 prerenderedLargeRock3a anop
-        lda #PR_LARGE_ROCK3
-        jsl prerenderEraseObject
+        jsl spriteLargeRock3Erase
         bra nextObject2
 
 prerenderedMediumRock1a anop
-        lda #PR_MEDIUM_ROCK1
-        jsl prerenderEraseObject
+        jsl spriteLargeRock1Erase
         bra nextObject2
 
 prerenderedMediumRock2a anop
-        lda #PR_MEDIUM_ROCK2
-        jsl prerenderEraseObject
+        jsl spriteLargeRock2Erase
         bra nextObject2
 
 prerenderedMediumRock3a anop
-        lda #PR_MEDIUM_ROCK3
-        jsl prerenderEraseObject
+        jsl spriteLargeRock3Erase
         bra nextObject2
 
 nextObject2 anop

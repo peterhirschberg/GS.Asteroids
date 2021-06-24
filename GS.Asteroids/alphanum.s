@@ -148,6 +148,7 @@ letterDone anop
         
         
 drawGameOverText entry
+    rtl
 
         lda #1
         sta scale

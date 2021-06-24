@@ -37,6 +37,12 @@ runIntroScreen entry
 doDrawIntroScreen anop
         stz needToDrawIntroScreen
 
+;        lda #25
+;        sta drawX
+;        sta drawY
+;        jsl testCode
+;        rtl
+
 ; erase all previous lines and dots
         jsl eraseDisplayList
         jsl eraseDotList

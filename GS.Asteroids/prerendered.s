@@ -18,6 +18,3833 @@ prerendered start
         using lineData
 
 
+spriteLargeRock1Odd entry
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >drawAddress
+        clc
+        adc #-2400
+        tcd
+
+        lda 24
+        ora #$f0
+        sta 24
+        lda 24
+        ora #$f0
+        sta 24
+        lda 17
+        ora #$f0
+        sta 17
+        lda 17
+        ora #$f0
+        sta 17
+        lda 184
+        ora #$0f
+        sta 184
+        lda 183
+        ora #$0f
+        sta 183
+        lda 177
+        ora #$0f
+        sta 177
+        lda 176
+        ora #$0f
+        sta 176
+
+        lda >drawAddress
+        clc
+        adc #-2080
+        tcd
+
+        lda 25
+        ora #$f0
+        sta 25
+        lda 23
+        ora #$f0
+        sta 23
+        lda 18
+        ora #$f0
+        sta 18
+        lda 16
+        ora #$f0
+        sta 16
+        lda 185
+        ora #$0f
+        sta 185
+        lda 182
+        ora #$0f
+        sta 182
+        lda 178
+        ora #$0f
+        sta 178
+        lda 175
+        ora #$0f
+        sta 175
+
+        lda >drawAddress
+        clc
+        adc #-1760
+        tcd
+
+        lda 26
+        ora #$f0
+        sta 26
+        lda 22
+        ora #$f0
+        sta 22
+        lda 19
+        ora #$f0
+        sta 19
+        lda 15
+        ora #$f0
+        sta 15
+        lda 14
+        ora #$0f
+        sta 14
+        lda 186
+        ora #$0f
+        sta 186
+        lda 181
+        ora #$0f
+        sta 181
+        lda 179
+        ora #$0f
+        sta 179
+        lda 174
+        ora #$f0
+        sta 174
+
+        lda >drawAddress
+        clc
+        adc #-1440
+        tcd
+
+        lda 27
+        ora #$f0
+        sta 27
+        lda 21
+        ora #$f0
+        sta 21
+        lda 20
+        ora #$f0
+        sta 20
+        lda 13
+        ora #$0f
+        sta 13
+        lda 187
+        ora #$0f
+        sta 187
+        lda 180
+        ora #$0f
+        sta 180
+        lda 180
+        ora #$0f
+        sta 180
+        lda 173
+        ora #$f0
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #-1120
+        tcd
+
+        lda 28
+        ora #$f0
+        sta 28
+        lda 28
+        ora #$f0
+        sta 28
+        lda 12
+        ora #$0f
+        sta 12
+        lda 12
+        ora #$0f
+        sta 12
+        lda 187
+        ora #$0f
+        sta 187
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-800
+        tcd
+
+        lda 27
+        ora #$0f
+        sta 27
+        lda 12
+        ora #$0f
+        sta 12
+        lda 187
+        ora #$f0
+        sta 187
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda 27
+        ora #$f0
+        sta 27
+        lda 12
+        ora #$0f
+        sta 12
+        lda 186
+        ora #$0f
+        sta 186
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda 26
+        ora #$0f
+        sta 26
+        lda 12
+        ora #$0f
+        sta 12
+        lda 186
+        ora #$f0
+        sta 186
+        lda 186
+        ora #$f0
+        sta 186
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda 26
+        ora #$0f
+        sta 26
+        lda 12
+        ora #$0f
+        sta 12
+        lda 186
+        ora #$0f
+        sta 186
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        lda 27
+        ora #$f0
+        sta 27
+        lda 12
+        ora #$0f
+        sta 12
+        lda 187
+        ora #$f0
+        sta 187
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #800
+        tcd
+
+        lda 27
+        ora #$0f
+        sta 27
+        lda 12
+        ora #$0f
+        sta 12
+        lda 187
+        ora #$0f
+        sta 187
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #1120
+        tcd
+
+        lda 28
+        ora #$f0
+        sta 28
+        lda 12
+        ora #$0f
+        sta 12
+        lda 188
+        ora #$f0
+        sta 188
+        lda 188
+        ora #$f0
+        sta 188
+        lda 172
+        ora #$0f
+        sta 172
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #1440
+        tcd
+
+        lda 27
+        ora #$f0
+        sta 27
+        lda 27
+        ora #$0f
+        sta 27
+        lda 13
+        ora #$f0
+        sta 13
+        lda 13
+        ora #$0f
+        sta 13
+        lda 186
+        ora #$f0
+        sta 186
+        lda 186
+        ora #$0f
+        sta 186
+        lda 174
+        ora #$f0
+        sta 174
+
+        lda >drawAddress
+        clc
+        adc #1760
+        tcd
+
+        lda 25
+        ora #$f0
+        sta 25
+        lda 25
+        ora #$0f
+        sta 25
+        lda 14
+        ora #$0f
+        sta 14
+        lda 15
+        ora #$f0
+        sta 15
+        lda 184
+        ora #$f0
+        sta 184
+        lda 184
+        ora #$0f
+        sta 184
+        lda 175
+        ora #$0f
+        sta 175
+
+        lda >drawAddress
+        clc
+        adc #2080
+        tcd
+
+        lda 23
+        ora #$f0
+        sta 23
+        lda 23
+        ora #$0f
+        sta 23
+        lda 16
+        ora #$f0
+        sta 16
+        lda 16
+        ora #$0f
+        sta 16
+        lda 177
+        ora #$f0
+        sta 177
+        lda 177
+        ora #$0f
+        sta 177
+        lda 178
+        ora #$f0
+        sta 178
+        lda 178
+        ora #$0f
+        sta 178
+        lda 179
+        ora #$f0
+        sta 179
+        lda 179
+        ora #$0f
+        sta 179
+        lda 180
+        ora #$f0
+        sta 180
+        lda 180
+        ora #$0f
+        sta 180
+        lda 181
+        ora #$f0
+        sta 181
+        lda 181
+        ora #$0f
+        sta 181
+        lda 182
+        ora #$f0
+        sta 182
+        lda 182
+        ora #$0f
+        sta 182
+        lda 182
+        ora #$0f
+        sta 182
+        lda 177
+        ora #$f0
+        sta 177
+        _spriteFooter
+        rtl
+
+
+spriteLargeRock1Even entry
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >drawAddress
+        clc
+        adc #-2400
+        tcd
+
+        lda 23
+        ora #$0f
+        sta 23
+        lda 23
+        ora #$0f
+        sta 23
+        lda 16
+        ora #$0f
+        sta 16
+        lda 16
+        ora #$0f
+        sta 16
+        lda 184
+        ora #$f0
+        sta 184
+        lda 183
+        ora #$f0
+        sta 183
+        lda 177
+        ora #$f0
+        sta 177
+        lda 176
+        ora #$f0
+        sta 176
+
+        lda >drawAddress
+        clc
+        adc #-2080
+        tcd
+
+        lda 24
+        ora #$0f
+        sta 24
+        lda 22
+        ora #$0f
+        sta 22
+        lda 17
+        ora #$0f
+        sta 17
+        lda 15
+        ora #$0f
+        sta 15
+        lda 185
+        ora #$f0
+        sta 185
+        lda 182
+        ora #$f0
+        sta 182
+        lda 178
+        ora #$f0
+        sta 178
+        lda 175
+        ora #$f0
+        sta 175
+
+        lda >drawAddress
+        clc
+        adc #-1760
+        tcd
+
+        lda 25
+        ora #$0f
+        sta 25
+        lda 21
+        ora #$0f
+        sta 21
+        lda 18
+        ora #$0f
+        sta 18
+        lda 14
+        ora #$0f
+        sta 14
+        lda 14
+        ora #$f0
+        sta 14
+        lda 186
+        ora #$f0
+        sta 186
+        lda 181
+        ora #$f0
+        sta 181
+        lda 179
+        ora #$f0
+        sta 179
+        lda 173
+        ora #$0f
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #-1440
+        tcd
+
+        lda 26
+        ora #$0f
+        sta 26
+        lda 20
+        ora #$0f
+        sta 20
+        lda 19
+        ora #$0f
+        sta 19
+        lda 13
+        ora #$f0
+        sta 13
+        lda 187
+        ora #$f0
+        sta 187
+        lda 180
+        ora #$f0
+        sta 180
+        lda 180
+        ora #$f0
+        sta 180
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-1120
+        tcd
+
+        lda 27
+        ora #$0f
+        sta 27
+        lda 27
+        ora #$0f
+        sta 27
+        lda 12
+        ora #$f0
+        sta 12
+        lda 12
+        ora #$f0
+        sta 12
+        lda 187
+        ora #$f0
+        sta 187
+        lda 172
+        ora #$f0
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-800
+        tcd
+
+        lda 27
+        ora #$f0
+        sta 27
+        lda 12
+        ora #$f0
+        sta 12
+        lda 186
+        ora #$0f
+        sta 186
+        lda 172
+        ora #$f0
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda 26
+        ora #$0f
+        sta 26
+        lda 12
+        ora #$f0
+        sta 12
+        lda 186
+        ora #$f0
+        sta 186
+        lda 172
+        ora #$f0
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda 26
+        ora #$f0
+        sta 26
+        lda 12
+        ora #$f0
+        sta 12
+        lda 185
+        ora #$0f
+        sta 185
+        lda 185
+        ora #$0f
+        sta 185
+        lda 172
+        ora #$f0
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda 26
+        ora #$f0
+        sta 26
+        lda 12
+        ora #$f0
+        sta 12
+        lda 186
+        ora #$f0
+        sta 186
+        lda 172
+        ora #$f0
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        lda 26
+        ora #$0f
+        sta 26
+        lda 12
+        ora #$f0
+        sta 12
+        lda 186
+        ora #$0f
+        sta 186
+        lda 172
+        ora #$f0
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #800
+        tcd
+
+        lda 27
+        ora #$f0
+        sta 27
+        lda 12
+        ora #$f0
+        sta 12
+        lda 187
+        ora #$f0
+        sta 187
+        lda 172
+        ora #$f0
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #1120
+        tcd
+
+        lda 27
+        ora #$0f
+        sta 27
+        lda 12
+        ora #$f0
+        sta 12
+        lda 187
+        ora #$0f
+        sta 187
+        lda 187
+        ora #$0f
+        sta 187
+        lda 172
+        ora #$f0
+        sta 172
+        lda 172
+        ora #$f0
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #1440
+        tcd
+
+        lda 26
+        ora #$0f
+        sta 26
+        lda 27
+        ora #$f0
+        sta 27
+        lda 12
+        ora #$0f
+        sta 12
+        lda 13
+        ora #$f0
+        sta 13
+        lda 185
+        ora #$0f
+        sta 185
+        lda 186
+        ora #$f0
+        sta 186
+        lda 173
+        ora #$0f
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #1760
+        tcd
+
+        lda 24
+        ora #$0f
+        sta 24
+        lda 25
+        ora #$f0
+        sta 25
+        lda 14
+        ora #$f0
+        sta 14
+        lda 14
+        ora #$0f
+        sta 14
+        lda 183
+        ora #$0f
+        sta 183
+        lda 184
+        ora #$f0
+        sta 184
+        lda 175
+        ora #$f0
+        sta 175
+
+        lda >drawAddress
+        clc
+        adc #2080
+        tcd
+
+        lda 22
+        ora #$0f
+        sta 22
+        lda 23
+        ora #$f0
+        sta 23
+        lda 15
+        ora #$0f
+        sta 15
+        lda 16
+        ora #$f0
+        sta 16
+        lda 176
+        ora #$0f
+        sta 176
+        lda 177
+        ora #$f0
+        sta 177
+        lda 177
+        ora #$0f
+        sta 177
+        lda 178
+        ora #$f0
+        sta 178
+        lda 178
+        ora #$0f
+        sta 178
+        lda 179
+        ora #$f0
+        sta 179
+        lda 179
+        ora #$0f
+        sta 179
+        lda 180
+        ora #$f0
+        sta 180
+        lda 180
+        ora #$0f
+        sta 180
+        lda 181
+        ora #$f0
+        sta 181
+        lda 181
+        ora #$0f
+        sta 181
+        lda 182
+        ora #$f0
+        sta 182
+        lda 182
+        ora #$f0
+        sta 182
+        lda 176
+        ora #$0f
+        sta 176
+        _spriteFooter
+        rtl
+
+
+spriteLargeRock1Erase entry
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >drawAddress
+        clc
+        adc #-2400
+        tcd
+
+        lda #$00
+        sta 23
+        lda #$00
+        sta 23
+        lda #$00
+        sta 16
+        lda #$00
+        sta 16
+        lda #$00
+        sta 184
+        lda #$00
+        sta 183
+        lda #$00
+        sta 177
+        lda #$00
+        sta 176
+
+        lda >drawAddress
+        clc
+        adc #-2080
+        tcd
+
+        lda #$00
+        sta 24
+        lda #$00
+        sta 22
+        lda #$00
+        sta 17
+        lda #$00
+        sta 15
+        lda #$00
+        sta 185
+        lda #$00
+        sta 182
+        lda #$00
+        sta 178
+        lda #$00
+        sta 175
+
+        lda >drawAddress
+        clc
+        adc #-1760
+        tcd
+
+        lda #$00
+        sta 25
+        lda #$00
+        sta 21
+        lda #$00
+        sta 18
+        lda #$00
+        sta 14
+        lda #$00
+        sta 14
+        lda #$00
+        sta 186
+        lda #$00
+        sta 181
+        lda #$00
+        sta 179
+        lda #$00
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #-1440
+        tcd
+
+        lda #$00
+        sta 26
+        lda #$00
+        sta 20
+        lda #$00
+        sta 19
+        lda #$00
+        sta 13
+        lda #$00
+        sta 187
+        lda #$00
+        sta 180
+        lda #$00
+        sta 180
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-1120
+        tcd
+
+        lda #$00
+        sta 27
+        lda #$00
+        sta 27
+        lda #$00
+        sta 12
+        lda #$00
+        sta 12
+        lda #$00
+        sta 187
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-800
+        tcd
+
+        lda #$00
+        sta 27
+        lda #$00
+        sta 12
+        lda #$00
+        sta 186
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda #$00
+        sta 26
+        lda #$00
+        sta 12
+        lda #$00
+        sta 186
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda #$00
+        sta 26
+        lda #$00
+        sta 12
+        lda #$00
+        sta 185
+        lda #$00
+        sta 185
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda #$00
+        sta 26
+        lda #$00
+        sta 12
+        lda #$00
+        sta 186
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        lda #$00
+        sta 26
+        lda #$00
+        sta 12
+        lda #$00
+        sta 186
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #800
+        tcd
+
+        lda #$00
+        sta 27
+        lda #$00
+        sta 12
+        lda #$00
+        sta 187
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #1120
+        tcd
+
+        lda #$00
+        sta 27
+        lda #$00
+        sta 12
+        lda #$00
+        sta 187
+        lda #$00
+        sta 187
+        lda #$00
+        sta 172
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #1440
+        tcd
+
+        lda #$00
+        sta 26
+        lda #$00
+        sta 27
+        lda #$00
+        sta 12
+        lda #$00
+        sta 13
+        lda #$00
+        sta 185
+        lda #$00
+        sta 186
+        lda #$00
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #1760
+        tcd
+
+        lda #$00
+        sta 24
+        lda #$00
+        sta 25
+        lda #$00
+        sta 14
+        lda #$00
+        sta 14
+        lda #$00
+        sta 183
+        lda #$00
+        sta 184
+        lda #$00
+        sta 175
+
+        lda >drawAddress
+        clc
+        adc #2080
+        tcd
+
+        lda #$00
+        sta 22
+        lda #$00
+        sta 23
+        lda #$00
+        sta 15
+        lda #$00
+        sta 16
+        lda #$00
+        sta 176
+        lda #$00
+        sta 177
+        lda #$00
+        sta 177
+        lda #$00
+        sta 178
+        lda #$00
+        sta 178
+        lda #$00
+        sta 179
+        lda #$00
+        sta 179
+        lda #$00
+        sta 180
+        lda #$00
+        sta 180
+        lda #$00
+        sta 181
+        lda #$00
+        sta 181
+        lda #$00
+        sta 182
+        lda #$00
+        sta 182
+        lda #$00
+        sta 176
+        _spriteFooter
+        rtl
+
+
+spriteLargeRock2Odd entry
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >drawAddress
+        clc
+        adc #-2400
+        tcd
+
+        lda 16
+        ora #$0f
+        sta 16
+        lda 16
+        ora #$0f
+        sta 16
+        lda 17
+        ora #$f0
+        sta 17
+        lda 17
+        ora #$0f
+        sta 17
+        lda 18
+        ora #$f0
+        sta 18
+        lda 18
+        ora #$0f
+        sta 18
+        lda 19
+        ora #$f0
+        sta 19
+        lda 19
+        ora #$0f
+        sta 19
+        lda 20
+        ora #$f0
+        sta 20
+        lda 20
+        ora #$0f
+        sta 20
+        lda 21
+        ora #$f0
+        sta 21
+        lda 21
+        ora #$0f
+        sta 21
+        lda 22
+        ora #$f0
+        sta 22
+        lda 22
+        ora #$f0
+        sta 22
+        lda 22
+        ora #$0f
+        sta 22
+        lda 177
+        ora #$f0
+        sta 177
+        lda 183
+        ora #$f0
+        sta 183
+        lda 183
+        ora #$0f
+        sta 183
+
+        lda >drawAddress
+        clc
+        adc #-2080
+        tcd
+
+        lda 17
+        ora #$f0
+        sta 17
+        lda 24
+        ora #$f0
+        sta 24
+        lda 24
+        ora #$0f
+        sta 24
+        lda 177
+        ora #$0f
+        sta 177
+        lda 185
+        ora #$f0
+        sta 185
+        lda 185
+        ora #$0f
+        sta 185
+
+        lda >drawAddress
+        clc
+        adc #-1760
+        tcd
+
+        lda 18
+        ora #$f0
+        sta 18
+        lda 26
+        ora #$f0
+        sta 26
+        lda 26
+        ora #$0f
+        sta 26
+        lda 178
+        ora #$f0
+        sta 178
+        lda 187
+        ora #$f0
+        sta 187
+        lda 187
+        ora #$0f
+        sta 187
+
+        lda >drawAddress
+        clc
+        adc #-1440
+        tcd
+
+        lda 18
+        ora #$0f
+        sta 18
+        lda 28
+        ora #$f0
+        sta 28
+        lda 28
+        ora #$f0
+        sta 28
+        lda 12
+        ora #$0f
+        sta 12
+        lda 12
+        ora #$0f
+        sta 12
+        lda 13
+        ora #$f0
+        sta 13
+        lda 13
+        ora #$0f
+        sta 13
+        lda 14
+        ora #$f0
+        sta 14
+        lda 14
+        ora #$0f
+        sta 14
+        lda 15
+        ora #$f0
+        sta 15
+        lda 15
+        ora #$0f
+        sta 15
+        lda 16
+        ora #$f0
+        sta 16
+        lda 16
+        ora #$0f
+        sta 16
+        lda 17
+        ora #$f0
+        sta 17
+        lda 17
+        ora #$0f
+        sta 17
+        lda 18
+        ora #$f0
+        sta 18
+        lda 18
+        ora #$0f
+        sta 18
+        lda 188
+        ora #$f0
+        sta 188
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-1120
+        tcd
+
+        lda 28
+        ora #$f0
+        sta 28
+        lda 12
+        ora #$0f
+        sta 12
+        lda 188
+        ora #$f0
+        sta 188
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-800
+        tcd
+
+        lda 28
+        ora #$f0
+        sta 28
+        lda 12
+        ora #$0f
+        sta 12
+        lda 188
+        ora #$f0
+        sta 188
+        lda 188
+        ora #$f0
+        sta 188
+        lda 187
+        ora #$0f
+        sta 187
+        lda 187
+        ora #$f0
+        sta 187
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda 26
+        ora #$0f
+        sta 26
+        lda 26
+        ora #$f0
+        sta 26
+        lda 25
+        ora #$0f
+        sta 25
+        lda 25
+        ora #$f0
+        sta 25
+        lda 12
+        ora #$0f
+        sta 12
+        lda 184
+        ora #$0f
+        sta 184
+        lda 184
+        ora #$f0
+        sta 184
+        lda 183
+        ora #$0f
+        sta 183
+        lda 183
+        ora #$f0
+        sta 183
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda 22
+        ora #$0f
+        sta 22
+        lda 22
+        ora #$f0
+        sta 22
+        lda 22
+        ora #$f0
+        sta 22
+        lda 12
+        ora #$0f
+        sta 12
+        lda 182
+        ora #$0f
+        sta 182
+        lda 183
+        ora #$f0
+        sta 183
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda 23
+        ora #$0f
+        sta 23
+        lda 24
+        ora #$f0
+        sta 24
+        lda 12
+        ora #$0f
+        sta 12
+        lda 184
+        ora #$0f
+        sta 184
+        lda 185
+        ora #$f0
+        sta 185
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        lda 25
+        ora #$0f
+        sta 25
+        lda 12
+        ora #$0f
+        sta 12
+        lda 186
+        ora #$f0
+        sta 186
+        lda 186
+        ora #$0f
+        sta 186
+        lda 172
+        ora #$0f
+        sta 172
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #800
+        tcd
+
+        lda 27
+        ora #$f0
+        sta 27
+        lda 27
+        ora #$0f
+        sta 27
+        lda 13
+        ora #$f0
+        sta 13
+        lda 188
+        ora #$f0
+        sta 188
+        lda 188
+        ora #$f0
+        sta 188
+        lda 173
+        ora #$0f
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #1120
+        tcd
+
+        lda 27
+        ora #$0f
+        sta 27
+        lda 13
+        ora #$0f
+        sta 13
+        lda 187
+        ora #$f0
+        sta 187
+        lda 174
+        ora #$f0
+        sta 174
+
+        lda >drawAddress
+        clc
+        adc #1440
+        tcd
+
+        lda 26
+        ora #$0f
+        sta 26
+        lda 14
+        ora #$0f
+        sta 14
+        lda 186
+        ora #$f0
+        sta 186
+        lda 185
+        ora #$0f
+        sta 185
+        lda 182
+        ora #$f0
+        sta 182
+        lda 182
+        ora #$f0
+        sta 182
+        lda 181
+        ora #$0f
+        sta 181
+        lda 175
+        ora #$f0
+        sta 175
+
+        lda >drawAddress
+        clc
+        adc #1760
+        tcd
+
+        lda 25
+        ora #$f0
+        sta 25
+        lda 22
+        ora #$0f
+        sta 22
+        lda 21
+        ora #$f0
+        sta 21
+        lda 20
+        ora #$0f
+        sta 20
+        lda 20
+        ora #$f0
+        sta 20
+        lda 15
+        ora #$0f
+        sta 15
+        lda 184
+        ora #$0f
+        sta 184
+        lda 183
+        ora #$f0
+        sta 183
+        lda 179
+        ora #$0f
+        sta 179
+        lda 179
+        ora #$f0
+        sta 179
+        lda 175
+        ora #$0f
+        sta 175
+
+        lda >drawAddress
+        clc
+        adc #2080
+        tcd
+
+        lda 24
+        ora #$f0
+        sta 24
+        lda 23
+        ora #$f0
+        sta 23
+        lda 18
+        ora #$0f
+        sta 18
+        lda 18
+        ora #$f0
+        sta 18
+        lda 17
+        ora #$0f
+        sta 17
+        lda 16
+        ora #$f0
+        sta 16
+        lda 183
+        ora #$0f
+        sta 183
+        lda 183
+        ora #$0f
+        sta 183
+        lda 177
+        ora #$f0
+        sta 177
+        lda 176
+        ora #$0f
+        sta 176
+        lda 176
+        ora #$0f
+        sta 176
+        _spriteFooter
+        rtl
+
+
+spriteLargeRock2Even entry
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >drawAddress
+        clc
+        adc #-2400
+        tcd
+
+        lda 16
+        ora #$f0
+        sta 16
+        lda 16
+        ora #$f0
+        sta 16
+        lda 16
+        ora #$0f
+        sta 16
+        lda 17
+        ora #$f0
+        sta 17
+        lda 17
+        ora #$0f
+        sta 17
+        lda 18
+        ora #$f0
+        sta 18
+        lda 18
+        ora #$0f
+        sta 18
+        lda 19
+        ora #$f0
+        sta 19
+        lda 19
+        ora #$0f
+        sta 19
+        lda 20
+        ora #$f0
+        sta 20
+        lda 20
+        ora #$0f
+        sta 20
+        lda 21
+        ora #$f0
+        sta 21
+        lda 21
+        ora #$0f
+        sta 21
+        lda 21
+        ora #$0f
+        sta 21
+        lda 22
+        ora #$f0
+        sta 22
+        lda 176
+        ora #$0f
+        sta 176
+        lda 182
+        ora #$0f
+        sta 182
+        lda 183
+        ora #$f0
+        sta 183
+
+        lda >drawAddress
+        clc
+        adc #-2080
+        tcd
+
+        lda 16
+        ora #$0f
+        sta 16
+        lda 23
+        ora #$0f
+        sta 23
+        lda 24
+        ora #$f0
+        sta 24
+        lda 177
+        ora #$f0
+        sta 177
+        lda 184
+        ora #$0f
+        sta 184
+        lda 185
+        ora #$f0
+        sta 185
+
+        lda >drawAddress
+        clc
+        adc #-1760
+        tcd
+
+        lda 17
+        ora #$0f
+        sta 17
+        lda 25
+        ora #$0f
+        sta 25
+        lda 26
+        ora #$f0
+        sta 26
+        lda 177
+        ora #$0f
+        sta 177
+        lda 186
+        ora #$0f
+        sta 186
+        lda 187
+        ora #$f0
+        sta 187
+
+        lda >drawAddress
+        clc
+        adc #-1440
+        tcd
+
+        lda 18
+        ora #$f0
+        sta 18
+        lda 27
+        ora #$0f
+        sta 27
+        lda 27
+        ora #$0f
+        sta 27
+        lda 12
+        ora #$f0
+        sta 12
+        lda 12
+        ora #$f0
+        sta 12
+        lda 12
+        ora #$0f
+        sta 12
+        lda 13
+        ora #$f0
+        sta 13
+        lda 13
+        ora #$0f
+        sta 13
+        lda 14
+        ora #$f0
+        sta 14
+        lda 14
+        ora #$0f
+        sta 14
+        lda 15
+        ora #$f0
+        sta 15
+        lda 15
+        ora #$0f
+        sta 15
+        lda 16
+        ora #$f0
+        sta 16
+        lda 16
+        ora #$0f
+        sta 16
+        lda 17
+        ora #$f0
+        sta 17
+        lda 17
+        ora #$0f
+        sta 17
+        lda 18
+        ora #$f0
+        sta 18
+        lda 187
+        ora #$0f
+        sta 187
+        lda 172
+        ora #$f0
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-1120
+        tcd
+
+        lda 27
+        ora #$0f
+        sta 27
+        lda 12
+        ora #$f0
+        sta 12
+        lda 187
+        ora #$0f
+        sta 187
+        lda 172
+        ora #$f0
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-800
+        tcd
+
+        lda 27
+        ora #$0f
+        sta 27
+        lda 12
+        ora #$f0
+        sta 12
+        lda 187
+        ora #$0f
+        sta 187
+        lda 187
+        ora #$0f
+        sta 187
+        lda 187
+        ora #$f0
+        sta 187
+        lda 186
+        ora #$0f
+        sta 186
+        lda 172
+        ora #$f0
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda 26
+        ora #$f0
+        sta 26
+        lda 25
+        ora #$0f
+        sta 25
+        lda 25
+        ora #$f0
+        sta 25
+        lda 24
+        ora #$0f
+        sta 24
+        lda 12
+        ora #$f0
+        sta 12
+        lda 184
+        ora #$f0
+        sta 184
+        lda 183
+        ora #$0f
+        sta 183
+        lda 183
+        ora #$f0
+        sta 183
+        lda 182
+        ora #$0f
+        sta 182
+        lda 172
+        ora #$f0
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda 22
+        ora #$f0
+        sta 22
+        lda 21
+        ora #$0f
+        sta 21
+        lda 21
+        ora #$0f
+        sta 21
+        lda 12
+        ora #$f0
+        sta 12
+        lda 182
+        ora #$f0
+        sta 182
+        lda 182
+        ora #$0f
+        sta 182
+        lda 172
+        ora #$f0
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda 23
+        ora #$f0
+        sta 23
+        lda 23
+        ora #$0f
+        sta 23
+        lda 12
+        ora #$f0
+        sta 12
+        lda 184
+        ora #$f0
+        sta 184
+        lda 184
+        ora #$0f
+        sta 184
+        lda 172
+        ora #$f0
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        lda 25
+        ora #$f0
+        sta 25
+        lda 12
+        ora #$f0
+        sta 12
+        lda 185
+        ora #$0f
+        sta 185
+        lda 186
+        ora #$f0
+        sta 186
+        lda 172
+        ora #$f0
+        sta 172
+        lda 172
+        ora #$f0
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #800
+        tcd
+
+        lda 26
+        ora #$0f
+        sta 26
+        lda 27
+        ora #$f0
+        sta 27
+        lda 12
+        ora #$0f
+        sta 12
+        lda 187
+        ora #$0f
+        sta 187
+        lda 187
+        ora #$0f
+        sta 187
+        lda 173
+        ora #$f0
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #1120
+        tcd
+
+        lda 27
+        ora #$f0
+        sta 27
+        lda 13
+        ora #$f0
+        sta 13
+        lda 186
+        ora #$0f
+        sta 186
+        lda 173
+        ora #$0f
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #1440
+        tcd
+
+        lda 26
+        ora #$f0
+        sta 26
+        lda 14
+        ora #$f0
+        sta 14
+        lda 185
+        ora #$0f
+        sta 185
+        lda 185
+        ora #$f0
+        sta 185
+        lda 181
+        ora #$0f
+        sta 181
+        lda 181
+        ora #$0f
+        sta 181
+        lda 181
+        ora #$f0
+        sta 181
+        lda 174
+        ora #$0f
+        sta 174
+
+        lda >drawAddress
+        clc
+        adc #1760
+        tcd
+
+        lda 24
+        ora #$0f
+        sta 24
+        lda 22
+        ora #$f0
+        sta 22
+        lda 20
+        ora #$0f
+        sta 20
+        lda 20
+        ora #$f0
+        sta 20
+        lda 19
+        ora #$0f
+        sta 19
+        lda 15
+        ora #$f0
+        sta 15
+        lda 184
+        ora #$f0
+        sta 184
+        lda 182
+        ora #$0f
+        sta 182
+        lda 179
+        ora #$f0
+        sta 179
+        lda 178
+        ora #$0f
+        sta 178
+        lda 175
+        ora #$f0
+        sta 175
+
+        lda >drawAddress
+        clc
+        adc #2080
+        tcd
+
+        lda 23
+        ora #$0f
+        sta 23
+        lda 22
+        ora #$0f
+        sta 22
+        lda 18
+        ora #$f0
+        sta 18
+        lda 17
+        ora #$0f
+        sta 17
+        lda 17
+        ora #$f0
+        sta 17
+        lda 15
+        ora #$0f
+        sta 15
+        lda 183
+        ora #$f0
+        sta 183
+        lda 183
+        ora #$f0
+        sta 183
+        lda 176
+        ora #$0f
+        sta 176
+        lda 176
+        ora #$f0
+        sta 176
+        lda 176
+        ora #$f0
+        sta 176
+        _spriteFooter
+        rtl
+
+
+spriteLargeRock2Erase entry
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >drawAddress
+        clc
+        adc #-2400
+        tcd
+
+        lda #$00
+        sta 16
+        lda #$00
+        sta 16
+        lda #$00
+        sta 16
+        lda #$00
+        sta 17
+        lda #$00
+        sta 17
+        lda #$00
+        sta 18
+        lda #$00
+        sta 18
+        lda #$00
+        sta 19
+        lda #$00
+        sta 19
+        lda #$00
+        sta 20
+        lda #$00
+        sta 20
+        lda #$00
+        sta 21
+        lda #$00
+        sta 21
+        lda #$00
+        sta 21
+        lda #$00
+        sta 22
+        lda #$00
+        sta 176
+        lda #$00
+        sta 182
+        lda #$00
+        sta 183
+
+        lda >drawAddress
+        clc
+        adc #-2080
+        tcd
+
+        lda #$00
+        sta 16
+        lda #$00
+        sta 23
+        lda #$00
+        sta 24
+        lda #$00
+        sta 177
+        lda #$00
+        sta 184
+        lda #$00
+        sta 185
+
+        lda >drawAddress
+        clc
+        adc #-1760
+        tcd
+
+        lda #$00
+        sta 17
+        lda #$00
+        sta 25
+        lda #$00
+        sta 26
+        lda #$00
+        sta 177
+        lda #$00
+        sta 186
+        lda #$00
+        sta 187
+
+        lda >drawAddress
+        clc
+        adc #-1440
+        tcd
+
+        lda #$00
+        sta 18
+        lda #$00
+        sta 27
+        lda #$00
+        sta 27
+        lda #$00
+        sta 12
+        lda #$00
+        sta 12
+        lda #$00
+        sta 12
+        lda #$00
+        sta 13
+        lda #$00
+        sta 13
+        lda #$00
+        sta 14
+        lda #$00
+        sta 14
+        lda #$00
+        sta 15
+        lda #$00
+        sta 15
+        lda #$00
+        sta 16
+        lda #$00
+        sta 16
+        lda #$00
+        sta 17
+        lda #$00
+        sta 17
+        lda #$00
+        sta 18
+        lda #$00
+        sta 187
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-1120
+        tcd
+
+        lda #$00
+        sta 27
+        lda #$00
+        sta 12
+        lda #$00
+        sta 187
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-800
+        tcd
+
+        lda #$00
+        sta 27
+        lda #$00
+        sta 12
+        lda #$00
+        sta 187
+        lda #$00
+        sta 187
+        lda #$00
+        sta 187
+        lda #$00
+        sta 186
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda #$00
+        sta 26
+        lda #$00
+        sta 25
+        lda #$00
+        sta 25
+        lda #$00
+        sta 24
+        lda #$00
+        sta 12
+        lda #$00
+        sta 184
+        lda #$00
+        sta 183
+        lda #$00
+        sta 183
+        lda #$00
+        sta 182
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda #$00
+        sta 22
+        lda #$00
+        sta 21
+        lda #$00
+        sta 21
+        lda #$00
+        sta 12
+        lda #$00
+        sta 182
+        lda #$00
+        sta 182
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda #$00
+        sta 23
+        lda #$00
+        sta 23
+        lda #$00
+        sta 12
+        lda #$00
+        sta 184
+        lda #$00
+        sta 184
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        lda #$00
+        sta 25
+        lda #$00
+        sta 12
+        lda #$00
+        sta 185
+        lda #$00
+        sta 186
+        lda #$00
+        sta 172
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #800
+        tcd
+
+        lda #$00
+        sta 26
+        lda #$00
+        sta 27
+        lda #$00
+        sta 12
+        lda #$00
+        sta 187
+        lda #$00
+        sta 187
+        lda #$00
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #1120
+        tcd
+
+        lda #$00
+        sta 27
+        lda #$00
+        sta 13
+        lda #$00
+        sta 186
+        lda #$00
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #1440
+        tcd
+
+        lda #$00
+        sta 26
+        lda #$00
+        sta 14
+        lda #$00
+        sta 185
+        lda #$00
+        sta 185
+        lda #$00
+        sta 181
+        lda #$00
+        sta 181
+        lda #$00
+        sta 181
+        lda #$00
+        sta 174
+
+        lda >drawAddress
+        clc
+        adc #1760
+        tcd
+
+        lda #$00
+        sta 24
+        lda #$00
+        sta 22
+        lda #$00
+        sta 20
+        lda #$00
+        sta 20
+        lda #$00
+        sta 19
+        lda #$00
+        sta 15
+        lda #$00
+        sta 184
+        lda #$00
+        sta 182
+        lda #$00
+        sta 179
+        lda #$00
+        sta 178
+        lda #$00
+        sta 175
+
+        lda >drawAddress
+        clc
+        adc #2080
+        tcd
+
+        lda #$00
+        sta 23
+        lda #$00
+        sta 22
+        lda #$00
+        sta 18
+        lda #$00
+        sta 17
+        lda #$00
+        sta 17
+        lda #$00
+        sta 15
+        lda #$00
+        sta 183
+        lda #$00
+        sta 183
+        lda #$00
+        sta 176
+        lda #$00
+        sta 176
+        lda #$00
+        sta 176
+        _spriteFooter
+        rtl
+
+
+spriteLargeRock3Odd entry
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >drawAddress
+        clc
+        adc #-2400
+        tcd
+
+        lda 16
+        ora #$0f
+        sta 16
+        lda 16
+        ora #$0f
+        sta 16
+        lda 17
+        ora #$f0
+        sta 17
+        lda 23
+        ora #$0f
+        sta 23
+        lda 24
+        ora #$f0
+        sta 24
+        lda 24
+        ora #$f0
+        sta 24
+        lda 176
+        ora #$f0
+        sta 176
+        lda 177
+        ora #$0f
+        sta 177
+        lda 178
+        ora #$f0
+        sta 178
+        lda 178
+        ora #$0f
+        sta 178
+        lda 182
+        ora #$0f
+        sta 182
+        lda 183
+        ora #$f0
+        sta 183
+        lda 184
+        ora #$0f
+        sta 184
+
+        lda >drawAddress
+        clc
+        adc #-2080
+        tcd
+
+        lda 15
+        ora #$0f
+        sta 15
+        lda 19
+        ora #$f0
+        sta 19
+        lda 19
+        ora #$0f
+        sta 19
+        lda 21
+        ora #$0f
+        sta 21
+        lda 22
+        ora #$f0
+        sta 22
+        lda 25
+        ora #$f0
+        sta 25
+        lda 175
+        ora #$f0
+        sta 175
+        lda 180
+        ora #$f0
+        sta 180
+        lda 180
+        ora #$0f
+        sta 180
+        lda 180
+        ora #$0f
+        sta 180
+        lda 181
+        ora #$f0
+        sta 181
+        lda 185
+        ora #$0f
+        sta 185
+
+        lda >drawAddress
+        clc
+        adc #-1760
+        tcd
+
+        lda 14
+        ora #$0f
+        sta 14
+        lda 26
+        ora #$f0
+        sta 26
+        lda 174
+        ora #$0f
+        sta 174
+        lda 186
+        ora #$0f
+        sta 186
+
+        lda >drawAddress
+        clc
+        adc #-1440
+        tcd
+
+        lda 14
+        ora #$f0
+        sta 14
+        lda 27
+        ora #$f0
+        sta 27
+        lda 173
+        ora #$0f
+        sta 173
+        lda 187
+        ora #$0f
+        sta 187
+        lda 187
+        ora #$0f
+        sta 187
+
+        lda >drawAddress
+        clc
+        adc #-1120
+        tcd
+
+        lda 13
+        ora #$f0
+        sta 13
+        lda 13
+        ora #$f0
+        sta 13
+        lda 27
+        ora #$f0
+        sta 27
+        lda 26
+        ora #$0f
+        sta 26
+        lda 173
+        ora #$f0
+        sta 173
+        lda 186
+        ora #$f0
+        sta 186
+        lda 185
+        ora #$0f
+        sta 185
+
+        lda >drawAddress
+        clc
+        adc #-800
+        tcd
+
+        lda 13
+        ora #$0f
+        sta 13
+        lda 25
+        ora #$f0
+        sta 25
+        lda 24
+        ora #$0f
+        sta 24
+        lda 184
+        ora #$f0
+        sta 184
+        lda 173
+        ora #$0f
+        sta 173
+        lda 184
+        ora #$f0
+        sta 184
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda 24
+        ora #$0f
+        sta 24
+        lda 13
+        ora #$0f
+        sta 13
+        lda 185
+        ora #$f0
+        sta 185
+        lda 173
+        ora #$0f
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda 25
+        ora #$0f
+        sta 25
+        lda 14
+        ora #$f0
+        sta 14
+        lda 185
+        ora #$0f
+        sta 185
+        lda 174
+        ora #$f0
+        sta 174
+        lda 174
+        ora #$f0
+        sta 174
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda 26
+        ora #$f0
+        sta 26
+        lda 14
+        ora #$f0
+        sta 14
+        lda 186
+        ora #$0f
+        sta 186
+        lda 173
+        ora #$0f
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        lda 27
+        ora #$f0
+        sta 27
+        lda 13
+        ora #$0f
+        sta 13
+        lda 187
+        ora #$0f
+        sta 187
+        lda 187
+        ora #$0f
+        sta 187
+        lda 173
+        ora #$0f
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #800
+        tcd
+
+        lda 27
+        ora #$f0
+        sta 27
+        lda 13
+        ora #$0f
+        sta 13
+        lda 187
+        ora #$f0
+        sta 187
+        lda 173
+        ora #$f0
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #1120
+        tcd
+
+        lda 26
+        ora #$0f
+        sta 26
+        lda 13
+        ora #$f0
+        sta 13
+        lda 13
+        ora #$f0
+        sta 13
+        lda 186
+        ora #$f0
+        sta 186
+        lda 173
+        ora #$0f
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #1440
+        tcd
+
+        lda 26
+        ora #$f0
+        sta 26
+        lda 14
+        ora #$f0
+        sta 14
+        lda 185
+        ora #$0f
+        sta 185
+        lda 174
+        ora #$0f
+        sta 174
+
+        lda >drawAddress
+        clc
+        adc #1760
+        tcd
+
+        lda 25
+        ora #$f0
+        sta 25
+        lda 18
+        ora #$0f
+        sta 18
+        lda 18
+        ora #$f0
+        sta 18
+        lda 18
+        ora #$f0
+        sta 18
+        lda 14
+        ora #$0f
+        sta 14
+        lda 184
+        ora #$0f
+        sta 184
+        lda 180
+        ora #$0f
+        sta 180
+        lda 180
+        ora #$f0
+        sta 180
+        lda 179
+        ora #$0f
+        sta 179
+        lda 179
+        ora #$f0
+        sta 179
+        lda 177
+        ora #$0f
+        sta 177
+        lda 177
+        ora #$f0
+        sta 177
+        lda 175
+        ora #$f0
+        sta 175
+
+        lda >drawAddress
+        clc
+        adc #2080
+        tcd
+
+        lda 24
+        ora #$0f
+        sta 24
+        lda 22
+        ora #$0f
+        sta 22
+        lda 22
+        ora #$f0
+        sta 22
+        lda 21
+        ora #$0f
+        sta 21
+        lda 21
+        ora #$f0
+        sta 21
+        lda 16
+        ora #$0f
+        sta 16
+        lda 15
+        ora #$0f
+        sta 15
+        lda 184
+        ora #$f0
+        sta 184
+        lda 184
+        ora #$f0
+        sta 184
+        lda 183
+        ora #$0f
+        sta 183
+        lda 183
+        ora #$f0
+        sta 183
+        lda 176
+        ora #$f0
+        sta 176
+        lda 176
+        ora #$f0
+        sta 176
+        _spriteFooter
+        rtl
+
+
+spriteLargeRock3Even entry
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >drawAddress
+        clc
+        adc #-2400
+        tcd
+
+        lda 16
+        ora #$f0
+        sta 16
+        lda 16
+        ora #$f0
+        sta 16
+        lda 16
+        ora #$0f
+        sta 16
+        lda 23
+        ora #$f0
+        sta 23
+        lda 23
+        ora #$0f
+        sta 23
+        lda 23
+        ora #$0f
+        sta 23
+        lda 175
+        ora #$0f
+        sta 175
+        lda 177
+        ora #$f0
+        sta 177
+        lda 177
+        ora #$0f
+        sta 177
+        lda 178
+        ora #$f0
+        sta 178
+        lda 182
+        ora #$f0
+        sta 182
+        lda 182
+        ora #$0f
+        sta 182
+        lda 184
+        ora #$f0
+        sta 184
+
+        lda >drawAddress
+        clc
+        adc #-2080
+        tcd
+
+        lda 15
+        ora #$f0
+        sta 15
+        lda 18
+        ora #$0f
+        sta 18
+        lda 19
+        ora #$f0
+        sta 19
+        lda 21
+        ora #$f0
+        sta 21
+        lda 21
+        ora #$0f
+        sta 21
+        lda 24
+        ora #$0f
+        sta 24
+        lda 174
+        ora #$0f
+        sta 174
+        lda 179
+        ora #$0f
+        sta 179
+        lda 180
+        ora #$f0
+        sta 180
+        lda 180
+        ora #$f0
+        sta 180
+        lda 180
+        ora #$0f
+        sta 180
+        lda 185
+        ora #$f0
+        sta 185
+
+        lda >drawAddress
+        clc
+        adc #-1760
+        tcd
+
+        lda 14
+        ora #$f0
+        sta 14
+        lda 25
+        ora #$0f
+        sta 25
+        lda 174
+        ora #$f0
+        sta 174
+        lda 186
+        ora #$f0
+        sta 186
+
+        lda >drawAddress
+        clc
+        adc #-1440
+        tcd
+
+        lda 13
+        ora #$0f
+        sta 13
+        lda 26
+        ora #$0f
+        sta 26
+        lda 173
+        ora #$f0
+        sta 173
+        lda 187
+        ora #$f0
+        sta 187
+        lda 187
+        ora #$f0
+        sta 187
+
+        lda >drawAddress
+        clc
+        adc #-1120
+        tcd
+
+        lda 12
+        ora #$0f
+        sta 12
+        lda 12
+        ora #$0f
+        sta 12
+        lda 26
+        ora #$0f
+        sta 26
+        lda 26
+        ora #$f0
+        sta 26
+        lda 172
+        ora #$0f
+        sta 172
+        lda 185
+        ora #$0f
+        sta 185
+        lda 185
+        ora #$f0
+        sta 185
+
+        lda >drawAddress
+        clc
+        adc #-800
+        tcd
+
+        lda 13
+        ora #$f0
+        sta 13
+        lda 24
+        ora #$0f
+        sta 24
+        lda 24
+        ora #$f0
+        sta 24
+        lda 183
+        ora #$0f
+        sta 183
+        lda 173
+        ora #$f0
+        sta 173
+        lda 183
+        ora #$0f
+        sta 183
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda 24
+        ora #$f0
+        sta 24
+        lda 13
+        ora #$f0
+        sta 13
+        lda 184
+        ora #$0f
+        sta 184
+        lda 173
+        ora #$f0
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda 25
+        ora #$f0
+        sta 25
+        lda 13
+        ora #$0f
+        sta 13
+        lda 185
+        ora #$f0
+        sta 185
+        lda 173
+        ora #$0f
+        sta 173
+        lda 173
+        ora #$0f
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda 25
+        ora #$0f
+        sta 25
+        lda 13
+        ora #$0f
+        sta 13
+        lda 186
+        ora #$f0
+        sta 186
+        lda 173
+        ora #$f0
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        lda 26
+        ora #$0f
+        sta 26
+        lda 13
+        ora #$f0
+        sta 13
+        lda 187
+        ora #$f0
+        sta 187
+        lda 187
+        ora #$f0
+        sta 187
+        lda 173
+        ora #$f0
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #800
+        tcd
+
+        lda 26
+        ora #$0f
+        sta 26
+        lda 13
+        ora #$f0
+        sta 13
+        lda 186
+        ora #$0f
+        sta 186
+        lda 172
+        ora #$0f
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #1120
+        tcd
+
+        lda 26
+        ora #$f0
+        sta 26
+        lda 12
+        ora #$0f
+        sta 12
+        lda 12
+        ora #$0f
+        sta 12
+        lda 185
+        ora #$0f
+        sta 185
+        lda 173
+        ora #$f0
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #1440
+        tcd
+
+        lda 25
+        ora #$0f
+        sta 25
+        lda 13
+        ora #$0f
+        sta 13
+        lda 185
+        ora #$f0
+        sta 185
+        lda 174
+        ora #$f0
+        sta 174
+
+        lda >drawAddress
+        clc
+        adc #1760
+        tcd
+
+        lda 24
+        ora #$0f
+        sta 24
+        lda 18
+        ora #$f0
+        sta 18
+        lda 17
+        ora #$0f
+        sta 17
+        lda 17
+        ora #$0f
+        sta 17
+        lda 14
+        ora #$f0
+        sta 14
+        lda 184
+        ora #$f0
+        sta 184
+        lda 180
+        ora #$f0
+        sta 180
+        lda 179
+        ora #$0f
+        sta 179
+        lda 179
+        ora #$f0
+        sta 179
+        lda 178
+        ora #$0f
+        sta 178
+        lda 177
+        ora #$f0
+        sta 177
+        lda 176
+        ora #$0f
+        sta 176
+        lda 174
+        ora #$0f
+        sta 174
+
+        lda >drawAddress
+        clc
+        adc #2080
+        tcd
+
+        lda 24
+        ora #$f0
+        sta 24
+        lda 22
+        ora #$f0
+        sta 22
+        lda 21
+        ora #$0f
+        sta 21
+        lda 21
+        ora #$f0
+        sta 21
+        lda 20
+        ora #$0f
+        sta 20
+        lda 16
+        ora #$f0
+        sta 16
+        lda 15
+        ora #$f0
+        sta 15
+        lda 183
+        ora #$0f
+        sta 183
+        lda 183
+        ora #$0f
+        sta 183
+        lda 183
+        ora #$f0
+        sta 183
+        lda 182
+        ora #$0f
+        sta 182
+        lda 175
+        ora #$0f
+        sta 175
+        lda 175
+        ora #$0f
+        sta 175
+        _spriteFooter
+        rtl
+
+
+spriteLargeRock3Erase entry
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >drawAddress
+        clc
+        adc #-2400
+        tcd
+
+        lda #$00
+        sta 16
+        lda #$00
+        sta 16
+        lda #$00
+        sta 16
+        lda #$00
+        sta 23
+        lda #$00
+        sta 23
+        lda #$00
+        sta 23
+        lda #$00
+        sta 175
+        lda #$00
+        sta 177
+        lda #$00
+        sta 177
+        lda #$00
+        sta 178
+        lda #$00
+        sta 182
+        lda #$00
+        sta 182
+        lda #$00
+        sta 184
+
+        lda >drawAddress
+        clc
+        adc #-2080
+        tcd
+
+        lda #$00
+        sta 15
+        lda #$00
+        sta 18
+        lda #$00
+        sta 19
+        lda #$00
+        sta 21
+        lda #$00
+        sta 21
+        lda #$00
+        sta 24
+        lda #$00
+        sta 174
+        lda #$00
+        sta 179
+        lda #$00
+        sta 180
+        lda #$00
+        sta 180
+        lda #$00
+        sta 180
+        lda #$00
+        sta 185
+
+        lda >drawAddress
+        clc
+        adc #-1760
+        tcd
+
+        lda #$00
+        sta 14
+        lda #$00
+        sta 25
+        lda #$00
+        sta 174
+        lda #$00
+        sta 186
+
+        lda >drawAddress
+        clc
+        adc #-1440
+        tcd
+
+        lda #$00
+        sta 13
+        lda #$00
+        sta 26
+        lda #$00
+        sta 173
+        lda #$00
+        sta 187
+        lda #$00
+        sta 187
+
+        lda >drawAddress
+        clc
+        adc #-1120
+        tcd
+
+        lda #$00
+        sta 12
+        lda #$00
+        sta 12
+        lda #$00
+        sta 26
+        lda #$00
+        sta 26
+        lda #$00
+        sta 172
+        lda #$00
+        sta 185
+        lda #$00
+        sta 185
+
+        lda >drawAddress
+        clc
+        adc #-800
+        tcd
+
+        lda #$00
+        sta 13
+        lda #$00
+        sta 24
+        lda #$00
+        sta 24
+        lda #$00
+        sta 183
+        lda #$00
+        sta 173
+        lda #$00
+        sta 183
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda #$00
+        sta 24
+        lda #$00
+        sta 13
+        lda #$00
+        sta 184
+        lda #$00
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda #$00
+        sta 25
+        lda #$00
+        sta 13
+        lda #$00
+        sta 185
+        lda #$00
+        sta 173
+        lda #$00
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda #$00
+        sta 25
+        lda #$00
+        sta 13
+        lda #$00
+        sta 186
+        lda #$00
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        lda #$00
+        sta 26
+        lda #$00
+        sta 13
+        lda #$00
+        sta 187
+        lda #$00
+        sta 187
+        lda #$00
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #800
+        tcd
+
+        lda #$00
+        sta 26
+        lda #$00
+        sta 13
+        lda #$00
+        sta 186
+        lda #$00
+        sta 172
+
+        lda >drawAddress
+        clc
+        adc #1120
+        tcd
+
+        lda #$00
+        sta 26
+        lda #$00
+        sta 12
+        lda #$00
+        sta 12
+        lda #$00
+        sta 185
+        lda #$00
+        sta 173
+
+        lda >drawAddress
+        clc
+        adc #1440
+        tcd
+
+        lda #$00
+        sta 25
+        lda #$00
+        sta 13
+        lda #$00
+        sta 185
+        lda #$00
+        sta 174
+
+        lda >drawAddress
+        clc
+        adc #1760
+        tcd
+
+        lda #$00
+        sta 24
+        lda #$00
+        sta 18
+        lda #$00
+        sta 17
+        lda #$00
+        sta 17
+        lda #$00
+        sta 14
+        lda #$00
+        sta 184
+        lda #$00
+        sta 180
+        lda #$00
+        sta 179
+        lda #$00
+        sta 179
+        lda #$00
+        sta 178
+        lda #$00
+        sta 177
+        lda #$00
+        sta 176
+        lda #$00
+        sta 174
+
+        lda >drawAddress
+        clc
+        adc #2080
+        tcd
+
+        lda #$00
+        sta 24
+        lda #$00
+        sta 22
+        lda #$00
+        sta 21
+        lda #$00
+        sta 21
+        lda #$00
+        sta 20
+        lda #$00
+        sta 16
+        lda #$00
+        sta 15
+        lda #$00
+        sta 183
+        lda #$00
+        sta 183
+        lda #$00
+        sta 183
+        lda #$00
+        sta 182
+        lda #$00
+        sta 175
+        lda #$00
+        sta 175
+        _spriteFooter
+        rtl
+
+
+
+prLargeRock1DrawEven entry
+        spriteGetDrawAddress
+
+; enable direct page
+        _spriteHeader
+
+        lda >drawAddress
+        tcd
+
+        lda #$f0
+        sta 0
+        sta 1
+        sta 164
+        sta 165
+
+        lda >drawAddress
+        clc
+        adc #640
+        tcd
+
+        lda #$f0
+        sta 4
+        sta 5
+        sta 168
+        sta 169
+
+; exit direct page
+
+
+
+        _spriteFooter
+
+        rtl
+
+nothing entry
+        clc
+        adc >SCREEN_ADDR
+        sta drawAddress
+        ldx #-2244
+        lda drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -2243
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -2237
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -2236
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -1925
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -1922
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -1918
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -1915
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -1766
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -1601
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -1599
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -1594
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -1447
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -1280
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -1280
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -1273
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -1128
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -1128
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -968
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -953
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -808
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -793
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -648
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -488
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -328
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -314
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -168
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -154
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx -8
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 152
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 166
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 312
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 326
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 472
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 632
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 792
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 807
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 952
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 967
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 1112
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 1272
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 1272
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 1433
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 1447
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 1606
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 1754
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 1765
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 1915
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 1924
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 2076
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 2083
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 2237
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 2238
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 2239
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 2240
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 2241
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 2242
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        ldx 2242
+        lda >drawAddress,x
+        ora #$f0
+        sta >drawAddress,x
+        rtl
+
+
 prerenderObject entry
 
         sta objectOffset
@@ -196,6 +4023,8 @@ counter dc i2'0'
 pixelCount dc i2'0'
 objectOffset dc i2'0'
 tempColor dc i2'0'
+
+SCREEN gequ $2000
 
         end
 
