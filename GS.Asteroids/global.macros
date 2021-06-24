@@ -55,6 +55,22 @@ dontClampRight_&SYSCNT anop
         mend
 
 
+        macro
+        spriteGetDrawAddress
+        lda drawY
+        asl a
+        tax
+        lda screenRowOffsets,x
+        sta drawAddress
+        lda drawX
+        lsr a
+        clc
+        adc drawAddress
+        clc
+        adc #$2000
+        sta drawAddress
+        mend
+
 ;
 ; ********************************************
 ; Code pulled from Jeremy Rand's "BuGS" game
@@ -74,12 +90,41 @@ _docWait_&SYSCNT anop
         bmi _docWait_&SYSCNT
         mend
 
+
         macro
         _writeReg &reg,&value
         ldy &reg
         lda &value
         jsr writeReg
         mend
+
+
+        macro
+        _spriteHeader
+        sei                     ; 2
+        tsc                     ; 2
+        sta >backupStack        ; 5
+        lda >STATE_REGISTER     ; 6 - Direct Page and Stack in Bank 01/
+        ora #$0030              ; 3
+        sta >STATE_REGISTER     ; 6
+        clc                     ; 2
+        tya                     ; 2
+        tcs                     ; 2
+        mend                    ; 30
+
+
+        macro
+        _spriteFooter
+        lda #0
+        tcd
+        lda >STATE_REGISTER     ; 6
+        and #$ffcf              ; 3
+        sta >STATE_REGISTER     ; 6
+        lda >backupStack        ; 5
+        tcs                     ; 2
+        cli                     ; 2
+        mend                    ; 24
+
 
 
 ****************************************************************
