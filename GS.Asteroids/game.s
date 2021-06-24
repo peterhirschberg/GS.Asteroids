@@ -7,6 +7,8 @@
 ;
 
         case on
+        mcopy global.macros
+        keep global
 
 game    start
         using globalData
@@ -126,7 +128,20 @@ doCheckControls anop
 
 run anop
 
+        short    m    ; Turn Shadowing Off
+        lda    >$E0C035
+        ora    #$08
+        sta    >$E0C035
+        long    m
+
         jsr erasePRObjects
+
+        short    m    ; Turn Shadowing On
+        lda    >$E0C035
+        and    #$F7
+        sta    >$E0C035
+        long    m
+
 
 ; run the sounds
         jsl runSounds
