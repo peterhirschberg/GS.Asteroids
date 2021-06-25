@@ -14,7 +14,11 @@
 		D0678F68267376E800A8010C /* global.macros in Sources */ = {isa = PBXBuildFile; fileRef = D0678F67267376E800A8010C /* global.macros */; };
 		D0678F6F267D016000A8010C /* translucentLines.s in Sources */ = {isa = PBXBuildFile; fileRef = D0678F6E267D016000A8010C /* translucentLines.s */; };
 		D067906B268497B600A8010C /* rockSprites.s in Sources */ = {isa = PBXBuildFile; fileRef = D067906A268497B600A8010C /* rockSprites.s */; };
-		D067906F26855C5300A8010C /* shipSprites.s in Sources */ = {isa = PBXBuildFile; fileRef = D067906D26855C5300A8010C /* shipSprites.s */; };
+		D0679073268588F300A8010C /* shipSprites2.s in Sources */ = {isa = PBXBuildFile; fileRef = D0679070268588F300A8010C /* shipSprites2.s */; };
+		D0679074268588F300A8010C /* saucerSprites.s in Sources */ = {isa = PBXBuildFile; fileRef = D0679071268588F300A8010C /* saucerSprites.s */; };
+		D0679075268588F300A8010C /* shipSprites1.s in Sources */ = {isa = PBXBuildFile; fileRef = D0679072268588F300A8010C /* shipSprites1.s */; };
+		D067907826858A3400A8010C /* shipSprites4.s in Sources */ = {isa = PBXBuildFile; fileRef = D067907626858A3400A8010C /* shipSprites4.s */; };
+		D067907926858A3400A8010C /* shipSprites3.s in Sources */ = {isa = PBXBuildFile; fileRef = D067907726858A3400A8010C /* shipSprites3.s */; };
 		D068E680266B991C00D9E256 /* lines.s in Sources */ = {isa = PBXBuildFile; fileRef = D068E67F266B991C00D9E256 /* lines.s */; };
 		D06919B5264F414C006508C1 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D06919B4264F414C006508C1 /* main.c */; };
 		D06919B8264F414C006508C1 /* main.rez in CopyFiles */ = {isa = PBXBuildFile; fileRef = D06919B7264F414C006508C1 /* main.rez */; };
@@ -71,7 +75,11 @@
 		D0678F6926767EFC00A8010C /* osdisplay.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = osdisplay.s; sourceTree = "<group>"; };
 		D0678F6E267D016000A8010C /* translucentLines.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = translucentLines.s; sourceTree = "<group>"; };
 		D067906A268497B600A8010C /* rockSprites.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = rockSprites.s; sourceTree = "<group>"; };
-		D067906D26855C5300A8010C /* shipSprites.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = shipSprites.s; sourceTree = "<group>"; };
+		D0679070268588F300A8010C /* shipSprites2.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = shipSprites2.s; sourceTree = "<group>"; };
+		D0679071268588F300A8010C /* saucerSprites.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = saucerSprites.s; sourceTree = "<group>"; };
+		D0679072268588F300A8010C /* shipSprites1.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = shipSprites1.s; sourceTree = "<group>"; };
+		D067907626858A3400A8010C /* shipSprites4.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = shipSprites4.s; sourceTree = "<group>"; };
+		D067907726858A3400A8010C /* shipSprites3.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = shipSprites3.s; sourceTree = "<group>"; };
 		D068E67F266B991C00D9E256 /* lines.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = lines.s; sourceTree = "<group>"; };
 		D06919AA264F414B006508C1 /* GS.Asteroids */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Asteroids; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06919AD264F414B006508C1 /* GS.Asteroids.2mg */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Asteroids.2mg; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,7 +173,11 @@
 				D0678F67267376E800A8010C /* global.macros */,
 				D0678F6926767EFC00A8010C /* osdisplay.s */,
 				D067906A268497B600A8010C /* rockSprites.s */,
-				D067906D26855C5300A8010C /* shipSprites.s */,
+				D0679071268588F300A8010C /* saucerSprites.s */,
+				D0679072268588F300A8010C /* shipSprites1.s */,
+				D0679070268588F300A8010C /* shipSprites2.s */,
+				D067907726858A3400A8010C /* shipSprites3.s */,
+				D067907626858A3400A8010C /* shipSprites4.s */,
 			);
 			path = GS.Asteroids;
 			sourceTree = "<group>";
@@ -306,6 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0679075268588F300A8010C /* shipSprites1.s in Sources */,
 				D0678F6F267D016000A8010C /* translucentLines.s in Sources */,
 				D0EFF031266DB46D0066706A /* scores.s in Sources */,
 				D06BB5E526654CB200EB1107 /* missiles.s in Sources */,
@@ -313,15 +326,18 @@
 				D06BB5E72665A75900EB1107 /* collision.s in Sources */,
 				D0678F68267376E800A8010C /* global.macros in Sources */,
 				D063C4112659302A00C5C7C6 /* displayList.s in Sources */,
+				D0679074268588F300A8010C /* saucerSprites.s in Sources */,
+				D067907926858A3400A8010C /* shipSprites3.s in Sources */,
 				D06BB5E326650BB800EB1107 /* controls.s in Sources */,
 				D06919BA264F414C006508C1 /* Makefile in Sources */,
 				D068E680266B991C00D9E256 /* lines.s in Sources */,
 				D06919B5264F414C006508C1 /* main.c in Sources */,
+				D067907826858A3400A8010C /* shipSprites4.s in Sources */,
+				D0679073268588F300A8010C /* shipSprites2.s in Sources */,
 				D0678F662673747100A8010C /* sound.s in Sources */,
 				D063C40D2657BCD000C5C7C6 /* math.s in Sources */,
 				D0EFF02D266C443B0066706A /* saucers.s in Sources */,
 				D06919E8264F70EC006508C1 /* game.s in Sources */,
-				D067906F26855C5300A8010C /* shipSprites.s in Sources */,
 				D067906B268497B600A8010C /* rockSprites.s in Sources */,
 				D06BB5DF2660D3E200EB1107 /* playerShip.s in Sources */,
 				D063C40B265751C200C5C7C6 /* globals.s in Sources */,
