@@ -120,6 +120,8 @@ doCheckControls anop
 
 run anop
 
+        jsl eraseSprites
+
 ; run the sounds
         jsl runSounds
 

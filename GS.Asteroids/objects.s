@@ -123,7 +123,7 @@ checkYPos anop
 
 checkYPlus anop
         lda ypos
-        cmp #SCREEN_YMAX
+        cmp #MIDSCREEN_Y
         bcs resetYPlus
         bra dontResetYPos
 
@@ -138,7 +138,7 @@ checkYNeg anop
         bra dontResetYPos
 
 resetYNeg anop
-        lda #SCREEN_YMAX
+        lda #MIDSCREEN_Y
         sta ypos
 
 
@@ -236,6 +236,185 @@ drawIt anop
         lda shapeList,x
         sta objectShapeDataIndex
 
+; -----------------------------
+        lda #SHAPE_OFFSET_LARGE_ROCK1
+        cmp objectShapeDataIndex
+        beq prerenderedLargeRock1Short
+        jmp next1
+prerenderedLargeRock1Short anop
+        brl prerenderedLargeRock1
+next1 anop
+        lda #SHAPE_OFFSET_LARGE_ROCK2
+        cmp objectShapeDataIndex
+        beq prerenderedLargeRock2Short
+        jmp next2
+prerenderedLargeRock2Short anop
+        brl prerenderedLargeRock2
+next2 anop
+        lda #SHAPE_OFFSET_LARGE_ROCK3
+        cmp objectShapeDataIndex
+        beq prerenderedLargeRock3Short
+        jmp next3
+prerenderedLargeRock3Short anop
+        jmp prerenderedLargeRock3
+next3 anop
+        lda #SHAPE_OFFSET_MEDIUM_ROCK1
+       cmp objectShapeDataIndex
+       beq prerenderedMediumRock1Short
+        jmp next4
+prerenderedMediumRock1Short anop
+        jmp prerenderedMediumRock1
+next4 anop
+        lda #SHAPE_OFFSET_MEDIUM_ROCK2
+       cmp objectShapeDataIndex
+       beq prerenderedMediumRock2Short
+        bra next5
+prerenderedMediumRock2Short anop
+        brl prerenderedMediumRock2
+next5 anop
+        lda #SHAPE_OFFSET_MEDIUM_ROCK3
+       cmp objectShapeDataIndex
+       beq prerenderedMediumRock3Short
+        jmp next6
+prerenderedMediumRock3Short anop
+        brl prerenderedMediumRock3
+next6 anop
+        lda #SHAPE_OFFSET_SMALL_ROCK1
+        cmp objectShapeDataIndex
+        beq prerenderedSmallRock1Short
+        jmp next7
+prerenderedSmallRock1Short anop
+        brl prerenderedSmallRock1
+next7 anop
+        lda #SHAPE_OFFSET_SMALL_ROCK2
+        cmp objectShapeDataIndex
+        beq prerenderedSmallRock2Short
+        jmp next8
+prerenderedSmallRock2Short anop
+        brl prerenderedSmallRock2
+next8 anop
+        lda #SHAPE_OFFSET_SMALL_ROCK3
+        cmp objectShapeDataIndex
+        beq prerenderedSmallRock3Short
+        jmp next9
+prerenderedSmallRock3Short anop
+        brl prerenderedSmallRock3
+next9 anop
+        lda #SHAPE_OFFSET_LARGE_SAUCER
+        cmp objectShapeDataIndex
+        beq prerenderedLargeSaucerShort
+        jmp drawNormal
+prerenderedLargeSaucerShort anop
+        brl prerenderedLargeSaucer
+        jmp drawNormal
+
+prerenderedLargeRock1 anop
+        lda drawX
+        and #1
+        cmp #1
+        beq doOddLargeRock1
+        jsl spriteLargeRock1Even
+        jmp nextObject
+doOddLargeRock1 anop
+        jsl spriteLargeRock1Odd
+        jmp nextObject
+prerenderedLargeRock2 anop
+        lda drawX
+        and #1
+        cmp #1
+        beq doOddLargeRock2
+        jsl spriteLargeRock2Even
+        jmp nextObject
+doOddLargeRock2 anop
+        jsl spriteLargeRock2Odd
+        jmp nextObject
+prerenderedLargeRock3 anop
+        lda drawX
+        and #1
+        cmp #1
+        beq doOddLargeRock3
+        jsl spriteLargeRock3Even
+        jmp nextObject
+doOddLargeRock3 anop
+        jsl spriteLargeRock3Odd
+        jmp nextObject
+
+prerenderedMediumRock1 anop
+       lda drawX
+       and #1
+       cmp #1
+       beq doOddMediumRock1
+       jsl spriteMediumRock1Even
+       jmp nextObject
+doOddMediumRock1 anop
+      jsl spriteMediumRock1Odd
+        jmp nextObject
+prerenderedMediumRock2 anop
+       lda drawX
+       and #1
+       cmp #1
+       beq doOddMediumRock2
+       jsl spriteMediumRock2Even
+       jmp nextObject
+doOddMediumRock2 anop
+       jsl spriteMediumRock2Odd
+       jmp nextObject
+prerenderedMediumRock3 anop
+       lda drawX
+       and #1
+       cmp #1
+       beq doOddMediumRock3
+       jsl spriteMediumRock3Even
+       jmp nextObject
+doOddMediumRock3 anop
+        jsl spriteMediumRock3Odd
+        jmp nextObject
+
+prerenderedSmallRock1 anop
+       lda drawX
+       and #1
+       cmp #1
+       beq doOddSmallRock1
+       jsl spriteSmallRock1Even
+       jmp nextObject
+doOddSmallRock1 anop
+      jsl spriteSmallRock1Odd
+        jmp nextObject
+prerenderedSmallRock2 anop
+       lda drawX
+       and #1
+       cmp #1
+       beq doOddSmallRock2
+       jsl spriteSmallRock2Even
+       jmp nextObject
+doOddSmallRock2 anop
+       jsl spriteSmallRock2Odd
+       jmp nextObject
+prerenderedSmallRock3 anop
+       lda drawX
+       and #1
+       cmp #1
+       beq doOddSmallRock3
+       jsl spriteSmallRock3Even
+       jmp nextObject
+doOddSmallRock3 anop
+        jsl spriteSmallRock3Odd
+        jmp nextObject
+
+prerenderedLargeSaucer anop
+       lda drawX
+       and #1
+       cmp #1
+       beq doOddLargeSaucer
+       jsl spriteLargeSaucerEven
+       jmp nextObject
+doOddLargeSaucer anop
+        jsl spriteLargeSaucerOdd
+        jmp nextObject
+; -----------------------------
+
+
+drawNormal anop
         lda #0
         cmp angle
         beq drawNoRotate
@@ -267,6 +446,144 @@ nextObject anop
 done1 anop
 
         rts
+
+
+eraseSprites entry
+
+        lda #0
+        sta objectIndex
+
+loop1b anop
+        lda objectIndex
+        asl a
+        tax
+
+; check lifetimes and only draw as appropriate
+        lda lifetimeList,x
+        cmp #-1
+        beq drawItb
+        cmp #0
+        bne drawItb
+        jmp nextObjectb
+
+drawItb anop
+        lda colorList,x
+        sta color
+
+        lda xPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta drawX
+
+        lda yPosList,x
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        lsr a
+        sta drawY
+
+        lda angleList,x
+        sta angle
+
+        lda shapeList,x
+        sta objectShapeDataIndex
+
+; -----------------------------
+        lda #SHAPE_OFFSET_LARGE_ROCK1
+        cmp objectShapeDataIndex
+        beq eraseLargeRock1
+
+        lda #SHAPE_OFFSET_LARGE_ROCK2
+        cmp objectShapeDataIndex
+        beq eraseLargeRock2
+
+        lda #SHAPE_OFFSET_LARGE_ROCK3
+        cmp objectShapeDataIndex
+        beq eraseLargeRock3
+
+        lda #SHAPE_OFFSET_MEDIUM_ROCK1
+        cmp objectShapeDataIndex
+        beq eraseMediumRock1
+
+        lda #SHAPE_OFFSET_MEDIUM_ROCK2
+        cmp objectShapeDataIndex
+        beq eraseMediumRock2
+
+        lda #SHAPE_OFFSET_MEDIUM_ROCK3
+        cmp objectShapeDataIndex
+        beq eraseMediumRock3
+
+        lda #SHAPE_OFFSET_SMALL_ROCK1
+        cmp objectShapeDataIndex
+        beq eraseSmallRock1
+
+        lda #SHAPE_OFFSET_SMALL_ROCK2
+        cmp objectShapeDataIndex
+        beq eraseSmallRock2
+
+        lda #SHAPE_OFFSET_SMALL_ROCK3
+        cmp objectShapeDataIndex
+        beq eraseSmallRock3
+
+        lda #SHAPE_OFFSET_LARGE_SAUCER
+        cmp objectShapeDataIndex
+        beq eraseLargeSaucer
+
+        bra nextObjectb
+
+eraseLargeRock1 anop
+        jsl spriteLargeRock1Erase
+        bra nextObjectb
+eraseLargeRock2 anop
+        jsl spriteLargeRock2Erase
+        bra nextObjectb
+eraseLargeRock3 anop
+        jsl spriteLargeRock3Erase
+        bra nextObjectb
+
+eraseMediumRock1 anop
+        jsl spriteMediumRock1Erase
+        bra nextObjectb
+eraseMediumRock2 anop
+        jsl spriteMediumRock2Erase
+        jmp nextObjectb
+eraseMediumRock3 anop
+        jsl spriteMediumRock3Erase
+        bra nextObjectb
+
+eraseSmallRock1 anop
+        jsl spriteSmallRock1Erase
+        bra nextObjectb
+eraseSmallRock2 anop
+        jsl spriteSmallRock2Erase
+        jmp nextObjectb
+eraseSmallRock3 anop
+        jsl spriteSmallRock3Erase
+        bra nextObjectb
+
+eraseLargeSaucer anop
+        jsl spriteLargeSaucerErase
+        bra nextObjectb
+
+; -----------------------------
+
+nextObjectb anop
+        inc objectIndex
+        lda objectIndex
+        cmp #NUM_OBJECTS
+        beq done1b
+        brl loop1b
+
+done1b anop
+
+
+        rtl
 
 
 drawObject entry

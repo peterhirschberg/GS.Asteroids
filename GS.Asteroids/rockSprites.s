@@ -8,12 +8,14 @@
 
         case on
         mcopy global.macros
-        keep rockSprites
+        keep global
 
 rockSprites start
         using globalData
         using lineData
 
+
+; Rocks ---------------------------
 
 spriteLargeRock1Odd entry
         spriteGetDrawAddress
@@ -832,8 +834,6 @@ spriteLargeRock1Erase entry
 
         lda #$00
         sta 23
-        sta 23
-        sta 16
         sta 16
         sta 184
         sta 183
@@ -865,7 +865,6 @@ spriteLargeRock1Erase entry
         sta 21
         sta 18
         sta 14
-        sta 14
         sta 186
         sta 181
         sta 179
@@ -883,7 +882,6 @@ spriteLargeRock1Erase entry
         sta 13
         sta 187
         sta 180
-        sta 180
         sta 172
 
         lda >drawAddress
@@ -893,8 +891,6 @@ spriteLargeRock1Erase entry
 
         lda #$00
         sta 27
-        sta 27
-        sta 12
         sta 12
         sta 187
         sta 172
@@ -929,7 +925,6 @@ spriteLargeRock1Erase entry
         lda #$00
         sta 26
         sta 12
-        sta 185
         sta 185
         sta 172
 
@@ -975,8 +970,6 @@ spriteLargeRock1Erase entry
         sta 27
         sta 12
         sta 187
-        sta 187
-        sta 172
         sta 172
 
         lda >drawAddress
@@ -1002,7 +995,6 @@ spriteLargeRock1Erase entry
         sta 24
         sta 25
         sta 14
-        sta 14
         sta 183
         sta 184
         sta 175
@@ -1019,16 +1011,10 @@ spriteLargeRock1Erase entry
         sta 16
         sta 176
         sta 177
-        sta 177
-        sta 178
         sta 178
         sta 179
-        sta 179
-        sta 180
         sta 180
         sta 181
-        sta 181
-        sta 182
         sta 182
         sta 176
         _spriteFooter
@@ -2014,18 +2000,10 @@ spriteLargeRock2Erase entry
 
         lda #$00
         sta 16
-        sta 16
-        sta 16
-        sta 17
         sta 17
         sta 18
-        sta 18
-        sta 19
         sta 19
         sta 20
-        sta 20
-        sta 21
-        sta 21
         sta 21
         sta 22
         sta 176
@@ -2066,19 +2044,11 @@ spriteLargeRock2Erase entry
         lda #$00
         sta 18
         sta 27
-        sta 27
-        sta 12
-        sta 12
         sta 12
         sta 13
-        sta 13
-        sta 14
         sta 14
         sta 15
-        sta 15
         sta 16
-        sta 16
-        sta 17
         sta 17
         sta 18
         sta 187
@@ -2104,8 +2074,6 @@ spriteLargeRock2Erase entry
         sta 27
         sta 12
         sta 187
-        sta 187
-        sta 187
         sta 186
         sta 172
 
@@ -2117,11 +2085,9 @@ spriteLargeRock2Erase entry
         lda #$00
         sta 26
         sta 25
-        sta 25
         sta 24
         sta 12
         sta 184
-        sta 183
         sta 183
         sta 182
         sta 172
@@ -2134,9 +2100,7 @@ spriteLargeRock2Erase entry
         lda #$00
         sta 22
         sta 21
-        sta 21
         sta 12
-        sta 182
         sta 182
         sta 172
 
@@ -2147,9 +2111,7 @@ spriteLargeRock2Erase entry
 
         lda #$00
         sta 23
-        sta 23
         sta 12
-        sta 184
         sta 184
         sta 172
 
@@ -2164,7 +2126,6 @@ spriteLargeRock2Erase entry
         sta 185
         sta 186
         sta 172
-        sta 172
 
         lda >drawAddress
         clc
@@ -2175,7 +2136,6 @@ spriteLargeRock2Erase entry
         sta 26
         sta 27
         sta 12
-        sta 187
         sta 187
         sta 173
 
@@ -2199,9 +2159,6 @@ spriteLargeRock2Erase entry
         sta 26
         sta 14
         sta 185
-        sta 185
-        sta 181
-        sta 181
         sta 181
         sta 174
 
@@ -2213,7 +2170,6 @@ spriteLargeRock2Erase entry
         lda #$00
         sta 24
         sta 22
-        sta 20
         sta 20
         sta 19
         sta 15
@@ -2233,12 +2189,8 @@ spriteLargeRock2Erase entry
         sta 22
         sta 18
         sta 17
-        sta 17
         sta 15
         sta 183
-        sta 183
-        sta 176
-        sta 176
         sta 176
         _spriteFooter
         rtl
@@ -3073,16 +3025,10 @@ spriteLargeRock3Erase entry
 
         lda #$00
         sta 16
-        sta 16
-        sta 16
-        sta 23
-        sta 23
         sta 23
         sta 175
         sta 177
-        sta 177
         sta 178
-        sta 182
         sta 182
         sta 184
 
@@ -3096,12 +3042,9 @@ spriteLargeRock3Erase entry
         sta 18
         sta 19
         sta 21
-        sta 21
         sta 24
         sta 174
         sta 179
-        sta 180
-        sta 180
         sta 180
         sta 185
 
@@ -3126,7 +3069,6 @@ spriteLargeRock3Erase entry
         sta 26
         sta 173
         sta 187
-        sta 187
 
         lda >drawAddress
         clc
@@ -3135,11 +3077,8 @@ spriteLargeRock3Erase entry
 
         lda #$00
         sta 12
-        sta 12
-        sta 26
         sta 26
         sta 172
-        sta 185
         sta 185
 
         lda >drawAddress
@@ -3149,7 +3088,6 @@ spriteLargeRock3Erase entry
 
         lda #$00
         sta 13
-        sta 24
         sta 24
         sta 183
         sta 173
@@ -3176,7 +3114,6 @@ spriteLargeRock3Erase entry
         sta 13
         sta 185
         sta 173
-        sta 173
 
         lda >drawAddress
         clc
@@ -3198,7 +3135,6 @@ spriteLargeRock3Erase entry
         sta 26
         sta 13
         sta 187
-        sta 187
         sta 173
 
         lda >drawAddress
@@ -3219,7 +3155,6 @@ spriteLargeRock3Erase entry
 
         lda #$00
         sta 26
-        sta 12
         sta 12
         sta 185
         sta 173
@@ -3244,11 +3179,9 @@ spriteLargeRock3Erase entry
         sta 24
         sta 18
         sta 17
-        sta 17
         sta 14
         sta 184
         sta 180
-        sta 179
         sta 179
         sta 178
         sta 177
@@ -3264,15 +3197,11 @@ spriteLargeRock3Erase entry
         sta 24
         sta 22
         sta 21
-        sta 21
         sta 20
         sta 16
         sta 15
         sta 183
-        sta 183
-        sta 183
         sta 182
-        sta 175
         sta 175
         _spriteFooter
         rtl
@@ -3741,8 +3670,6 @@ spriteMediumRock1Erase entry
 
         lda #$00
         sta 21
-        sta 21
-        sta 18
         sta 18
         sta 182
         sta 181
@@ -3771,10 +3698,7 @@ spriteMediumRock1Erase entry
 
         lda #$00
         sta 23
-        sta 23
         sta 20
-        sta 20
-        sta 16
         sta 16
         sta 183
         sta 176
@@ -3796,7 +3720,6 @@ spriteMediumRock1Erase entry
         tcd
 
         lda #$00
-        sta 22
         sta 22
         sta 16
         sta 183
@@ -3820,8 +3743,6 @@ spriteMediumRock1Erase entry
 
         lda #$00
         sta 23
-        sta 23
-        sta 16
         sta 16
         sta 182
         sta 183
@@ -3838,12 +3759,8 @@ spriteMediumRock1Erase entry
         sta 22
         sta 17
         sta 178
-        sta 178
-        sta 179
         sta 179
         sta 180
-        sta 180
-        sta 181
         sta 181
         sta 178
         _spriteFooter
@@ -4391,12 +4308,7 @@ spriteMediumRock2Erase entry
 
         lda #$00
         sta 18
-        sta 18
-        sta 18
         sta 19
-        sta 19
-        sta 20
-        sta 20
         sta 20
         sta 21
         sta 178
@@ -4414,13 +4326,8 @@ spriteMediumRock2Erase entry
         sta 23
         sta 179
         sta 183
-        sta 183
-        sta 176
-        sta 176
         sta 176
         sta 177
-        sta 177
-        sta 178
         sta 178
         sta 179
 
@@ -4442,14 +4349,9 @@ spriteMediumRock2Erase entry
 
         lda #$00
         sta 23
-        sta 23
-        sta 23
-        sta 22
         sta 22
         sta 16
         sta 181
-        sta 181
-        sta 180
         sta 180
         sta 176
 
@@ -4459,7 +4361,6 @@ spriteMediumRock2Erase entry
         tcd
 
         lda #$00
-        sta 21
         sta 21
         sta 16
         sta 182
@@ -4474,8 +4375,6 @@ spriteMediumRock2Erase entry
         sta 22
         sta 23
         sta 16
-        sta 16
-        sta 183
         sta 183
         sta 176
 
@@ -4489,8 +4388,6 @@ spriteMediumRock2Erase entry
         sta 17
         sta 182
         sta 180
-        sta 180
-        sta 180
         sta 177
 
         lda >drawAddress
@@ -4502,12 +4399,8 @@ spriteMediumRock2Erase entry
         sta 22
         sta 21
         sta 19
-        sta 19
         sta 17
         sta 181
-        sta 181
-        sta 178
-        sta 178
         sta 178
         _spriteFooter
         rtl
@@ -4988,12 +4881,8 @@ spriteMediumRock3Erase entry
 
         lda #$00
         sta 18
-        sta 18
-        sta 18
-        sta 21
         sta 21
         sta 177
-        sta 179
         sta 179
         sta 180
         sta 181
@@ -5007,7 +4896,6 @@ spriteMediumRock3Erase entry
         lda #$00
         sta 17
         sta 20
-        sta 20
         sta 22
         sta 176
         sta 183
@@ -5019,12 +4907,8 @@ spriteMediumRock3Erase entry
 
         lda #$00
         sta 16
-        sta 16
-        sta 23
-        sta 23
         sta 23
         sta 176
-        sta 182
         sta 182
 
         lda >drawAddress
@@ -5047,7 +4931,6 @@ spriteMediumRock3Erase entry
         lda #$00
         sta 22
         sta 16
-        sta 16
         sta 183
         sta 176
 
@@ -5058,10 +4941,8 @@ spriteMediumRock3Erase entry
 
         lda #$00
         sta 23
-        sta 23
         sta 16
         sta 183
-        sta 176
         sta 176
 
         lda >drawAddress
@@ -5075,7 +4956,6 @@ spriteMediumRock3Erase entry
         sta 182
         sta 179
         sta 178
-        sta 178
         sta 177
 
         lda >drawAddress
@@ -5086,14 +4966,10 @@ spriteMediumRock3Erase entry
         lda #$00
         sta 22
         sta 20
-        sta 20
         sta 19
         sta 18
         sta 17
         sta 181
-        sta 181
-        sta 181
-        sta 177
         sta 177
         _spriteFooter
         rtl
@@ -5370,8 +5246,6 @@ spriteSmallRock1Erase entry
 
         lda #$00
         sta 20
-        sta 20
-        sta 19
         sta 19
         sta 181
         sta 180
@@ -5385,10 +5259,7 @@ spriteSmallRock1Erase entry
 
         lda #$00
         sta 21
-        sta 21
         sta 20
-        sta 20
-        sta 18
         sta 18
         sta 181
         sta 178
@@ -5399,7 +5270,6 @@ spriteSmallRock1Erase entry
         tcd
 
         lda #$00
-        sta 21
         sta 21
         sta 18
         sta 181
@@ -5412,14 +5282,8 @@ spriteSmallRock1Erase entry
 
         lda #$00
         sta 21
-        sta 21
-        sta 18
-        sta 18
         sta 18
         sta 179
-        sta 179
-        sta 180
-        sta 180
         sta 180
         sta 181
         sta 179
@@ -5740,19 +5604,10 @@ spriteSmallRock2Erase entry
 
         lda #$00
         sta 19
-        sta 19
-        sta 19
-        sta 20
-        sta 20
         sta 20
         sta 179
         sta 181
-        sta 181
-        sta 181
         sta 178
-        sta 178
-        sta 178
-        sta 179
         sta 179
 
         lda >drawAddress
@@ -5764,10 +5619,6 @@ spriteSmallRock2Erase entry
         sta 21
         sta 18
         sta 181
-        sta 181
-        sta 181
-        sta 180
-        sta 180
         sta 180
         sta 178
 
@@ -5781,8 +5632,6 @@ spriteSmallRock2Erase entry
         sta 21
         sta 18
         sta 181
-        sta 181
-        sta 178
         sta 178
 
         lda >drawAddress
@@ -5793,12 +5642,9 @@ spriteSmallRock2Erase entry
         lda #$00
         sta 21
         sta 20
-        sta 20
         sta 19
         sta 18
         sta 180
-        sta 180
-        sta 179
         sta 179
         _spriteFooter
         rtl
@@ -6081,12 +5927,8 @@ spriteSmallRock3Erase entry
 
         lda #$00
         sta 19
-        sta 19
-        sta 19
-        sta 20
         sta 20
         sta 178
-        sta 180
         sta 180
         sta 181
 
@@ -6097,9 +5939,6 @@ spriteSmallRock3Erase entry
 
         lda #$00
         sta 18
-        sta 18
-        sta 21
-        sta 21
         sta 21
         sta 180
         sta 178
@@ -6113,10 +5952,7 @@ spriteSmallRock3Erase entry
         lda #$00
         sta 21
         sta 18
-        sta 18
         sta 181
-        sta 181
-        sta 178
         sta 178
 
         lda >drawAddress
@@ -6127,13 +5963,8 @@ spriteSmallRock3Erase entry
         lda #$00
         sta 21
         sta 19
-        sta 19
-        sta 19
         sta 18
         sta 180
-        sta 180
-        sta 180
-        sta 178
         sta 178
         _spriteFooter
         rtl
