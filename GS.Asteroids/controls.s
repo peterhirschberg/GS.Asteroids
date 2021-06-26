@@ -104,7 +104,7 @@ setTranslucent anop
         rtl
 
 checkKeydownLeft anop
-        lda >BUTTON2
+        lda >BUTTON1
         and #$80
         cmp #0
         beq notPressedLeft
@@ -118,7 +118,7 @@ notPressedLeft anop
         rts
 
 checkKeydownRight anop
-        lda >BUTTON1
+        lda >BUTTON2
 
         and #$80
         cmp #0

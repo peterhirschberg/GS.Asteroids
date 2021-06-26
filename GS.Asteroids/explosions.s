@@ -11,9 +11,17 @@
 explosions start
         using globalData
         using objectData
+        using gameData
 
 
 fadeWreckage entry
+
+        lda fastMode
+        cmp #1
+        bne doFadeWreckage
+        rtl
+
+doFadeWreckage anop
 
         lda #0
         sta wreckageCounter
@@ -55,6 +63,13 @@ nextFade1 anop
         
         
 fadeParticles entry
+
+        lda fastMode
+        cmp #1
+        bne doFadeParticles
+        rtl
+
+doFadeParticles anop
 
         lda #0
         sta particleCounter
@@ -160,12 +175,23 @@ startParticle entry
         sbc #100
         sta ySpeedList,y
 
+        lda fastMode
+        cmp #1
+        beq shorterParticles
+
         sty savey
         lda #PARTICLE_LIFETIME
         pha
         jsl getRandom
         ldy savey
         sta lifetimeList,y
+        bra setParticleColor
+
+shorterParticles anop
+        lda #20
+        sta lifetimeList,y
+
+setParticleColor anop
 
         lda #$aa
         sta colorList,y
@@ -198,6 +224,13 @@ startExplosion entry
         lsr a
         sta yOrigin
 
+        lda fastMode
+        cmp #1
+        bne moreParticles
+        lda #8
+        sta particleCounter
+        bra explosionParticleLoop
+moreParticles anop
         lda #16
         sta particleCounter
 explosionParticleLoop anop
@@ -287,6 +320,10 @@ startWreckage entry
         ldy savey
         sta lifetimeList,y
 
+        lda fastMode
+        cmp #1
+        bne skipRotation
+
         sty savey
         lda #360
         pha
@@ -302,6 +339,8 @@ startWreckage entry
         sec
         sbc #8
         sta rotationSpeedList,y
+
+skipRotation anop
 
         lda #$ff
         sta colorList,y
