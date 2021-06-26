@@ -188,7 +188,7 @@ startParticle entry
         bra setParticleColor
 
 shorterParticles anop
-        lda #20
+        lda #10
         sta lifetimeList,y
 
 setParticleColor anop

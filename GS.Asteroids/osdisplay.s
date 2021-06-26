@@ -17,6 +17,13 @@ osdisplay start
 
 drawLives entry
 
+        lda fastMode
+        cmp #1
+        bne notFastMode
+        rtl
+
+notFastMode anop
+
         jsl isGameOver
         cmp #0
         beq doDrawLives
