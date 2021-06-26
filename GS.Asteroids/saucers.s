@@ -140,7 +140,7 @@ doSpawnSaucer anop
         sta xPosList,x
         
         stx savex
-        lda #SCREEN_YMAX
+        lda #SCREEN_YWRAP
         pha
         jsl getRandom
         ldx savex
@@ -165,7 +165,7 @@ spawnFromLeft anop
         sta xPosList,x
     
         stx savex
-        lda #SCREEN_YMAX
+        lda #SCREEN_YWRAP
         pha
         jsl getRandom
         ldx savex
