@@ -25,10 +25,10 @@ spriteThrustOddAngle0 entry
         tcd
 
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
 
         lda >drawAddress
@@ -37,13 +37,13 @@ spriteThrustOddAngle0 entry
         tcd
 
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
 
         lda >drawAddress
@@ -52,13 +52,13 @@ spriteThrustOddAngle0 entry
         tcd
 
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
 
         lda >drawAddress
@@ -67,7 +67,7 @@ spriteThrustOddAngle0 entry
         tcd
 
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         _spriteFooter
         rtl
@@ -83,10 +83,10 @@ spriteThrustEvenAngle0 entry
         tcd
 
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
 
         lda >drawAddress
@@ -95,10 +95,10 @@ spriteThrustEvenAngle0 entry
         tcd
 
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
 
         lda >drawAddress
@@ -107,10 +107,10 @@ spriteThrustEvenAngle0 entry
         tcd
 
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
 
         lda >drawAddress
@@ -119,10 +119,10 @@ spriteThrustEvenAngle0 entry
         tcd
 
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         _spriteFooter
         rtl
@@ -180,13 +180,13 @@ spriteThrustOddAngle10 entry
         tcd
 
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
 
         lda >drawAddress
@@ -195,16 +195,16 @@ spriteThrustOddAngle10 entry
         tcd
 
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
 
         lda >drawAddress
@@ -213,7 +213,7 @@ spriteThrustOddAngle10 entry
         tcd
 
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         _spriteFooter
         rtl
@@ -229,10 +229,10 @@ spriteThrustEvenAngle10 entry
         tcd
 
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
 
         lda >drawAddress
@@ -241,10 +241,10 @@ spriteThrustEvenAngle10 entry
         tcd
 
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
 
         lda >drawAddress
@@ -253,10 +253,10 @@ spriteThrustEvenAngle10 entry
         tcd
 
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
 
         lda >drawAddress
@@ -265,7 +265,7 @@ spriteThrustEvenAngle10 entry
         tcd
 
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         _spriteFooter
         rtl
@@ -321,22 +321,22 @@ spriteThrustOddAngle20 entry
         tcd
 
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -345,7 +345,7 @@ spriteThrustOddAngle20 entry
         tcd
 
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
 
         lda >drawAddress
@@ -354,7 +354,7 @@ spriteThrustOddAngle20 entry
         tcd
 
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         _spriteFooter
         rtl
@@ -370,10 +370,10 @@ spriteThrustEvenAngle20 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
 
         lda >drawAddress
@@ -382,10 +382,10 @@ spriteThrustEvenAngle20 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
 
         lda >drawAddress
@@ -394,10 +394,10 @@ spriteThrustEvenAngle20 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
 
         lda >drawAddress
@@ -406,7 +406,7 @@ spriteThrustEvenAngle20 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         _spriteFooter
         rtl
@@ -463,25 +463,25 @@ spriteThrustOddAngle30 entry
         tcd
 
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -490,10 +490,10 @@ spriteThrustOddAngle30 entry
         tcd
 
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         _spriteFooter
         rtl
@@ -509,10 +509,10 @@ spriteThrustEvenAngle30 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
 
         lda >drawAddress
@@ -521,13 +521,13 @@ spriteThrustEvenAngle30 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
 
         lda >drawAddress
@@ -536,7 +536,7 @@ spriteThrustEvenAngle30 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -545,7 +545,7 @@ spriteThrustEvenAngle30 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -554,7 +554,7 @@ spriteThrustEvenAngle30 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         _spriteFooter
         rtl
@@ -618,13 +618,13 @@ spriteThrustOddAngle40 entry
         tcd
 
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -633,16 +633,16 @@ spriteThrustOddAngle40 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -651,10 +651,10 @@ spriteThrustOddAngle40 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         _spriteFooter
         rtl
@@ -670,10 +670,10 @@ spriteThrustEvenAngle40 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -682,13 +682,13 @@ spriteThrustEvenAngle40 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
 
         lda >drawAddress
@@ -697,7 +697,7 @@ spriteThrustEvenAngle40 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -706,7 +706,7 @@ spriteThrustEvenAngle40 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -715,7 +715,7 @@ spriteThrustEvenAngle40 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         _spriteFooter
         rtl
@@ -781,13 +781,13 @@ spriteThrustOddAngle50 entry
         tcd
 
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -796,10 +796,10 @@ spriteThrustOddAngle50 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -808,16 +808,16 @@ spriteThrustOddAngle50 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         _spriteFooter
         rtl
@@ -833,19 +833,19 @@ spriteThrustEvenAngle50 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
 
         lda >drawAddress
@@ -854,7 +854,7 @@ spriteThrustEvenAngle50 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -863,7 +863,7 @@ spriteThrustEvenAngle50 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -872,7 +872,7 @@ spriteThrustEvenAngle50 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         _spriteFooter
         rtl
@@ -928,7 +928,7 @@ spriteThrustOddAngle60 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -937,10 +937,10 @@ spriteThrustOddAngle60 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -949,19 +949,19 @@ spriteThrustOddAngle60 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         _spriteFooter
         rtl
@@ -977,19 +977,19 @@ spriteThrustEvenAngle60 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -998,7 +998,7 @@ spriteThrustEvenAngle60 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -1007,7 +1007,7 @@ spriteThrustEvenAngle60 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -1016,7 +1016,7 @@ spriteThrustEvenAngle60 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         _spriteFooter
         rtl
@@ -1074,7 +1074,7 @@ spriteThrustOddAngle70 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -1083,7 +1083,7 @@ spriteThrustOddAngle70 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -1092,7 +1092,7 @@ spriteThrustOddAngle70 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1101,19 +1101,19 @@ spriteThrustOddAngle70 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         _spriteFooter
         rtl
@@ -1129,16 +1129,16 @@ spriteThrustEvenAngle70 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -1147,7 +1147,7 @@ spriteThrustEvenAngle70 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1156,7 +1156,7 @@ spriteThrustEvenAngle70 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -1165,7 +1165,7 @@ spriteThrustEvenAngle70 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         _spriteFooter
         rtl
@@ -1222,7 +1222,7 @@ spriteThrustOddAngle80 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -1231,7 +1231,7 @@ spriteThrustOddAngle80 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1240,13 +1240,13 @@ spriteThrustOddAngle80 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -1255,13 +1255,13 @@ spriteThrustOddAngle80 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         _spriteFooter
         rtl
@@ -1277,10 +1277,10 @@ spriteThrustEvenAngle80 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -1289,10 +1289,10 @@ spriteThrustEvenAngle80 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -1301,7 +1301,7 @@ spriteThrustEvenAngle80 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1310,7 +1310,7 @@ spriteThrustEvenAngle80 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -1319,7 +1319,7 @@ spriteThrustEvenAngle80 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         _spriteFooter
         rtl
@@ -1384,7 +1384,7 @@ spriteThrustOddAngle90 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -1393,7 +1393,7 @@ spriteThrustOddAngle90 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1402,7 +1402,7 @@ spriteThrustOddAngle90 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1411,13 +1411,13 @@ spriteThrustOddAngle90 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -1426,10 +1426,10 @@ spriteThrustOddAngle90 entry
         tcd
 
         lda 24
-        ora #$90
+        ora #$f0
         sta 24
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         _spriteFooter
         rtl
@@ -1445,10 +1445,10 @@ spriteThrustEvenAngle90 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -1457,13 +1457,13 @@ spriteThrustEvenAngle90 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1472,7 +1472,7 @@ spriteThrustEvenAngle90 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -1481,7 +1481,7 @@ spriteThrustEvenAngle90 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         _spriteFooter
         rtl
@@ -1536,7 +1536,7 @@ spriteThrustOddAngle100 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1545,7 +1545,7 @@ spriteThrustOddAngle100 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1554,7 +1554,7 @@ spriteThrustOddAngle100 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1563,10 +1563,10 @@ spriteThrustOddAngle100 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -1575,10 +1575,10 @@ spriteThrustOddAngle100 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1587,7 +1587,7 @@ spriteThrustOddAngle100 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         _spriteFooter
         rtl
@@ -1603,7 +1603,7 @@ spriteThrustEvenAngle100 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -1612,7 +1612,7 @@ spriteThrustEvenAngle100 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -1621,13 +1621,13 @@ spriteThrustEvenAngle100 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1636,10 +1636,10 @@ spriteThrustEvenAngle100 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         _spriteFooter
         rtl
@@ -1696,7 +1696,7 @@ spriteThrustOddAngle110 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
 
         lda >drawAddress
@@ -1705,7 +1705,7 @@ spriteThrustOddAngle110 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
 
         lda >drawAddress
@@ -1714,7 +1714,7 @@ spriteThrustOddAngle110 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
 
         lda >drawAddress
@@ -1723,10 +1723,10 @@ spriteThrustOddAngle110 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -1735,10 +1735,10 @@ spriteThrustOddAngle110 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1747,7 +1747,7 @@ spriteThrustOddAngle110 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         _spriteFooter
         rtl
@@ -1763,7 +1763,7 @@ spriteThrustEvenAngle110 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -1772,7 +1772,7 @@ spriteThrustEvenAngle110 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -1781,7 +1781,7 @@ spriteThrustEvenAngle110 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1790,16 +1790,16 @@ spriteThrustEvenAngle110 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         _spriteFooter
         rtl
@@ -1856,7 +1856,7 @@ spriteThrustOddAngle120 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
 
         lda >drawAddress
@@ -1865,10 +1865,10 @@ spriteThrustOddAngle120 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1877,10 +1877,10 @@ spriteThrustOddAngle120 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1889,10 +1889,10 @@ spriteThrustOddAngle120 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
 
         lda >drawAddress
@@ -1901,10 +1901,10 @@ spriteThrustOddAngle120 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         _spriteFooter
         rtl
@@ -1920,7 +1920,7 @@ spriteThrustEvenAngle120 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -1929,7 +1929,7 @@ spriteThrustEvenAngle120 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -1938,7 +1938,7 @@ spriteThrustEvenAngle120 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -1947,19 +1947,19 @@ spriteThrustEvenAngle120 entry
         tcd
 
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         _spriteFooter
         rtl
@@ -2016,7 +2016,7 @@ spriteThrustOddAngle130 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
 
         lda >drawAddress
@@ -2025,10 +2025,10 @@ spriteThrustOddAngle130 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -2037,10 +2037,10 @@ spriteThrustOddAngle130 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -2049,10 +2049,10 @@ spriteThrustOddAngle130 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -2061,10 +2061,10 @@ spriteThrustOddAngle130 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         _spriteFooter
         rtl
@@ -2080,7 +2080,7 @@ spriteThrustEvenAngle130 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -2089,7 +2089,7 @@ spriteThrustEvenAngle130 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -2098,7 +2098,7 @@ spriteThrustEvenAngle130 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -2107,19 +2107,19 @@ spriteThrustEvenAngle130 entry
         tcd
 
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         _spriteFooter
         rtl
@@ -2176,7 +2176,7 @@ spriteThrustOddAngle140 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
 
         lda >drawAddress
@@ -2185,10 +2185,10 @@ spriteThrustOddAngle140 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -2197,10 +2197,10 @@ spriteThrustOddAngle140 entry
         tcd
 
         lda 23
-        ora #$09
+        ora #$0f
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -2209,10 +2209,10 @@ spriteThrustOddAngle140 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
 
         lda >drawAddress
@@ -2221,10 +2221,10 @@ spriteThrustOddAngle140 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         _spriteFooter
         rtl
@@ -2240,7 +2240,7 @@ spriteThrustEvenAngle140 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -2249,7 +2249,7 @@ spriteThrustEvenAngle140 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -2258,13 +2258,13 @@ spriteThrustEvenAngle140 entry
         tcd
 
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -2273,13 +2273,13 @@ spriteThrustEvenAngle140 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         _spriteFooter
         rtl
@@ -2337,7 +2337,7 @@ spriteThrustOddAngle150 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
 
         lda >drawAddress
@@ -2346,10 +2346,10 @@ spriteThrustOddAngle150 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -2358,10 +2358,10 @@ spriteThrustOddAngle150 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -2370,10 +2370,10 @@ spriteThrustOddAngle150 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
 
         lda >drawAddress
@@ -2382,7 +2382,7 @@ spriteThrustOddAngle150 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         _spriteFooter
         rtl
@@ -2398,7 +2398,7 @@ spriteThrustEvenAngle150 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -2407,13 +2407,13 @@ spriteThrustEvenAngle150 entry
         tcd
 
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -2422,13 +2422,13 @@ spriteThrustEvenAngle150 entry
         tcd
 
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -2437,7 +2437,7 @@ spriteThrustEvenAngle150 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         _spriteFooter
         rtl
@@ -2493,10 +2493,10 @@ spriteThrustOddAngle160 entry
         tcd
 
         lda 23
-        ora #$90
+        ora #$f0
         sta 23
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -2505,10 +2505,10 @@ spriteThrustOddAngle160 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -2517,10 +2517,10 @@ spriteThrustOddAngle160 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -2529,10 +2529,10 @@ spriteThrustOddAngle160 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         _spriteFooter
         rtl
@@ -2548,7 +2548,7 @@ spriteThrustEvenAngle160 entry
         tcd
 
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
 
         lda >drawAddress
@@ -2557,10 +2557,10 @@ spriteThrustEvenAngle160 entry
         tcd
 
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
 
         lda >drawAddress
@@ -2569,10 +2569,10 @@ spriteThrustEvenAngle160 entry
         tcd
 
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
 
         lda >drawAddress
@@ -2581,10 +2581,10 @@ spriteThrustEvenAngle160 entry
         tcd
 
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         _spriteFooter
         rtl
@@ -2642,7 +2642,7 @@ spriteThrustOddAngle170 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -2651,10 +2651,10 @@ spriteThrustOddAngle170 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
 
         lda >drawAddress
@@ -2663,13 +2663,13 @@ spriteThrustOddAngle170 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
 
         lda >drawAddress
@@ -2678,10 +2678,10 @@ spriteThrustOddAngle170 entry
         tcd
 
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         _spriteFooter
         rtl
@@ -2697,7 +2697,7 @@ spriteThrustEvenAngle170 entry
         tcd
 
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
 
         lda >drawAddress
@@ -2706,10 +2706,10 @@ spriteThrustEvenAngle170 entry
         tcd
 
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
 
         lda >drawAddress
@@ -2718,10 +2718,10 @@ spriteThrustEvenAngle170 entry
         tcd
 
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
 
         lda >drawAddress
@@ -2730,10 +2730,10 @@ spriteThrustEvenAngle170 entry
         tcd
 
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         _spriteFooter
         rtl
@@ -2790,10 +2790,10 @@ spriteThrustOddAngle180 entry
         tcd
 
         lda 22
-        ora #$09
+        ora #$0f
         sta 22
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
 
         lda >drawAddress
@@ -2802,13 +2802,13 @@ spriteThrustOddAngle180 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
 
         lda >drawAddress
@@ -2817,10 +2817,10 @@ spriteThrustOddAngle180 entry
         tcd
 
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
 
         lda >drawAddress
@@ -2829,7 +2829,7 @@ spriteThrustOddAngle180 entry
         tcd
 
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         _spriteFooter
         rtl
@@ -2845,10 +2845,10 @@ spriteThrustEvenAngle180 entry
         tcd
 
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
 
         lda >drawAddress
@@ -2857,10 +2857,10 @@ spriteThrustEvenAngle180 entry
         tcd
 
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
 
         lda >drawAddress
@@ -2869,10 +2869,10 @@ spriteThrustEvenAngle180 entry
         tcd
 
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
 
         lda >drawAddress
@@ -2881,7 +2881,7 @@ spriteThrustEvenAngle180 entry
         tcd
 
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         _spriteFooter
         rtl
@@ -2938,7 +2938,7 @@ spriteThrustOddAngle190 entry
         tcd
 
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
 
         lda >drawAddress
@@ -2947,16 +2947,16 @@ spriteThrustOddAngle190 entry
         tcd
 
         lda 22
-        ora #$90
+        ora #$f0
         sta 22
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
 
         lda >drawAddress
@@ -2965,13 +2965,13 @@ spriteThrustOddAngle190 entry
         tcd
 
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         _spriteFooter
         rtl
@@ -2987,7 +2987,7 @@ spriteThrustEvenAngle190 entry
         tcd
 
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
 
         lda >drawAddress
@@ -2996,10 +2996,10 @@ spriteThrustEvenAngle190 entry
         tcd
 
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
 
         lda >drawAddress
@@ -3008,10 +3008,10 @@ spriteThrustEvenAngle190 entry
         tcd
 
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
 
         lda >drawAddress
@@ -3020,10 +3020,10 @@ spriteThrustEvenAngle190 entry
         tcd
 
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         _spriteFooter
         rtl
@@ -3079,7 +3079,7 @@ spriteThrustOddAngle200 entry
         tcd
 
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
 
         lda >drawAddress
@@ -3088,7 +3088,7 @@ spriteThrustOddAngle200 entry
         tcd
 
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
 
         lda >drawAddress
@@ -3097,22 +3097,22 @@ spriteThrustOddAngle200 entry
         tcd
 
         lda 21
-        ora #$09
+        ora #$0f
         sta 21
         lda 21
-        ora #$90
+        ora #$f0
         sta 21
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         _spriteFooter
         rtl
@@ -3128,7 +3128,7 @@ spriteThrustEvenAngle200 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -3137,10 +3137,10 @@ spriteThrustEvenAngle200 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
 
         lda >drawAddress
@@ -3149,10 +3149,10 @@ spriteThrustEvenAngle200 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
 
         lda >drawAddress
@@ -3161,10 +3161,10 @@ spriteThrustEvenAngle200 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         _spriteFooter
         rtl
@@ -3221,10 +3221,10 @@ spriteThrustOddAngle210 entry
         tcd
 
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
 
         lda >drawAddress
@@ -3233,25 +3233,25 @@ spriteThrustOddAngle210 entry
         tcd
 
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         _spriteFooter
         rtl
@@ -3267,7 +3267,7 @@ spriteThrustEvenAngle210 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -3276,7 +3276,7 @@ spriteThrustEvenAngle210 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -3285,7 +3285,7 @@ spriteThrustEvenAngle210 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -3294,13 +3294,13 @@ spriteThrustEvenAngle210 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
 
         lda >drawAddress
@@ -3309,10 +3309,10 @@ spriteThrustEvenAngle210 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         _spriteFooter
         rtl
@@ -3376,10 +3376,10 @@ spriteThrustOddAngle220 entry
         tcd
 
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
 
         lda >drawAddress
@@ -3388,16 +3388,16 @@ spriteThrustOddAngle220 entry
         tcd
 
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
 
         lda >drawAddress
@@ -3406,13 +3406,13 @@ spriteThrustOddAngle220 entry
         tcd
 
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         _spriteFooter
         rtl
@@ -3428,7 +3428,7 @@ spriteThrustEvenAngle220 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -3437,7 +3437,7 @@ spriteThrustEvenAngle220 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -3446,7 +3446,7 @@ spriteThrustEvenAngle220 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -3455,13 +3455,13 @@ spriteThrustEvenAngle220 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
 
         lda >drawAddress
@@ -3470,10 +3470,10 @@ spriteThrustEvenAngle220 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         _spriteFooter
         rtl
@@ -3539,16 +3539,16 @@ spriteThrustOddAngle230 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
 
         lda >drawAddress
@@ -3557,10 +3557,10 @@ spriteThrustOddAngle230 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -3569,13 +3569,13 @@ spriteThrustOddAngle230 entry
         tcd
 
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         _spriteFooter
         rtl
@@ -3591,7 +3591,7 @@ spriteThrustEvenAngle230 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -3600,7 +3600,7 @@ spriteThrustEvenAngle230 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -3609,7 +3609,7 @@ spriteThrustEvenAngle230 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -3618,19 +3618,19 @@ spriteThrustEvenAngle230 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         _spriteFooter
         rtl
@@ -3686,19 +3686,19 @@ spriteThrustOddAngle240 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
 
         lda >drawAddress
@@ -3707,10 +3707,10 @@ spriteThrustOddAngle240 entry
         tcd
 
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -3719,7 +3719,7 @@ spriteThrustOddAngle240 entry
         tcd
 
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         _spriteFooter
         rtl
@@ -3735,7 +3735,7 @@ spriteThrustEvenAngle240 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -3744,7 +3744,7 @@ spriteThrustEvenAngle240 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -3753,7 +3753,7 @@ spriteThrustEvenAngle240 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -3762,19 +3762,19 @@ spriteThrustEvenAngle240 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 16
-        ora #$09
+        ora #$0f
         sta 16
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         _spriteFooter
         rtl
@@ -3832,19 +3832,19 @@ spriteThrustOddAngle250 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
 
         lda >drawAddress
@@ -3853,7 +3853,7 @@ spriteThrustOddAngle250 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -3862,7 +3862,7 @@ spriteThrustOddAngle250 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -3871,7 +3871,7 @@ spriteThrustOddAngle250 entry
         tcd
 
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         _spriteFooter
         rtl
@@ -3887,7 +3887,7 @@ spriteThrustEvenAngle250 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -3896,7 +3896,7 @@ spriteThrustEvenAngle250 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -3905,7 +3905,7 @@ spriteThrustEvenAngle250 entry
         tcd
 
         lda 16
-        ora #$09
+        ora #$0f
         sta 16
 
         lda >drawAddress
@@ -3914,16 +3914,16 @@ spriteThrustEvenAngle250 entry
         tcd
 
         lda 16
-        ora #$09
+        ora #$0f
         sta 16
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         _spriteFooter
         rtl
@@ -3980,13 +3980,13 @@ spriteThrustOddAngle260 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -3995,13 +3995,13 @@ spriteThrustOddAngle260 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
 
         lda >drawAddress
@@ -4010,7 +4010,7 @@ spriteThrustOddAngle260 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4019,7 +4019,7 @@ spriteThrustOddAngle260 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         _spriteFooter
         rtl
@@ -4035,7 +4035,7 @@ spriteThrustEvenAngle260 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4044,7 +4044,7 @@ spriteThrustEvenAngle260 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -4053,7 +4053,7 @@ spriteThrustEvenAngle260 entry
         tcd
 
         lda 16
-        ora #$09
+        ora #$0f
         sta 16
 
         lda >drawAddress
@@ -4062,10 +4062,10 @@ spriteThrustEvenAngle260 entry
         tcd
 
         lda 16
-        ora #$09
+        ora #$0f
         sta 16
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -4074,10 +4074,10 @@ spriteThrustEvenAngle260 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         _spriteFooter
         rtl
@@ -4142,10 +4142,10 @@ spriteThrustOddAngle270 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4154,13 +4154,13 @@ spriteThrustOddAngle270 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
 
         lda >drawAddress
@@ -4169,7 +4169,7 @@ spriteThrustOddAngle270 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4178,7 +4178,7 @@ spriteThrustOddAngle270 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4187,7 +4187,7 @@ spriteThrustOddAngle270 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         _spriteFooter
         rtl
@@ -4203,7 +4203,7 @@ spriteThrustEvenAngle270 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4212,7 +4212,7 @@ spriteThrustEvenAngle270 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -4221,13 +4221,13 @@ spriteThrustEvenAngle270 entry
         tcd
 
         lda 16
-        ora #$09
+        ora #$0f
         sta 16
         lda 16
-        ora #$09
+        ora #$0f
         sta 16
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -4236,10 +4236,10 @@ spriteThrustEvenAngle270 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         _spriteFooter
         rtl
@@ -4296,7 +4296,7 @@ spriteThrustOddAngle280 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -4305,10 +4305,10 @@ spriteThrustOddAngle280 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4317,10 +4317,10 @@ spriteThrustOddAngle280 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -4329,7 +4329,7 @@ spriteThrustOddAngle280 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4338,7 +4338,7 @@ spriteThrustOddAngle280 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4347,7 +4347,7 @@ spriteThrustOddAngle280 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         _spriteFooter
         rtl
@@ -4363,10 +4363,10 @@ spriteThrustEvenAngle280 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4375,13 +4375,13 @@ spriteThrustEvenAngle280 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 16
-        ora #$09
+        ora #$0f
         sta 16
         lda 16
-        ora #$09
+        ora #$0f
         sta 16
 
         lda >drawAddress
@@ -4390,7 +4390,7 @@ spriteThrustEvenAngle280 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -4399,7 +4399,7 @@ spriteThrustEvenAngle280 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         _spriteFooter
         rtl
@@ -4456,7 +4456,7 @@ spriteThrustOddAngle290 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -4465,10 +4465,10 @@ spriteThrustOddAngle290 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4477,10 +4477,10 @@ spriteThrustOddAngle290 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -4489,7 +4489,7 @@ spriteThrustOddAngle290 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -4498,7 +4498,7 @@ spriteThrustOddAngle290 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -4507,7 +4507,7 @@ spriteThrustOddAngle290 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         _spriteFooter
         rtl
@@ -4523,16 +4523,16 @@ spriteThrustEvenAngle290 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 16
-        ora #$09
+        ora #$0f
         sta 16
 
         lda >drawAddress
@@ -4541,7 +4541,7 @@ spriteThrustEvenAngle290 entry
         tcd
 
         lda 16
-        ora #$09
+        ora #$0f
         sta 16
 
         lda >drawAddress
@@ -4550,7 +4550,7 @@ spriteThrustEvenAngle290 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -4559,7 +4559,7 @@ spriteThrustEvenAngle290 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         _spriteFooter
         rtl
@@ -4616,10 +4616,10 @@ spriteThrustOddAngle300 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -4628,10 +4628,10 @@ spriteThrustOddAngle300 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -4640,10 +4640,10 @@ spriteThrustOddAngle300 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4652,10 +4652,10 @@ spriteThrustOddAngle300 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4664,7 +4664,7 @@ spriteThrustOddAngle300 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         _spriteFooter
         rtl
@@ -4680,19 +4680,19 @@ spriteThrustEvenAngle300 entry
         tcd
 
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 16
-        ora #$09
+        ora #$0f
         sta 16
 
         lda >drawAddress
@@ -4701,7 +4701,7 @@ spriteThrustEvenAngle300 entry
         tcd
 
         lda 16
-        ora #$09
+        ora #$0f
         sta 16
 
         lda >drawAddress
@@ -4710,7 +4710,7 @@ spriteThrustEvenAngle300 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -4719,7 +4719,7 @@ spriteThrustEvenAngle300 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         _spriteFooter
         rtl
@@ -4776,10 +4776,10 @@ spriteThrustOddAngle310 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4788,10 +4788,10 @@ spriteThrustOddAngle310 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4800,10 +4800,10 @@ spriteThrustOddAngle310 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -4812,10 +4812,10 @@ spriteThrustOddAngle310 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -4824,7 +4824,7 @@ spriteThrustOddAngle310 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         _spriteFooter
         rtl
@@ -4840,19 +4840,19 @@ spriteThrustEvenAngle310 entry
         tcd
 
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -4861,7 +4861,7 @@ spriteThrustEvenAngle310 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
 
         lda >drawAddress
@@ -4870,7 +4870,7 @@ spriteThrustEvenAngle310 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -4879,7 +4879,7 @@ spriteThrustEvenAngle310 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         _spriteFooter
         rtl
@@ -4936,10 +4936,10 @@ spriteThrustOddAngle320 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -4948,10 +4948,10 @@ spriteThrustOddAngle320 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -4960,10 +4960,10 @@ spriteThrustOddAngle320 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -4972,10 +4972,10 @@ spriteThrustOddAngle320 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -4984,7 +4984,7 @@ spriteThrustOddAngle320 entry
         tcd
 
         lda 17
-        ora #$90
+        ora #$f0
         sta 17
         _spriteFooter
         rtl
@@ -5000,13 +5000,13 @@ spriteThrustEvenAngle320 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -5015,13 +5015,13 @@ spriteThrustEvenAngle320 entry
         tcd
 
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -5030,7 +5030,7 @@ spriteThrustEvenAngle320 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
 
         lda >drawAddress
@@ -5039,7 +5039,7 @@ spriteThrustEvenAngle320 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         _spriteFooter
         rtl
@@ -5097,7 +5097,7 @@ spriteThrustOddAngle330 entry
         tcd
 
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
 
         lda >drawAddress
@@ -5106,10 +5106,10 @@ spriteThrustOddAngle330 entry
         tcd
 
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
 
         lda >drawAddress
@@ -5118,10 +5118,10 @@ spriteThrustOddAngle330 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
 
         lda >drawAddress
@@ -5130,10 +5130,10 @@ spriteThrustOddAngle330 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
 
         lda >drawAddress
@@ -5142,7 +5142,7 @@ spriteThrustOddAngle330 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         _spriteFooter
         rtl
@@ -5158,7 +5158,7 @@ spriteThrustEvenAngle330 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -5167,13 +5167,13 @@ spriteThrustEvenAngle330 entry
         tcd
 
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -5182,13 +5182,13 @@ spriteThrustEvenAngle330 entry
         tcd
 
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
 
         lda >drawAddress
@@ -5197,7 +5197,7 @@ spriteThrustEvenAngle330 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         _spriteFooter
         rtl
@@ -5253,10 +5253,10 @@ spriteThrustOddAngle340 entry
         tcd
 
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
 
         lda >drawAddress
@@ -5265,10 +5265,10 @@ spriteThrustOddAngle340 entry
         tcd
 
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
 
         lda >drawAddress
@@ -5277,10 +5277,10 @@ spriteThrustOddAngle340 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
 
         lda >drawAddress
@@ -5289,10 +5289,10 @@ spriteThrustOddAngle340 entry
         tcd
 
         lda 17
-        ora #$09
+        ora #$0f
         sta 17
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         _spriteFooter
         rtl
@@ -5308,10 +5308,10 @@ spriteThrustEvenAngle340 entry
         tcd
 
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
 
         lda >drawAddress
@@ -5320,10 +5320,10 @@ spriteThrustEvenAngle340 entry
         tcd
 
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
 
         lda >drawAddress
@@ -5332,10 +5332,10 @@ spriteThrustEvenAngle340 entry
         tcd
 
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
 
         lda >drawAddress
@@ -5344,7 +5344,7 @@ spriteThrustEvenAngle340 entry
         tcd
 
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         _spriteFooter
         rtl
@@ -5402,10 +5402,10 @@ spriteThrustOddAngle350 entry
         tcd
 
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
 
         lda >drawAddress
@@ -5414,13 +5414,13 @@ spriteThrustOddAngle350 entry
         tcd
 
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
 
         lda >drawAddress
@@ -5429,10 +5429,10 @@ spriteThrustOddAngle350 entry
         tcd
 
         lda 18
-        ora #$90
+        ora #$f0
         sta 18
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
 
         lda >drawAddress
@@ -5441,7 +5441,7 @@ spriteThrustOddAngle350 entry
         tcd
 
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
         _spriteFooter
         rtl
@@ -5457,10 +5457,10 @@ spriteThrustEvenAngle350 entry
         tcd
 
         lda 19
-        ora #$09
+        ora #$0f
         sta 19
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
 
         lda >drawAddress
@@ -5469,10 +5469,10 @@ spriteThrustEvenAngle350 entry
         tcd
 
         lda 20
-        ora #$90
+        ora #$f0
         sta 20
         lda 19
-        ora #$90
+        ora #$f0
         sta 19
 
         lda >drawAddress
@@ -5481,10 +5481,10 @@ spriteThrustEvenAngle350 entry
         tcd
 
         lda 20
-        ora #$09
+        ora #$0f
         sta 20
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
 
         lda >drawAddress
@@ -5493,7 +5493,7 @@ spriteThrustEvenAngle350 entry
         tcd
 
         lda 18
-        ora #$09
+        ora #$0f
         sta 18
         _spriteFooter
         rtl

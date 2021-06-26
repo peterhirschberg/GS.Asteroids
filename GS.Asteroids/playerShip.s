@@ -320,21 +320,21 @@ dontSlowDown anop
         lda rotationSpeed
         sta rotationSpeedList,x
 
-; set the color (based on thrust key)
+; enable/disable thrust object (based on thrust key)
 
         lda keydownThrust
         cmp #1
-        beq setThrustColorOn
+        beq setThrustOn
 
-        lda #$00
-        sta colorList,x
+        lda #0
+        sta lifetimeList,x
 
         rtl
 
-setThrustColorOn anop
+setThrustOn anop
 
-        lda #$ff
-        sta colorList,x
+        lda #-1
+        sta lifetimeList,x
 
         rtl
 

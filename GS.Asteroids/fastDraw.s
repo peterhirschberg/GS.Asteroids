@@ -20,8 +20,18 @@ fastDrawObject entry
 
         lda #SHAPE_OFFSET_PLAYER
         cmp objectShapeDataIndex
-        bne next0
+        bne checkThrust
         jsl fastDrawPlayerShip
+        rtl
+
+checkThrust anop
+        lda #SHAPE_OFFSET_THRUST
+        cmp objectShapeDataIndex
+        bne next0
+        jsl fastDrawThrust
+        rtl
+
+drawThrust anop
         jsl fastDrawThrust
         rtl
 
