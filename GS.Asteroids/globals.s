@@ -86,8 +86,12 @@ endY           dc i2'0'
 ; screen bound constants
 ; these are in shifted << 6 format to match object speed/position logic
 
+SCREEN_MIN                      gequ $500
+
 SCREEN_XMAX                     gequ $4fc0
 SCREEN_YMAX                     gequ $31c0
+
+SCREEN_YWRAP                    gequ $2d00
 
 MIDSCREEN_X                     gequ SCREEN_XMAX/2
 MIDSCREEN_Y                     gequ SCREEN_YMAX/2

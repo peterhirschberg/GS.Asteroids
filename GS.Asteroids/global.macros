@@ -68,6 +68,8 @@ dontClampRight_&SYSCNT anop
         adc >drawAddress
         clc
         adc #$2000
+        sec
+        sbc #20
         sta >drawAddress
         mend
 

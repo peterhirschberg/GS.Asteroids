@@ -104,7 +104,7 @@ checkXPlus anop
         bra checkYPos
 
 resetXPlus anop
-        lda #0
+        lda #SCREEN_MIN
         sta xpos
         bra checkYPos
         
@@ -123,22 +123,27 @@ checkYPos anop
 
 checkYPlus anop
         lda ypos
-        cmp #MIDSCREEN_Y
+        cmp #SCREEN_YWRAP
         bcs resetYPlus
         bra dontResetYPos
 
 resetYPlus anop
-        lda #0
+        lda #SCREEN_MIN
+        clc
+        adc #1
         sta ypos
         bra dontResetYPos
         
 checkYNeg anop
-        lda ypos
-        bmi resetYNeg
+        lda #SCREEN_MIN
+        cmp ypos
+        bcs resetYNeg
         bra dontResetYPos
 
 resetYNeg anop
-        lda #MIDSCREEN_Y
+        lda #SCREEN_YWRAP
+        sec
+        sbc #1
         sta ypos
 
 
@@ -2919,7 +2924,7 @@ colorList anop
         dc i2'$88'
         dc i2'$88'
         dc i2'$88'
-        dc i2'$bb'
+        dc i2'$88'
         dc i2'$88'
         dc i2'$88'
         dc i2'$88'
