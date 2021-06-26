@@ -363,6 +363,8 @@ startNewGame entry
 
 doStart anop
 
+        jsl eraseSprites
+
         jsl zeroScore
 
         lda #4
