@@ -326,26 +326,112 @@ doEraseDot anop
         rtl
 
 
+
 fastDrawPlayerShip entry
 
         lda drawX
         and #1
         cmp #1
         beq drawPlayerOdd
-        jsl spritePlayerOddAngle0
-drawPlayerOdd anop
-        jsl spritePlayerEvenAngle0
 
-        rtl
+; even
+        lda #5
+        asl a
+        asl a
+        tax
+        lda shipDrawTableEven,x
+        sta jumpcmd1+1
+        lda shipDrawTableEven+1,x
+        sta jumpcmd1+2
+jumpcmd1 jml $ffffff
+
+drawPlayerOdd anop
+
+        lda #5
+        asl a
+        asl a
+        tax
+        lda shipDrawTableEven,x
+        sta jumpcmd2+1
+        lda shipDrawTableEven+1,x
+        sta jumpcmd2+2
+jumpcmd2 jml $ffffff
+
 
 
 fastErasePlayerShip entry
 
-        jsl spritePlayerEraseAngle0
-
-
+        lda #5
+        asl a
+        asl a
+        tax
+        lda shipEraseTable,x
+        sta jumpcmd3+1
+        lda shipEraseTable+1,x
+        sta jumpcmd3+2
+jumpcmd3 jml $ffffff
         rtl
 
+
+shipDrawTableOdd dc i4'spritePlayerOddAngle0'
+                dc i4'spritePlayerOddAngle10'
+                dc i4'spritePlayerOddAngle20'
+                dc i4'spritePlayerOddAngle30'
+                dc i4'spritePlayerOddAngle40'
+                dc i4'spritePlayerOddAngle50'
+                dc i4'spritePlayerOddAngle60'
+                dc i4'spritePlayerOddAngle70'
+                dc i4'spritePlayerOddAngle80'
+                dc i4'spritePlayerOddAngle90'
+                dc i4'spritePlayerOddAngle100'
+                dc i4'spritePlayerOddAngle110'
+                dc i4'spritePlayerOddAngle120'
+                dc i4'spritePlayerOddAngle130'
+                dc i4'spritePlayerOddAngle140'
+                dc i4'spritePlayerOddAngle150'
+                dc i4'spritePlayerOddAngle160'
+                dc i4'spritePlayerOddAngle170'
+                dc i4'spritePlayerOddAngle180'
+
+shipDrawTableEven dc i4'spritePlayerEvenAngle0'
+                dc i4'spritePlayerEvenAngle10'
+                dc i4'spritePlayerEvenAngle20'
+                dc i4'spritePlayerEvenAngle30'
+                dc i4'spritePlayerEvenAngle40'
+                dc i4'spritePlayerEvenAngle50'
+                dc i4'spritePlayerEvenAngle60'
+                dc i4'spritePlayerEvenAngle70'
+                dc i4'spritePlayerEvenAngle80'
+                dc i4'spritePlayerEvenAngle90'
+                dc i4'spritePlayerEvenAngle100'
+                dc i4'spritePlayerEvenAngle110'
+                dc i4'spritePlayerEvenAngle120'
+                dc i4'spritePlayerEvenAngle130'
+                dc i4'spritePlayerEvenAngle140'
+                dc i4'spritePlayerEvenAngle150'
+                dc i4'spritePlayerEvenAngle160'
+                dc i4'spritePlayerEvenAngle170'
+                dc i4'spritePlayerEvenAngle180'
+
+shipEraseTable dc i4'spritePlayerEraseAngle0'
+                dc i4'spritePlayerEraseAngle10'
+                dc i4'spritePlayerEraseAngle20'
+                dc i4'spritePlayerEraseAngle30'
+                dc i4'spritePlayerEraseAngle40'
+                dc i4'spritePlayerEraseAngle50'
+                dc i4'spritePlayerEraseAngle60'
+                dc i4'spritePlayerEraseAngle70'
+                dc i4'spritePlayerEraseAngle80'
+                dc i4'spritePlayerEraseAngle90'
+                dc i4'spritePlayerEraseAngle100'
+                dc i4'spritePlayerEraseAngle110'
+                dc i4'spritePlayerEraseAngle120'
+                dc i4'spritePlayerEraseAngle130'
+                dc i4'spritePlayerEraseAngle140'
+                dc i4'spritePlayerEraseAngle150'
+                dc i4'spritePlayerEraseAngle160'
+                dc i4'spritePlayerEraseAngle170'
+                dc i4'spritePlayerEraseAngle180'
 
 
         end
