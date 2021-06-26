@@ -15,8 +15,6 @@ rockSprites start
         using lineData
 
 
-; Rocks ---------------------------
-
 spriteLargeRock1Odd entry
         spriteGetDrawAddress
         _spriteHeader

@@ -166,6 +166,8 @@ drawObjectDone anop
 
 drawGameOver entry
 
+    rtl
+
         jsl isGameOver
         cmp #1
         beq doDrawGameOver

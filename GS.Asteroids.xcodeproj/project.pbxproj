@@ -27,6 +27,7 @@
 		D06790852685EDB000A8010C /* shipSprites10.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790832685EDB000A8010C /* shipSprites10.s */; };
 		D067908B2685EEE800A8010C /* shipSprites11.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790872685EEE800A8010C /* shipSprites11.s */; };
 		D067908D2685EEE800A8010C /* shipSprites12.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790892685EEE800A8010C /* shipSprites12.s */; };
+		D067908F2686DB9E00A8010C /* fastDraw.s in Sources */ = {isa = PBXBuildFile; fileRef = D067908E2686DB9E00A8010C /* fastDraw.s */; };
 		D068E680266B991C00D9E256 /* lines.s in Sources */ = {isa = PBXBuildFile; fileRef = D068E67F266B991C00D9E256 /* lines.s */; };
 		D06919B5264F414C006508C1 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D06919B4264F414C006508C1 /* main.c */; };
 		D06919B8264F414C006508C1 /* main.rez in CopyFiles */ = {isa = PBXBuildFile; fileRef = D06919B7264F414C006508C1 /* main.rez */; };
@@ -96,6 +97,7 @@
 		D06790832685EDB000A8010C /* shipSprites10.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = shipSprites10.s; sourceTree = "<group>"; };
 		D06790872685EEE800A8010C /* shipSprites11.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = shipSprites11.s; sourceTree = "<group>"; };
 		D06790892685EEE800A8010C /* shipSprites12.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = shipSprites12.s; sourceTree = "<group>"; };
+		D067908E2686DB9E00A8010C /* fastDraw.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = fastDraw.s; sourceTree = "<group>"; };
 		D068E67F266B991C00D9E256 /* lines.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = lines.s; sourceTree = "<group>"; };
 		D06919AA264F414B006508C1 /* GS.Asteroids */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Asteroids; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06919AD264F414B006508C1 /* GS.Asteroids.2mg */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Asteroids.2mg; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +204,7 @@
 				D06790832685EDB000A8010C /* shipSprites10.s */,
 				D06790872685EEE800A8010C /* shipSprites11.s */,
 				D06790892685EEE800A8010C /* shipSprites12.s */,
+				D067908E2686DB9E00A8010C /* fastDraw.s */,
 			);
 			path = GS.Asteroids;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				D0EFF031266DB46D0066706A /* scores.s in Sources */,
 				D06BB5E526654CB200EB1107 /* missiles.s in Sources */,
 				D0EFF02F266D4D300066706A /* alphanum.s in Sources */,
+				D067908F2686DB9E00A8010C /* fastDraw.s in Sources */,
 				D06BB5E72665A75900EB1107 /* collision.s in Sources */,
 				D0678F68267376E800A8010C /* global.macros in Sources */,
 				D06790812685E9C000A8010C /* shipSprites7.s in Sources */,
