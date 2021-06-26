@@ -22,6 +22,7 @@ fastDrawObject entry
         cmp objectShapeDataIndex
         bne next0
         jsl fastDrawPlayerShip
+        jsl fastDrawThrust
         rtl
 
 next0 anop
@@ -225,6 +226,7 @@ fastEraseObject entry
         cmp objectShapeDataIndex
         bne notPlayerShip
         jsl fastErasePlayerShip
+        jsl fastEraseThrust
         rtl
 
 notPlayerShip anop
@@ -384,6 +386,63 @@ fastErasePlayerShip entry
         sta jumpcmd3+2
 jumpcmd3 jml $ffffff
         rtl
+
+
+
+fastDrawThrust entry
+
+        lda drawX
+        and #1
+        cmp #1
+        beq drawThrustOdd
+
+; even
+        lda playerAngle
+        asl a
+        tax
+        lda shipAngleTable,x
+        asl a
+        asl a
+        tax
+        lda thrustDrawTableEven,x
+        sta jumpcmd4+1
+        lda thrustDrawTableEven+1,x
+        sta jumpcmd4+2
+jumpcmd4 jml $ffffff
+
+drawThrustOdd anop
+
+        lda playerAngle
+        asl a
+        tax
+        lda shipAngleTable,x
+        asl a
+        asl a
+        tax
+        lda thrustDrawTableEven,x
+        sta jumpcmd5+1
+        lda thrustDrawTableEven+1,x
+        sta jumpcmd5+2
+jumpcmd5 jml $ffffff
+
+
+
+fastEraseThrust entry
+
+        lda playerAngle
+        asl a
+        tax
+        lda shipAngleTable,x
+        asl a
+        asl a
+        tax
+        lda thrustEraseTable,x
+        sta jumpcmd6+1
+        lda thrustEraseTable+1,x
+        sta jumpcmd6+2
+jumpcmd6 jml $ffffff
+        rtl
+
 
 
 shipAngleTable anop
@@ -894,5 +953,116 @@ shipEraseTable dc i4'spritePlayerEraseAngle0'
                 dc i4'spritePlayerEraseAngle330'
                 dc i4'spritePlayerEraseAngle340'
                 dc i4'spritePlayerEraseAngle350'
+
+thrustDrawTableOdd dc i4'spriteThrustOddAngle0'
+                dc i4'spriteThrustOddAngle10'
+                dc i4'spriteThrustOddAngle20'
+                dc i4'spriteThrustOddAngle30'
+                dc i4'spriteThrustOddAngle40'
+                dc i4'spriteThrustOddAngle50'
+                dc i4'spriteThrustOddAngle60'
+                dc i4'spriteThrustOddAngle70'
+                dc i4'spriteThrustOddAngle80'
+                dc i4'spriteThrustOddAngle90'
+                dc i4'spriteThrustOddAngle100'
+                dc i4'spriteThrustOddAngle110'
+                dc i4'spriteThrustOddAngle120'
+                dc i4'spriteThrustOddAngle130'
+                dc i4'spriteThrustOddAngle140'
+                dc i4'spriteThrustOddAngle150'
+                dc i4'spriteThrustOddAngle160'
+                dc i4'spriteThrustOddAngle170'
+                dc i4'spriteThrustOddAngle180'
+                dc i4'spriteThrustOddAngle190'
+                dc i4'spriteThrustOddAngle200'
+                dc i4'spriteThrustOddAngle210'
+                dc i4'spriteThrustOddAngle220'
+                dc i4'spriteThrustOddAngle230'
+                dc i4'spriteThrustOddAngle240'
+                dc i4'spriteThrustOddAngle250'
+                dc i4'spriteThrustOddAngle260'
+                dc i4'spriteThrustOddAngle270'
+                dc i4'spriteThrustOddAngle280'
+                dc i4'spriteThrustOddAngle290'
+                dc i4'spriteThrustOddAngle300'
+                dc i4'spriteThrustOddAngle310'
+                dc i4'spriteThrustOddAngle320'
+                dc i4'spriteThrustOddAngle330'
+                dc i4'spriteThrustOddAngle340'
+                dc i4'spriteThrustOddAngle350'
+
+thrustDrawTableEven dc i4'spriteThrustEvenAngle0'
+                dc i4'spriteThrustEvenAngle10'
+                dc i4'spriteThrustEvenAngle20'
+                dc i4'spriteThrustEvenAngle30'
+                dc i4'spriteThrustEvenAngle40'
+                dc i4'spriteThrustEvenAngle50'
+                dc i4'spriteThrustEvenAngle60'
+                dc i4'spriteThrustEvenAngle70'
+                dc i4'spriteThrustEvenAngle80'
+                dc i4'spriteThrustEvenAngle90'
+                dc i4'spriteThrustEvenAngle100'
+                dc i4'spriteThrustEvenAngle110'
+                dc i4'spriteThrustEvenAngle120'
+                dc i4'spriteThrustEvenAngle130'
+                dc i4'spriteThrustEvenAngle140'
+                dc i4'spriteThrustEvenAngle150'
+                dc i4'spriteThrustEvenAngle160'
+                dc i4'spriteThrustEvenAngle170'
+                dc i4'spriteThrustEvenAngle180'
+                dc i4'spriteThrustEvenAngle190'
+                dc i4'spriteThrustEvenAngle200'
+                dc i4'spriteThrustEvenAngle210'
+                dc i4'spriteThrustEvenAngle220'
+                dc i4'spriteThrustEvenAngle230'
+                dc i4'spriteThrustEvenAngle240'
+                dc i4'spriteThrustEvenAngle250'
+                dc i4'spriteThrustEvenAngle260'
+                dc i4'spriteThrustEvenAngle270'
+                dc i4'spriteThrustEvenAngle280'
+                dc i4'spriteThrustEvenAngle290'
+                dc i4'spriteThrustEvenAngle300'
+                dc i4'spriteThrustEvenAngle310'
+                dc i4'spriteThrustEvenAngle320'
+                dc i4'spriteThrustEvenAngle330'
+                dc i4'spriteThrustEvenAngle340'
+                dc i4'spriteThrustEvenAngle350'
+
+thrustEraseTable dc i4'spriteThrustEraseAngle0'
+                dc i4'spriteThrustEraseAngle10'
+                dc i4'spriteThrustEraseAngle20'
+                dc i4'spriteThrustEraseAngle30'
+                dc i4'spriteThrustEraseAngle40'
+                dc i4'spriteThrustEraseAngle50'
+                dc i4'spriteThrustEraseAngle60'
+                dc i4'spriteThrustEraseAngle70'
+                dc i4'spriteThrustEraseAngle80'
+                dc i4'spriteThrustEraseAngle90'
+                dc i4'spriteThrustEraseAngle100'
+                dc i4'spriteThrustEraseAngle110'
+                dc i4'spriteThrustEraseAngle120'
+                dc i4'spriteThrustEraseAngle130'
+                dc i4'spriteThrustEraseAngle140'
+                dc i4'spriteThrustEraseAngle150'
+                dc i4'spriteThrustEraseAngle160'
+                dc i4'spriteThrustEraseAngle170'
+                dc i4'spriteThrustEraseAngle180'
+                dc i4'spriteThrustEraseAngle190'
+                dc i4'spriteThrustEraseAngle200'
+                dc i4'spriteThrustEraseAngle210'
+                dc i4'spriteThrustEraseAngle220'
+                dc i4'spriteThrustEraseAngle230'
+                dc i4'spriteThrustEraseAngle240'
+                dc i4'spriteThrustEraseAngle250'
+                dc i4'spriteThrustEraseAngle260'
+                dc i4'spriteThrustEraseAngle270'
+                dc i4'spriteThrustEraseAngle280'
+                dc i4'spriteThrustEraseAngle290'
+                dc i4'spriteThrustEraseAngle300'
+                dc i4'spriteThrustEraseAngle310'
+                dc i4'spriteThrustEraseAngle320'
+                dc i4'spriteThrustEraseAngle330'
+                dc i4'spriteThrustEraseAngle340'
+                dc i4'spriteThrustEraseAngle350'
 
         end

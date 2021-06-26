@@ -28,6 +28,7 @@
 		D067908B2685EEE800A8010C /* shipSprites11.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790872685EEE800A8010C /* shipSprites11.s */; };
 		D067908D2685EEE800A8010C /* shipSprites12.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790892685EEE800A8010C /* shipSprites12.s */; };
 		D067908F2686DB9E00A8010C /* fastDraw.s in Sources */ = {isa = PBXBuildFile; fileRef = D067908E2686DB9E00A8010C /* fastDraw.s */; };
+		D06790912687887000A8010C /* thrustSprite.s in Sources */ = {isa = PBXBuildFile; fileRef = D06790902687887000A8010C /* thrustSprite.s */; };
 		D068E680266B991C00D9E256 /* lines.s in Sources */ = {isa = PBXBuildFile; fileRef = D068E67F266B991C00D9E256 /* lines.s */; };
 		D06919B5264F414C006508C1 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D06919B4264F414C006508C1 /* main.c */; };
 		D06919B8264F414C006508C1 /* main.rez in CopyFiles */ = {isa = PBXBuildFile; fileRef = D06919B7264F414C006508C1 /* main.rez */; };
@@ -98,6 +99,7 @@
 		D06790872685EEE800A8010C /* shipSprites11.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = shipSprites11.s; sourceTree = "<group>"; };
 		D06790892685EEE800A8010C /* shipSprites12.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = shipSprites12.s; sourceTree = "<group>"; };
 		D067908E2686DB9E00A8010C /* fastDraw.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = fastDraw.s; sourceTree = "<group>"; };
+		D06790902687887000A8010C /* thrustSprite.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = thrustSprite.s; sourceTree = "<group>"; };
 		D068E67F266B991C00D9E256 /* lines.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = lines.s; sourceTree = "<group>"; };
 		D06919AA264F414B006508C1 /* GS.Asteroids */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Asteroids; sourceTree = BUILT_PRODUCTS_DIR; };
 		D06919AD264F414B006508C1 /* GS.Asteroids.2mg */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GS.Asteroids.2mg; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +206,7 @@
 				D06790832685EDB000A8010C /* shipSprites10.s */,
 				D06790872685EEE800A8010C /* shipSprites11.s */,
 				D06790892685EEE800A8010C /* shipSprites12.s */,
+				D06790902687887000A8010C /* thrustSprite.s */,
 				D067908E2686DB9E00A8010C /* fastDraw.s */,
 			);
 			path = GS.Asteroids;
@@ -357,6 +360,7 @@
 				D0678F68267376E800A8010C /* global.macros in Sources */,
 				D06790812685E9C000A8010C /* shipSprites7.s in Sources */,
 				D063C4112659302A00C5C7C6 /* displayList.s in Sources */,
+				D06790912687887000A8010C /* thrustSprite.s in Sources */,
 				D0679074268588F300A8010C /* saucerSprites.s in Sources */,
 				D067908B2685EEE800A8010C /* shipSprites11.s in Sources */,
 				D067907926858A3400A8010C /* shipSprites3.s in Sources */,
