@@ -294,6 +294,9 @@ dontSlowDown anop
         lda rotationSpeedList,x
         sta rotationSpeed
 
+        lda angleList,x
+        sta playerAngle
+
 ; update the thrust object
         ldx #OBJECT_THRUST
 
@@ -381,12 +384,12 @@ startHyperspace anop
         rtl
 
 onKeydownLeft anop
-        lda #-8
+        lda #-10
         sta rotationSpeedList,x
         rtl
 
 onKeydownRight anop
-        lda #8
+        lda #10
         sta rotationSpeedList,x
         rtl
 
@@ -405,8 +408,8 @@ onKeydownFire anop
         lda ySpeedList,x
         sta yspeed
 
-        lda angleList,x
-        sta angle
+;        lda angleList,x
+;        sta playerAngle
 
 ; ask for a player missile - accumulator will be -1 if none available
         stx savex
@@ -432,7 +435,7 @@ fireMissile anop
         lda #MISSILE_SPEED
         sta param2
 
-        lda angle
+        lda playerAngle
         sta param3
 
         stx savex
@@ -626,7 +629,7 @@ xpos dc i2'0'
 ypos dc i2'0'
 xspeed dc i2'0'
 yspeed dc i2'0'
-angle dc i2'0'
+
 rotationSpeed dc i2'0'
 
 savex dc i2'0'
@@ -640,6 +643,8 @@ speedLimit gequ $0600
 
 
 playerData data
+
+playerAngle dc i2'0'
 
 hyperspaceTimer dc i2'0'
 
