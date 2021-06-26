@@ -37,6 +37,12 @@ runIntroScreen entry
 doDrawIntroScreen anop
         stz needToDrawIntroScreen
 
+        lda #100
+        sta drawX
+        sta drawY
+        jsl spriteSmallSaucerOdd
+
+
 ; erase all previous lines and dots
         jsl eraseDisplayList
         jsl eraseDotList
@@ -46,7 +52,7 @@ doDrawIntroScreen anop
         stz dotListLength
         stz displayListColorLength
 
-        jsl drawIntroScreen
+;        jsl drawIntroScreen
 
 ; render the display list and dot list
         jsl renderDisplayList

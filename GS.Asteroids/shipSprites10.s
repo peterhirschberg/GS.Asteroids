@@ -10,7 +10,7 @@
         mcopy global.macros
         keep global
 
-shipSprites3 start shipSprites3Seg
+shipSprites10 start shipSprites10Seg
         using globalData
         using lineData
 
@@ -19,46 +19,27 @@ shipSprites3 start shipSprites3Seg
 
 
 
-
-spritePlayerOddAngle60 entry
+spritePlayerOddAngle270 entry
         spriteGetDrawAddress
         _spriteHeader
-
-        lda >drawAddress
-        clc
-        adc #-960
-        tcd
-
-        lda 21
-        ora #$0f
-        sta 21
-        lda 21
-        ora #$f0
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-800
-        tcd
-
-        lda 21
-        ora #$f0
-        sta 21
-        lda 21
-        ora #$f0
-        sta 21
 
         lda >drawAddress
         clc
         adc #-640
         tcd
 
-        lda 20
+        lda 18
         ora #$0f
-        sta 20
-        lda 21
+        sta 18
+        lda 18
         ora #$f0
-        sta 21
+        sta 18
+        lda 17
+        ora #$0f
+        sta 17
+        lda 18
+        ora #$f0
+        sta 18
 
         lda >drawAddress
         clc
@@ -66,118 +47,139 @@ spritePlayerOddAngle60 entry
         tcd
 
         lda 20
+        ora #$0f
+        sta 20
+        lda 20
         ora #$f0
         sta 20
-        lda 21
+        lda 19
+        ora #$0f
+        sta 19
+        lda 19
         ora #$f0
-        sta 21
+        sta 19
+        lda 18
+        ora #$0f
+        sta 18
 
         lda >drawAddress
         clc
         adc #-320
         tcd
 
-        lda 19
+        lda 22
         ora #$0f
-        sta 19
+        sta 22
+        lda 22
+        ora #$f0
+        sta 22
         lda 21
         ora #$0f
         sta 21
+        lda 21
+        ora #$f0
+        sta 21
+        lda 18
+        ora #$0f
+        sta 18
 
         lda >drawAddress
         clc
         adc #-160
         tcd
 
-        lda 19
+        lda 24
+        ora #$f0
+        sta 24
+        lda 23
         ora #$0f
-        sta 19
-        lda 21
+        sta 23
+        lda 23
+        ora #$f0
+        sta 23
+        lda 18
         ora #$0f
-        sta 21
+        sta 18
 
         lda >drawAddress
         clc
         adc #0
         tcd
 
-        lda 19
-        ora #$f0
-        sta 19
-        lda 23
-        ora #$0f
-        sta 23
         lda 23
         ora #$f0
         sta 23
-        lda 22
+        lda 23
         ora #$0f
-        sta 22
-        lda 22
-        ora #$f0
-        sta 22
+        sta 23
+        lda 18
+        ora #$0f
+        sta 18
 
         lda >drawAddress
         clc
         adc #160
         tcd
 
+        lda 21
+        ora #$0f
+        sta 21
+        lda 22
+        ora #$f0
+        sta 22
+        lda 22
+        ora #$0f
+        sta 22
         lda 18
         ora #$0f
         sta 18
-        lda 22
-        ora #$f0
-        sta 22
-        lda 22
-        ora #$0f
-        sta 22
-        lda 23
-        ora #$f0
-        sta 23
 
         lda >drawAddress
         clc
         adc #320
         tcd
 
-        lda 18
+        lda 20
+        ora #$0f
+        sta 20
+        lda 21
         ora #$f0
+        sta 21
+        lda 18
+        ora #$0f
         sta 18
         lda 19
         ora #$f0
         sta 19
-        lda 19
-        ora #$0f
-        sta 19
-        lda 20
-        ora #$f0
-        sta 20
-        lda 20
-        ora #$0f
-        sta 20
-        lda 21
-        ora #$f0
-        sta 21
-        lda 21
-        ora #$0f
-        sta 21
 
         lda >drawAddress
         clc
         adc #480
         tcd
 
-        lda 17
-        ora #$0f
-        sta 17
-        lda 17
+        lda 19
         ora #$f0
-        sta 17
-        lda 17
+        sta 19
+        lda 19
         ora #$0f
-        sta 17
+        sta 19
+        lda 20
+        ora #$f0
+        sta 20
+        lda 19
+        ora #$f0
+        sta 19
+
+        lda >drawAddress
+        clc
+        adc #640
+        tcd
+
         lda 18
         ora #$f0
+        sta 18
+        lda 18
+        ora #$0f
         sta 18
         lda 18
         ora #$0f
@@ -186,13 +188,322 @@ spritePlayerOddAngle60 entry
         rtl
 
 
-spritePlayerEvenAngle60 entry
+spritePlayerEvenAngle270 entry
         spriteGetDrawAddress
         _spriteHeader
 
         lda >drawAddress
         clc
-        adc #-960
+        adc #-640
+        tcd
+
+        lda 18
+        ora #$f0
+        sta 18
+        lda 17
+        ora #$0f
+        sta 17
+        lda 17
+        ora #$f0
+        sta 17
+        lda 17
+        ora #$0f
+        sta 17
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda 20
+        ora #$f0
+        sta 20
+        lda 19
+        ora #$0f
+        sta 19
+        lda 19
+        ora #$f0
+        sta 19
+        lda 18
+        ora #$0f
+        sta 18
+        lda 18
+        ora #$f0
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #-320
+        tcd
+
+        lda 22
+        ora #$f0
+        sta 22
+        lda 21
+        ora #$0f
+        sta 21
+        lda 21
+        ora #$f0
+        sta 21
+        lda 20
+        ora #$0f
+        sta 20
+        lda 18
+        ora #$f0
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda 23
+        ora #$0f
+        sta 23
+        lda 23
+        ora #$f0
+        sta 23
+        lda 22
+        ora #$0f
+        sta 22
+        lda 18
+        ora #$f0
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #0
+        tcd
+
+        lda 22
+        ora #$0f
+        sta 22
+        lda 23
+        ora #$f0
+        sta 23
+        lda 18
+        ora #$f0
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda 21
+        ora #$f0
+        sta 21
+        lda 21
+        ora #$0f
+        sta 21
+        lda 22
+        ora #$f0
+        sta 22
+        lda 18
+        ora #$f0
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #320
+        tcd
+
+        lda 20
+        ora #$f0
+        sta 20
+        lda 20
+        ora #$0f
+        sta 20
+        lda 18
+        ora #$f0
+        sta 18
+        lda 18
+        ora #$0f
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        lda 18
+        ora #$0f
+        sta 18
+        lda 19
+        ora #$f0
+        sta 19
+        lda 19
+        ora #$0f
+        sta 19
+        lda 18
+        ora #$0f
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #640
+        tcd
+
+        lda 17
+        ora #$0f
+        sta 17
+        lda 18
+        ora #$f0
+        sta 18
+        lda 18
+        ora #$f0
+        sta 18
+        _spriteFooter
+        rtl
+
+
+spritePlayerEraseAngle270 entry
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >drawAddress
+        clc
+        adc #-640
+        tcd
+
+        lda #$00
+        sta 18
+        sta 17
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda #$00
+        sta 20
+        sta 19
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #-320
+        tcd
+
+        lda #$00
+        sta 22
+        sta 21
+        sta 20
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda #$00
+        sta 23
+        sta 22
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #0
+        tcd
+
+        lda #$00
+        sta 22
+        sta 23
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda #$00
+        sta 21
+        sta 22
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #320
+        tcd
+
+        lda #$00
+        sta 20
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        lda #$00
+        sta 18
+        sta 19
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #640
+        tcd
+
+        lda #$00
+        sta 17
+        sta 18
+        _spriteFooter
+        rtl
+
+
+spritePlayerOddAngle280 entry
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >drawAddress
+        clc
+        adc #-800
+        tcd
+
+        lda 18
+        ora #$f0
+        sta 18
+        lda 18
+        ora #$f0
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #-640
+        tcd
+
+        lda 19
+        ora #$f0
+        sta 19
+        lda 18
+        ora #$0f
+        sta 18
+        lda 18
+        ora #$f0
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda 20
+        ora #$f0
+        sta 20
+        lda 19
+        ora #$0f
+        sta 19
+        lda 18
+        ora #$0f
+        sta 18
+        lda 19
+        ora #$f0
+        sta 19
+
+        lda >drawAddress
+        clc
+        adc #-320
         tcd
 
         lda 21
@@ -201,30 +512,142 @@ spritePlayerEvenAngle60 entry
         lda 20
         ora #$0f
         sta 20
+        lda 19
+        ora #$f0
+        sta 19
 
         lda >drawAddress
         clc
-        adc #-800
+        adc #-160
         tcd
 
-        lda 20
+        lda 22
+        ora #$f0
+        sta 22
+        lda 21
         ora #$0f
-        sta 20
-        lda 20
-        ora #$0f
-        sta 20
+        sta 21
+        lda 19
+        ora #$f0
+        sta 19
 
         lda >drawAddress
         clc
-        adc #-640
+        adc #0
         tcd
 
+        lda 23
+        ora #$f0
+        sta 23
+        lda 22
+        ora #$0f
+        sta 22
+        lda 19
+        ora #$f0
+        sta 19
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda 23
+        ora #$0f
+        sta 23
+        lda 18
+        ora #$0f
+        sta 18
+        lda 18
+        ora #$f0
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #320
+        tcd
+
+        lda 21
+        ora #$f0
+        sta 21
+        lda 21
+        ora #$0f
+        sta 21
+        lda 22
+        ora #$f0
+        sta 22
+        lda 22
+        ora #$0f
+        sta 22
+        lda 23
+        ora #$f0
+        sta 23
+        lda 23
+        ora #$0f
+        sta 23
+        lda 17
+        ora #$0f
+        sta 17
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        lda 17
+        ora #$0f
+        sta 17
+        lda 18
+        ora #$f0
+        sta 18
+        lda 18
+        ora #$0f
+        sta 18
+        lda 19
+        ora #$f0
+        sta 19
+        lda 19
+        ora #$0f
+        sta 19
         lda 20
         ora #$f0
         sta 20
         lda 20
         ora #$0f
         sta 20
+        _spriteFooter
+        rtl
+
+
+spritePlayerEvenAngle280 entry
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >drawAddress
+        clc
+        adc #-800
+        tcd
+
+        lda 17
+        ora #$0f
+        sta 17
+        lda 17
+        ora #$0f
+        sta 17
+
+        lda >drawAddress
+        clc
+        adc #-640
+        tcd
+
+        lda 18
+        ora #$0f
+        sta 18
+        lda 18
+        ora #$f0
+        sta 18
+        lda 17
+        ora #$0f
+        sta 17
 
         lda >drawAddress
         clc
@@ -234,99 +657,102 @@ spritePlayerEvenAngle60 entry
         lda 19
         ora #$0f
         sta 19
-        lda 20
+        lda 19
+        ora #$f0
+        sta 19
+        lda 18
+        ora #$f0
+        sta 18
+        lda 18
         ora #$0f
-        sta 20
+        sta 18
 
         lda >drawAddress
         clc
         adc #-320
         tcd
 
-        lda 19
+        lda 20
+        ora #$0f
+        sta 20
+        lda 20
         ora #$f0
-        sta 19
-        lda 21
-        ora #$f0
-        sta 21
+        sta 20
+        lda 18
+        ora #$0f
+        sta 18
 
         lda >drawAddress
         clc
         adc #-160
         tcd
 
-        lda 19
-        ora #$f0
-        sta 19
+        lda 21
+        ora #$0f
+        sta 21
         lda 21
         ora #$f0
         sta 21
+        lda 18
+        ora #$0f
+        sta 18
 
         lda >drawAddress
         clc
         adc #0
         tcd
 
+        lda 22
+        ora #$0f
+        sta 22
+        lda 22
+        ora #$f0
+        sta 22
         lda 18
         ora #$0f
         sta 18
-        lda 23
-        ora #$f0
-        sta 23
-        lda 22
-        ora #$0f
-        sta 22
-        lda 22
-        ora #$f0
-        sta 22
-        lda 21
-        ora #$0f
-        sta 21
 
         lda >drawAddress
         clc
         adc #160
         tcd
 
+        lda 23
+        ora #$f0
+        sta 23
         lda 18
         ora #$f0
         sta 18
-        lda 21
+        lda 17
         ora #$0f
-        sta 21
-        lda 22
-        ora #$f0
-        sta 22
-        lda 22
-        ora #$0f
-        sta 22
+        sta 17
 
         lda >drawAddress
         clc
         adc #320
         tcd
 
-        lda 17
-        ora #$0f
-        sta 17
-        lda 18
-        ora #$0f
-        sta 18
-        lda 19
-        ora #$f0
-        sta 19
-        lda 19
-        ora #$0f
-        sta 19
-        lda 20
-        ora #$f0
-        sta 20
         lda 20
         ora #$0f
         sta 20
         lda 21
         ora #$f0
         sta 21
+        lda 21
+        ora #$0f
+        sta 21
+        lda 22
+        ora #$f0
+        sta 22
+        lda 22
+        ora #$0f
+        sta 22
+        lda 23
+        ora #$f0
+        sta 23
+        lda 17
+        ora #$f0
+        sta 17
 
         lda >drawAddress
         clc
@@ -336,6 +762,395 @@ spritePlayerEvenAngle60 entry
         lda 17
         ora #$f0
         sta 17
+        lda 17
+        ora #$0f
+        sta 17
+        lda 18
+        ora #$f0
+        sta 18
+        lda 18
+        ora #$0f
+        sta 18
+        lda 19
+        ora #$f0
+        sta 19
+        lda 19
+        ora #$0f
+        sta 19
+        lda 20
+        ora #$f0
+        sta 20
+        _spriteFooter
+        rtl
+
+
+spritePlayerEraseAngle280 entry
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >drawAddress
+        clc
+        adc #-800
+        tcd
+
+        lda #$00
+        sta 17
+
+        lda >drawAddress
+        clc
+        adc #-640
+        tcd
+
+        lda #$00
+        sta 18
+        sta 17
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda #$00
+        sta 19
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #-320
+        tcd
+
+        lda #$00
+        sta 20
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda #$00
+        sta 21
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #0
+        tcd
+
+        lda #$00
+        sta 22
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda #$00
+        sta 23
+        sta 18
+        sta 17
+
+        lda >drawAddress
+        clc
+        adc #320
+        tcd
+
+        lda #$00
+        sta 20
+        sta 21
+        sta 22
+        sta 23
+        sta 17
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        lda #$00
+        sta 17
+        sta 18
+        sta 19
+        sta 20
+        _spriteFooter
+        rtl
+
+
+spritePlayerOddAngle290 entry
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >drawAddress
+        clc
+        adc #-960
+        tcd
+
+        lda 18
+        ora #$0f
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #-800
+        tcd
+
+        lda 19
+        ora #$f0
+        sta 19
+        lda 18
+        ora #$0f
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #-640
+        tcd
+
+        lda 19
+        ora #$0f
+        sta 19
+        lda 19
+        ora #$f0
+        sta 19
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda 20
+        ora #$0f
+        sta 20
+        lda 20
+        ora #$f0
+        sta 20
+        lda 19
+        ora #$f0
+        sta 19
+
+        lda >drawAddress
+        clc
+        adc #-320
+        tcd
+
+        lda 21
+        ora #$f0
+        sta 21
+        lda 19
+        ora #$f0
+        sta 19
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda 21
+        ora #$0f
+        sta 21
+        lda 18
+        ora #$0f
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #0
+        tcd
+
+        lda 22
+        ora #$0f
+        sta 22
+        lda 22
+        ora #$f0
+        sta 22
+        lda 18
+        ora #$0f
+        sta 18
+        lda 18
+        ora #$0f
+        sta 18
+        lda 18
+        ora #$f0
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda 23
+        ora #$f0
+        sta 23
+        lda 17
+        ora #$0f
+        sta 17
+
+        lda >drawAddress
+        clc
+        adc #320
+        tcd
+
+        lda 17
+        ora #$f0
+        sta 17
+        lda 17
+        ora #$0f
+        sta 17
+        lda 18
+        ora #$f0
+        sta 18
+        lda 18
+        ora #$0f
+        sta 18
+        lda 19
+        ora #$f0
+        sta 19
+        lda 19
+        ora #$0f
+        sta 19
+        lda 20
+        ora #$f0
+        sta 20
+        lda 20
+        ora #$0f
+        sta 20
+        lda 21
+        ora #$f0
+        sta 21
+        lda 21
+        ora #$0f
+        sta 21
+        lda 22
+        ora #$f0
+        sta 22
+        lda 22
+        ora #$0f
+        sta 22
+        lda 23
+        ora #$f0
+        sta 23
+        lda 23
+        ora #$0f
+        sta 23
+        _spriteFooter
+        rtl
+
+
+spritePlayerEvenAngle290 entry
+        spriteGetDrawAddress
+        _spriteHeader
+
+        lda >drawAddress
+        clc
+        adc #-960
+        tcd
+
+        lda 18
+        ora #$f0
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #-800
+        tcd
+
+        lda 18
+        ora #$0f
+        sta 18
+        lda 18
+        ora #$f0
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #-640
+        tcd
+
+        lda 19
+        ora #$f0
+        sta 19
+        lda 18
+        ora #$0f
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda 20
+        ora #$f0
+        sta 20
+        lda 19
+        ora #$0f
+        sta 19
+        lda 18
+        ora #$0f
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #-320
+        tcd
+
+        lda 20
+        ora #$0f
+        sta 20
+        lda 18
+        ora #$0f
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda 21
+        ora #$f0
+        sta 21
+        lda 18
+        ora #$f0
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #0
+        tcd
+
+        lda 22
+        ora #$f0
+        sta 22
+        lda 21
+        ora #$0f
+        sta 21
+        lda 18
+        ora #$f0
+        sta 18
+        lda 18
+        ora #$f0
+        sta 18
+        lda 17
+        ora #$0f
+        sta 17
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda 22
+        ora #$0f
+        sta 22
+        lda 17
+        ora #$f0
+        sta 17
+
+        lda >drawAddress
+        clc
+        adc #320
+        tcd
+
         lda 16
         ora #$0f
         sta 16
@@ -348,11 +1163,41 @@ spritePlayerEvenAngle60 entry
         lda 18
         ora #$f0
         sta 18
+        lda 18
+        ora #$0f
+        sta 18
+        lda 19
+        ora #$f0
+        sta 19
+        lda 19
+        ora #$0f
+        sta 19
+        lda 20
+        ora #$f0
+        sta 20
+        lda 20
+        ora #$0f
+        sta 20
+        lda 21
+        ora #$f0
+        sta 21
+        lda 21
+        ora #$0f
+        sta 21
+        lda 22
+        ora #$f0
+        sta 22
+        lda 22
+        ora #$0f
+        sta 22
+        lda 23
+        ora #$f0
+        sta 23
         _spriteFooter
         rtl
 
 
-spritePlayerEraseAngle60 entry
+spritePlayerEraseAngle290 entry
         spriteGetDrawAddress
         _spriteHeader
 
@@ -362,8 +1207,7 @@ spritePlayerEraseAngle60 entry
         tcd
 
         lda #$00
-        sta 21
-        sta 20
+        sta 18
 
         lda >drawAddress
         clc
@@ -371,7 +1215,7 @@ spritePlayerEraseAngle60 entry
         tcd
 
         lda #$00
-        sta 20
+        sta 18
 
         lda >drawAddress
         clc
@@ -379,7 +1223,8 @@ spritePlayerEraseAngle60 entry
         tcd
 
         lda #$00
-        sta 20
+        sta 19
+        sta 18
 
         lda >drawAddress
         clc
@@ -387,8 +1232,9 @@ spritePlayerEraseAngle60 entry
         tcd
 
         lda #$00
-        sta 19
         sta 20
+        sta 19
+        sta 18
 
         lda >drawAddress
         clc
@@ -396,8 +1242,8 @@ spritePlayerEraseAngle60 entry
         tcd
 
         lda #$00
-        sta 19
-        sta 21
+        sta 20
+        sta 18
 
         lda >drawAddress
         clc
@@ -405,8 +1251,8 @@ spritePlayerEraseAngle60 entry
         tcd
 
         lda #$00
-        sta 19
         sta 21
+        sta 18
 
         lda >drawAddress
         clc
@@ -414,10 +1260,10 @@ spritePlayerEraseAngle60 entry
         tcd
 
         lda #$00
-        sta 18
-        sta 23
         sta 22
         sta 21
+        sta 18
+        sta 17
 
         lda >drawAddress
         clc
@@ -425,429 +1271,8 @@ spritePlayerEraseAngle60 entry
         tcd
 
         lda #$00
-        sta 18
-        sta 21
         sta 22
-
-        lda >drawAddress
-        clc
-        adc #320
-        tcd
-
-        lda #$00
         sta 17
-        sta 18
-        sta 19
-        sta 20
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #480
-        tcd
-
-        lda #$00
-        sta 17
-        sta 16
-        sta 17
-        sta 18
-        _spriteFooter
-        rtl
-
-
-spritePlayerOddAngle70 entry
-        spriteGetDrawAddress
-        _spriteHeader
-
-        lda >drawAddress
-        clc
-        adc #-960
-        tcd
-
-        lda 22
-        ora #$f0
-        sta 22
-
-        lda >drawAddress
-        clc
-        adc #-800
-        tcd
-
-        lda 21
-        ora #$0f
-        sta 21
-        lda 22
-        ora #$f0
-        sta 22
-
-        lda >drawAddress
-        clc
-        adc #-640
-        tcd
-
-        lda 21
-        ora #$f0
-        sta 21
-        lda 20
-        ora #$0f
-        sta 20
-        lda 21
-        ora #$0f
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-480
-        tcd
-
-        lda 20
-        ora #$f0
-        sta 20
-        lda 21
-        ora #$0f
-        sta 21
-        lda 21
-        ora #$0f
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-320
-        tcd
-
-        lda 19
-        ora #$0f
-        sta 19
-        lda 21
-        ora #$0f
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-160
-        tcd
-
-        lda 19
-        ora #$f0
-        sta 19
-        lda 18
-        ora #$0f
-        sta 18
-        lda 22
-        ora #$f0
-        sta 22
-
-        lda >drawAddress
-        clc
-        adc #0
-        tcd
-
-        lda 18
-        ora #$f0
-        sta 18
-        lda 22
-        ora #$f0
-        sta 22
-
-        lda >drawAddress
-        clc
-        adc #160
-        tcd
-
-        lda 17
-        ora #$0f
-        sta 17
-        lda 22
-        ora #$0f
-        sta 22
-
-        lda >drawAddress
-        clc
-        adc #320
-        tcd
-
-        lda 17
-        ora #$f0
-        sta 17
-        lda 17
-        ora #$0f
-        sta 17
-        lda 18
-        ora #$f0
-        sta 18
-        lda 18
-        ora #$0f
-        sta 18
-        lda 19
-        ora #$f0
-        sta 19
-        lda 19
-        ora #$0f
-        sta 19
-        lda 20
-        ora #$f0
-        sta 20
-        lda 20
-        ora #$0f
-        sta 20
-        lda 21
-        ora #$f0
-        sta 21
-        lda 21
-        ora #$0f
-        sta 21
-        lda 22
-        ora #$f0
-        sta 22
-        lda 22
-        ora #$0f
-        sta 22
-        lda 23
-        ora #$f0
-        sta 23
-        lda 23
-        ora #$0f
-        sta 23
-        lda 23
-        ora #$f0
-        sta 23
-        _spriteFooter
-        rtl
-
-
-spritePlayerEvenAngle70 entry
-        spriteGetDrawAddress
-        _spriteHeader
-
-        lda >drawAddress
-        clc
-        adc #-960
-        tcd
-
-        lda 21
-        ora #$0f
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-800
-        tcd
-
-        lda 21
-        ora #$f0
-        sta 21
-        lda 21
-        ora #$0f
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-640
-        tcd
-
-        lda 20
-        ora #$0f
-        sta 20
-        lda 20
-        ora #$f0
-        sta 20
-        lda 21
-        ora #$f0
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-480
-        tcd
-
-        lda 19
-        ora #$0f
-        sta 19
-        lda 21
-        ora #$f0
-        sta 21
-        lda 21
-        ora #$f0
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-320
-        tcd
-
-        lda 19
-        ora #$f0
-        sta 19
-        lda 21
-        ora #$f0
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-160
-        tcd
-
-        lda 18
-        ora #$0f
-        sta 18
-        lda 18
-        ora #$f0
-        sta 18
-        lda 21
-        ora #$0f
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #0
-        tcd
-
-        lda 17
-        ora #$0f
-        sta 17
-        lda 21
-        ora #$0f
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #160
-        tcd
-
-        lda 17
-        ora #$f0
-        sta 17
-        lda 22
-        ora #$f0
-        sta 22
-
-        lda >drawAddress
-        clc
-        adc #320
-        tcd
-
-        lda 16
-        ora #$0f
-        sta 16
-        lda 17
-        ora #$f0
-        sta 17
-        lda 17
-        ora #$0f
-        sta 17
-        lda 18
-        ora #$f0
-        sta 18
-        lda 18
-        ora #$0f
-        sta 18
-        lda 19
-        ora #$f0
-        sta 19
-        lda 19
-        ora #$0f
-        sta 19
-        lda 20
-        ora #$f0
-        sta 20
-        lda 20
-        ora #$0f
-        sta 20
-        lda 21
-        ora #$f0
-        sta 21
-        lda 21
-        ora #$0f
-        sta 21
-        lda 22
-        ora #$f0
-        sta 22
-        lda 22
-        ora #$0f
-        sta 22
-        lda 23
-        ora #$f0
-        sta 23
-        lda 22
-        ora #$0f
-        sta 22
-        _spriteFooter
-        rtl
-
-
-spritePlayerEraseAngle70 entry
-        spriteGetDrawAddress
-        _spriteHeader
-
-        lda >drawAddress
-        clc
-        adc #-960
-        tcd
-
-        lda #$00
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-800
-        tcd
-
-        lda #$00
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-640
-        tcd
-
-        lda #$00
-        sta 20
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-480
-        tcd
-
-        lda #$00
-        sta 19
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-320
-        tcd
-
-        lda #$00
-        sta 19
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-160
-        tcd
-
-        lda #$00
-        sta 18
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #0
-        tcd
-
-        lda #$00
-        sta 17
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #160
-        tcd
-
-        lda #$00
-        sta 17
-        sta 22
 
         lda >drawAddress
         clc
@@ -863,438 +1288,8 @@ spritePlayerEraseAngle70 entry
         sta 21
         sta 22
         sta 23
-        sta 22
         _spriteFooter
         rtl
-
-
-spritePlayerOddAngle80 entry
-        spriteGetDrawAddress
-        _spriteHeader
-
-        lda >drawAddress
-        clc
-        adc #-800
-        tcd
-
-        lda 22
-        ora #$0f
-        sta 22
-        lda 22
-        ora #$f0
-        sta 22
-
-        lda >drawAddress
-        clc
-        adc #-640
-        tcd
-
-        lda 22
-        ora #$f0
-        sta 22
-        lda 21
-        ora #$0f
-        sta 21
-        lda 21
-        ora #$0f
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-480
-        tcd
-
-        lda 21
-        ora #$f0
-        sta 21
-        lda 20
-        ora #$0f
-        sta 20
-        lda 21
-        ora #$0f
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-320
-        tcd
-
-        lda 20
-        ora #$f0
-        sta 20
-        lda 19
-        ora #$0f
-        sta 19
-        lda 22
-        ora #$f0
-        sta 22
-
-        lda >drawAddress
-        clc
-        adc #-160
-        tcd
-
-        lda 19
-        ora #$f0
-        sta 19
-        lda 18
-        ora #$0f
-        sta 18
-        lda 22
-        ora #$f0
-        sta 22
-
-        lda >drawAddress
-        clc
-        adc #0
-        tcd
-
-        lda 18
-        ora #$f0
-        sta 18
-        lda 17
-        ora #$0f
-        sta 17
-        lda 22
-        ora #$f0
-        sta 22
-
-        lda >drawAddress
-        clc
-        adc #160
-        tcd
-
-        lda 17
-        ora #$f0
-        sta 17
-        lda 17
-        ora #$f0
-        sta 17
-        lda 17
-        ora #$0f
-        sta 17
-        lda 18
-        ora #$f0
-        sta 18
-        lda 18
-        ora #$0f
-        sta 18
-        lda 19
-        ora #$f0
-        sta 19
-        lda 19
-        ora #$0f
-        sta 19
-        lda 20
-        ora #$f0
-        sta 20
-        lda 22
-        ora #$f0
-        sta 22
-
-        lda >drawAddress
-        clc
-        adc #320
-        tcd
-
-        lda 20
-        ora #$0f
-        sta 20
-        lda 21
-        ora #$f0
-        sta 21
-        lda 21
-        ora #$0f
-        sta 21
-        lda 22
-        ora #$f0
-        sta 22
-        lda 22
-        ora #$0f
-        sta 22
-        lda 23
-        ora #$f0
-        sta 23
-        lda 22
-        ora #$f0
-        sta 22
-
-        lda >drawAddress
-        clc
-        adc #480
-        tcd
-
-        lda 23
-        ora #$f0
-        sta 23
-        lda 22
-        ora #$0f
-        sta 22
-        _spriteFooter
-        rtl
-
-
-spritePlayerEvenAngle80 entry
-        spriteGetDrawAddress
-        _spriteHeader
-
-        lda >drawAddress
-        clc
-        adc #-800
-        tcd
-
-        lda 22
-        ora #$f0
-        sta 22
-        lda 21
-        ora #$0f
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-640
-        tcd
-
-        lda 21
-        ora #$0f
-        sta 21
-        lda 21
-        ora #$f0
-        sta 21
-        lda 21
-        ora #$f0
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-480
-        tcd
-
-        lda 20
-        ora #$0f
-        sta 20
-        lda 20
-        ora #$f0
-        sta 20
-        lda 21
-        ora #$f0
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-320
-        tcd
-
-        lda 19
-        ora #$0f
-        sta 19
-        lda 19
-        ora #$f0
-        sta 19
-        lda 21
-        ora #$0f
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-160
-        tcd
-
-        lda 18
-        ora #$0f
-        sta 18
-        lda 18
-        ora #$f0
-        sta 18
-        lda 21
-        ora #$0f
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #0
-        tcd
-
-        lda 17
-        ora #$0f
-        sta 17
-        lda 17
-        ora #$f0
-        sta 17
-        lda 21
-        ora #$0f
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #160
-        tcd
-
-        lda 16
-        ora #$0f
-        sta 16
-        lda 16
-        ora #$0f
-        sta 16
-        lda 17
-        ora #$f0
-        sta 17
-        lda 17
-        ora #$0f
-        sta 17
-        lda 18
-        ora #$f0
-        sta 18
-        lda 18
-        ora #$0f
-        sta 18
-        lda 19
-        ora #$f0
-        sta 19
-        lda 19
-        ora #$0f
-        sta 19
-        lda 21
-        ora #$0f
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #320
-        tcd
-
-        lda 20
-        ora #$f0
-        sta 20
-        lda 20
-        ora #$0f
-        sta 20
-        lda 21
-        ora #$f0
-        sta 21
-        lda 21
-        ora #$0f
-        sta 21
-        lda 22
-        ora #$f0
-        sta 22
-        lda 22
-        ora #$0f
-        sta 22
-        lda 21
-        ora #$0f
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #480
-        tcd
-
-        lda 22
-        ora #$0f
-        sta 22
-        lda 22
-        ora #$f0
-        sta 22
-        _spriteFooter
-        rtl
-
-
-spritePlayerEraseAngle80 entry
-        spriteGetDrawAddress
-        _spriteHeader
-
-        lda >drawAddress
-        clc
-        adc #-800
-        tcd
-
-        lda #$00
-        sta 22
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-640
-        tcd
-
-        lda #$00
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-480
-        tcd
-
-        lda #$00
-        sta 20
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-320
-        tcd
-
-        lda #$00
-        sta 19
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #-160
-        tcd
-
-        lda #$00
-        sta 18
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #0
-        tcd
-
-        lda #$00
-        sta 17
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #160
-        tcd
-
-        lda #$00
-        sta 16
-        sta 17
-        sta 18
-        sta 19
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #320
-        tcd
-
-        lda #$00
-        sta 20
-        sta 21
-        sta 22
-        sta 21
-
-        lda >drawAddress
-        clc
-        adc #480
-        tcd
-
-        lda #$00
-        sta 22
-        _spriteFooter
-        rtl
-
-
-
-
-
-
 
 
 

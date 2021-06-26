@@ -15,9 +15,6 @@ saucerSprites start
         using lineData
 
 
-
-; Saucers ---------------------------
-
 spriteLargeSaucerOdd entry
         spriteGetDrawAddress
         _spriteHeader
@@ -51,12 +48,18 @@ spriteLargeSaucerOdd entry
         lda 21
         ora #$0f
         sta 21
-        lda 178
+
+        lda >drawAddress
+        clc
+        adc #-1280
+        tcd
+
+        lda 18
         ora #$0f
-        sta 178
-        lda 182
+        sta 18
+        lda 22
         ora #$f0
-        sta 182
+        sta 22
 
         lda >drawAddress
         clc
@@ -69,12 +72,18 @@ spriteLargeSaucerOdd entry
         lda 22
         ora #$f0
         sta 22
-        lda 178
+
+        lda >drawAddress
+        clc
+        adc #-960
+        tcd
+
+        lda 18
         ora #$f0
-        sta 178
-        lda 182
+        sta 18
+        lda 22
         ora #$0f
-        sta 182
+        sta 22
 
         lda >drawAddress
         clc
@@ -87,57 +96,63 @@ spriteLargeSaucerOdd entry
         lda 22
         ora #$0f
         sta 22
-        lda 177
+
+        lda >drawAddress
+        clc
+        adc #-640
+        tcd
+
+        lda 17
         ora #$0f
-        sta 177
-        lda 177
+        sta 17
+        lda 17
         ora #$0f
-        sta 177
-        lda 183
+        sta 17
+        lda 23
         ora #$f0
-        sta 183
-        lda 183
+        sta 23
+        lda 23
         ora #$f0
-        sta 183
-        lda 177
+        sta 23
+        lda 17
         ora #$0f
-        sta 177
-        lda 177
+        sta 17
+        lda 17
         ora #$0f
-        sta 177
-        lda 178
+        sta 17
+        lda 18
         ora #$f0
-        sta 178
-        lda 178
+        sta 18
+        lda 18
         ora #$0f
-        sta 178
-        lda 179
+        sta 18
+        lda 19
         ora #$f0
-        sta 179
-        lda 179
+        sta 19
+        lda 19
         ora #$0f
-        sta 179
-        lda 180
+        sta 19
+        lda 20
         ora #$f0
-        sta 180
-        lda 180
+        sta 20
+        lda 20
         ora #$0f
-        sta 180
-        lda 181
+        sta 20
+        lda 21
         ora #$f0
-        sta 181
-        lda 181
+        sta 21
+        lda 21
         ora #$0f
-        sta 181
-        lda 182
+        sta 21
+        lda 22
         ora #$f0
-        sta 182
-        lda 182
+        sta 22
+        lda 22
         ora #$0f
-        sta 182
-        lda 183
+        sta 22
+        lda 23
         ora #$f0
-        sta 183
+        sta 23
 
         lda >drawAddress
         clc
@@ -162,15 +177,21 @@ spriteLargeSaucerOdd entry
         lda 17
         ora #$f0
         sta 17
-        lda 176
+
+        lda >drawAddress
+        clc
+        adc #-320
+        tcd
+
+        lda 16
         ora #$f0
-        sta 176
-        lda 184
+        sta 16
+        lda 24
         ora #$0f
-        sta 184
-        lda 176
+        sta 24
+        lda 16
         ora #$f0
-        sta 176
+        sta 16
 
         lda >drawAddress
         clc
@@ -195,96 +216,99 @@ spriteLargeSaucerOdd entry
         lda 15
         ora #$0f
         sta 15
-        lda 186
+
+        lda >drawAddress
+        clc
+        adc #0
+        tcd
+
+        lda 26
         ora #$f0
-        sta 186
-        lda 185
+        sta 26
+        lda 14
         ora #$0f
-        sta 185
-        lda 174
+        sta 14
+        lda 14
         ora #$0f
-        sta 174
-        lda 174
-        ora #$0f
-        sta 174
-        lda 186
+        sta 14
+        lda 26
         ora #$f0
-        sta 186
-        lda 186
+        sta 26
+        lda 26
         ora #$f0
-        sta 186
-        lda 185
+        sta 26
+        lda 25
         ora #$0f
-        sta 185
-        lda 185
+        sta 25
+        lda 25
         ora #$f0
-        sta 185
-        lda 184
+        sta 25
+        lda 24
         ora #$0f
-        sta 184
-        lda 184
+        sta 24
+        lda 24
         ora #$f0
-        sta 184
-        lda 183
+        sta 24
+        lda 23
         ora #$0f
-        sta 183
-        lda 183
+        sta 23
+        lda 23
         ora #$f0
-        sta 183
-        lda 182
+        sta 23
+        lda 22
         ora #$0f
-        sta 182
-        lda 182
+        sta 22
+        lda 22
         ora #$f0
-        sta 182
-        lda 181
+        sta 22
+        lda 21
         ora #$0f
-        sta 181
-        lda 181
+        sta 21
+        lda 21
         ora #$f0
-        sta 181
-        lda 180
+        sta 21
+        lda 20
         ora #$0f
-        sta 180
-        lda 180
+        sta 20
+        lda 20
         ora #$f0
-        sta 180
-        lda 179
+        sta 20
+        lda 19
         ora #$0f
-        sta 179
-        lda 179
+        sta 19
+        lda 19
         ora #$f0
-        sta 179
-        lda 178
+        sta 19
+        lda 18
         ora #$0f
-        sta 178
-        lda 178
+        sta 18
+        lda 18
         ora #$f0
-        sta 178
-        lda 177
+        sta 18
+        lda 17
         ora #$0f
-        sta 177
-        lda 177
+        sta 17
+        lda 17
         ora #$f0
-        sta 177
-        lda 176
+        sta 17
+        lda 16
         ora #$0f
-        sta 176
-        lda 176
+        sta 16
+        lda 16
         ora #$f0
-        sta 176
-        lda 175
+        sta 16
+        lda 15
         ora #$0f
-        sta 175
-        lda 175
+        sta 15
+        lda 15
         ora #$f0
-        sta 175
-        lda 174
+        sta 15
+        lda 14
         ora #$0f
-        sta 174
-        lda 174
+        sta 14
+        lda 14
         ora #$0f
-        sta 174
+        sta 14
 
         lda >drawAddress
         clc
@@ -292,33 +316,51 @@ spriteLargeSaucerOdd entry
         tcd
 
         lda 25
+        ora #$0f
+        sta 25
+        lda 25
         ora #$f0
         sta 25
+        lda 15
+        ora #$0f
+        sta 15
+        lda 15
+        ora #$f0
+        sta 15
+
+        lda >drawAddress
+        clc
+        adc #320
+        tcd
+
         lda 24
         ora #$0f
         sta 24
-        lda 15
-        ora #$0f
-        sta 15
-        lda 15
+        lda 16
         ora #$f0
-        sta 15
-        lda 184
-        ora #$f0
-        sta 184
-        lda 183
-        ora #$0f
-        sta 183
-        lda 176
-        ora #$0f
-        sta 176
-        lda 176
-        ora #$f0
-        sta 176
+        sta 16
 
         lda >drawAddress
         clc
         adc #480
+        tcd
+
+        lda 24
+        ora #$f0
+        sta 24
+        lda 23
+        ora #$0f
+        sta 23
+        lda 17
+        ora #$f0
+        sta 17
+        lda 16
+        ora #$0f
+        sta 16
+
+        lda >drawAddress
+        clc
+        adc #640
         tcd
 
         lda 23
@@ -362,9 +404,6 @@ spriteLargeSaucerOdd entry
         sta 17
         lda 17
         ora #$0f
-        sta 17
-        lda 17
-        ora #$f0
         sta 17
         _spriteFooter
         rtl
@@ -403,12 +442,18 @@ spriteLargeSaucerEven entry
         lda 21
         ora #$f0
         sta 21
-        lda 178
+
+        lda >drawAddress
+        clc
+        adc #-1280
+        tcd
+
+        lda 18
         ora #$f0
-        sta 178
-        lda 181
+        sta 18
+        lda 21
         ora #$0f
-        sta 181
+        sta 21
 
         lda >drawAddress
         clc
@@ -421,12 +466,18 @@ spriteLargeSaucerEven entry
         lda 21
         ora #$0f
         sta 21
-        lda 177
+
+        lda >drawAddress
+        clc
+        adc #-960
+        tcd
+
+        lda 17
         ora #$0f
-        sta 177
-        lda 182
+        sta 17
+        lda 22
         ora #$f0
-        sta 182
+        sta 22
 
         lda >drawAddress
         clc
@@ -439,57 +490,63 @@ spriteLargeSaucerEven entry
         lda 22
         ora #$f0
         sta 22
-        lda 177
+
+        lda >drawAddress
+        clc
+        adc #-640
+        tcd
+
+        lda 17
         ora #$f0
-        sta 177
-        lda 177
+        sta 17
+        lda 17
         ora #$f0
-        sta 177
-        lda 182
+        sta 17
+        lda 22
         ora #$0f
-        sta 182
-        lda 182
+        sta 22
+        lda 22
         ora #$0f
-        sta 182
-        lda 177
+        sta 22
+        lda 17
         ora #$f0
-        sta 177
-        lda 177
+        sta 17
+        lda 17
         ora #$f0
-        sta 177
-        lda 177
+        sta 17
+        lda 17
         ora #$0f
-        sta 177
-        lda 178
+        sta 17
+        lda 18
         ora #$f0
-        sta 178
-        lda 178
+        sta 18
+        lda 18
         ora #$0f
-        sta 178
-        lda 179
+        sta 18
+        lda 19
         ora #$f0
-        sta 179
-        lda 179
+        sta 19
+        lda 19
         ora #$0f
-        sta 179
-        lda 180
+        sta 19
+        lda 20
         ora #$f0
-        sta 180
-        lda 180
+        sta 20
+        lda 20
         ora #$0f
-        sta 180
-        lda 181
+        sta 20
+        lda 21
         ora #$f0
-        sta 181
-        lda 181
+        sta 21
+        lda 21
         ora #$0f
-        sta 181
-        lda 182
+        sta 21
+        lda 22
         ora #$f0
-        sta 182
-        lda 182
+        sta 22
+        lda 22
         ora #$0f
-        sta 182
+        sta 22
 
         lda >drawAddress
         clc
@@ -514,15 +571,21 @@ spriteLargeSaucerEven entry
         lda 16
         ora #$0f
         sta 16
-        lda 175
+
+        lda >drawAddress
+        clc
+        adc #-320
+        tcd
+
+        lda 15
         ora #$0f
-        sta 175
-        lda 184
+        sta 15
+        lda 24
         ora #$f0
-        sta 184
-        lda 175
+        sta 24
+        lda 15
         ora #$0f
-        sta 175
+        sta 15
 
         lda >drawAddress
         clc
@@ -547,135 +610,42 @@ spriteLargeSaucerEven entry
         lda 15
         ora #$f0
         sta 15
-        lda 185
-        ora #$0f
-        sta 185
-        lda 185
-        ora #$f0
-        sta 185
-        lda 174
-        ora #$f0
-        sta 174
-        lda 174
-        ora #$f0
-        sta 174
-        lda 185
-        ora #$0f
-        sta 185
-        lda 185
-        ora #$0f
-        sta 185
-        lda 185
-        ora #$f0
-        sta 185
-        lda 184
-        ora #$0f
-        sta 184
-        lda 184
-        ora #$f0
-        sta 184
-        lda 183
-        ora #$0f
-        sta 183
-        lda 183
-        ora #$f0
-        sta 183
-        lda 182
-        ora #$0f
-        sta 182
-        lda 182
-        ora #$f0
-        sta 182
-        lda 181
-        ora #$0f
-        sta 181
-        lda 181
-        ora #$f0
-        sta 181
-        lda 180
-        ora #$0f
-        sta 180
-        lda 180
-        ora #$f0
-        sta 180
-        lda 179
-        ora #$0f
-        sta 179
-        lda 179
-        ora #$f0
-        sta 179
-        lda 178
-        ora #$0f
-        sta 178
-        lda 178
-        ora #$f0
-        sta 178
-        lda 177
-        ora #$0f
-        sta 177
-        lda 177
-        ora #$f0
-        sta 177
-        lda 176
-        ora #$0f
-        sta 176
-        lda 176
-        ora #$f0
-        sta 176
-        lda 175
-        ora #$0f
-        sta 175
-        lda 175
-        ora #$f0
-        sta 175
-        lda 174
-        ora #$0f
-        sta 174
-        lda 174
-        ora #$f0
-        sta 174
-        lda 174
-        ora #$f0
-        sta 174
 
         lda >drawAddress
         clc
-        adc #160
+        adc #0
         tcd
 
-        lda 24
+        lda 25
         ora #$0f
-        sta 24
-        lda 24
-        ora #$f0
-        sta 24
-        lda 15
-        ora #$f0
-        sta 15
+        sta 25
         lda 14
-        ora #$0f
+        ora #$f0
         sta 14
-        lda 183
-        ora #$0f
-        sta 183
-        lda 183
+        lda 14
         ora #$f0
-        sta 183
-        lda 176
+        sta 14
+        lda 25
+        ora #$0f
+        sta 25
+        lda 25
+        ora #$0f
+        sta 25
+        lda 25
         ora #$f0
-        sta 176
-        lda 175
+        sta 25
+        lda 24
         ora #$0f
-        sta 175
-
-        lda >drawAddress
-        clc
-        adc #480
-        tcd
-
-        lda 22
+        sta 24
+        lda 24
+        ora #$f0
+        sta 24
+        lda 23
         ora #$0f
-        sta 22
+        sta 23
+        lda 23
+        ora #$f0
+        sta 23
         lda 22
         ora #$0f
         sta 22
@@ -708,9 +678,6 @@ spriteLargeSaucerEven entry
         sta 18
         lda 17
         ora #$0f
-        sta 17
-        lda 17
-        ora #$f0
         sta 17
         lda 17
         ora #$f0
@@ -718,6 +685,120 @@ spriteLargeSaucerEven entry
         lda 16
         ora #$0f
         sta 16
+        lda 16
+        ora #$f0
+        sta 16
+        lda 15
+        ora #$0f
+        sta 15
+        lda 15
+        ora #$f0
+        sta 15
+        lda 14
+        ora #$0f
+        sta 14
+        lda 14
+        ora #$f0
+        sta 14
+        lda 14
+        ora #$f0
+        sta 14
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda 25
+        ora #$f0
+        sta 25
+        lda 24
+        ora #$0f
+        sta 24
+        lda 15
+        ora #$f0
+        sta 15
+        lda 14
+        ora #$0f
+        sta 14
+
+        lda >drawAddress
+        clc
+        adc #320
+        tcd
+
+        lda 24
+        ora #$f0
+        sta 24
+        lda 15
+        ora #$0f
+        sta 15
+
+        lda >drawAddress
+        clc
+        adc #480
+        tcd
+
+        lda 23
+        ora #$0f
+        sta 23
+        lda 23
+        ora #$f0
+        sta 23
+        lda 16
+        ora #$0f
+        sta 16
+        lda 16
+        ora #$f0
+        sta 16
+
+        lda >drawAddress
+        clc
+        adc #640
+        tcd
+
+        lda 22
+        ora #$0f
+        sta 22
+        lda 22
+        ora #$0f
+        sta 22
+        lda 22
+        ora #$f0
+        sta 22
+        lda 21
+        ora #$0f
+        sta 21
+        lda 21
+        ora #$f0
+        sta 21
+        lda 20
+        ora #$0f
+        sta 20
+        lda 20
+        ora #$f0
+        sta 20
+        lda 19
+        ora #$0f
+        sta 19
+        lda 19
+        ora #$f0
+        sta 19
+        lda 18
+        ora #$0f
+        sta 18
+        lda 18
+        ora #$f0
+        sta 18
+        lda 17
+        ora #$0f
+        sta 17
+        lda 17
+        ora #$f0
+        sta 17
+        lda 17
+        ora #$f0
+        sta 17
         _spriteFooter
         rtl
 
@@ -736,8 +817,15 @@ spriteLargeSaucerErase entry
         sta 19
         sta 20
         sta 21
-        sta 178
-        sta 181
+
+        lda >drawAddress
+        clc
+        adc #-1280
+        tcd
+
+        lda #$00
+        sta 18
+        sta 21
 
         lda >drawAddress
         clc
@@ -747,8 +835,15 @@ spriteLargeSaucerErase entry
         lda #$00
         sta 18
         sta 21
-        sta 177
-        sta 182
+
+        lda >drawAddress
+        clc
+        adc #-960
+        tcd
+
+        lda #$00
+        sta 17
+        sta 22
 
         lda >drawAddress
         clc
@@ -758,14 +853,21 @@ spriteLargeSaucerErase entry
         lda #$00
         sta 17
         sta 22
-        sta 177
-        sta 182
-        sta 177
-        sta 178
-        sta 179
-        sta 180
-        sta 181
-        sta 182
+
+        lda >drawAddress
+        clc
+        adc #-640
+        tcd
+
+        lda #$00
+        sta 17
+        sta 22
+        sta 17
+        sta 18
+        sta 19
+        sta 20
+        sta 21
+        sta 22
 
         lda >drawAddress
         clc
@@ -776,9 +878,16 @@ spriteLargeSaucerErase entry
         sta 16
         sta 23
         sta 16
-        sta 175
-        sta 184
-        sta 175
+
+        lda >drawAddress
+        clc
+        adc #-320
+        tcd
+
+        lda #$00
+        sta 15
+        sta 24
+        sta 15
 
         lda >drawAddress
         clc
@@ -792,20 +901,27 @@ spriteLargeSaucerErase entry
         sta 25
         sta 14
         sta 15
-        sta 185
-        sta 174
-        sta 185
-        sta 184
-        sta 183
-        sta 182
-        sta 181
-        sta 180
-        sta 179
-        sta 178
-        sta 177
-        sta 176
-        sta 175
-        sta 174
+
+        lda >drawAddress
+        clc
+        adc #0
+        tcd
+
+        lda #$00
+        sta 25
+        sta 14
+        sta 25
+        sta 24
+        sta 23
+        sta 22
+        sta 21
+        sta 20
+        sta 19
+        sta 18
+        sta 17
+        sta 16
+        sta 15
+        sta 14
 
         lda >drawAddress
         clc
@@ -813,16 +929,32 @@ spriteLargeSaucerErase entry
         tcd
 
         lda #$00
+        sta 25
         sta 24
         sta 15
         sta 14
-        sta 183
-        sta 176
-        sta 175
+
+        lda >drawAddress
+        clc
+        adc #320
+        tcd
+
+        lda #$00
+        sta 24
+        sta 15
 
         lda >drawAddress
         clc
         adc #480
+        tcd
+
+        lda #$00
+        sta 23
+        sta 16
+
+        lda >drawAddress
+        clc
+        adc #640
         tcd
 
         lda #$00
@@ -832,7 +964,6 @@ spriteLargeSaucerErase entry
         sta 19
         sta 18
         sta 17
-        sta 16
         _spriteFooter
         rtl
 
@@ -843,7 +974,7 @@ spriteSmallSaucerOdd entry
 
         lda >drawAddress
         clc
-        adc #-640
+        adc #-800
         tcd
 
         lda 19
@@ -864,12 +995,30 @@ spriteSmallSaucerOdd entry
         lda 21
         ora #$f0
         sta 21
-        lda 179
+
+        lda >drawAddress
+        clc
+        adc #-640
+        tcd
+
+        lda 19
+        ora #$0f
+        sta 19
+        lda 21
         ora #$f0
-        sta 179
-        lda 181
+        sta 21
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda 19
         ora #$f0
-        sta 181
+        sta 19
+        lda 21
+        ora #$0f
+        sta 21
 
         lda >drawAddress
         clc
@@ -909,24 +1058,30 @@ spriteSmallSaucerOdd entry
         lda 21
         ora #$0f
         sta 21
-        lda 178
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda 18
         ora #$f0
-        sta 178
-        lda 178
+        sta 18
+        lda 18
         ora #$0f
-        sta 178
-        lda 182
+        sta 18
+        lda 22
         ora #$f0
-        sta 182
-        lda 182
+        sta 22
+        lda 22
         ora #$0f
-        sta 182
-        lda 178
+        sta 22
+        lda 18
         ora #$f0
-        sta 178
-        lda 178
+        sta 18
+        lda 18
         ora #$0f
-        sta 178
+        sta 18
 
         lda >drawAddress
         clc
@@ -936,12 +1091,6 @@ spriteSmallSaucerOdd entry
         lda 23
         ora #$f0
         sta 23
-        lda 22
-        ora #$0f
-        sta 22
-        lda 18
-        ora #$f0
-        sta 18
         lda 17
         ora #$0f
         sta 17
@@ -990,36 +1139,54 @@ spriteSmallSaucerOdd entry
         lda 17
         ora #$0f
         sta 17
-        lda 182
-        ora #$f0
-        sta 182
-        lda 181
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda 22
         ora #$0f
-        sta 181
-        lda 181
-        ora #$0f
-        sta 181
-        lda 181
+        sta 22
+        lda 22
         ora #$f0
-        sta 181
-        lda 180
+        sta 22
+        lda 18
         ora #$0f
-        sta 180
-        lda 180
+        sta 18
+        lda 18
         ora #$f0
-        sta 180
-        lda 179
+        sta 18
+
+        lda >drawAddress
+        clc
+        adc #320
+        tcd
+
+        lda 21
         ora #$0f
-        sta 179
-        lda 179
-        ora #$f0
-        sta 179
-        lda 179
-        ora #$f0
-        sta 179
-        lda 178
+        sta 21
+        lda 21
         ora #$0f
-        sta 178
+        sta 21
+        lda 21
+        ora #$f0
+        sta 21
+        lda 20
+        ora #$0f
+        sta 20
+        lda 20
+        ora #$f0
+        sta 20
+        lda 19
+        ora #$0f
+        sta 19
+        lda 19
+        ora #$f0
+        sta 19
+        lda 19
+        ora #$f0
+        sta 19
         _spriteFooter
         rtl
 
@@ -1030,7 +1197,7 @@ spriteSmallSaucerEven entry
 
         lda >drawAddress
         clc
-        adc #-640
+        adc #-800
         tcd
 
         lda 19
@@ -1051,12 +1218,30 @@ spriteSmallSaucerEven entry
         lda 20
         ora #$0f
         sta 20
-        lda 178
+
+        lda >drawAddress
+        clc
+        adc #-640
+        tcd
+
+        lda 19
+        ora #$f0
+        sta 19
+        lda 20
         ora #$0f
-        sta 178
-        lda 180
+        sta 20
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda 18
         ora #$0f
-        sta 180
+        sta 18
+        lda 21
+        ora #$f0
+        sta 21
 
         lda >drawAddress
         clc
@@ -1096,24 +1281,30 @@ spriteSmallSaucerEven entry
         lda 21
         ora #$f0
         sta 21
-        lda 177
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda 17
         ora #$0f
-        sta 177
-        lda 178
+        sta 17
+        lda 18
         ora #$f0
-        sta 178
-        lda 181
+        sta 18
+        lda 21
         ora #$0f
-        sta 181
-        lda 182
+        sta 21
+        lda 22
         ora #$f0
-        sta 182
-        lda 177
+        sta 22
+        lda 17
         ora #$0f
-        sta 177
-        lda 178
+        sta 17
+        lda 18
         ora #$f0
-        sta 178
+        sta 18
 
         lda >drawAddress
         clc
@@ -1123,12 +1314,6 @@ spriteSmallSaucerEven entry
         lda 22
         ora #$0f
         sta 22
-        lda 22
-        ora #$f0
-        sta 22
-        lda 17
-        ora #$0f
-        sta 17
         lda 17
         ora #$f0
         sta 17
@@ -1177,36 +1362,54 @@ spriteSmallSaucerEven entry
         lda 17
         ora #$f0
         sta 17
-        lda 181
-        ora #$0f
-        sta 181
-        lda 181
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda 22
         ora #$f0
-        sta 181
-        lda 181
-        ora #$f0
-        sta 181
-        lda 180
+        sta 22
+        lda 21
         ora #$0f
-        sta 180
-        lda 180
+        sta 21
+        lda 18
         ora #$f0
-        sta 180
-        lda 179
+        sta 18
+        lda 17
         ora #$0f
-        sta 179
-        lda 179
+        sta 17
+
+        lda >drawAddress
+        clc
+        adc #320
+        tcd
+
+        lda 21
         ora #$f0
-        sta 179
-        lda 178
-        ora #$0f
-        sta 178
-        lda 178
-        ora #$0f
-        sta 178
-        lda 178
+        sta 21
+        lda 21
         ora #$f0
-        sta 178
+        sta 21
+        lda 20
+        ora #$0f
+        sta 20
+        lda 20
+        ora #$f0
+        sta 20
+        lda 19
+        ora #$0f
+        sta 19
+        lda 19
+        ora #$f0
+        sta 19
+        lda 18
+        ora #$0f
+        sta 18
+        lda 18
+        ora #$0f
+        sta 18
         _spriteFooter
         rtl
 
@@ -1217,14 +1420,30 @@ spriteSmallSaucerErase entry
 
         lda >drawAddress
         clc
+        adc #-800
+        tcd
+
+        lda #$00
+        sta 19
+        sta 20
+
+        lda >drawAddress
+        clc
         adc #-640
         tcd
 
         lda #$00
         sta 19
         sta 20
-        sta 178
-        sta 180
+
+        lda >drawAddress
+        clc
+        adc #-480
+        tcd
+
+        lda #$00
+        sta 18
+        sta 21
 
         lda >drawAddress
         clc
@@ -1238,12 +1457,19 @@ spriteSmallSaucerErase entry
         sta 19
         sta 20
         sta 21
-        sta 177
-        sta 178
-        sta 181
-        sta 182
-        sta 177
-        sta 178
+
+        lda >drawAddress
+        clc
+        adc #-160
+        tcd
+
+        lda #$00
+        sta 17
+        sta 18
+        sta 21
+        sta 22
+        sta 17
+        sta 18
 
         lda >drawAddress
         clc
@@ -1259,10 +1485,28 @@ spriteSmallSaucerErase entry
         sta 19
         sta 18
         sta 17
-        sta 181
-        sta 180
-        sta 179
-        sta 178
+
+        lda >drawAddress
+        clc
+        adc #160
+        tcd
+
+        lda #$00
+        sta 22
+        sta 21
+        sta 18
+        sta 17
+
+        lda >drawAddress
+        clc
+        adc #320
+        tcd
+
+        lda #$00
+        sta 21
+        sta 20
+        sta 19
+        sta 18
         _spriteFooter
         rtl
 

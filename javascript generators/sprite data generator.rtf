@@ -1,0 +1,918 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww19600\viewh14160\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+let strAll = ''\
+\
+let scanlines = \{\}\
+let nibbles = \{\}\
+\
+\
+let i\
+let j\
+let a\
+let lineCounter\
+\
+let fromx, fromy\
+let tox, toy\
+\
+\
+let ship = [\
+	-4,-5,\
+  0,7,\
+  4,-5,\
+  2,-3,\
+  -2,-3,\
+  -4,-5\
+]\
+\
+let thrust = [\
+  2,-4,\
+  0,-7,\
+  -2,-4\
+]\
+\
+let rock1 = [\
+	18, 66,\
+  43, 66,\
+  67, 51,\
+  59, 35,\
+  67, 18,\
+  51, 0,\
+  34, 17,\
+  18, 0,\
+  0, 18,\
+  0, 51,\
+  18, 66\
+]\
+\
+let rock2 = [\
+	25, 15,\
+  17, 0,\
+  41, 0,\
+  67, 15,\
+  67, 25,\
+  42, 31,\
+  67, 48,\
+  49, 65,\
+  42, 57,\
+  17, 66,\
+  0, 42,\
+  0, 15,\
+  25, 15\
+]\
+\
+let rock3 = [\
+	49, 25,\
+ 	66, 42,\
+  49, 65,\
+  24, 58,\
+  15, 65,\
+  0, 50,\
+  6, 34,\
+  0, 17,\
+  16, 0,\
+  33, 7,\
+  49, 0,\
+  66, 16,\
+  49, 25\
+]\
+\
+let ufo = [\
+	13, 0,\
+  6, 4,\
+  -6, 4,\
+  -13, 0,\
+  -6,-4,\
+  -3,-9,\
+  3,-9,\
+  6,-4,\
+  13,0,\
+  -13,0,\
+  -6,-4,\
+  6,-4\
+]\
+\
+\
+// center the rocks\
+\{\
+  let xmax = -9999\
+  let xmin = 9999\
+  let ymax = -9999\
+  let ymin = 9999\
+\
+  for (let i=0; i<rock1.length; i+=2) \{\
+    if (rock1[i] > xmax)\
+      xmax = rock1[i];\
+    if (rock1[i] < xmin)\
+      xmin = rock1[i];\
+\
+    if (rock1[i+1] > ymax)\
+      ymax = rock1[i+1];\
+    if (rock1[i+1] < ymin)\
+      ymin = rock1[i+1];\
+  \}\
+  for (let i=0; i<rock1.length; i+=2) \{\
+    rock1[i] -= xmax/2;\
+    rock1[i+1] -= ymax/2;\
+  \}  \
+\}\
+\{\
+  let xmax = -9999\
+  let xmin = 9999\
+  let ymax = -9999\
+  let ymin = 9999\
+\
+  for (let i=0; i<rock2.length; i+=2) \{\
+    if (rock2[i] > xmax)\
+      xmax = rock2[i];\
+    if (rock2[i] < xmin)\
+      xmin = rock2[i];\
+\
+    if (rock2[i+1] > ymax)\
+      ymax = rock2[i+1];\
+    if (rock2[i+1] < ymin)\
+      ymin = rock2[i+1];\
+  \}\
+  for (let i=0; i<rock2.length; i+=2) \{\
+    rock2[i] -= xmax/2;\
+    rock2[i+1] -= ymax/2;\
+  \}  \
+\}\
+\{\
+  let xmax = -9999\
+  let xmin = 9999\
+  let ymax = -9999\
+  let ymin = 9999\
+\
+  for (let i=0; i<rock3.length; i+=2) \{\
+    if (rock3[i] > xmax)\
+      xmax = rock3[i];\
+    if (rock3[i] < xmin)\
+      xmin = rock3[i];\
+\
+    if (rock3[i+1] > ymax)\
+      ymax = rock3[i+1];\
+    if (rock3[i+1] < ymin)\
+      ymin = rock3[i+1];\
+  \}\
+  for (let i=0; i<rock3.length; i+=2) \{\
+    rock3[i] -= xmax/2;\
+    rock3[i+1] -= ymax/2;\
+  \}  \
+\}\
+\
+/*\
+	strAll += '; Rocks ---------------------------\\n'\
+  \
+// Large rocks\
+  \
+  // Large rock 1\
+  \{\
+    fromx = Math.floor(rock1[0]*0.45) + 1\
+    fromy = Math.floor(rock1[1]*0.45)\
+\
+    for (i=2; i<rock1.length; i+=2) \{\
+\
+      tox = Math.floor(rock1[i] *0.45) + 1\
+      toy = Math.floor(rock1[i+1] *0.45)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteLargeRock1Odd', false)\
+\
+    scanlines = \{\}\
+    nibbles = \{\}\
+\
+    fromx = Math.floor(rock1[0]*0.45)\
+    fromy = Math.floor(rock1[1]*0.45)\
+\
+    for (i=2; i<rock1.length; i+=2) \{\
+\
+      tox = Math.floor(rock1[i] *0.45)\
+      toy = Math.floor(rock1[i+1] *0.45)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteLargeRock1Even', false)\
+    writeCodeblock('spriteLargeRock1Erase', true)\
+    \
+    scanlines = \{\}\
+    nibbles = \{\}\
+  \}\
+  \
+  // Large rock 2\
+  \{\
+    fromx = Math.floor(rock2[0]*0.45) + 1\
+    fromy = Math.floor(rock2[1]*0.45)\
+\
+    for (i=2; i<rock2.length; i+=2) \{\
+\
+      tox = Math.floor(rock2[i] *0.45) + 1\
+      toy = Math.floor(rock2[i+1] *0.45)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteLargeRock2Odd', false)\
+\
+    scanlines = \{\}\
+    nibbles = \{\}\
+\
+    fromx = Math.floor(rock2[0]*0.45)\
+    fromy = Math.floor(rock2[1]*0.45)\
+\
+    for (i=2; i<rock2.length; i+=2) \{\
+\
+      tox = Math.floor(rock2[i] *0.45)\
+      toy = Math.floor(rock2[i+1] *0.45)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteLargeRock2Even', false)\
+    writeCodeblock('spriteLargeRock2Erase', true)\
+    \
+    scanlines = \{\}\
+    nibbles = \{\}\
+  \}\
+\
+    // Large rock 3\
+  \{\
+    fromx = Math.floor(rock3[0]*0.45) + 1\
+    fromy = Math.floor(rock3[1]*0.45)\
+\
+    for (i=2; i<rock3.length; i+=2) \{\
+\
+      tox = Math.floor(rock3[i] *0.45) + 1\
+      toy = Math.floor(rock3[i+1] *0.45)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteLargeRock3Odd', false)\
+\
+    scanlines = \{\}\
+    nibbles = \{\}\
+\
+    fromx = Math.floor(rock3[0]*0.45)\
+    fromy = Math.floor(rock3[1]*0.45)\
+\
+    for (i=2; i<rock3.length; i+=2) \{\
+\
+      tox = Math.floor(rock3[i] *0.45)\
+      toy = Math.floor(rock3[i+1] *0.45)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteLargeRock3Even', false)\
+    writeCodeblock('spriteLargeRock3Erase', true)\
+    \
+    scanlines = \{\}\
+    nibbles = \{\}\
+  \}\
+\
+\
+\
+\
+// Medium rocks\
+\
+  // Medium rock 1\
+  \{\
+    fromx = Math.floor(rock1[0]*0.225) + 1\
+    fromy = Math.floor(rock1[1]*0.225)\
+\
+    for (i=2; i<rock1.length; i+=2) \{\
+\
+      tox = Math.floor(rock1[i] *0.225) + 1\
+      toy = Math.floor(rock1[i+1] *0.225)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteMediumRock1Odd', false)\
+\
+    scanlines = \{\}\
+    nibbles = \{\}\
+\
+    fromx = Math.floor(rock1[0]*0.225)\
+    fromy = Math.floor(rock1[1]*0.225)\
+\
+    for (i=2; i<rock1.length; i+=2) \{\
+\
+      tox = Math.floor(rock1[i] *0.225)\
+      toy = Math.floor(rock1[i+1] *0.225)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteMediumRock1Even', false)\
+    writeCodeblock('spriteMediumRock1Erase', true)\
+    \
+    scanlines = \{\}\
+    nibbles = \{\}\
+  \}\
+  \
+  // Medium rock 2\
+  \{\
+    fromx = Math.floor(rock2[0]*0.225) + 1\
+    fromy = Math.floor(rock2[1]*0.225)\
+\
+    for (i=2; i<rock2.length; i+=2) \{\
+\
+      tox = Math.floor(rock2[i] *0.225) + 1\
+      toy = Math.floor(rock2[i+1] *0.225)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteMediumRock2Odd', false)\
+\
+    scanlines = \{\}\
+    nibbles = \{\}\
+\
+    fromx = Math.floor(rock2[0]*0.225)\
+    fromy = Math.floor(rock2[1]*0.225)\
+\
+    for (i=2; i<rock2.length; i+=2) \{\
+\
+      tox = Math.floor(rock2[i] *0.225)\
+      toy = Math.floor(rock2[i+1] *0.225)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteMediumRock2Even', false)\
+    writeCodeblock('spriteMediumRock2Erase', true)\
+    \
+    scanlines = \{\}\
+    nibbles = \{\}\
+  \}\
+\
+    // Medium rock 3\
+  \{\
+    fromx = Math.floor(rock3[0]*0.225) + 1\
+    fromy = Math.floor(rock3[1]*0.225)\
+\
+    for (i=2; i<rock3.length; i+=2) \{\
+\
+      tox = Math.floor(rock3[i] *0.225) + 1\
+      toy = Math.floor(rock3[i+1] *0.225)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteMediumRock3Odd', false)\
+\
+    scanlines = \{\}\
+    nibbles = \{\}\
+\
+    fromx = Math.floor(rock3[0]*0.225)\
+    fromy = Math.floor(rock3[1]*0.225)\
+\
+    for (i=2; i<rock3.length; i+=2) \{\
+\
+      tox = Math.floor(rock3[i] *0.225)\
+      toy = Math.floor(rock3[i+1] *0.225)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteMediumRock3Even', false)\
+    writeCodeblock('spriteMediumRock3Erase', true)\
+    \
+    scanlines = \{\}\
+    nibbles = \{\}\
+  \}\
+\
+\
+// Small rocks\
+\
+  // Small rock 1\
+  \{\
+    fromx = Math.floor(rock1[0]*0.112) + 1\
+    fromy = Math.floor(rock1[1]*0.112)\
+\
+    for (i=2; i<rock1.length; i+=2) \{\
+\
+      tox = Math.floor(rock1[i] *0.112) + 1\
+      toy = Math.floor(rock1[i+1] *0.112)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteSmallRock1Odd', false)\
+\
+    scanlines = \{\}\
+    nibbles = \{\}\
+\
+    fromx = Math.floor(rock1[0]*0.112)\
+    fromy = Math.floor(rock1[1]*0.112)\
+\
+    for (i=2; i<rock1.length; i+=2) \{\
+\
+      tox = Math.floor(rock1[i] *0.112)\
+      toy = Math.floor(rock1[i+1] *0.112)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteSmallRock1Even', false)\
+    writeCodeblock('spriteSmallRock1Erase', true)\
+    \
+    scanlines = \{\}\
+    nibbles = \{\}\
+  \}\
+  \
+  // Small rock 2\
+  \{\
+    fromx = Math.floor(rock2[0]*0.112) + 1\
+    fromy = Math.floor(rock2[1]*0.112)\
+\
+    for (i=2; i<rock2.length; i+=2) \{\
+\
+      tox = Math.floor(rock2[i] *0.112) + 1\
+      toy = Math.floor(rock2[i+1] *0.112)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteSmallRock2Odd', false)\
+\
+    scanlines = \{\}\
+    nibbles = \{\}\
+\
+    fromx = Math.floor(rock2[0]*0.112)\
+    fromy = Math.floor(rock2[1]*0.112)\
+\
+    for (i=2; i<rock2.length; i+=2) \{\
+\
+      tox = Math.floor(rock2[i] *0.112)\
+      toy = Math.floor(rock2[i+1] *0.112)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteSmallRock2Even', false)\
+    writeCodeblock('spriteSmallRock2Erase', true)\
+    \
+    scanlines = \{\}\
+    nibbles = \{\}\
+  \}\
+\
+    // Small rock 3\
+  \{\
+    fromx = Math.floor(rock3[0]*0.112) + 1\
+    fromy = Math.floor(rock3[1]*0.112)\
+\
+    for (i=2; i<rock3.length; i+=2) \{\
+\
+      tox = Math.floor(rock3[i] *0.112) + 1\
+      toy = Math.floor(rock3[i+1] *0.112)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteSmallRock3Odd', false)\
+\
+    scanlines = \{\}\
+    nibbles = \{\}\
+\
+    fromx = Math.floor(rock3[0]*0.112)\
+    fromy = Math.floor(rock3[1]*0.112)\
+\
+    for (i=2; i<rock3.length; i+=2) \{\
+\
+      tox = Math.floor(rock3[i] *0.112)\
+      toy = Math.floor(rock3[i+1] *0.112)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteSmallRock3Even', false)\
+    writeCodeblock('spriteSmallRock3Erase', true)\
+    \
+    scanlines = \{\}\
+    nibbles = \{\}\
+  \}\
+\
+	strAll += '; Saucers ---------------------------\\n'\
+\
+  // Large saucer\
+  \{\
+    fromx = Math.floor(ufo[0]*0.9) + 1\
+    fromy = Math.floor(ufo[1]*0.9)\
+\
+    for (i=2; i<ufo.length; i+=2) \{\
+\
+      tox = Math.floor(ufo[i] *0.9) + 1\
+      toy = Math.floor(ufo[i+1] *0.9)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteLargeSaucerOdd', false)\
+\
+    scanlines = \{\}\
+    nibbles = \{\}\
+\
+    fromx = Math.floor(ufo[0]*0.9)\
+    fromy = Math.floor(ufo[1]*0.9)\
+\
+    for (i=2; i<rock3.length; i+=2) \{\
+\
+      tox = Math.floor(ufo[i] *0.9)\
+      toy = Math.floor(ufo[i+1] *0.9)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteLargeSaucerEven', false)\
+    writeCodeblock('spriteLargeSaucerErase', true)\
+    \
+    scanlines = \{\}\
+    nibbles = \{\}\
+  \}\
+\
+\
+  // Small saucer\
+  \{\
+    fromx = Math.floor(ufo[0]*0.4) + 1\
+    fromy = Math.floor(ufo[1]*0.4)\
+\
+    for (i=2; i<ufo.length; i+=2) \{\
+\
+      tox = Math.floor(ufo[i] *0.4) + 1\
+      toy = Math.floor(ufo[i+1] *0.4)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteSmallSaucerOdd', false)\
+\
+    scanlines = \{\}\
+    nibbles = \{\}\
+\
+    fromx = Math.floor(ufo[0]*0.4)\
+    fromy = Math.floor(ufo[1]*0.4)\
+\
+    for (i=2; i<rock3.length; i+=2) \{\
+\
+      tox = Math.floor(ufo[i] *0.4)\
+      toy = Math.floor(ufo[i+1] *0.4)\
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock('spriteSmallSaucerEven', false)\
+    writeCodeblock('spriteSmallSaucerErase', true)\
+    \
+    scanlines = \{\}\
+    nibbles = \{\}\
+  \}\
+*/\
+	strAll += '; Player ship ---------------------------\\n'\
+\
+\
+	let angleCounter = 0\
+	for (a=0, angleCounter=0; a<360; a+=10, angleCounter++)\
+  \{\
+  	let r\
+    \
+    if (angleCounter >= 3) \{\
+    \
+			strAll += '\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n'\
+      strAll += '*****************************************************\\n'\
+      strAll += '*****************************************************\\n'\
+      strAll += '*****************************************************\\n'\
+      strAll += '*****************************************************\\n'\
+      strAll += '*****************************************************\\n'\
+      strAll += '*****************************************************\\n'\
+      strAll += '*****************************************************\\n'\
+      strAll += '*****************************************************\\n'\
+      strAll += '*****************************************************\\n'\
+      strAll += '*****************************************************\\n'\
+      strAll += '*****************************************************\\n'\
+      strAll += '*****************************************************\\n'\
+			strAll += '\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n'\
+\
+      angleCounter = 0\
+    \
+		\}\
+  \
+    fromx = (ship[0])\
+    fromy = (ship[1])\
+    \
+    r = rotatePoint(fromx, fromy, a)\
+    fromx = r.x + 1\
+    fromy = r.y\
+\
+    for (i=2; i<ship.length; i+=2) \{\
+\
+      tox = (ship[i])\
+      toy = (ship[i+1])\
+      \
+      r = rotatePoint(tox, toy, a)\
+      tox = r.x + 1\
+      toy = r.y      \
+\
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock(`spritePlayerOddAngle$\{a\}`, false)\
+\
+//	console.log(scanlines)\
+//  console.log(nibbles)\
+\
+    scanlines = \{\}\
+    nibbles = \{\}\
+\
+    fromx = (ship[0])\
+    fromy = (ship[1])\
+    \
+    r = rotatePoint(fromx, fromy, a)\
+    fromx = r.x\
+    fromy = r.y    \
+\
+    for (i=2; i<ship.length; i+=2) \{\
+\
+      tox = (ship[i])\
+      toy = (ship[i+1])\
+\
+      r = rotatePoint(tox, toy, a)\
+      tox = r.x\
+      toy = r.y      \
+      \
+      drawLine(fromx, fromy, tox, toy)\
+\
+      fromx = tox\
+      fromy = toy\
+    \}\
+\
+    writeCodeblock(`spritePlayerEvenAngle$\{a\}`, false)\
+    writeCodeblock(`spritePlayerEraseAngle$\{a\}`, true)\
+    \
+    scanlines = \{\}\
+    nibbles = \{\}\
+  \}\
+\
+\
+\
+\
+\
+console.log(strAll)\
+\
+\
+function rotatePoint(x,y, angle) \{\
+	let rotatedX = x * Math.cos(angle * 0.0174532925) - y * Math.sin(angle * 0.0174532925)\
+  let rotatedY = x * Math.sin(angle * 0.0174532925) + y * Math.cos(angle * 0.0174532925)\
+  let ret = \{ x: rotatedX, y: rotatedY \}\
+  return ret\
+\}\
+\
+\
+function drawLine(x1a, y1a, x2a, y2a)\
+\{\
+	let x1 = x1a\
+  let y1 = y1a\
+  let x2 = x2a\
+  let y2 = y2a\
+\
+    \{\
+        let dX = Math.abs(x2-x1);\
+        let dY = Math.abs(y2-y1);\
+        let Xincr, Yincr;\
+        if (x1 > x2) \{ Xincr=-1; \} else \{ Xincr=1; \} // which direction in X?\
+        if (y1 > y2) \{ Yincr=-1; \} else \{ Yincr=1; \} // which direction in Y?\
+        \
+        if (dX >= dY) \{                // if X is the independent variable\
+            let dPr  = dY<<1;           // amount to increment decision if right is chosen\
+            let dPru = dPr - (dX<<1);   // amount to increment decision if up is chosen\
+            let P    = dPr - dX;        // decision variable start value\
+            for (; dX>=0; dX--) \{       // process each point in the line one at a time\
+              let rx = Math.floor(x1)\
+              let ry = Math.floor(y1) \
+                if (rx & 1) \{\
+                	let addr = Math.floor((ry * 160) + (x1/2))\
+                  if (scanlines[ry] === undefined) \{ scanlines[ry] = [] \}\
+                  scanlines[ry].push(addr)\
+                  if (nibbles[ry] === undefined) \{ nibbles[ry] = [] \}\
+                  nibbles[ry].push(1)\
+                \}\
+                else \{\
+                	let addr = Math.floor((ry * 160) + (x1/2))\
+                  if (scanlines[ry] === undefined) \{ scanlines[ry] = [] \}\
+                  scanlines[ry].push(addr)\
+                  if (nibbles[ry] === undefined) \{ nibbles[ry] = [] \}\
+                  nibbles[ry].push(0)\
+                \}\
+                if (P > 0) \{             // is the pixel going right AND up?\
+                    x1+=Xincr;            // increment independent variable\
+                    y1+=Yincr;            // increment dependent variable\
+                    P+=dPru;              // increment decision (for up)\
+                \} else \{                 // is the pixel just going right?\
+                    x1+=Xincr;            // increment independent variable\
+                    P+=dPr;               // increment decision (for right)\
+                \}\
+            \}\
+        \} else \{                       // if Y is the independent variable\
+            let dPr  = dX<<1;           // amount to increment decision if right is chosen\
+            let dPru = dPr - (dY<<1);   // amount to increment decision if up is chosen\
+            let P    = dPr - dY;        // decision variable start value\
+            for (; dY>=0; dY--) \{       // process each point in the line one at a time\
+              let rx = Math.floor(x1)\
+              let ry = Math.floor(y1)             \
+                if (rx & 1) \{\
+                	let addr = Math.floor((ry * 160) + (x1/2))\
+                  if (scanlines[ry] === undefined) \{ scanlines[ry] = [] \}\
+                  scanlines[ry].push(addr)\
+                  if (nibbles[ry] === undefined) \{ nibbles[ry] = [] \}\
+                  nibbles[ry].push(1)\
+                \}\
+                else \{\
+                	let addr = Math.floor((ry * 160) + (x1/2))\
+                  if (scanlines[ry] === undefined) \{ scanlines[ry] = [] \}\
+                  scanlines[ry].push(addr)\
+                  if (nibbles[ry] === undefined) \{ nibbles[ry] = [] \}\
+                  nibbles[ry].push(0)\
+                \}\
+                if (P > 0) \{             // is the pixel going up AND right?\
+                    x1+=Xincr;            // increment dependent variable\
+                    y1+=Yincr;            // increment independent variable\
+                    P+=dPru;              // increment decision (for up)\
+                \} else \{                 // is the pixel just going up?\
+                    y1+=Yincr;            // increment independent variable\
+                    P+=dPr;               // increment decision (for right)\
+                \}\
+            \}\
+        \}\
+    \}\
+\
+\}\
+\
+\
+\
+function mod(n, m) \{\
+  return ((n % m) + m) % m;\
+\}\
+\
+\
+function writeCodeblock(fnName, erase) \{\
+\
+	let lastAddress = 0\
+	let lastNibble = -1\
+  let adjust = 0\
+\
+	lineCounter = 0\
+  firstLine = true\
+  needToLDA = false\
+\
+	strAll += `\\n$\{fnName\} entry\\n`\
+  strAll += '		spriteGetDrawAddress\\n'\
+  strAll += '		_spriteHeader\\n'\
+  \
+  let keys = Object.keys(scanlines)\
+  keys = keys.sort(function(a, b) \{\
+    return a - b;\
+	\})\
+  for (i=0; i<keys.length; i++) \{\
+  \
+    const scanline = keys[i]\
+  	const drawAddress = Math.floor(scanline * 160)\
+  \
+    ++lineCounter\
+//    if (lineCounter >= 2 || firstLine) \{\
+    	lineCounter = 0\
+      firstLine = false\
+      lastNibble = -1\
+      if (erase) \{\
+      	needToLDA = true\
+			\}\
+      strAll += '\\n'\
+    	strAll += '		lda >drawAddress\\n'\
+      strAll += '		clc\\n'\
+      strAll += `		adc #$\{drawAddress\}\\n`\
+      strAll += '		tcd\\n\\n'\
+//		\}\
+\
+  \
+  	const scanlineData = scanlines[scanline]\
+  	const nibblelineData = nibbles[scanline]\
+  	for (j=0; j<scanlineData.length; j++) \{\
+    	if (erase) \{\
+      	if (needToLDA) \{\
+      		needToLDA = false\
+          strAll += '		lda #$00\\n'\
+        \}\
+			\} else \{\
+      \
+//        strAll += `		lda $\{mod(scanlineData[j], 160)\}\\n`\
+      strAll += `		lda $\{((((scanlineData[j]) - drawAddress) + (lineCounter * 160)) + 20)\}\\n`\
+     \
+        const nibble = nibblelineData[j]\
+//        if (nibble != lastNibble) \{\
+          lastNibble = nibble\
+          if (nibble === 1) \{\
+            strAll += '		ora #$0f\\n'\
+          \} else \{\
+            strAll += '		ora #$f0\\n'\
+          \}\
+//        \}\
+			\}\
+\
+//      strAll += `		sta $\{mod(scanlineData[j], 160)\}\\n`\
+			if (erase) \{\
+				if (scanlineData[j] != lastAddress) \{\
+					lastAddress = scanlineData[j]\
+		      strAll += `		sta $\{((((scanlineData[j]) - drawAddress) + (lineCounter * 160)) + 20)\}\\n`\
+        \}\
+      \} else \{\
+	      strAll += `		sta $\{((((scanlineData[j]) - drawAddress) + (lineCounter * 160)) + 20)\}\\n`\
+			\}\
+\
+    \}\
+	\}\
+    \
+  strAll += '		_spriteFooter\\n'\
+  strAll += '		rtl\\n\\n'\
+\}\
+\
+\
+\
+}

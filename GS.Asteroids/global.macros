@@ -57,18 +57,18 @@ dontClampRight_&SYSCNT anop
 
         macro
         spriteGetDrawAddress
-        lda drawY
+        lda >drawY
         asl a
         tax
-        lda screenRowOffsets,x
-        sta drawAddress
-        lda drawX
+        lda >screenRowOffsets,x
+        sta >drawAddress
+        lda >drawX
         lsr a
         clc
-        adc drawAddress
+        adc >drawAddress
         clc
         adc #$2000
-        sta drawAddress
+        sta >drawAddress
         mend
 
 ;
