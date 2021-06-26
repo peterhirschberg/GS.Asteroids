@@ -104,7 +104,7 @@ checkXPlus anop
         bra checkYPos
 
 resetXPlus anop
-        lda #SCREEN_MIN
+        lda #0
         sta xpos
         bra checkYPos
         

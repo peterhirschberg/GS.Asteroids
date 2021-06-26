@@ -16,7 +16,6 @@ lines start
 
         
 drawDot entry
-
         lda y1
         asl a
         tax

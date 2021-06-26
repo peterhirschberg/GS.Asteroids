@@ -90,9 +90,25 @@ next9 anop
         lda #SHAPE_OFFSET_LARGE_SAUCER
         cmp objectShapeDataIndex
         beq prerenderedLargeSaucerShort
-        rtl
+        jmp next10
 prerenderedLargeSaucerShort anop
         brl prerenderedLargeSaucer
+        rtl
+next10 anop
+        lda #SHAPE_OFFSET_DOT
+        cmp objectShapeDataIndex
+        beq doDrawDot
+        rtl
+doDrawDot anop
+        lda #$0f
+        sta currentColorRight
+        lda #$f0
+        sta currentColorLeft
+        lda drawX
+        sta x1
+        lda drawY
+        sta y1
+        jsl drawDot
         rtl
 
 prerenderedLargeRock1 anop
@@ -256,6 +272,10 @@ notPlayerShip anop
         cmp objectShapeDataIndex
         beq eraseSmallSaucer
 
+        lda #SHAPE_OFFSET_DOT
+        cmp objectShapeDataIndex
+        beq doEraseDot
+
         rtl
 
 eraseLargeRock1 anop
@@ -295,6 +315,13 @@ eraseLargeSaucer anop
 eraseSmallSaucer anop
         jsl spriteSmallSaucerErase
         rtl
+
+doEraseDot anop
+        lda drawX
+        sta x1
+        lda drawY
+        sta y1
+        jsl eraseDot
 
         rtl
 

@@ -150,7 +150,7 @@ spawnRockTop entry
         jsl getRandom
         ldx index
         sta xPosList,x
-        lda #0
+        lda #SCREEN_MIN
         sta yPosList,x
         jsl getRandSpeed
         ldx index
@@ -171,7 +171,7 @@ spawnRockBottom entry
         jsl getRandom
         ldx index
         sta xPosList,x
-        lda #MIDSCREEN_Y
+        lda #SCREEN_YWRAP
         sta yPosList,x
         jsl getRandSpeed
         ldx index
@@ -190,7 +190,7 @@ spawnRockLeft entry
         lda #0
         ldx index
         sta xPosList,x
-        lda #MIDSCREEN_Y
+        lda #SCREEN_YWRAP
         pha
         jsl getRandom
         ldx index
@@ -212,7 +212,7 @@ spawnRockRight entry
         lda #SCREEN_XMAX
         ldx index
         sta xPosList,x
-        lda #MIDSCREEN_Y
+        lda #SCREEN_YWRAP
         pha
         jsl getRandom
         ldx index
