@@ -121,10 +121,13 @@ doCheckControls anop
         rtl
 
 run anop
+
+; erase old sprites if in "fast" mode
         lda fastMode
         cmp #1
         bne dontEraseSprites
         jsl eraseSprites
+
 dontEraseSprites anop
 
 ; run the sounds
