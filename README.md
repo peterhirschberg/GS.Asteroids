@@ -7,8 +7,9 @@ Special thanks to Jeremy Rand for his invaluable help and advice, his [build pip
 
 ## Hardware requirements
 
-This game currently requires a machine running at at least 8mhz, so unfortunately an accelerator card is required. It will throttle itself above 8mhz so if you are running it in an emulator, just set it for "Unlimited".
-
+GS Asteroids has two graphics modes that you can toggle between:
+ - "Fast" - graphics are optimized for speed and running on a stock Apple IIgs.
+ - "Fancy" - enhanced graphics for machines with an accelerator card.
 
 ![Screenshot](/screenshot1.png)
 
