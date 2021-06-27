@@ -49,10 +49,10 @@ checkControls entry
         cmp #'Q'
         beq onKeydownQuit
 
-        cmp #'t'
-        beq onKeydownTranslucency
-        cmp #'T'
-        beq onKeydownTranslucency
+        cmp #'f'
+        beq onKeydownFastMode
+        cmp #'F'
+        beq onKeydownFastMode
 
         bra checkKeysDone
 
@@ -87,18 +87,18 @@ setPaused anop
         sta gamePaused
         rtl
 
-onKeydownTranslucency anop
-        lda enableTranslucency
+onKeydownFastMode anop
+        lda fastMode
         cmp #0
-        beq setTranslucent
+        beq setFast
         lda #0
-        sta enableTranslucency
+        sta fastMode
         lda #1
         sta needToDrawIntroScreen
         rtl
-setTranslucent anop
+setFast anop
         lda #1
-        sta enableTranslucency
+        sta fastMode
         lda #1
         sta needToDrawIntroScreen
         rtl

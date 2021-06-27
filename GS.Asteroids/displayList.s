@@ -61,8 +61,8 @@ loop anop
     
     stx counter
 
-    lda enableTranslucency
-    cmp #0
+    lda fastMode
+    cmp #1
     beq normalDraw
 
     jsl drawTranslucentLine
@@ -161,8 +161,8 @@ loop4 anop
 
     stx counter
 
-    lda enableTranslucency
-    cmp #0
+    lda fastMode
+    cmp #1
     beq normalDrawDot
 
     jsl drawTranslucentDot

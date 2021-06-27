@@ -322,7 +322,7 @@ startWreckage entry
 
         lda fastMode
         cmp #1
-        bne skipRotation
+        beq skipRotation
 
         sty savey
         lda #360

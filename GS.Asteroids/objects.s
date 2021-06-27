@@ -12,6 +12,7 @@ objects start
         using globalData
         using objectData
         using displayListData
+        using gameData
 
 updateObjects entry
 
@@ -242,6 +243,9 @@ drawIt anop
         sta objectShapeDataIndex
 
 ; -----------------------------
+        lda fastMode
+        cmp #1
+        bne drawNormal
         jsl fastDrawObject
         jmp nextObject
 ; -----------------------------

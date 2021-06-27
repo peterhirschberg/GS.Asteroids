@@ -333,15 +333,6 @@ drawControlsText entry
 
 drawTextLoop4 anop
 
-        lda fastMode
-        cmp #1
-;        beq drawFastMode
-;        lda controlsTextFancyData,x
-;        bra doDrawText
-;drawFastMode anop
-;        lda controlsTextFastData,x
-;doDrawText anop
-
         lda controlsTextData,x
 
         cmp #-1
@@ -382,6 +373,71 @@ drawTextDone4 anop
 
         rtl
 
+
+drawFancyFastControlsText entry
+
+        lda #0
+        sta scale
+
+        lda #$bb
+        sta color
+
+        lda #120
+        sta charXPos
+        sta xStart
+
+        lda #60
+        sta charYPos
+
+        ldx #0
+
+drawTextLoop5 anop
+
+        lda fastMode
+        cmp #1
+        beq drawFastMode
+        lda controlsTextFancyData,x
+        bra next1
+drawFastMode anop
+        lda controlsTextFastData,x
+next1 anop
+        cmp #-1
+        beq drawTextDone5
+
+        cmp #OFFSET_NEWLINE
+        beq newLine2
+
+        stx savexDraw
+        sty saveyDraw
+        jsr drawLetter
+        ldx savexDraw
+        ldy saveyDraw
+        bra nextCharOnRow2
+
+newLine2 anop
+        lda xStart
+        sta charXPos
+
+        lda charYPos
+        clc
+        adc #8
+        sta charYPos
+        bra nextChar2
+
+nextCharOnRow2 anop
+        lda charXPos
+        clc
+        adc #6
+        sta charXPos
+
+nextChar2 anop
+        inx
+        inx
+        jmp drawTextLoop5
+
+drawTextDone5 anop
+
+        rtl
 
         
 drawScore entry
@@ -501,7 +557,7 @@ drawIntroScreen entry
         jsl drawCopyrightText
         jsl drawThanksText
         jsl drawControlsText
-
+        jsl drawFancyFastControlsText
         jsl drawAttractMode
 
         rtl

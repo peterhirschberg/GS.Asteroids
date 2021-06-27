@@ -468,8 +468,6 @@ gameMode dc i2'GAMEMODE_INTRO'
 
 fastMode dc i2'1'
 
-enableTranslucency dc i2'1'
-
 playerLives dc i2'0'
 
 playerRespawnTimer dc i2'0'
