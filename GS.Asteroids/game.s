@@ -7,6 +7,8 @@
 ;
 
         case on
+        mcopy global.macros
+        keep global
 
 game    start
         using globalData
@@ -119,8 +121,11 @@ doCheckControls anop
         rtl
 
 run anop
-
+        lda fastMode
+        cmp #1
+        bne dontEraseSprites
         jsl eraseSprites
+dontEraseSprites anop
 
 ; run the sounds
         jsl runSounds
@@ -411,7 +416,6 @@ resetLivesToZero anop
 ; Credit for the code below goes to Jeremy Rand - author of BuGS
 
 setupScreen entry
-
         lda >BORDER_COLOUR_REGISTER
         and #$f0
         sta >BORDER_COLOUR_REGISTER
@@ -443,15 +447,6 @@ nextWord anop
         cli
 
         rtl
-
-gameDone anop
-        lda >BORDER_COLOUR_REGISTER
-        and #$f0
-        ora borderColour
-        sta >BORDER_COLOUR_REGISTER
-
-        rtl
-
 
 
         end

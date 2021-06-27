@@ -95,16 +95,22 @@ onKeydownFastMode anop
         sta fastMode
         lda #1
         sta needToDrawIntroScreen
+        jsl eraseDisplayList
+        jsl eraseDotList
+        jsl eraseSprites
         rtl
 setFast anop
         lda #1
         sta fastMode
         lda #1
         sta needToDrawIntroScreen
+        jsl eraseDisplayList
+        jsl eraseDotList
+        jsl eraseSprites
         rtl
 
 checkKeydownLeft anop
-        lda >BUTTON1
+        lda >BUTTON2
         and #$80
         cmp #0
         beq notPressedLeft
@@ -118,7 +124,7 @@ notPressedLeft anop
         rts
 
 checkKeydownRight anop
-        lda >BUTTON2
+        lda >BUTTON1
 
         and #$80
         cmp #0

@@ -316,9 +316,9 @@ dontSlowDown anop
         lda yspeed
         sta ySpeedList,x
 
-; set rotation speed
-        lda rotationSpeed
-        sta rotationSpeedList,x
+; set angle
+        lda playerAngle
+        sta angleList,x
 
 ; enable/disable thrust object (based on thrust key)
 

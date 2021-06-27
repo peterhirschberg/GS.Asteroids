@@ -765,7 +765,6 @@ livesShipShapeData anop
         dc i2'2'
 
 
-; data for all shapes drawn
 objectShapeData anop
 ; player ship
         dc i2'6'
@@ -849,10 +848,10 @@ objectShapeData anop
         dc i2'0'
 
         dc i2'5'
-        dc i2'3'
+        dc i2'4'
 
         dc i2'-6'
-        dc i2'3'
+        dc i2'4'
 
         dc i2'-12'
         dc i2'0'
@@ -888,10 +887,10 @@ objectShapeData anop
         dc i2'0'
 
         dc i2'2'
-        dc i2'1'
+        dc i2'2'
 
         dc i2'-3'
-        dc i2'1'
+        dc i2'2'
 
         dc i2'-6'
         dc i2'0'
@@ -900,10 +899,10 @@ objectShapeData anop
         dc i2'-2'
 
         dc i2'-2'
-        dc i2'-4'
+        dc i2'-5'
 
         dc i2'1'
-        dc i2'-4'
+        dc i2'-5'
 
         dc i2'2'
         dc i2'-2'
@@ -1300,7 +1299,6 @@ SHAPE_OFFSET_MEDIUM_ROCK3       gequ $1b8
 SHAPE_OFFSET_SMALL_ROCK1        gequ $1ee
 SHAPE_OFFSET_SMALL_ROCK2        gequ $21c
 SHAPE_OFFSET_SMALL_ROCK3        gequ $252
-
 
 
 
@@ -2909,7 +2907,7 @@ rotationSpeedList anop
 colorList anop
 ; player
         dc i2'$bb'
-        dc i2'$00'
+        dc i2'$bb'
 ; large asteroids
         dc i2'$88'
         dc i2'$88'

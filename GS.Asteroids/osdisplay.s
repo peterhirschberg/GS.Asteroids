@@ -173,7 +173,12 @@ drawObjectDone anop
 
 drawGameOver entry
 
-    rtl
+        lda fastMode
+        cmp #1
+        bne dontSkipGameOver
+        rtl
+
+dontSkipGameOver anop
 
         jsl isGameOver
         cmp #1
