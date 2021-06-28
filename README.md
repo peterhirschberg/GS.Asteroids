@@ -17,5 +17,8 @@ GS Asteroids has two graphics modes that you can toggle between:
 
 ![Screenshot](/screenshot3.png)
 
+Recommended keyboard settings for proper THRUST control
+
+![Keyboard Settings](/keyboard.png)
 
 **PLEASE READ THE [WIKI](https://github.com/peterhirschberg/GS.Asteroids/wiki) FOR THE LATEST INFO**
