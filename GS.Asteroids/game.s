@@ -122,10 +122,12 @@ doCheckControls anop
 
 run anop
 
+
 ; erase old sprites if in "fast" mode
         lda fastMode
         cmp #1
         bne dontEraseSprites
+
         jsl eraseSprites
 
 dontEraseSprites anop
